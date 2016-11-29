@@ -123,9 +123,11 @@ Go to the [MOSEK academic license page](https://www.mosek.com/resources/academic
 
 Run the commands below from the PajaritoSupplement directory. Wait for each command to complete at the command line before running the next one.
 
-1. `python ec2_scripts/dispatcher.py nnnnxxxx ec2_scripts/jobinfo/xxxx.csv --create --dispatch`
-2. `python ec2_scripts/get_s3_files.py nnnnxxxx output/xxxx`
-3. `julia results_scripts/process.jl output/xxxx results/xxxx.csv`
+1. `cd ec2_scripts`
+2. `python dispatcher.py nnnnxxxx jobinfo/xxxx.csv --create --dispatch` (wait until completed)
+3. `python get_s3_files.py nnnnxxxx ../output/xxxx` (wait until completed)
+4. `cd ..`
+5. `julia results_scripts/process.jl output/xxxx results/xxxx.csv`
 
 Where `nnnn` is your name (you need a unique bucket name that will not conflict with any other bucket name on Amazon S3), and `xxxx` is one of the following:
 * `pajaritooptions` - runs Pajarito under various options, with CBC and MOSEK
