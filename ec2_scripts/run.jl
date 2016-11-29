@@ -112,8 +112,6 @@ function getsolver(solvername, tlim, logl, rgap)
         GurobiSolver(OutputFlag=0, Threads=1, TimeLimit=tlim, MIPGap=rgap),
         "MOSEK_MISOCP" =>
         MosekSolver(LOG=0, NUM_THREADS=1, OPTIMIZER_MAX_TIME=tlim, MIO_TOL_REL_GAP=rgap),
-        #
-        # # PRIMAL CUTS
     )
 
     return deepcopy(solvermap[solvername])

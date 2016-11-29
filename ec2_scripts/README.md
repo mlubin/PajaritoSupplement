@@ -110,3 +110,21 @@ After the `dispatcher.py` script has finished executing, you can check the numbe
 If there is no progress, then you can debug the run by logging onto one of the EC2 nodes as described in the previous section of this document. Debug output will be available in files `~/code/screen_output.txt`. Once you are finished debugging, you can terminate all running instances from the AWS console by navigating to "EC2" and "Running Instances", selecting all the instances, right clicking, and selecting "Instance State -> Terminate".
 
 
+# Specific commands to run for computational testing
+
+Run the commands below from the PajaritoSupplement directory. Wait for each command to complete at the command line before running the next one.
+
+python ec2_scripts/dispatcher.py nnnnxxxx ec2_scripts/jobinfo/xxxx.csv --create --dispatch
+python ec2_scripts/get_s3_files.py nnnnxxxx output/xxxx
+julia results_scripts/process.jl output/xxxx results/xxxx.csv
+
+Where `nnnn` is your name (you need a unique bucket name that will not conflict with any other bucket name on Amazon S3), and `xxxx` is one of the following:
+* `pajaritooptions` - runs Pajarito under various options, with CBC and MOSEK
+* `opensource` - runs Pajarito under default options, with CBC and ECOS or CIP, and the Bonmin solvers
+* `noncommercial` - runs the non-commercial (SCIP) tests
+* `commercial` - runs the commercial (Gurobi and MOSEK MISOCP) tests
+
+Results folders will be downloaded to the `output` folder. Processed results csv files will be saved in the `results` folder.
+
+
+
