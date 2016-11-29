@@ -43,7 +43,7 @@ By default an account is limited to 20 simultaneous EC2 nodes of a given type, t
 
 You will need a Gurobi Cloud license key in order to run Gurobi on AWS. You can obtain a prepaid license for a specified number of hours by contacting Gurobi licensing (this is free for academic use).
 
-Once you have this license, you should paste it into `GUROBI_LICENSE_KEY.txt`. Do **NOT** commit this file or share it e.g. to Github, as it will let anyone use your Gurobi license.
+Once you have this license, you should paste it into `GUROBI_CLOUD_KEY.txt`. Do **NOT** commit this file or share it e.g. to Github, as it will let anyone use your Gurobi license.
 
 ## Configuring your job details
 
