@@ -1,8 +1,8 @@
-# Computation with Amazon Web Services
+# Setting up for computation with Amazon Web Services
 
 This is a collection of scripts to help you easily perform distributed computation using Gurobi on Amazon Web Services (AWS). These were adapted from the *aws-runner* code by [Jack Dunn](https://github.com/JackDunnNZ/aws-runner).
 
-## Setting up required software
+## Installing required software for interacting with AWS
 
 To get starting, you need to install several pieces of software on your system to interface with AWS:
 
@@ -10,7 +10,7 @@ To get starting, you need to install several pieces of software on your system t
  * If you do not already have the Python package manager `pip` installed, install it by following the instructions [on the pip website](https://pip.pypa.io/en/latest/installing.html).
  * Install required python packages with `sudo pip install paramiko` and `sudo pip install boto`. The `paramiko` package dependencies `ecdsa` and `pycrypto` should be automatically installed; if they are not follow the additional [paramiko installation instructions](http://www.paramiko.org/installing.html).
 
-## Configuring an Amazon Web Services account
+## Configuring an AWS account
 
 The first step is to set up an Amazon Web Services account:
 
@@ -110,6 +110,11 @@ After the `dispatcher.py` script has finished executing, you can check the numbe
 If there is no progress, then you can debug the run by logging onto one of the EC2 nodes as described in the previous section of this document. Debug output will be available in files `~/code/screen_output.txt`. Once you are finished debugging, you can terminate all running instances from the AWS console by navigating to "EC2" and "Running Instances", selecting all the instances, right clicking, and selecting "Instance State -> Terminate".
 
 
+# Setting up other software needed for computational testing
+
+Install [Julia v0.5](http://julialang.org/downloads/) and open the Julia command prompt. 
+
+
 # Specific commands to run for computational testing
 
 Create folders called `output` and `results` in the PajaritoSupplement directory.
@@ -127,6 +132,3 @@ Where `nnnn` is your name (you need a unique bucket name that will not conflict 
 * `commercial` - runs the commercial (Gurobi and MOSEK MISOCP) tests
 
 Results folders will be downloaded to the `output` folder. Processed results csv files will be saved in the `results` folder.
-
-
-
