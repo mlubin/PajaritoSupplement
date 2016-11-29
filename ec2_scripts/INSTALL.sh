@@ -12,20 +12,20 @@ sudo apt-get update --yes > progress_A_1_$1.txt 2>&1
 sudo apt-get -y --force-yes install git python-pip python-paramiko > progress_A_2_$1.txt 2>&1
 sudo apt-get -y install build-essential gfortran pkg-config unzip libgmp-dev libz-dev libreadline-dev libncurses-dev > progress_A_3_$1.txt 2>&1
 
-# # Julia
-# wget https://julialang.s3.amazonaws.com/bin/linux/x64/0.5/julia-0.5.0-linux-x86_64.tar.gz
-# tar -xvzf julia-0.5.0-linux-x86_64.tar.gz > progress_B_1_$1.txt 2>&1
-#
-# # Mosek 8.0.0.41
-# wget http://download.mosek.com/beta/8.0.0.41/mosektoolslinux64x86.tar.bz2
-# tar -xvjf mosektoolslinux64x86.tar.bz2 > progress_B_2_$1.txt 2>&1
+# Julia
+wget https://julialang.s3.amazonaws.com/bin/linux/x64/0.5/julia-0.5.0-linux-x86_64.tar.gz
+tar -xvzf julia-0.5.0-linux-x86_64.tar.gz > progress_B_1_$1.txt 2>&1
+
+# Mosek 8.0.0.45
+wget http://download.mosek.com/stable/8.0.0.45/mosektoolslinux64x86.tar.bz2
+tar -xvjf mosektoolslinux64x86.tar.bz2 > progress_B_2_$1.txt 2>&1
+
+# MOSEK licence
+cp mosek.lic mosek
 
 # Our tarball
 wget https://s3.amazonaws.com/pajaritotesting/juliafiles_20161007.tar.gz
 tar -xvzf juliafiles_20161007.tar.gz > progress_B_3_$1.txt 2>&1
-
-# MOSEK licence
-cp mosek.lic mosek
 
 # CBLIB data
 wget https://s3.amazonaws.com/pajaritotesting/data.zip
