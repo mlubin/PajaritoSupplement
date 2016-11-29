@@ -112,6 +112,8 @@ If there is no progress, then you can debug the run by logging onto one of the E
 
 # Specific commands to run for computational testing
 
+Create folders called `output` and `results` in the PajaritoSupplement directory.
+
 Run the commands below from the PajaritoSupplement directory. Wait for each command to complete at the command line before running the next one.
 
 python ec2_scripts/dispatcher.py nnnnxxxx ec2_scripts/jobinfo/xxxx.csv --create --dispatch
