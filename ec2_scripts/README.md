@@ -110,14 +110,16 @@ After the `dispatcher.py` script has finished executing, you can check the numbe
 If there is no progress, then you can debug the run by logging onto one of the EC2 nodes as described in the previous section of this document. Debug output will be available in files `~/code/screen_output.txt`. Once you are finished debugging, you can terminate all running instances from the AWS console by navigating to "EC2" and "Running Instances", selecting all the instances, right clicking, and selecting "Instance State -> Terminate".
 
 
-# Setting up other software needed for computational testing
+# Setting up Julia
 
-Install [Julia v0.5](http://julialang.org/downloads/) and open the Julia command prompt. 
+Install [Julia v0.5](http://julialang.org/downloads/).
 
 
 # Specific commands to run for computational testing
 
-Create folders called `output` and `results` in the PajaritoSupplement directory.
+Clone or download the PajaritoSupplement repository. Create folders called `output` and `results` in the PajaritoSupplement directory.
+
+Go to the [MOSEK academic license page](https://www.mosek.com/resources/academic-license) to request a license if you don't already have one. Place the license file `mosek.lic` into the folder `ec2_scripts`.
 
 Run the commands below from the PajaritoSupplement directory. Wait for each command to complete at the command line before running the next one.
 
