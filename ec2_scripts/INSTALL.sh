@@ -25,8 +25,8 @@ mkdir mosek
 cp mosek.lic mosek
 
 # Our tarball
-wget https://s3.amazonaws.com/pajaritotesting/juliafiles_20161007.tar.gz
-tar -xvzf juliafiles_20161007.tar.gz > progress_B_3_$1.txt 2>&1
+wget https://s3.amazonaws.com/pajaritotesting/juliafiles_20161129.tar.gz
+tar -xvzf juliafiles_20161129.tar.gz > progress_B_3_$1.txt 2>&1
 
 # CBLIB data
 wget https://s3.amazonaws.com/pajaritotesting/data.zip
