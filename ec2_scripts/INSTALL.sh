@@ -17,10 +17,11 @@ wget https://julialang.s3.amazonaws.com/bin/linux/x64/0.5/julia-0.5.0-linux-x86_
 tar -xvzf julia-0.5.0-linux-x86_64.tar.gz > progress_B_1_$1.txt 2>&1
 
 # Mosek 8.0.0.45
-wget http://download.mosek.com/stable/8.0.0.45/mosektoolslinux64x86.tar.bz2
-tar -xvjf mosektoolslinux64x86.tar.bz2 > progress_B_2_$1.txt 2>&1
+# wget http://download.mosek.com/stable/8.0.0.45/mosektoolslinux64x86.tar.bz2
+# tar -xvjf mosektoolslinux64x86.tar.bz2 > progress_B_2_$1.txt 2>&1
 
 # MOSEK licence
+mkdir mosek
 cp mosek.lic mosek
 
 # Our tarball
@@ -40,12 +41,13 @@ export GUROBI_HOME=/opt/gurobi701/linux64
 
 # Julia packages
 cd ~/.julia/v0.5/Pajarito; git checkout master; git pull; cd -
-cd ~/.julia/v0.5/Gurobi; git checkout master; git pull; cd -
-cd ~/.julia/v0.5/Mosek; git checkout master; git pull; cd -
+cd ~/.julia/v0.5/WoodburyMatrices; git checkout master; git pull; cd -
+# cd ~/.julia/v0.5/Gurobi; git checkout master; git pull; cd -
+# cd ~/.julia/v0.5/Mosek; git checkout master; git pull; cd -
 cd ~/.julia/v0.5/MathProgBase; git checkout master; git pull; cd -
 cd ~/.julia/v0.5/JuMP; git checkout master; git pull; cd -
-cd ~/.julia/v0.5/ConicNonlinearBridge; git checkout master; git pull; cd -
-cd ~/.julia/v0.5/AmplNLWriter; git checkout master; git pull; cd -
+# cd ~/.julia/v0.5/ConicNonlinearBridge; git checkout master; git pull; cd -
+# cd ~/.julia/v0.5/AmplNLWriter; git checkout master; git pull; cd -
 julia -e 'Pkg.build("Gurobi"); Pkg.status();' > progress_C_2_$1.txt 2>&1
 
 # Output folder
