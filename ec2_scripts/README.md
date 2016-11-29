@@ -121,15 +121,15 @@ Clone or download the PajaritoSupplement repository. Create folders called `outp
 
 Go to the [MOSEK academic license page](https://www.mosek.com/resources/academic-license) to request a license if you don't already have one. Place the license file `mosek.lic` into the folder `ec2_scripts`.
 
-Run the commands below from the PajaritoSupplement directory. Wait for each command to complete at the command line before running the next one.
+Follow the instructions below to run a set of tests:
+1. run `cd PajaritoSupplement/ec2_scripts`
+2. run `python dispatcher.py nnnnxxxx jobinfo/xxxx.csv --create --dispatch`
+3. Wait until all EC2 jobs are completed: check that no instances are still running in the AWS console before proceeding
+3. run `python get_s3_files.py nnnnxxxx ../output/xxxx` (wait until all jobs)
+4. run `cd ..`
+5. run `julia results_scripts/process.jl output/xxxx results/xxxx.csv`
 
-1. `cd ec2_scripts`
-2. `python dispatcher.py nnnnxxxx jobinfo/xxxx.csv --create --dispatch` (wait until completed)
-3. `python get_s3_files.py nnnnxxxx ../output/xxxx` (wait until completed)
-4. `cd ..`
-5. `julia results_scripts/process.jl output/xxxx results/xxxx.csv`
-
-Where `nnnn` is your name (you need a unique bucket name that will not conflict with any other bucket name on Amazon S3), and `xxxx` is one of the following:
+where `nnnn` is your name (you need a unique bucket name that will not conflict with any other bucket name on Amazon S3), and `xxxx` is one of the following:
 * `pajaritooptions` - runs Pajarito under various options, with CBC and MOSEK
 * `opensource` - runs Pajarito under default options, with CBC and ECOS or CIP, and the Bonmin solvers
 * `noncommercial` - runs the non-commercial (SCIP) tests
