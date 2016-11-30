@@ -41,3 +41,4 @@ for instancename in instancelist
     end
     println(fdmeta,"$(time() - t) seconds.")
 end
+close(fdmeta)
