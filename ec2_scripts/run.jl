@@ -8,6 +8,9 @@ using SCIP
 using ConicNonlinearBridge
 using AmplNLWriter
 
+open("mypid","w") do fd
+    print(fd,getpid())
+end
 
 function solveprint(instance, solver)
     # Convert from cbf to our conic format
