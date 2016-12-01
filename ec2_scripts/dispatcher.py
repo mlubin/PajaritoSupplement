@@ -141,6 +141,7 @@ def setup_instances(tags, cmds, insts, verbose=True):
 
         # cblib code
         f.put("run.jl", "run.jl")
+        f.put("runmeta.jl", "runmeta.jl")
         for filename in os.listdir("jobinfo"):
             f.put("jobinfo/" + filename, filename)
 
