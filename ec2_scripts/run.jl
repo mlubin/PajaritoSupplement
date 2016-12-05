@@ -1,12 +1,12 @@
 using ConicBenchmarkUtilities
 using Pajarito
-# using ECOS, ConicIP
+using ECOS, ConicIP
 using Mosek
-# using Gurobi
+using Gurobi
 using Cbc
-# using SCIP
-# using ConicNonlinearBridge
-# using AmplNLWriter
+using SCIP
+using ConicNonlinearBridge
+using AmplNLWriter
 
 
 function solveprint(fd, instance, solver)
@@ -80,38 +80,38 @@ function getsolver(solvername, tlim, logl, rgap)
         PajaritoSolver(mip_solver=CbcSolver(logLevel=0, ratioGap=0., seconds=tlim), cont_solver=MosekSolver(LOG=0, NUM_THREADS=1, OPTIMIZER_MAX_TIME=120.), log_level=logl, timeout=tlim, rel_gap=rgap, mip_subopt_count=2, mip_subopt_solver=CbcSolver(logLevel=0, ratioGap=0.1, seconds=120)),
         "PAJ_SUBOPT-8-10_CBC_MOSEK" =>
         PajaritoSolver(mip_solver=CbcSolver(logLevel=0, ratioGap=0., seconds=tlim), cont_solver=MosekSolver(LOG=0, NUM_THREADS=1, OPTIMIZER_MAX_TIME=120.), log_level=logl, timeout=tlim, rel_gap=rgap, mip_subopt_count=8, mip_subopt_solver=CbcSolver(logLevel=0, ratioGap=0.1, seconds=120)),
-        #
-        # # OPEN-SOURCE
-        # "PAJ_CBC_ECOS" =>
-        # PajaritoSolver(mip_solver=CbcSolver(logLevel=0, ratioGap=0., seconds=tlim), cont_solver=ECOSSolver(verbose=false), log_level=logl, timeout=tlim, rel_gap=rgap),
-        # "PAJ_CBC_CIP" =>
-        # PajaritoSolver(mip_solver=CbcSolver(logLevel=0, ratioGap=0., seconds=tlim), cont_solver=ConicIPSolver(verbose=false), log_level=logl, timeout=tlim, rel_gap=rgap),
-        # "BONMIN_OA" =>
-        # ConicNLPWrapper(nlp_solver=BonminNLSolver(["bonmin.algorithm=\"B-OA\"", "bonmin.time_limit=$tlim", "halt_on_ampl_error=yes", "bonmin.allowable_fraction_gap=$rgap", "bonmin.nlp_log_level=1", "bonmin.bb_log_level=1"]), disaggregate_soc=false),
-        # "BONMIN_OADIS" =>
-        # ConicNLPWrapper(nlp_solver=BonminNLSolver(["bonmin.algorithm=\"B-OA\"", "bonmin.time_limit=$tlim", "halt_on_ampl_error=yes", "bonmin.allowable_fraction_gap=$rgap", "bonmin.nlp_log_level=1", "bonmin.bb_log_level=1"]), disaggregate_soc=true),
-        # "BONMIN_BB" =>
-        # ConicNLPWrapper(nlp_solver=BonminNLSolver(["bonmin.algorithm=\"B-BB\"", "bonmin.time_limit=$tlim", "halt_on_ampl_error=yes", "bonmin.allowable_fraction_gap=$rgap", "bonmin.nlp_log_level=1", "bonmin.bb_log_level=1"]), disaggregate_soc=false),
-        #
-        # # NON-COMMERCIAL
-        # "PAJ_SCIP_MOSEK" =>
-        # PajaritoSolver(mip_solver=SCIPSolver("display/verblevel", 0, "limits/gap", 0.0, "limits/time", tlim), cont_solver=MosekSolver(LOG=0, NUM_THREADS=1, OPTIMIZER_MAX_TIME=120.), log_level=logl, timeout=tlim, rel_gap=rgap),
-        # "PAJ_MSD_SCIP_MOSEK" =>
-        # PajaritoSolver(mip_solver=SCIPSolver("display/verblevel", 0, "limits/gap", rgap, "limits/time", tlim), cont_solver=MosekSolver(LOG=0, NUM_THREADS=1, OPTIMIZER_MAX_TIME=120.), log_level=logl, timeout=tlim, rel_gap=rgap, mip_solver_drives=true),
-        # "SCIP_MISOCP" =>
-        # ConicNLPWrapper(nlp_solver=SCIPSolver("display/verblevel", 0, "limits/gap", rgap, "limits/time", tlim), soc_as_quadratic=true, disaggregate_soc=false),
-        # "SCIP_MISOCPDIS" =>
-        # ConicNLPWrapper(nlp_solver=SCIPSolver("display/verblevel", 0, "limits/gap", rgap, "limits/time", tlim), soc_as_quadratic=true, disaggregate_soc=true),
-        #
-        # # COMMERCIAL
-        # "PAJ_GUROBI_MOSEK" =>
-        # PajaritoSolver(mip_solver=GurobiSolver(OutputFlag=0, Threads=1, TimeLimit=tlim, MIPGap=0.), cont_solver=MosekSolver(LOG=0, NUM_THREADS=1, OPTIMIZER_MAX_TIME=120.), log_level=logl, timeout=tlim, rel_gap=rgap),
-        # "PAJ_MSD_GUROBI_MOSEK" =>
-        # PajaritoSolver(mip_solver=GurobiSolver(OutputFlag=0, Threads=1, TimeLimit=tlim, MIPGap=rgap), cont_solver=MosekSolver(LOG=0, NUM_THREADS=1, OPTIMIZER_MAX_TIME=120.), log_level=logl, timeout=tlim, rel_gap=rgap, mip_solver_drives=true),
-        # "GUROBI_MISOCP" =>
-        # GurobiSolver(OutputFlag=0, Threads=1, TimeLimit=tlim, MIPGap=rgap),
-        # "MOSEK_MISOCP" =>
-        # MosekSolver(LOG=0, NUM_THREADS=1, OPTIMIZER_MAX_TIME=tlim, MIO_TOL_REL_GAP=rgap),
+
+        # OPEN-SOURCE
+        "PAJ_CBC_ECOS" =>
+        PajaritoSolver(mip_solver=CbcSolver(logLevel=0, ratioGap=0., seconds=tlim), cont_solver=ECOSSolver(verbose=false), log_level=logl, timeout=tlim, rel_gap=rgap),
+        "PAJ_CBC_CIP" =>
+        PajaritoSolver(mip_solver=CbcSolver(logLevel=0, ratioGap=0., seconds=tlim), cont_solver=ConicIPSolver(verbose=false), log_level=logl, timeout=tlim, rel_gap=rgap),
+        "BONMIN_OA" =>
+        ConicNLPWrapper(nlp_solver=BonminNLSolver(["bonmin.algorithm=\"B-OA\"", "bonmin.time_limit=$tlim", "halt_on_ampl_error=yes", "bonmin.allowable_fraction_gap=$rgap", "bonmin.oa_log_level=1", "bonmin.bb_log_level=1"]), disaggregate_soc=false),
+        "BONMIN_OADIS" =>
+        ConicNLPWrapper(nlp_solver=BonminNLSolver(["bonmin.algorithm=\"B-OA\"", "bonmin.time_limit=$tlim", "halt_on_ampl_error=yes", "bonmin.allowable_fraction_gap=$rgap", "bonmin.oa_log_level=1", "bonmin.bb_log_level=1"]), disaggregate_soc=true),
+        "BONMIN_BB" =>
+        ConicNLPWrapper(nlp_solver=BonminNLSolver(["bonmin.algorithm=\"B-BB\"", "bonmin.time_limit=$tlim", "halt_on_ampl_error=yes", "bonmin.allowable_fraction_gap=$rgap", "bonmin.oa_log_level=1", "bonmin.bb_log_level=1"]), disaggregate_soc=false),
+
+        # NON-COMMERCIAL
+        "PAJ_SCIP_MOSEK" =>
+        PajaritoSolver(mip_solver=SCIPSolver("display/verblevel", 0, "limits/gap", 0.0, "limits/time", tlim), cont_solver=MosekSolver(LOG=0, NUM_THREADS=1, OPTIMIZER_MAX_TIME=120.), log_level=logl, timeout=tlim, rel_gap=rgap),
+        "PAJ_MSD_SCIP_MOSEK" =>
+        PajaritoSolver(mip_solver=SCIPSolver("display/verblevel", 0, "limits/gap", rgap, "limits/time", tlim), cont_solver=MosekSolver(LOG=0, NUM_THREADS=1, OPTIMIZER_MAX_TIME=120.), log_level=logl, timeout=tlim, rel_gap=rgap, mip_solver_drives=true),
+        "SCIP_MISOCP" =>
+        ConicNLPWrapper(nlp_solver=SCIPSolver("display/verblevel", 1, "limits/gap", rgap, "limits/time", tlim), soc_as_quadratic=true, disaggregate_soc=false),
+        "SCIP_MISOCPDIS" =>
+        ConicNLPWrapper(nlp_solver=SCIPSolver("display/verblevel", 1, "limits/gap", rgap, "limits/time", tlim), soc_as_quadratic=true, disaggregate_soc=true),
+
+        # COMMERCIAL
+        "PAJ_GUROBI_MOSEK" =>
+        PajaritoSolver(mip_solver=GurobiSolver(OutputFlag=0, Threads=1, TimeLimit=tlim, MIPGap=0.), cont_solver=MosekSolver(LOG=0, NUM_THREADS=1, OPTIMIZER_MAX_TIME=120.), log_level=logl, timeout=tlim, rel_gap=rgap),
+        "PAJ_MSD_GUROBI_MOSEK" =>
+        PajaritoSolver(mip_solver=GurobiSolver(OutputFlag=0, Threads=1, TimeLimit=tlim, MIPGap=rgap), cont_solver=MosekSolver(LOG=0, NUM_THREADS=1, OPTIMIZER_MAX_TIME=120.), log_level=logl, timeout=tlim, rel_gap=rgap, mip_solver_drives=true),
+        "GUROBI_MISOCP" =>
+        GurobiSolver(OutputFlag=1, Threads=1, TimeLimit=tlim, MIPGap=rgap),
+        "MOSEK_MISOCP" =>
+        MosekSolver(LOG=1, NUM_THREADS=1, OPTIMIZER_MAX_TIME=tlim, MIO_TOL_REL_GAP=rgap),
     )
 
     return deepcopy(solvermap[solvername])

@@ -23,32 +23,33 @@ flush(fdmeta)
 
 for instancename in instancelist
     shortname = chomp(split(instancename, "/")[2])
-    println(fdmeta, "Starting instance $shortname...")
+    println(fdmeta, "\nstarting instance $shortname...")
 
-    process = spawn(`julia run.jl $solvername $tlim $datafolder $instancename`)
-    t = time()
-    sleep(60.0)
-    pid = parse(Int, chomp(readline(open("mypid", "r"))))
+    try
+        process = spawn(`julia run.jl $solvername $tlim $datafolder $instancename`)
+        t = time()
+        sleep(60.0)
+        pid = parse(Int, chomp(readline(open("mypid", "r"))))
 
-    while process_running(process)
-        if (time() - t) > (tlim + 60*5)
-            try
+        while process_running(process)
+            if (time() - t) > (tlim + 60*5)
                 kill(process)
-                println(fdmeta, "Killed by time limit")
-            end
-        else
-            try
+                println(fdmeta, "killed by time limit")
+            else
                 memuse = parse(Int, split(readstring(pipeline(`cat /proc/$pid/status`,`grep RSS`)))[2])
                 if memuse > mlim
                     kill(process)
-                    println(fdmeta, "Killed by memory limit")
+                    println(fdmeta, "killed by memory limit")
                 end
             end
+            sleep(1.0)
         end
-        sleep(1.0)
+
+        println(fdmeta, "...took $(time() - t) seconds")
+    catch e
+        println(fdmeta, "...process error: $e")
     end
 
-    println(fdmeta, "...$(time() - t) seconds\n")
     flush(fdmeta)
 end
 
