@@ -1,0 +1,78 @@
+WARNING: Method definition require(Symbol) in module Base at loading.jl:345 overwritten in module ConicBenchmarkUtilities at /home/ubuntu/.julia/v0.5/Requires/src/require.jl:12.
+WARNING: The curly syntax (sum{},prod{},norm2{}) is deprecated in favor of the new generator syntax (sum(),prod(),norm()).
+WARNING: Replace sum{x[i] ^ 2,i in ind[2:length(ind)]} with sum(x[i] ^ 2 for i in ind[2:length(ind)]).
+WARNING: Replace sum{x[i] ^ 2,i in ind[3:length(ind)]} with sum(x[i] ^ 2 for i in ind[3:length(ind)]).
+WARNING: Replace sum{A_vals[k] * x[A_colidx[k]],k in nzrange(A_byrow,ind[i])} with sum(A_vals[k] * x[A_colidx[k]] for k in nzrange(A_byrow,ind[i])).
+WARNING: The curly syntax (sum{},prod{},norm2{}) is deprecated in favor of the new generator syntax (sum(),prod(),norm()).
+WARNING: Replace norm2{vars[j],j in 2:len} with norm(vars[j] for j in 2:len).
+WARNING: Replace norm2{if k == ind_min
+        vars_smat[ind_min,ind_min] - z_expr
+    else 
+        2 * smat[k,ind_min] * smat[k,v] * vars_smat[k,ind_min]
+    end,k in 1:dim} with norm(if k == ind_min
+    vars_smat[ind_min,ind_min] - z_expr
+else 
+    2 * smat[k,ind_min] * smat[k,v] * vars_smat[k,ind_min]
+end for k in 1:dim).
+Coin0505I Presolved problem not optimal, resolve after postsolve
+Coin0505I Presolved problem not optimal, resolve after postsolve
+#SOLVERNAME# PAJ_NOSOCINIT_CBC_ECOS
+#SOLVER# Pajarito.PajaritoSolver(2,3600.0,1.0e-5,false,Cbc.CbcMathProgSolverInterface.CbcSolver(Any[(:logLevel,0),(:ratioGap,0.0),(:seconds,3600.0)]),MathProgBase.DefaultMIPSolver(),0,false,true,ECOS.ECOSSolver(Any[(:verbose,false)]),true,false,false,true,false,true,false,false,false,true,true,false,false,true,false,false,false,false,1.0e-10,0.0001,1.0e-6,0.01,1.0e-6)
+#FILENAME# turbine07_aniso.cbf.gz
+#INSTANCE# turbine07_aniso
+#TIMELIMIT# 3600.0
+
+Transforming original data......Done     0.01s
+
+Creating conic model data......Done     0.00s
+
+Creating MIP model......Done     0.00s
+
+Cone types summary:
+Cone       | Count    | Min dim  | Max dim 
+       SOC |       25 |        3 |        3
+
+Solving conic relaxation......Done     0.00s
+ - Relaxation status    =        Optimal
+ - Relaxation objective =       1.358356
+
+Creating conic subproblem model......Done     0.00s
+
+Starting iterative outer approximation algorithm
+
+Iter | Best obj       | OA obj         | Rel gap     | Time (s)   
+   1 |  +3.000000e+00 |  +3.000000e+00 |   0.000e+00 |   4.138e-02
+
+Pajarito MICP solve summary:
+ - Total time (s)       =       1.03e-01
+ - Status               =        Optimal
+ - Best feasible obj.   =  +3.000000e+00
+ - Final OA obj. bound  =  +3.000000e+00
+ - Relative opt. gap    =      0.000e+00
+ - MIP solve count      =              1
+ - Conic solve count    =              1
+ - Feas. solution count =              1
+ - Integer repeat count =              0
+
+Timers (s):
+ - Setup                =       5.83e-02
+ -- Transform data      =       1.22e-02
+ -- Create conic data   =       1.29e-04
+ -- Create MIP data     =       7.06e-04
+ -- Load/solve relax    =       1.93e-03
+ - Iterative algorithm  =       4.46e-02
+ -- Solve MIPs          =       4.01e-02
+ -- Solve conic model   =       1.08e-03
+ -- Process conic data  =       9.37e-05
+ -- Add conic solution  =       0.00e+00
+ -- Add dual cuts       =       1.35e-04
+ -- Use outer inf/cuts  =       1.48e-05
+
+WARNING: Solver does not appear to support adding constraints to an existing model. Hot-start is disabled.
+WARNING: If matrix A has nonzero entries smaller than zero tolerance, performance may be improved by fixing these values to zero
+#STATUS# Optimal
+#OBJVAL# 3.0
+#OBJBOUND# 3.0
+#TIMESOLVER# 0.10295701026916504
+#TIMEALL# 0.10320401191711426
+#SOLUTION# [0.660549,1.26692,3.62151e-11,1.18929,0.0211486,0.0652212,1.60897e-11,0.119621,0.0,0.0,0.0,1.0,0.62421,0.0286041,1.0,0.314523,-0.2186,0.0,0.0,0.0,-0.0,-3.83689e-12,-1.53839e-11,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.307495,-0.500366,0.0,0.0,0.0,0.3,-0.0657294,0.0105651,0.3,-0.0499354,0.0563108,0.6,-0.0737646,-0.175762,0.6,0.0239901,-0.500889,1.5,0.0590069,-1.41654,1.5,0.68053,0.0539895,3.0,1.91829,-2.08304,0.3,-0.0590015,0.0239714,0.3,-0.0399756,0.0762813,0.6,0.0834511,0.0153197,0.6,0.313059,0.0116077,1.5,0.625719,0.146807,1.5,0.656469,-0.988569,3.0,-0.295712,-2.61613]

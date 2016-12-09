@@ -1,0 +1,93 @@
+WARNING: Method definition require(Symbol) in module Base at loading.jl:345 overwritten in module ConicBenchmarkUtilities at /home/ubuntu/.julia/v0.5/Requires/src/require.jl:12.
+WARNING: The curly syntax (sum{},prod{},norm2{}) is deprecated in favor of the new generator syntax (sum(),prod(),norm()).
+WARNING: Replace sum{x[i] ^ 2,i in ind[2:length(ind)]} with sum(x[i] ^ 2 for i in ind[2:length(ind)]).
+WARNING: Replace sum{x[i] ^ 2,i in ind[3:length(ind)]} with sum(x[i] ^ 2 for i in ind[3:length(ind)]).
+WARNING: Replace sum{A_vals[k] * x[A_colidx[k]],k in nzrange(A_byrow,ind[i])} with sum(A_vals[k] * x[A_colidx[k]] for k in nzrange(A_byrow,ind[i])).
+WARNING: The curly syntax (sum{},prod{},norm2{}) is deprecated in favor of the new generator syntax (sum(),prod(),norm()).
+WARNING: Replace norm2{vars[j],j in 2:len} with norm(vars[j] for j in 2:len).
+WARNING: Replace norm2{if k == ind_min
+        vars_smat[ind_min,ind_min] - z_expr
+    else 
+        2 * smat[k,ind_min] * smat[k,v] * vars_smat[k,ind_min]
+    end,k in 1:dim} with norm(if k == ind_min
+    vars_smat[ind_min,ind_min] - z_expr
+else 
+    2 * smat[k,ind_min] * smat[k,v] * vars_smat[k,ind_min]
+end for k in 1:dim).
+#SOLVERNAME# PAJ_NODIS_CBC_ECOS
+#SOLVER# Pajarito.PajaritoSolver(2,3600.0,1.0e-5,false,Cbc.CbcMathProgSolverInterface.CbcSolver(Any[(:logLevel,0),(:ratioGap,0.0),(:seconds,3600.0)]),MathProgBase.DefaultMIPSolver(),0,false,true,ECOS.ECOSSolver(Any[(:verbose,false)]),true,false,false,false,false,true,false,true,true,true,true,false,false,true,false,false,false,false,1.0e-10,0.0001,1.0e-6,0.01,1.0e-6)
+#FILENAME# sssd-weak-15-4.cbf.gz
+#INSTANCE# sssd-weak-15-4
+#TIMELIMIT# 3600.0
+
+Transforming original data......Done     0.00s
+
+Creating conic model data......Done     0.00s
+
+Creating MIP model......Done     0.00s
+
+Cone types summary:
+Cone       | Count    | Min dim  | Max dim 
+       SOC |       12 |        3 |        3
+Coin0505I Presolved problem not optimal, resolve after postsolve
+Coin0505I Presolved problem not optimal, resolve after postsolve
+
+Solving conic relaxation......Done     0.01s
+ - Relaxation status    =        Optimal
+ - Relaxation objective =  112819.583213
+
+Creating conic subproblem model......Done     0.00s
+
+Starting iterative outer approximation algorithm
+
+Iter | Best obj       | OA obj         | Rel gap     | Time (s)   
+   1 |  +7.413579e+05 |  +2.561141e+05 |   6.545e-01 |   1.292e-01
+   2 |  +4.462987e+05 |  +2.568295e+05 |   4.245e-01 |   8.256e-01
+   3 |  +3.654015e+05 |  +2.641543e+05 |   2.771e-01 |   2.326e+00
+   4 |  +3.308224e+05 |  +2.929129e+05 |   1.146e-01 |   1.072e+01
+   5 |  +3.308224e+05 |  +3.234710e+05 |   2.222e-02 |   1.196e+01
+Presolve 0 (-264) rows, 0 (-160) columns and 0 (-624) elements
+Optimal - objective value 330822.37
+After Postsolve, objective 330822.37, infeasibilities - dual 0 (0), primal 0 (0)
+Optimal objective 330822.3677 - 0 iterations time 0.002, Presolve 0.00
+Cbc0045I Solution with objective value 330822 saved
+
+Pajarito MICP solve summary:
+ - Total time (s)       =       1.94e+01
+ - Status               =   ConicFailure
+ - Best feasible obj.   =  +3.308224e+05
+ - Final OA obj. bound  =  +3.262487e+05
+ - Relative opt. gap    =      2.222e-02
+ - MIP solve count      =              6
+ - Conic solve count    =              6
+ - Feas. solution count =              5
+ - Integer repeat count =              0
+
+Timers (s):
+ - Setup                =       5.03e-02
+ -- Transform data      =       1.25e-04
+ -- Create conic data   =       7.88e-05
+ -- Create MIP data     =       5.48e-04
+ -- Load/solve relax    =       5.31e-03
+ - Iterative algorithm  =       1.94e+01
+ -- Solve MIPs          =       1.93e+01
+ -- Solve conic model   =       2.80e-02
+ -- Process conic data  =       2.19e-04
+ -- Add conic solution  =       3.05e-05
+ -- Add dual cuts       =       3.05e-04
+ -- Use outer inf/cuts  =       8.95e-05
+
+Presolve 0 (-276) rows, 0 (-160) columns and 0 (-660) elements
+Optimal - objective value 330822.37
+After Postsolve, objective 330822.37, infeasibilities - dual 0 (0), primal 0 (0)
+Optimal objective 330822.3677 - 0 iterations time 0.002, Presolve 0.00
+Cbc0045I Solution with objective value 330822 saved
+WARNING: Solver does not appear to support adding constraints to an existing model. Hot-start is disabled.
+WARNING: If matrix A has nonzero entries smaller than zero tolerance, performance may be improved by fixing these values to zero
+WARNING: Continuous solver returned conic subproblem status Error: terminating Pajarito
+#STATUS# ConicFailure
+#OBJVAL# 330822.3676605798
+#OBJBOUND# 326248.6941449417
+#TIMESOLVER# 19.419286012649536
+#TIMEALL# 19.419552087783813
+#SOLUTION# [0.0,0.0,0.0,1.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,1.0,0.0,1.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,1.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,1.0,0.0,0.0,0.0,1.0,0.0,0.0,1.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,1.0,0.0,0.0,1.0,0.0,0.0,1.0,0.0,0.0,1.0,0.796012,0.882114,1.26404,1.00993,1.02574e-9,1.06742e-9,0.443211,1.61035e-9,1.68685e-9,0.468683,-3.83511e-9,-3.90756e-9,0.558311,2.82692e-9,2.91161e-9,0.502471,0.0,0.398006,0.398006,0.176401,0.441057,0.441057,0.206716,0.632021,0.632021,0.352865,0.504966,0.504966,0.253731,1.79601,1.79601,1.79601,1.88211,1.88211,1.88211,2.26404,2.26404,2.26404,2.00993,2.00993,2.00993,0.796012,0.796012,0.796012,0.882114,0.882114,0.882114,1.26404,1.26404,1.26404,1.00993,1.00993,1.00993]

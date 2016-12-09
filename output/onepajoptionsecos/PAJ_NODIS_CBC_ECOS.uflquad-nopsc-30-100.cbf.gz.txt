@@ -1,0 +1,195 @@
+WARNING: Method definition require(Symbol) in module Base at loading.jl:345 overwritten in module ConicBenchmarkUtilities at /home/ubuntu/.julia/v0.5/Requires/src/require.jl:12.
+Coin0505I Presolved problem not optimal, resolve after postsolve
+Coin0505I Presolved problem not optimal, resolve after postsolve
+#SOLVERNAME# PAJ_NODIS_CBC_ECOS
+#SOLVER# Pajarito.PajaritoSolver(2,3600.0,1.0e-5,false,Cbc.CbcMathProgSolverInterface.CbcSolver(Any[(:logLevel,0),(:ratioGap,0.0),(:seconds,3600.0)]),MathProgBase.DefaultMIPSolver(),0,false,true,ECOS.ECOSSolver(Any[(:verbose,false)]),true,false,false,false,false,true,false,true,true,true,true,false,false,true,false,false,false,false,1.0e-10,0.0001,1.0e-6,0.01,1.0e-6)
+#FILENAME# uflquad-nopsc-30-100.cbf.gz
+#INSTANCE# uflquad-nopsc-30-100
+#TIMELIMIT# 3600.0
+
+Transforming original data......Done     0.01s
+
+Creating conic model data......Done     0.00s
+
+Creating MIP model......Done     0.10s
+
+Cone types summary:
+Cone       | Count    | Min dim  | Max dim 
+       SOC |     3000 |        3 |        3
+
+Solving conic relaxation......Done     0.43s
+ - Relaxation status    =        Optimal
+ - Relaxation objective =     131.297441
+
+Creating conic subproblem model......Done     0.00s
+
+Starting iterative outer approximation algorithm
+
+Iter | Best obj       | OA obj         | Rel gap     | Time (s)   
+   1 |  +4.565601e+02 |  +1.924011e+02 |   5.786e-01 |   9.771e+00
+Presolve 1100 (-26031) rows, 1000 (-17030) columns and 2500 (-57523) elements
+0  Obj 30 Primal inf 55.885598 (100)
+97  Obj 30 Primal inf 80.079506 (197)
+194  Obj 30 Primal inf 78.499888 (294)
+291  Obj 30 Primal inf 79.516033 (391)
+388  Obj 30 Primal inf 82.549137 (488)
+485  Obj 30 Primal inf 84.056467 (577)
+582  Obj 127.54201 Primal inf 46.33466 (506)
+679  Obj 402.18414 Primal inf 15.295442 (357)
+776  Obj 456.56008 Primal inf 3.5114224 (230)
+873  Obj 456.56008 Primal inf 1.5310809 (133)
+970  Obj 456.56008 Primal inf 0.24084693 (36)
+1006  Obj 456.56008
+Optimal - objective value 456.56008
+After Postsolve, objective 456.56008, infeasibilities - dual 0 (0), primal 0 (0)
+Optimal objective 456.5600822 - 1006 iterations time 0.032, Presolve 0.02
+Cbc0045I Solution with objective value 456.56 saved
+   2 |  +4.556600e+02 |  +1.996510e+02 |   5.618e-01 |   3.505e+01
+Presolve 1600 (-28531) rows, 1000 (-17030) columns and 3500 (-65522) elements
+0  Obj 26 Primal inf 9.5220197 (100)
+107  Obj 26 Primal inf 95.674207 (247)
+214  Obj 26 Primal inf 139.40234 (316)
+321  Obj 29.076928 Primal inf 144.51279 (357)
+428  Obj 55.067481 Primal inf 161.87015 (391)
+535  Obj 135.54676 Primal inf 133.46213 (377)
+642  Obj 176.41489 Primal inf 106.95865 (345)
+749  Obj 195.4726 Primal inf 82.56727 (310)
+856  Obj 226.70708 Primal inf 60.120194 (263)
+963  Obj 280.28661 Primal inf 27.58653 (168)
+1070  Obj 429.64247 Primal inf 7.3611977 (132)
+1177  Obj 449.15895 Primal inf 2.6477509 (111)
+1284  Obj 452.7713 Primal inf 0.93420032 (83)
+1391  Obj 455.64652 Primal inf 0.018434842 (15)
+1407  Obj 455.66004
+Optimal - objective value 455.66004
+After Postsolve, objective 455.66004, infeasibilities - dual 2.6657698e-06 (12), primal 0 (0)
+Presolved model was optimal, full model needs cleaning up
+0  Obj 455.66004 Dual inf 6.1746701e-07 (7)
+Optimal - objective value 455.66004
+Optimal objective 455.6600443 - 1407 iterations time 0.052, Presolve 0.02
+Cbc0045I Solution with objective value 455.66 saved
+   3 |  +4.556600e+02 |  +2.022061e+02 |   5.562e-01 |   7.529e+01
+Presolve 2100 (-31031) rows, 1000 (-17030) columns and 4500 (-73515) elements
+0  Obj 26 Primal inf 9.5220197 (100)
+117  Obj 26 Primal inf 134.41102 (321)
+234  Obj 26 Primal inf 190.83149 (427)
+351  Obj 34.308683 Primal inf 194.16935 (501)
+468  Obj 91.084851 Primal inf 213.11179 (564)
+585  Obj 156.67733 Primal inf 173.69162 (563)
+702  Obj 192.21054 Primal inf 122.28208 (488)
+819  Obj 210.48767 Primal inf 100.53907 (441)
+936  Obj 270.38173 Primal inf 42.600879 (274)
+1053  Obj 414.35743 Primal inf 17.251321 (281)
+1170  Obj 447.984 Primal inf 4.9271679 (324)
+1287  Obj 452.73417 Primal inf 1.8385648 (362)
+1404  Obj 455.46496 Primal inf 0.20809845 (299)
+1521  Obj 455.65812 Primal inf 0.0078509275 (165)
+1638  Obj 455.66004 Primal inf 0.00057803101 (48)
+1686  Obj 455.66004
+Optimal - objective value 455.66004
+After Postsolve, objective 455.66004, infeasibilities - dual 1.843641e-06 (13), primal 4.4182499e-07 (3)
+Presolved model was optimal, full model needs cleaning up
+0  Obj 455.66004 Primal inf 8.3935974e-07 (3) Dual inf 2.2451211e-07 (7)
+0  Obj 455.66004 Primal inf 8.3935974e-07 (3) Dual inf 2.9999972e+10 (13)
+3  Obj 455.66004 Dual inf 2.2451211e-07 (7)
+10  Obj 455.66004
+Optimal - objective value 455.66004
+Optimal objective 455.6600443 - 1696 iterations time 0.082, Presolve 0.02
+Cbc0045I Solution with objective value 455.66 saved
+   4 |  +4.556600e+02 |  +2.028251e+02 |   5.549e-01 |   1.448e+02
+Presolve 2600 (-33531) rows, 1000 (-17030) columns and 5500 (-81515) elements
+0  Obj 26 Primal inf 8.5569307 (100)
+127  Obj 26 Primal inf 182.33938 (389)
+254  Obj 26 Primal inf 245.48357 (524)
+381  Obj 33.155742 Primal inf 270.84833 (651)
+508  Obj 101.80459 Primal inf 265.40787 (729)
+635  Obj 174.94209 Primal inf 195.23846 (688)
+762  Obj 194.62227 Primal inf 160.64427 (655)
+889  Obj 223.44144 Primal inf 104.35633 (483)
+1016  Obj 311.34917 Primal inf 41.843013 (349)
+1143  Obj 432.23235 Primal inf 11.948357 (442)
+1270  Obj 443.30684 Primal inf 7.3585266 (595)
+1397  Obj 453.33465 Primal inf 1.8055556 (633)
+1524  Obj 455.58521 Primal inf 0.10812513 (481)
+1651  Obj 455.63423 Primal inf 0.015626475 (276)
+1778  Obj 455.65945 Primal inf 0.00090602931 (56)
+1822  Obj 455.66004
+Optimal - objective value 455.66004
+After Postsolve, objective 455.66004, infeasibilities - dual 2.9544321e-06 (14), primal 5.7425957e-07 (2)
+Presolved model was optimal, full model needs cleaning up
+0  Obj 455.66004 Primal inf 1.4597626e-06 (2) Dual inf 7.1639796e-07 (9)
+0  Obj 455.66004 Primal inf 1.4597626e-06 (2) Dual inf 1.9999907e+10 (13)
+4  Obj 455.66004 Dual inf 7.1639796e-07 (9)
+13  Obj 455.66004
+Optimal - objective value 455.66004
+Optimal objective 455.6600443 - 1835 iterations time 0.082, Presolve 0.03
+Cbc0045I Solution with objective value 455.66 saved
+   5 |  +4.556600e+02 |  +2.030335e+02 |   5.544e-01 |   2.354e+02
+Presolve 3100 (-36031) rows, 1000 (-17030) columns and 6500 (-89492) elements
+0  Obj 26 Primal inf 8.5188763 (100)
+137  Obj 26 Primal inf 242.46618 (495)
+274  Obj 26 Primal inf 273.92289 (644)
+411  Obj 48.052608 Primal inf 336.95492 (848)
+548  Obj 140.89091 Primal inf 295.64679 (912)
+685  Obj 187.76371 Primal inf 209.68111 (842)
+822  Obj 199.03041 Primal inf 164.76821 (712)
+959  Obj 284.08441 Primal inf 83.490384 (506)
+1096  Obj 391.86569 Primal inf 38.904104 (582)
+1233  Obj 438.83919 Primal inf 12.225331 (772)
+1370  Obj 449.97665 Primal inf 5.0526613 (932)
+1507  Obj 455.28375 Primal inf 0.37695104 (793)
+1644  Obj 455.59018 Primal inf 0.057016944 (546)
+1781  Obj 455.63798 Primal inf 0.012209097 (256)
+1918  Obj 455.65961 Primal inf 2.8164778e-05 (10)
+1927  Obj 455.66004
+Optimal - objective value 455.66004
+After Postsolve, objective 455.66004, infeasibilities - dual 3.2261376e-06 (14), primal 1.0160846e-06 (5)
+Presolved model was optimal, full model needs cleaning up
+0  Obj 455.66004 Primal inf 2.2991223e-06 (5) Dual inf 8.9416818e-07 (10)
+0  Obj 455.66004 Primal inf 2.2991223e-06 (5) Dual inf 4.9999879e+10 (20)
+7  Obj 455.66004 Dual inf 8.9416818e-07 (10)
+17  Obj 455.66004
+Optimal - objective value 455.66004
+Optimal objective 455.6600443 - 1944 iterations time 0.092, Presolve 0.03
+Cbc0045I Solution with objective value 455.66 saved
+
+signal (11): Segmentation fault
+while loading /home/ubuntu/run.jl, in expression starting on line 189
+restore at /home/ubuntu/.julia/v0.5/ECOS/deps/usr/lib/libecos.so (unknown line)
+unset_equilibration at /home/ubuntu/.julia/v0.5/ECOS/deps/usr/lib/libecos.so (unknown line)
+ECOS_cleanup at /home/ubuntu/.julia/v0.5/ECOS/deps/usr/lib/libecos.so (unknown line)
+optimize! at /home/ubuntu/.julia/v0.5/ECOS/src/ECOSSolverInterface.jl:110
+unknown function (ip: 0x7f2feefaf5d2)
+jl_call_method_internal at /home/centos/buildbot/slave/package_tarball64/build/src/julia_internal.h:189 [inlined]
+jl_apply_generic at /home/centos/buildbot/slave/package_tarball64/build/src/gf.c:1942
+solve_conicsub! at /home/ubuntu/.julia/v0.5/Pajarito/src/conic_algorithm.jl:1492
+solve_iterative! at /home/ubuntu/.julia/v0.5/Pajarito/src/conic_algorithm.jl:1321
+optimize! at /home/ubuntu/.julia/v0.5/Pajarito/src/conic_algorithm.jl:468
+unknown function (ip: 0x7f2feef43d22)
+solveprint at /home/ubuntu/run.jl:25
+unknown function (ip: 0x7f2feef2ef46)
+jl_call_method_internal at /home/centos/buildbot/slave/package_tarball64/build/src/julia_internal.h:189 [inlined]
+jl_apply_generic at /home/centos/buildbot/slave/package_tarball64/build/src/gf.c:1942
+do_call at /home/centos/buildbot/slave/package_tarball64/build/src/interpreter.c:66
+eval at /home/centos/buildbot/slave/package_tarball64/build/src/interpreter.c:190
+eval_body at /home/centos/buildbot/slave/package_tarball64/build/src/interpreter.c:469
+eval_body at /home/centos/buildbot/slave/package_tarball64/build/src/interpreter.c:515
+jl_interpret_call at /home/centos/buildbot/slave/package_tarball64/build/src/interpreter.c:573
+jl_toplevel_eval_flex at /home/centos/buildbot/slave/package_tarball64/build/src/toplevel.c:572
+jl_parse_eval_all at /home/centos/buildbot/slave/package_tarball64/build/src/ast.c:717
+jl_load at /home/centos/buildbot/slave/package_tarball64/build/src/toplevel.c:596
+jl_load_ at /home/centos/buildbot/slave/package_tarball64/build/src/toplevel.c:605
+include_from_node1 at ./loading.jl:488
+unknown function (ip: 0x7f3201538d0b)
+jl_call_method_internal at /home/centos/buildbot/slave/package_tarball64/build/src/julia_internal.h:189 [inlined]
+jl_apply_generic at /home/centos/buildbot/slave/package_tarball64/build/src/gf.c:1942
+process_options at ./client.jl:262
+_start at ./client.jl:318
+unknown function (ip: 0x7f320155e2e8)
+jl_call_method_internal at /home/centos/buildbot/slave/package_tarball64/build/src/julia_internal.h:189 [inlined]
+jl_apply_generic at /home/centos/buildbot/slave/package_tarball64/build/src/gf.c:1942
+unknown function (ip: 0x4018ed)
+unknown function (ip: 0x4013b6)
+__libc_start_main at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
+unknown function (ip: 0x4013fc)
+Allocations: 23738890 (Pool: 23727319; Big: 11571); GC: 82
