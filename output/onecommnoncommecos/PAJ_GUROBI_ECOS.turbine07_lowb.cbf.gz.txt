@@ -1,0 +1,69 @@
+WARNING: Method definition require(Symbol) in module Base at loading.jl:345 overwritten in module ConicBenchmarkUtilities at /home/ubuntu/.julia/v0.5/Requires/src/require.jl:12.
+WARNING: Base.ASCIIString is deprecated, use String instead.
+  likely near /home/ubuntu/run.jl:171
+WARNING: Base.ASCIIString is deprecated, use String instead.
+  likely near /home/ubuntu/run.jl:171
+WARNING: Base.ASCIIString is deprecated, use String instead.
+  likely near /home/ubuntu/run.jl:171
+WARNING: Base.ASCIIString is deprecated, use String instead.
+  likely near /home/ubuntu/run.jl:171
+#SOLVERNAME# PAJ_GUROBI_ECOS
+#SOLVER# Pajarito.PajaritoSolver(2,3600.0,1.0e-5,false,Gurobi.GurobiSolver(nothing,Any[(:OutputFlag,0),(:Threads,1),(:TimeLimit,3600.0),(:MIPGap,0.0)]),MathProgBase.DefaultMIPSolver(),0,false,true,ECOS.ECOSSolver(Any[(:verbose,false)]),true,false,false,true,false,true,false,true,true,true,true,false,false,true,false,false,false,false,1.0e-10,0.0001,1.0e-6,0.01,1.0e-6)
+#FILENAME# turbine07_lowb.cbf.gz
+#INSTANCE# turbine07_lowb
+#TIMELIMIT# 3600.0
+
+Transforming original data......Done     0.00s
+
+Creating conic model data......Done     0.00s
+
+Creating MIP model......Done     0.00s
+
+Cone types summary:
+Cone       | Count    | Min dim  | Max dim 
+       SOC |       27 |        2 |        9
+
+Solving conic relaxation......Done     0.02s
+ - Relaxation status    =     Suboptimal
+ - Relaxation objective =       0.740154
+
+Creating conic subproblem model......Done     0.00s
+
+Starting iterative outer approximation algorithm
+
+Iter | Best obj       | OA obj         | Rel gap     | Time (s)   
+   1 |  +8.993110e-01 |  +8.874941e-01 |   1.314e-02 |   6.369e-02
+   2 |  +8.993110e-01 |  +8.993110e-01 |   0.000e+00 |   1.286e-01
+
+Pajarito MICP solve summary:
+ - Total time (s)       =       1.97e-01
+ - Status               =        Optimal
+ - Best feasible obj.   =  +8.993110e-01
+ - Final OA obj. bound  =  +8.993110e-01
+ - Relative opt. gap    =      0.000e+00
+ - MIP solve count      =              2
+ - Conic solve count    =              2
+ - Feas. solution count =              2
+ - Integer repeat count =              0
+
+Timers (s):
+ - Setup                =       6.81e-02
+ -- Transform data      =       1.56e-04
+ -- Create conic data   =       1.72e-04
+ -- Create MIP data     =       9.97e-04
+ -- Load/solve relax    =       1.98e-02
+ - Iterative algorithm  =       1.29e-01
+ -- Solve MIPs          =       1.16e-01
+ -- Solve conic model   =       7.33e-03
+ -- Process conic data  =       1.47e-04
+ -- Add conic solution  =       1.33e-05
+ -- Add dual cuts       =       6.19e-04
+ -- Use outer inf/cuts  =       4.78e-05
+
+WARNING: If matrix A has nonzero entries smaller than zero tolerance, performance may be improved by fixing these values to zero
+#STATUS# Optimal
+#OBJVAL# 0.8993109834134693
+#OBJBOUND# 0.8993109834134693
+#TIMESOLVER# 0.19675302505493164
+#TIMEALL# 0.19701099395751953
+#SOLUTION# [0.899311,0.0,177.163,1.06995,-0.209285,0.534322,-1.90385,-0.236741,-1.70018,0.256365,1.15694,0.0007,0.0,0.0,0.00070001,0.000189164,-0.000673946,0.0007,0.000222257,0.000170439,0.0007,0.0,0.0,0.0007,-0.000406773,0.000451799,0.0007,0.0,0.0,0.0007,0.0,0.0,0.0007,0.0,0.0,0.0007,0.0,0.0,0.0004,0.000123827,-0.000360819,0.0007,0.0,0.0,0.0899311,0.0477312,-0.00698614,0.0899311,0.0640104,0.0336878,0.179862,0.013588,-0.179348,0.179862,-0.0128766,-0.10272,0.449655,0.276979,0.117614,0.449655,-0.358843,0.190242,0.899311,0.492863,-8.10941e-5,0.0899311,0.0400001,0.00523471,0.0899311,0.054689,0.0527173,0.179862,-0.08,0.013234,0.179862,-0.09471,0.152907,0.449655,-0.2,0.162407,0.449655,0.0318667,0.448525,0.899311,-0.668828,-0.60119,1.0,-0.0,-0.0,-0.0,1.0,0.0,-0.0,-0.0,-0.0,-0.0,-0.0,1.0,-0.0,0.0,-0.0,1.0,1.0,0.0,-0.0,-0.0,0.0,1.0,-0.0,-0.0,1.0,-0.0,-0.0,-0.0,1.0,-0.0,-0.0,-0.0,0.0,-0.0,1.0,-0.0,-0.0,1.0,-0.0,-0.0,-0.0,-0.0,1.0,-0.0,-0.0,1.0,-0.0,0.0,-0.0,-0.0,1.0,0.0,-0.0,1.0,-0.0,-0.0,0.00773123,0.352269,0.393014,0.406986,0.0240104,0.33599,0.433688,0.366312,0.813588,0.786412,0.620652,0.0993482,0.787123,0.812877,0.69728,0.0227204,0.0769787,1.72302,2.11761,1.88239,1.64116,0.158843,2.19024,1.80976,0.0928628,3.50714,3.99992,4.00008,7.92706e-8,0.36,0.405235,0.394765,0.454689,0.345311,0.0127173,0.347283,0.72,1.70288e-9,0.813234,0.786766,0.70529,0.89471,0.0729066,0.647093,1.8,1.74634e-8,2.16241,1.83759,2.03187,1.96813,0.248525,1.55148,3.33117,0.268828,3.39881,4.60119,-7.70625e-12,-7.70625e-12,-7.70625e-12,-7.70625e-12,-7.70625e-12,-7.70625e-12,-7.70625e-12,-7.70625e-12,-7.70625e-12,-7.70625e-12,-7.70625e-12,-7.70625e-12,-7.70625e-12,-7.70625e-12]

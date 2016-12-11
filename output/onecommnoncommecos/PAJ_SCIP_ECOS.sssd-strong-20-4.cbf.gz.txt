@@ -1,0 +1,73 @@
+WARNING: Method definition require(Symbol) in module Base at loading.jl:345 overwritten in module ConicBenchmarkUtilities at /home/ubuntu/.julia/v0.5/Requires/src/require.jl:12.
+WARNING: Base.ASCIIString is deprecated, use String instead.
+  likely near /home/ubuntu/run.jl:171
+WARNING: Base.ASCIIString is deprecated, use String instead.
+  likely near /home/ubuntu/run.jl:171
+WARNING: Base.ASCIIString is deprecated, use String instead.
+  likely near /home/ubuntu/run.jl:171
+WARNING: Base.ASCIIString is deprecated, use String instead.
+  likely near /home/ubuntu/run.jl:171
+#SOLVERNAME# PAJ_SCIP_ECOS
+#SOLVER# Pajarito.PajaritoSolver(2,3600.0,1.0e-5,false,SCIP.SCIPSolver(("display/verblevel",0,"limits/gap",0.0,"limits/time",3600.0)),MathProgBase.DefaultMIPSolver(),0,false,true,ECOS.ECOSSolver(Any[(:verbose,false)]),true,false,false,true,false,true,false,true,true,true,true,false,false,true,false,false,false,false,1.0e-10,0.0001,1.0e-6,0.01,1.0e-6)
+#FILENAME# sssd-strong-20-4.cbf.gz
+#INSTANCE# sssd-strong-20-4
+#TIMELIMIT# 3600.0
+
+Transforming original data......Done     0.00s
+
+Creating conic model data......Done     0.00s
+
+Creating MIP model......Done     0.00s
+
+Cone types summary:
+Cone       | Count    | Min dim  | Max dim 
+       SOC |       12 |        3 |        3
+
+Solving conic relaxation......Done     0.01s
+ - Relaxation status    =        Optimal
+ - Relaxation objective =  194750.070961
+
+Creating conic subproblem model......Done     0.00s
+
+Starting iterative outer approximation algorithm
+
+Iter | Best obj       | OA obj         | Rel gap     | Time (s)   
+   1 |  +2.946399e+05 |  +2.807105e+05 |   4.728e-02 |   2.631e+00
+   2 |  +2.904379e+05 |  +2.819626e+05 |   2.918e-02 |   4.519e+00
+   3 |  +2.879511e+05 |  +2.860144e+05 |   6.726e-03 |   5.900e+00
+   4 |  +2.879305e+05 |  +2.876379e+05 |   1.016e-03 |   6.678e+00
+   5 |  +2.878105e+05 |  +2.877542e+05 |   1.956e-04 |   7.414e+00
+   6 |  +2.878105e+05 |  +2.878105e+05 |   2.022e-16 |   7.747e+00
+
+Pajarito MICP solve summary:
+ - Total time (s)       =       7.80e+00
+ - Status               =        Optimal
+ - Best feasible obj.   =  +2.878105e+05
+ - Final OA obj. bound  =  +2.878105e+05
+ - Relative opt. gap    =      2.022e-16
+ - MIP solve count      =              6
+ - Conic solve count    =              5
+ - Feas. solution count =              5
+ - Integer repeat count =              1
+
+Timers (s):
+ - Setup                =       4.97e-02
+ -- Transform data      =       1.46e-04
+ -- Create conic data   =       8.68e-05
+ -- Create MIP data     =       7.31e-04
+ -- Load/solve relax    =       5.07e-03
+ - Iterative algorithm  =       7.75e+00
+ -- Solve MIPs          =       7.71e+00
+ -- Solve conic model   =       1.74e-02
+ -- Process conic data  =       1.91e-04
+ -- Add conic solution  =       3.93e-05
+ -- Add dual cuts       =       1.16e-02
+ -- Use outer inf/cuts  =       8.75e-05
+
+#STATUS# Optimal
+#OBJVAL# 287810.4677768647
+#OBJBOUND# 287810.46777686465
+#TIMESOLVER# 7.796957969665527
+#TIMEALL# 7.797217845916748
+#SOLUTION# [0.0,0.0,1.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,1.0,1.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,1.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,1.0,0.0,1.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,1.0,0.0,1.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,1.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,1.0,0.0,0.0,1.0,0.0,0.0,1.0,0.645467,0.829157,0.698163,0.792522,2.71236e-10,2.72926e-10,0.39227,-3.08106e-10,-3.09609e-10,0.4533,1.00818e-10,2.35902e-10,0.411128,-1.79092e-10,-1.78896e-10,0.442127,0.0,0.322734,0.322734,0.126599,0.414579,0.414579,0.187929,0.349081,0.349081,0.143517,0.396261,0.396261,0.175197,0.645467,0.645467,1.64547,0.829157,0.829157,1.82916,0.698163,0.698163,1.69816,0.792522,0.792522,1.79252,0.645467,0.645467,0.645467,0.829157,0.829157,0.829157,0.698163,0.698163,0.698163,0.792522,0.792522,0.792522]
+WARNING: If matrix A has nonzero entries smaller than zero tolerance, performance may be improved by fixing these values to zero
