@@ -1,0 +1,56 @@
+WARNING: Method definition require(Symbol) in module Base at loading.jl:345 overwritten in module ConicBenchmarkUtilities at /home/ubuntu/.julia/v0.5/Requires/src/require.jl:12.
+#SOLVERNAME# PAJ_MSD_GUROBI_MOSEK
+#SOLVER# Pajarito.PajaritoSolver(2,3600.0,1.0e-5,true,Gurobi.GurobiSolver(nothing,Any[(:OutputFlag,0),(:Threads,1),(:TimeLimit,3600.0),(:MIPGap,1.0e-5)]),MathProgBase.DefaultMIPSolver(),0,false,true,Mosek.MosekMathProgSolverInterface.MosekSolver(Any[(:LOG,0),(:NUM_THREADS,1),(:OPTIMIZER_MAX_TIME,120.0)]),true,false,false,true,false,true,false,true,true,true,true,false,false,true,false,false,false,false,1.0e-10,0.0001,1.0e-6,0.01,1.0e-6)
+#FILENAME# robust_50_3.cbf.gz
+#INSTANCE# robust_50_3
+#TIMELIMIT# 3600.0
+
+Transforming original data......Done     0.00s
+
+Creating conic model data......Done     0.00s
+
+Creating MIP model......Done     0.00s
+
+Cone types summary:
+Cone       | Count    | Min dim  | Max dim 
+       SOC |        2 |       52 |       52
+
+Solving conic relaxation......Done     0.01s
+ - Relaxation status    =        Optimal
+ - Relaxation objective =      -0.089932
+
+Creating conic subproblem model......Done     0.00s
+
+Starting MIP-solver-driven outer approximation algorithm
+
+Pajarito MICP solve summary:
+ - Total time (s)       =       2.53e-01
+ - Status               =        Optimal
+ - Best feasible obj.   =  -8.980319e-02
+ - Final OA obj. bound  =  -9.006732e-02
+ - Relative opt. gap    =      2.941e-03
+ - Conic solve count    =              4
+ - Feas. solution count =              4
+ - Integer repeat count =              1
+
+Timers (s):
+ - Setup                =       7.15e-02
+ -- Transform data      =       5.50e-04
+ -- Create conic data   =       2.39e-04
+ -- Create MIP data     =       1.90e-03
+ -- Load/solve relax    =       1.12e-02
+ - MIP-driven algorithm =       1.81e-01
+ -- Solve conic model   =       1.25e-02
+ -- Process conic data  =       1.48e-03
+ -- Add conic solution  =       3.95e-05
+ -- Add dual cuts       =       1.34e-03
+ -- Use outer inf/cuts  =       4.10e-05
+
+WARNING: If matrix A has nonzero entries smaller than zero tolerance, performance may be improved by fixing these values to zero
+WARNING: For the MIP-solver-driven algorithm, optimality tolerance must be specified as MIP solver option, not Pajarito option
+#STATUS# Optimal
+#OBJVAL# -0.08980319367435703
+#OBJBOUND# -0.09006731869929624
+#TIMESOLVER# 0.2529909610748291
+#TIMEALL# 0.2567880153656006
+#SOLUTION# [0.0898032,0.0,0.0,0.0,0.0231564,1.0,0.0978414,1.0,0.0,-0.0,0.0,-0.0,0.0,-0.0,0.0,-0.0,0.477814,1.0,0.0,-0.0,0.0299738,1.0,0.0,-0.0,0.0,-0.0,0.0,-0.0,0.0,-0.0,0.0,-0.0,0.0,-0.0,0.0,-0.0,0.0,-0.0,0.0,-0.0,0.0,-0.0,0.0,-0.0,0.0608615,1.0,0.0,-0.0,0.0,-0.0,0.0,-0.0,0.0,-0.0,0.0,-0.0,0.0,-0.0,0.0,-0.0,0.0,-0.0,0.0,-0.0,0.0236384,1.0,0.118637,1.0,0.0,-0.0,0.0630178,1.0,0.0,0.0,0.0,2.02639e-18,0.0561643,1.0,0.0,-0.0,0.0,-0.0,0.0,-0.0,0.0,-0.0,0.0488949,1.0,0.0,-0.0,0.0,-0.0,0.0,-0.0,0.0,-0.0,0.0,-0.0,0.0,-0.0,0.0,-0.0,1.0,0.0229143,0.0655196,0.0257101,0.0241925,0.00905929,0.00408903,0.00565956,0.120752,0.0307209,0.00570772,0.0123814,0.0095526,0.0184722,0.00784015,0.00690675,0.00915156,0.0148501,0.0329653,0.0198328,0.0206044,0.00422443,0.0551058,0.0205413,0.0118272,0.0196372,0.0287024,0.013284,0.0241449,0.00319617,0.0136829,0.0267401,0.0057637,0.0333886,0.0187758,0.0285435,0.00685523,0.00815886,0.0482857,0.0126178,0.0107331,0.0226558,0.0137706,0.0274502,0.0189095,0.0107115,0.0207513,0.0211506,0.0200556,0.0223224,0.0102089,0.0,0.2,0.0059533,0.0170225,0.00667968,0.00628541,0.00235367,0.00106236,0.0014704,0.0313722,0.00798152,0.00148291,0.00321678,0.00248184,0.00479923,0.00203693,0.00179443,0.00237765,0.00385816,0.00856463,0.00515272,0.00535317,0.00109754,0.0143169,0.0053368,0.0030728,0.0051019,0.0074571,0.00345128,0.00627304,0.00083039,0.00355493,0.00694729,0.00149745,0.00867461,0.0048781,0.00741582,0.00178104,0.00211973,0.012545,0.00327821,0.00278854,0.00588616,0.00357772,0.00713177,0.00491284,0.00278293,0.00539135,0.00549509,0.00521059,0.00579954,0.00265235,0.0,0.0519615]

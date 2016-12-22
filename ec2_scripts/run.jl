@@ -130,9 +130,9 @@ function getsolver(solvername, tlim, logl, rgap)
 
         # COMMERCIAL
         "PAJ_GUROBI_MOSEK" =>
-        PajaritoSolver(mip_solver=GurobiSolver(OutputFlag=0, Threads=1, TimeLimit=tlim, MIPGap=0.), cont_solver=MosekSolver(LOG=0, NUM_THREADS=1, OPTIMIZER_MAX_TIME=120.), log_level=logl, timeout=tlim, rel_gap=rgap),
+        PajaritoSolver(mip_solver=GurobiSolver(OutputFlag=0, Threads=1, TimeLimit=tlim, MIPGap=0.), cont_solver=MosekSolver(LOG=1, NUM_THREADS=1, OPTIMIZER_MAX_TIME=120.), log_level=logl, timeout=tlim, rel_gap=rgap),
         "PAJ_MSD_GUROBI_MOSEK" =>
-        PajaritoSolver(mip_solver=GurobiSolver(OutputFlag=0, Threads=1, TimeLimit=tlim, MIPGap=rgap), cont_solver=MosekSolver(LOG=0, NUM_THREADS=1, OPTIMIZER_MAX_TIME=120.), log_level=logl, timeout=tlim, rel_gap=rgap, mip_solver_drives=true),
+        PajaritoSolver(mip_solver=GurobiSolver(OutputFlag=0, Threads=1, TimeLimit=tlim, MIPGap=rgap), cont_solver=MosekSolver(LOG=1, NUM_THREADS=1, OPTIMIZER_MAX_TIME=120.), log_level=logl, timeout=tlim, rel_gap=rgap, mip_solver_drives=true),
         "PAJ_GUROBI_ECOS" =>
         PajaritoSolver(mip_solver=GurobiSolver(OutputFlag=0, Threads=1, TimeLimit=tlim, MIPGap=0.), cont_solver=ECOSSolver(verbose=false), log_level=logl, timeout=tlim, rel_gap=rgap),
         "PAJ_MSD_GUROBI_ECOS" =>
@@ -141,6 +141,23 @@ function getsolver(solvername, tlim, logl, rgap)
         GurobiSolver(OutputFlag=1, Threads=1, TimeLimit=tlim, MIPGap=rgap),
         "MOSEK_MISOCP" =>
         MosekSolver(LOG=1, NUM_THREADS=1, OPTIMIZER_MAX_TIME=tlim, MIO_TOL_REL_GAP=rgap),
+
+        # # MOSEK TOLERANCES (http://docs.mosek.com/8.0/capi/all-parameters.html#dparam.intpnt_co_tol_pfeas)
+        # "PAJ_GUROBI_MOSEK_GAP9" =>
+        # PajaritoSolver(mip_solver=GurobiSolver(OutputFlag=0, Threads=1, TimeLimit=tlim, MIPGap=0.), cont_solver=MosekSolver(LOG=1, NUM_THREADS=1, OPTIMIZER_MAX_TIME=120., INTPNT_CO_TOL_REL_GAP=1e-9), log_level=logl, timeout=tlim, rel_gap=rgap),
+        # "PAJ_GUROBI_MOSEK_GAP8" =>
+        # PajaritoSolver(mip_solver=GurobiSolver(OutputFlag=0, Threads=1, TimeLimit=tlim, MIPGap=0.), cont_solver=MosekSolver(LOG=1, NUM_THREADS=1, OPTIMIZER_MAX_TIME=120., INTPNT_CO_TOL_REL_GAP=1e-8), log_level=logl, timeout=tlim, rel_gap=rgap),
+        # "PAJ_MSD_GUROBI_MOSEK_GAP9" =>
+        # PajaritoSolver(mip_solver=GurobiSolver(OutputFlag=0, Threads=1, TimeLimit=tlim, MIPGap=rgap), cont_solver=MosekSolver(LOG=1, NUM_THREADS=1, OPTIMIZER_MAX_TIME=120., INTPNT_CO_TOL_REL_GAP=1e-9), log_level=logl, timeout=tlim, rel_gap=rgap, mip_solver_drives=true),
+        # "PAJ_MSD_GUROBI_MOSEK_GAP8" =>
+        # PajaritoSolver(mip_solver=GurobiSolver(OutputFlag=0, Threads=1, TimeLimit=tlim, MIPGap=rgap), cont_solver=MosekSolver(LOG=1, NUM_THREADS=1, OPTIMIZER_MAX_TIME=120., INTPNT_CO_TOL_REL_GAP=1e-8), log_level=logl, timeout=tlim, rel_gap=rgap, mip_solver_drives=true),
+        #
+        # # MIP SOLVER TOLERANCES
+        # "PAJ_GUROBI_INT7_MOSEK_GAP8" =>
+        # PajaritoSolver(mip_solver=GurobiSolver(OutputFlag=0, Threads=1, TimeLimit=tlim, MIPGap=0., IntFeasTol=1e-7), cont_solver=MosekSolver(LOG=1, NUM_THREADS=1, OPTIMIZER_MAX_TIME=120., INTPNT_CO_TOL_REL_GAP=1e-8), log_level=logl, timeout=tlim, rel_gap=rgap),
+        # "PAJ_MSD_GUROBI_INT7_MOSEK_GAP8" =>
+        # PajaritoSolver(mip_solver=GurobiSolver(OutputFlag=0, Threads=1, TimeLimit=tlim, MIPGap=rgap, IntFeasTol=1e-7), cont_solver=MosekSolver(LOG=1, NUM_THREADS=1, OPTIMIZER_MAX_TIME=120., INTPNT_CO_TOL_REL_GAP=1e-8), log_level=logl, timeout=tlim, rel_gap=rgap, mip_solver_drives=true),
+
     )
 
     return deepcopy(solvermap[solvername])
