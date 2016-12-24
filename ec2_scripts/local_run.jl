@@ -167,8 +167,26 @@ function getsolver(solvername, tlim, logl, rgap)
         # PajaritoSolver(mip_solver=GurobiSolver(OutputFlag=0, Threads=1, TimeLimit=tlim, MIPGap=0., IntFeasTol=1e-7), cont_solver=MosekSolver(LOG=1, NUM_THREADS=1, OPTIMIZER_MAX_TIME=120., INTPNT_CO_TOL_REL_GAP=1e-8), log_level=logl, timeout=tlim, rel_gap=rgap, mip_solver_drives=true, prim_cuts_assist=true),
 
         # CPLEX
-        "PAJ_MSD_CPLEX_MOSEK" =>
-        PajaritoSolver(mip_solver=CplexSolver(CPX_PARAM_MIPDISPLAY=4, CPX_PARAM_EPGAP=rgap, CPX_PARAM_THREADS=1, CPX_PARAM_TILIM=tlim), cont_solver=MosekSolver(LOG=0, NUM_THREADS=1, OPTIMIZER_MAX_TIME=120., INTPNT_CO_TOL_REL_GAP=1e-9), log_level=2, timeout=tlim, rel_gap=rgap, mip_solver_drives=true, prim_cuts_assist=true),
+        "PAJ_MSD_CPLEX_MOSEK" => PajaritoSolver(
+            mip_solver=CplexSolver(
+                CPX_PARAM_MIPDISPLAY=4,
+                CPX_PARAM_EPGAP=rgap,
+                CPX_PARAM_THREADS=1,
+                CPX_PARAM_TILIM=tlim,
+                CPX_PARAM_EPRHS=1e-8,
+                CPX_PARAM_EPINT=1e-8,
+                CPX_PARAM_REDUCE=1,
+                CPX_PARAM_MIPCBREDLP=0),
+            cont_solver=MosekSolver(
+                LOG=0,
+                NUM_THREADS=1,
+                OPTIMIZER_MAX_TIME=120.,
+                INTPNT_CO_TOL_REL_GAP=1e-8),
+            log_level=2,
+            timeout=tlim,
+            rel_gap=rgap,
+            mip_solver_drives=true,
+            prim_cuts_assist=true),
     )
 
     return deepcopy(solvermap[solvername])
