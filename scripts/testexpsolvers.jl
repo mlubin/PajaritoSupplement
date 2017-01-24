@@ -47,4 +47,4 @@ for (name,status) in results
     println("$(basename(name)) $status")
 end
 
-println("SOLVED $solved SUBOPTIMAL $suboptimal TOTAL $(length(ARGS))")
+println("SOLVED $solved SUBOPTIMAL $suboptimal TOTAL $(length(ARGS)-1)")
