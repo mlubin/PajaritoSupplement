@@ -5,7 +5,7 @@ resultfiles = readdir(joinpath(pwd(), ARGS[1]))
 fd = open(joinpath(pwd(), ARGS[2]), "w")
 
 # process into a CSV file with columns:
-println(fd,"solver,instance,status,objval,objbound,solvertime,totaltime,filename")
+println(fd,"solver,instance,status,objval_reported,objbound,solvertime,totaltime,filename,objval_solution,max_linear_violation,max_soc_violation")
 
 # from instance name to file name
 function find_instance(name)
@@ -20,14 +20,53 @@ function find_instance(name)
     return ""
 end
 
+function violation_cone(subvec,cone)
+    if cone == :Zero
+        return :Linear, maxabs(subvec)
+    elseif cone == :NonNeg
+        return :Linear, -minimum(min.(subvec,0))
+    elseif cone == :NonPos
+        return :Linear, maximum(max.(subvec,0))
+    elseif cone == :SOC
+        return :SOC, max(vecnorm(subvec[2:end])^2-subvec[1]^2,0)
+    elseif cone == :SOCRotated
+        return :SOC, max(vecnorm(subvec[3:end])^2-2*subvec[1]*subvec[2],0)
+    elseif cone == :ExpPrimal
+        return :Exp, max(subvec[2]*exp(subvec[1]/subvec[2]) - subvec[3],0)
+    elseif cone == :Free
+        return :Linear, 0.0
+    else
+        error("Unrecognized cone $cone")
+    end
+end
+
 
 function validate_solution(instancename, solution)
     instancefile = find_instance(instancename)
     dat = readcbfdata(instancefile)
     c, A, b, con_cones, var_cones, vartypes, sense, objoffset = cbftompb(dat)
+
     @assert length(solution) == length(c)
     objval = dot(c,solution)
-    return objval
+
+    y = b - A*solution
+    linear_violation = 0.0
+    soc_violation = 0.0
+    exp_violation = 0.0
+    for (cones,x) in [(var_cones,solution),(con_cones,y)]
+        for (cone, idx) in cones
+            t, viol = violation_cone(x[idx],cone)
+            if t == :Linear
+                linear_violation = max(linear_violation,viol)
+            elseif t == :SOC
+                soc_violation = max(soc_violation,viol)
+            elseif t == :Exp
+                exp_violation = max(exp_violation,viol)
+            end
+        end
+    end
+
+    return objval, linear_violation, soc_violation, exp_violation
 end
 
 for filename in resultfiles
@@ -42,6 +81,10 @@ for filename in resultfiles
     objbound = " "
     solvertime = " "
     totaltime = " "
+    objval_sol = " "
+    linear_violation = " "
+    soc_violation = " "
+    exp_violation = " "
     solution = []
     # gaplimit = false
 
@@ -70,15 +113,8 @@ for filename in resultfiles
         #     gaplimit=true
         #end
     end
-    @show instance,length(solution)
     if length(solution) > 0
-        objval_sol = validate_solution(instance,solution)
-        try
-            diff = abs(objval_sol-parse(Float64,objval))/abs(objval_sol)
-            if diff > 1e-3
-                @show diff
-            end
-        end
+        objval_sol, linear_violation, soc_violation, exp_violation = validate_solution(instance,solution)
     end
 
     # if gaplimit
@@ -86,7 +122,7 @@ for filename in resultfiles
     #     status = "Optimal"
     # end
 
-    println(fd, "$solver,$instance,$status,$objval,$objbound,$solvertime,$totaltime,$(basename(filename))")
+    println(fd, "$solver,$instance,$status,$objval,$objbound,$solvertime,$totaltime,$(basename(filename)),$objval_sol,$linear_violation,$soc_violation")
 end
 
 close(fd)
