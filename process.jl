@@ -32,6 +32,7 @@ function violation_cone(subvec,cone)
     elseif cone == :SOCRotated
         return :SOC, max(vecnorm(subvec[3:end])^2-2*subvec[1]*subvec[2],0)
     elseif cone == :ExpPrimal
+        error("Unexpected expcone")
         return :Exp, max(subvec[2]*exp(subvec[1]/subvec[2]) - subvec[3],0)
     elseif cone == :Free
         return :Linear, 0.0
