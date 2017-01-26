@@ -1,0 +1,64 @@
+WARNING: Method definition require(Symbol) in module Base at loading.jl:345 overwritten in module ConicBenchmarkUtilities at /home/ubuntu/.julia/v0.5/Requires/src/require.jl:12.
+WARNING: Base.ASCIIString is deprecated, use String instead.
+  likely near /home/ubuntu/run.jl:171
+WARNING: Base.ASCIIString is deprecated, use String instead.
+  likely near /home/ubuntu/run.jl:171
+WARNING: Base.ASCIIString is deprecated, use String instead.
+  likely near /home/ubuntu/run.jl:171
+WARNING: Base.ASCIIString is deprecated, use String instead.
+  likely near /home/ubuntu/run.jl:171
+#SOLVERNAME# PAJ_MSD_GUROBI_ECOS
+#SOLVER# Pajarito.PajaritoSolver(2,3600.0,1.0e-5,true,Gurobi.GurobiSolver(nothing,Any[(:OutputFlag,0),(:Threads,1),(:TimeLimit,3600.0),(:MIPGap,1.0e-5)]),MathProgBase.DefaultMIPSolver(),0,false,true,ECOS.ECOSSolver(Any[(:verbose,false)]),true,false,false,true,false,true,false,true,true,true,true,false,false,true,false,false,false,false,1.0e-10,0.0001,1.0e-6,0.01,1.0e-6)
+#FILENAME# sssd-weak-25-4.cbf.gz
+#INSTANCE# sssd-weak-25-4
+#TIMELIMIT# 3600.0
+
+Transforming original data......Done     0.00s
+
+Creating conic model data......Done     0.00s
+
+Creating MIP model......Done     0.00s
+
+Cone types summary:
+Cone       | Count    | Min dim  | Max dim 
+       SOC |       12 |        3 |        3
+
+Solving conic relaxation......Done     0.01s
+ - Relaxation status    =        Optimal
+ - Relaxation objective =  116121.348581
+
+Creating conic subproblem model......Done     0.00s
+
+Starting MIP-solver-driven outer approximation algorithm
+
+Pajarito MICP solve summary:
+ - Total time (s)       =       1.39e+00
+ - Status               =        Optimal
+ - Best feasible obj.   =  +3.117211e+05
+ - Final OA obj. bound  =  +3.117179e+05
+ - Relative opt. gap    =      1.051e-05
+ - Conic solve count    =             26
+ - Feas. solution count =             26
+ - Integer repeat count =              7
+
+Timers (s):
+ - Setup                =       5.48e-02
+ -- Transform data      =       1.35e-04
+ -- Create conic data   =       1.28e-04
+ -- Create MIP data     =       6.85e-04
+ -- Load/solve relax    =       8.60e-03
+ - MIP-driven algorithm =       1.33e+00
+ -- Solve conic model   =       8.68e-02
+ -- Process conic data  =       6.31e-04
+ -- Add conic solution  =       2.16e-04
+ -- Add dual cuts       =       2.59e-03
+ -- Use outer inf/cuts  =       4.33e-04
+
+WARNING: If matrix A has nonzero entries smaller than zero tolerance, performance may be improved by fixing these values to zero
+WARNING: For the MIP-solver-driven algorithm, optimality tolerance must be specified as MIP solver option, not Pajarito option
+#STATUS# Optimal
+#OBJVAL# 311721.13317854237
+#OBJBOUND# 311717.8572787864
+#TIMESOLVER# 1.3879079818725586
+#TIMEALL# 1.3921699523925781
+#SOLUTION# [-0.0,1.0,-0.0,-0.0,-0.0,1.0,-0.0,-0.0,-0.0,-0.0,0.0,1.0,-0.0,-0.0,0.0,1.0,1.0,-0.0,-0.0,-0.0,-0.0,-0.0,-0.0,1.0,1.0,-0.0,0.0,-0.0,-2.46399e-18,-0.0,1.0,-0.0,-0.0,1.0,-0.0,0.0,0.0,-0.0,1.0,-0.0,-0.0,0.0,-0.0,1.0,0.0,-0.0,1.0,-0.0,-0.0,1.0,0.0,-0.0,-0.0,1.0,-0.0,-0.0,-0.0,-0.0,-0.0,1.0,-0.0,-0.0,1.0,-0.0,1.27811e-18,-0.0,1.0,-0.0,-0.0,1.0,0.0,-0.0,-0.0,0.0,-0.0,1.0,-0.0,-0.0,-0.0,1.0,-0.0,-0.0,1.0,-0.0,-0.0,1.0,-0.0,-0.0,1.0,-0.0,0.0,-0.0,1.0,-0.0,0.0,-0.0,1.0,-0.0,0.0,-0.0,-0.0,-0.0,1.0,-0.0,0.0,1.0,0.0,-0.0,1.0,-0.0,-0.0,1.0,0.632356,0.811154,0.838841,0.863321,1.06232e-9,1.06232e-9,0.387389,-2.98406e-10,-2.98406e-10,0.447866,-1.91062e-10,-1.91062e-10,0.456179,-2.31439e-10,-2.31439e-10,0.463324,0.0,0.316178,0.316178,0.122484,0.405577,0.405577,0.181644,0.419421,0.419421,0.191331,0.431661,0.431661,0.199999,1.63236,1.63236,1.63236,1.81115,1.81115,1.81115,1.83884,1.83884,1.83884,1.86332,1.86332,1.86332,0.632356,0.632356,0.632356,0.811154,0.811154,0.811154,0.838841,0.838841,0.838841,0.863321,0.863321,0.863321]

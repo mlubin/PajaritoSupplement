@@ -1,0 +1,94 @@
+WARNING: Method definition require(Symbol) in module Base at loading.jl:345 overwritten in module ConicBenchmarkUtilities at /home/ubuntu/.julia/v0.5/Requires/src/require.jl:12.
+#SOLVERNAME# PAJ_NODIS_CBC_ECOS
+#SOLVER# Pajarito.PajaritoSolver(2,3600.0,1.0e-5,false,Cbc.CbcMathProgSolverInterface.CbcSolver(Any[(:logLevel,0),(:ratioGap,0.0),(:seconds,3600.0)]),MathProgBase.DefaultMIPSolver(),0,false,true,ECOS.ECOSSolver(Any[(:verbose,false)]),true,false,false,false,false,true,false,true,true,true,true,false,false,true,false,false,false,false,1.0e-10,0.0001,1.0e-6,0.01,1.0e-6)
+#FILENAME# turbine07_lowb.cbf.gz
+#INSTANCE# turbine07_lowb
+#TIMELIMIT# 3600.0
+
+Transforming original data......Done     0.00s
+
+Creating conic model data......Done     0.00s
+
+Creating MIP model......Done     0.00s
+
+Cone types summary:
+Cone       | Count    | Min dim  | Max dim 
+       SOC |       27 |        2 |        9
+Coin0505I Presolved problem not optimal, resolve after postsolve
+Coin0505I Presolved problem not optimal, resolve after postsolve
+
+Solving conic relaxation......Done     0.02s
+ - Relaxation status    =     Suboptimal
+ - Relaxation objective =       0.740154
+
+Creating conic subproblem model......Done     0.00s
+
+Starting iterative outer approximation algorithm
+
+Iter | Best obj       | OA obj         | Rel gap     | Time (s)   
+   1 |  +1.553461e+00 |  +7.401564e-01 |   5.235e-01 |   2.926e-01
+   2 |  +8.993102e-01 |  +8.589602e-01 |   4.487e-02 |   6.980e-01
+Presolve 64 (-428) rows, 37 (-261) columns and 352 (-565) elements
+Perturbing problem by 0.001 % of 7.6246796 - largest nonzero change 0.00015587753 (% 0.0020443814) - largest zero change 0.00010285829
+0  Obj 0.11316748 Primal inf 238.05834 (44)
+31  Obj 0.39445077 Primal inf 17.092482 (16)
+44  Obj 1.5539123
+Optimal - objective value 1.5534617
+After Postsolve, objective 1.5534617, infeasibilities - dual 1.4970493e-07 (1), primal 0 (0)
+Presolved model was optimal, full model needs cleaning up
+0  Obj 1.5534617 Dual inf 8.3692976e-08 (1)
+Optimal - objective value 1.5534617
+Optimal objective 1.553461742 - 44 iterations time 0.002, Presolve 0.00
+Cbc0045I Given objective value 1.55346, computed 1.55346
+Cbc0045I Solution with objective value 1.55346 saved
+   3 |  +8.993102e-01 |  +8.993113e-01 |  -1.240e-06 |   1.166e+00
+
+Pajarito MICP solve summary:
+ - Total time (s)       =       1.23e+00
+ - Status               =        Optimal
+ - Best feasible obj.   =  +8.993102e-01
+ - Final OA obj. bound  =  +8.993113e-01
+ - Relative opt. gap    =     -1.240e-06
+ - MIP solve count      =              3
+ - Conic solve count    =              2
+ - Feas. solution count =              2
+ - Integer repeat count =              1
+
+Timers (s):
+ - Setup                =       6.10e-02
+ -- Transform data      =       1.58e-04
+ -- Create conic data   =       1.69e-04
+ -- Create MIP data     =       8.60e-04
+ -- Load/solve relax    =       1.89e-02
+ - Iterative algorithm  =       1.17e+00
+ -- Solve MIPs          =       1.15e+00
+ -- Solve conic model   =       1.38e-02
+ -- Process conic data  =       1.20e-04
+ -- Add conic solution  =       1.83e-05
+ -- Add dual cuts       =       1.98e-04
+ -- Use outer inf/cuts  =       6.25e-05
+
+Presolve 83 (-435) rows, 38 (-260) columns and 405 (-574) elements
+Perturbing problem by 0.001 % of 4.2774914 - largest nonzero change 0.00012466406 (% 0.00291442) - largest zero change 9.9659344e-05
+0  Obj 0.11316847 Primal inf 43.0083 (53)
+31  Obj 0.45211536 Primal inf 47.331268 (31)
+47  Obj 11.55045 Primal inf 84.47778 (32)
+48  Obj 83.182698 Primal inf 7.97223 (22)
+49  Obj 116.95681 Primal inf 11.858279 (22)
+49  Obj 116.95681 Primal inf 11.858279 (22)
+64  Obj 0.52302002 Primal inf 3.6278446 (24)
+71  Obj 0.89945158
+Optimal - objective value 0.89931132
+After Postsolve, objective 0.89931132, infeasibilities - dual 0 (0), primal 0 (0)
+Optimal objective 0.8993113179 - 71 iterations time 0.002, Presolve 0.00
+Cbc0045I Given objective value 0.89931, computed 0.899311
+Cbc0045I Solution with objective value 0.899311 saved
+Coin0505I Presolved problem not optimal, resolve after postsolve
+WARNING: Solver does not appear to support adding constraints to an existing model. Hot-start is disabled.
+WARNING: If matrix A has nonzero entries smaller than zero tolerance, performance may be improved by fixing these values to zero
+#STATUS# Optimal
+#OBJVAL# 0.8993102025303683
+#OBJBOUND# 0.8993113178966996
+#TIMESOLVER# 1.2273728847503662
+#TIMEALL# 1.2276580333709717
+#SOLUTION# [0.89931,0.0,177.802,1.06995,-0.209284,0.534325,-1.90385,-0.23674,-1.70019,0.256362,1.15694,0.0007,0.0,0.0,0.000700004,0.000189165,-0.000673954,0.0007,0.000222257,0.000170439,0.0007,0.0,0.0,0.0007,-0.000406774,0.0004518,0.0007,0.0,0.0,0.0007,0.0,0.0,0.0007,0.0,0.0,0.0007,0.0,0.0,0.000399998,0.000123828,-0.000360821,0.0007,0.0,0.0,0.089931,0.0477313,-0.00698599,0.089931,0.0640104,0.0336881,0.179862,0.0135883,-0.179348,0.179862,-0.0128774,-0.10272,0.449655,0.276976,0.117618,0.449655,-0.358841,0.190244,0.89931,0.492861,-8.06756e-5,0.089931,0.0400001,0.00523484,0.089931,0.054689,0.0527175,0.179862,-0.08,0.0132338,0.179862,-0.0947104,0.152906,0.449655,-0.2,0.162406,0.449655,0.0318627,0.448525,0.89931,-0.66883,-0.601186,1.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,1.0,1.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,1.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,1.0,0.0,0.0,0.00773126,0.352269,0.393014,0.406986,0.0240104,0.33599,0.433688,0.366312,0.813588,0.786412,0.620652,0.099348,0.787123,0.812877,0.69728,0.0227197,0.0769757,1.72302,2.11762,1.88238,1.64116,0.158841,2.19024,1.80976,0.0928612,3.50714,3.99992,4.00008,9.55243e-8,0.36,0.405235,0.394765,0.014689,0.345311,0.452718,0.347282,0.72,4.50123e-9,0.813234,0.786766,0.70529,0.89471,0.0729061,0.647094,1.8,4.69651e-8,2.16241,1.83759,2.03186,1.96814,0.248525,1.55148,3.33117,0.26883,3.39881,4.60119,-1.01339e-11,-1.01339e-11,-1.01339e-11,-1.01339e-11,-1.01339e-11,-1.01339e-11,-1.01339e-11,-1.01339e-11,-1.01339e-11,-1.01339e-11,-1.01339e-11,-1.0134e-11,-1.01339e-11,-1.01339e-11]

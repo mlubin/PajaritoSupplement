@@ -1,0 +1,56 @@
+WARNING: Method definition require(Symbol) in module Base at loading.jl:345 overwritten in module ConicBenchmarkUtilities at /home/ubuntu/.julia/v0.5/Requires/src/require.jl:12.
+#SOLVERNAME# PAJ_MSD_GUROBI_MOSEK
+#SOLVER# Pajarito.PajaritoSolver(2,3600.0,1.0e-5,true,Gurobi.GurobiSolver(nothing,Any[(:OutputFlag,0),(:Threads,1),(:TimeLimit,3600.0),(:MIPGap,1.0e-5)]),MathProgBase.DefaultMIPSolver(),0,false,true,Mosek.MosekMathProgSolverInterface.MosekSolver(Any[(:LOG,0),(:NUM_THREADS,1),(:OPTIMIZER_MAX_TIME,120.0)]),true,false,false,true,false,true,false,true,true,true,true,false,false,true,false,false,false,false,1.0e-10,0.0001,1.0e-6,0.01,1.0e-6)
+#FILENAME# estein4_C.cbf.gz
+#INSTANCE# estein4_C
+#TIMELIMIT# 3600.0
+
+Transforming original data......Done     0.00s
+
+Creating conic model data......Done     0.00s
+
+Creating MIP model......Done     0.00s
+
+Cone types summary:
+Cone       | Count    | Min dim  | Max dim 
+       SOC |        9 |        3 |        3
+
+Solving conic relaxation......Done     0.00s
+ - Relaxation status    =        Optimal
+ - Relaxation objective =      -0.000000
+
+Creating conic subproblem model......Done     0.00s
+
+Starting MIP-solver-driven outer approximation algorithm
+
+Pajarito MICP solve summary:
+ - Total time (s)       =       9.05e-02
+ - Status               =        Optimal
+ - Best feasible obj.   =  +1.072694e+00
+ - Final OA obj. bound  =  +1.072694e+00
+ - Relative opt. gap    =      1.488e-08
+ - Conic solve count    =              6
+ - Feas. solution count =              6
+ - Integer repeat count =              3
+
+Timers (s):
+ - Setup                =       5.95e-02
+ -- Transform data      =       6.63e-05
+ -- Create conic data   =       4.59e-05
+ -- Create MIP data     =       4.60e-04
+ -- Load/solve relax    =       2.10e-03
+ - MIP-driven algorithm =       3.10e-02
+ -- Solve conic model   =       6.48e-03
+ -- Process conic data  =       1.06e-03
+ -- Add conic solution  =       4.05e-05
+ -- Add dual cuts       =       6.94e-04
+ -- Use outer inf/cuts  =       7.79e-05
+
+WARNING: If matrix A has nonzero entries smaller than zero tolerance, performance may be improved by fixing these values to zero
+WARNING: For the MIP-solver-driven algorithm, optimality tolerance must be specified as MIP solver option, not Pajarito option
+#STATUS# Optimal
+#OBJVAL# 1.072693702483157
+#OBJBOUND# 1.0726936865186687
+#TIMESOLVER# 0.09051799774169922
+#TIMEALL# 0.09400606155395508
+#SOLUTION# [0.625517,0.527918,0.789565,0.655544,0.829975,0.356432,0.396881,0.330923,0.192384,0.269255,0.829975,0.164048,0.127626,1.47255e-8,9.76526e-9,-8.3279e-9,0.378822,0.0519834,-0.375239,0.829975,-0.112065,-0.502865,0.155102,-0.143691,0.0583913,0.829975,-0.307739,-0.069235,0.207847,-0.164048,-0.127626,0.0,0.330923,0.0,1.47255e-8,0.378822,0.0,0.155102,0.0,0.207847,-0.0,1.0,-0.0,1.0,1.0,0.0,1.0,0.0,1.0,1.0,0.0,1.0,0.0,0.0,1.0,0.0,1.0,0.0,-0.0,0.499052,-0.0,0.829975,0.451153,-0.0,0.674873,-0.0,0.622128]

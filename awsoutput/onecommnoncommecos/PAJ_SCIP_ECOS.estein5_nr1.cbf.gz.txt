@@ -1,0 +1,72 @@
+WARNING: Method definition require(Symbol) in module Base at loading.jl:345 overwritten in module ConicBenchmarkUtilities at /home/ubuntu/.julia/v0.5/Requires/src/require.jl:12.
+WARNING: Base.ASCIIString is deprecated, use String instead.
+  likely near /home/ubuntu/run.jl:171
+WARNING: Base.ASCIIString is deprecated, use String instead.
+  likely near /home/ubuntu/run.jl:171
+WARNING: Base.ASCIIString is deprecated, use String instead.
+  likely near /home/ubuntu/run.jl:171
+WARNING: Base.ASCIIString is deprecated, use String instead.
+  likely near /home/ubuntu/run.jl:171
+#SOLVERNAME# PAJ_SCIP_ECOS
+#SOLVER# Pajarito.PajaritoSolver(2,3600.0,1.0e-5,false,SCIP.SCIPSolver(("display/verblevel",0,"limits/gap",0.0,"limits/time",3600.0)),MathProgBase.DefaultMIPSolver(),0,false,true,ECOS.ECOSSolver(Any[(:verbose,false)]),true,false,false,true,false,true,false,true,true,true,true,false,false,true,false,false,false,false,1.0e-10,0.0001,1.0e-6,0.01,1.0e-6)
+#FILENAME# estein5_nr1.cbf.gz
+#INSTANCE# estein5_nr1
+#TIMELIMIT# 3600.0
+
+Transforming original data......Done     0.00s
+
+Creating conic model data......Done     0.00s
+
+Creating MIP model......Done     0.00s
+
+Cone types summary:
+Cone       | Count    | Min dim  | Max dim 
+       SOC |       18 |        3 |        3
+
+Solving conic relaxation......Done     0.00s
+ - Relaxation status    =        Optimal
+ - Relaxation objective =      -0.000000
+
+Creating conic subproblem model......Done     0.00s
+
+Starting iterative outer approximation algorithm
+
+Iter | Best obj       | OA obj         | Rel gap     | Time (s)   
+   1 |  +1.664399e+00 |  +1.603223e+00 |   3.676e-02 |   3.691e-01
+   2 |  +1.664399e+00 |  +1.603223e+00 |   3.676e-02 |   7.764e-01
+   3 |  +1.664399e+00 |  +1.611545e+00 |   3.176e-02 |   1.206e+00
+   4 |  +1.664399e+00 |  +1.636321e+00 |   1.687e-02 |   1.776e+00
+   5 |  +1.664399e+00 |  +1.664399e+00 |  -6.400e-13 |   2.352e+00
+
+Pajarito MICP solve summary:
+ - Total time (s)       =       2.39e+00
+ - Status               =        Optimal
+ - Best feasible obj.   =  +1.664399e+00
+ - Final OA obj. bound  =  +1.664399e+00
+ - Relative opt. gap    =     -6.400e-13
+ - MIP solve count      =              5
+ - Conic solve count    =              5
+ - Feas. solution count =              5
+ - Integer repeat count =              0
+
+Timers (s):
+ - Setup                =       4.29e-02
+ -- Transform data      =       9.42e-05
+ -- Create conic data   =       1.02e-04
+ -- Create MIP data     =       6.75e-04
+ -- Load/solve relax    =       1.49e-03
+ - Iterative algorithm  =       2.35e+00
+ -- Solve MIPs          =       2.32e+00
+ -- Solve conic model   =       8.16e-03
+ -- Process conic data  =       1.62e-04
+ -- Add conic solution  =       4.26e-05
+ -- Add dual cuts       =       1.44e-02
+ -- Use outer inf/cuts  =       8.97e-05
+
+#STATUS# Optimal
+#OBJVAL# 1.664399321481827
+#OBJBOUND# 1.664399321482892
+#TIMESOLVER# 2.3946738243103027
+#TIMEALL# 2.394921064376831
+#SOLUTION# [0.243687,0.190306,0.79947,0.264541,0.88,0.46,1.03446,0.456313,0.769694,1.03446,-0.0994696,0.695459,0.531413,-0.18,0.5,1.03446,0.636313,0.269694,1.03446,0.0805304,0.195459,3.52822e-11,5.12635e-11,-3.44887e-12,1.03446,0.636313,-0.0303057,0.131962,0.0805304,-0.104541,1.03446,5.13501e-11,-0.3,0.087975,-0.0536871,0.0696943,1.03446,-0.60947,-0.00454145,1.03446,-0.69,-0.2,0.140932,-0.0536871,-0.130306,1.03446,-0.60947,-0.204541,1.03446,-0.69,-0.4,0.560718,-0.555783,-0.0742357,1.03446,-0.636313,-0.269694,0.211398,-0.0805304,-0.195459,-3.32259e-12,-3.31941e-12,0.531413,-3.32037e-12,-3.3195e-12,3.53492e-11,-3.31859e-12,0.131962,-3.31664e-12,0.087975,-3.31676e-12,-3.31731e-12,0.140932,-3.31552e-12,-3.31623e-12,0.560718,-3.32067e-12,0.211398,0.0,0.0,1.0,0.0,0.0,1.0,0.0,1.0,0.0,1.0,0.0,0.0,1.0,0.0,0.0,1.0,1.11022e-16,1.0,1.0,1.0,1.05036e-13,1.0,1.0,1.05036e-13,1.0,1.05036e-13,1.0,1.05036e-13,1.0,1.0,1.05036e-13,1.0,1.0,1.05036e-13,1.0,1.05092e-13,3.47756e-12,3.47435e-12,0.503043,3.47514e-12,3.47415e-12,1.03446,3.47243e-12,0.902494,3.47072e-12,0.946481,3.46959e-12,3.47032e-12,0.893524,3.46778e-12,3.46879e-12,0.473738,3.47596e-12,0.823058]
+WARNING: If matrix A has nonzero entries smaller than zero tolerance, performance may be improved by fixing these values to zero

@@ -1,0 +1,59 @@
+WARNING: Method definition require(Symbol) in module Base at loading.jl:345 overwritten in module ConicBenchmarkUtilities at /home/ubuntu/.julia/v0.5/Requires/src/require.jl:12.
+WARNING: Base.ASCIIString is deprecated, use String instead.
+  likely near /home/ubuntu/run.jl:185
+WARNING: Base.ASCIIString is deprecated, use String instead.
+  likely near /home/ubuntu/run.jl:185
+WARNING: Base.ASCIIString is deprecated, use String instead.
+  likely near /home/ubuntu/run.jl:185
+WARNING: Base.ASCIIString is deprecated, use String instead.
+  likely near /home/ubuntu/run.jl:185
+Optimize a model with 108 rows, 67 columns and 128 nonzeros
+Model has 9 quadratic constraints
+Variable types: 58 continuous, 9 integer (0 binary)
+Coefficient statistics:
+  Matrix range     [7e-01, 1e+00]
+  QMatrix range    [1e+00, 1e+00]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [1e-01, 1e+00]
+Presolve removed 86 rows and 36 columns
+Presolve time: 0.00s
+Presolved: 22 rows, 31 columns, 46 nonzeros
+Variable types: 27 continuous, 4 integer (4 binary)
+
+Root relaxation: objective 0.000000e+00, 8 iterations, 0.00 seconds
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+H    0     0                       1.4333331   -2.88625   301%     -    0s
+*    0     0               0       1.4333331    0.00000   100%     -    0s
+     0     0    0.00000    0    4    1.43333    0.00000   100%     -    0s
+     0     0    0.16157    0    4    1.43333    0.16157  88.7%     -    0s
+     0     0    0.26721    0    4    1.43333    0.26721  81.4%     -    0s
+     0     0    0.27940    0    4    1.43333    0.27940  80.5%     -    0s
+     0     2    0.40477    0    4    1.43333    0.40477  71.8%     -    0s
+*    6     6               4       1.1880862    0.40477  65.9%   9.0    0s
+
+Cutting planes:
+  Gomory: 1
+
+Explored 19 nodes (203 simplex iterations) in 0.02 seconds
+Thread count was 1 (of 4 available processors)
+
+Solution count 3: 1.18809 1.18809 1.43333 
+Pool objective bound 1.18809
+
+Optimal solution found (tolerance 1.00e-05)
+Best objective 1.188086223478e+00, best bound 1.188086223478e+00, gap 0.0000%
+#SOLVERNAME# GUROBI_MISOCP
+#SOLVER# Gurobi.GurobiSolver(nothing,Any[(:OutputFlag,1),(:Threads,1),(:TimeLimit,3600.0),(:MIPGap,1.0e-5)])
+#FILENAME# estein4_B.cbf.gz
+#INSTANCE# estein4_B
+#TIMELIMIT# 3600.0
+#STATUS# Optimal
+#OBJVAL# 1.1880862234782303
+#OBJBOUND# 1.18808622347823
+#TIMESOLVER# 0.01566290855407715
+#TIMEALL# 1.3857629299163818
+#SOLUTION# [0.245746,0.364823,0.703665,0.297885,0.267222,-0.0987305,0.248314,0.721562,-0.556649,0.315252,0.194251,-0.120552,-0.152317,0.721562,-0.578471,-0.0853786,0.721562,0.495358,-0.161212,0.101436,0.0374395,-0.0942736,0.721562,0.558686,0.0604087,0.162393,0.100767,0.127347,0.462785,-0.457918,0.0669387,0.267222,0.0,0.194251,0.0,0.0,0.101436,0.0,0.162393,0.462785,1.0,0.0,1.0,0.0,-0.0,1.0,-0.0,1.0,1.0,0.0,1.0,0.0,1.0,1.0,0.0,1.0,0.0,0.0,0.45434,0.0,0.527311,0.0,-0.0,0.620126,-0.0,0.559169,0.258777]

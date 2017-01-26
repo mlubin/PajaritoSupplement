@@ -1,0 +1,84 @@
+WARNING: Method definition require(Symbol) in module Base at loading.jl:345 overwritten in module ConicBenchmarkUtilities at /home/ubuntu/.julia/v0.5/Requires/src/require.jl:12.
+#SOLVERNAME# PAJ_GUROBI_MOSEK
+#SOLVER# Pajarito.PajaritoSolver(2,3600.0,1.0e-5,false,Gurobi.GurobiSolver(nothing,Any[(:OutputFlag,0),(:Threads,1),(:TimeLimit,3600.0),(:MIPGap,0.0)]),MathProgBase.DefaultMIPSolver(),0,false,true,Mosek.MosekMathProgSolverInterface.MosekSolver(Any[(:LOG,0),(:NUM_THREADS,1),(:OPTIMIZER_MAX_TIME,120.0)]),true,false,false,true,false,true,false,true,true,true,true,false,false,true,false,false,false,false,1.0e-10,0.0001,1.0e-6,0.01,1.0e-6)
+#FILENAME# pp-n10-d10000.cbf.gz
+#INSTANCE# pp-n10-d10000
+#TIMELIMIT# 3600.0
+
+Transforming original data......Done     0.00s
+
+Creating conic model data......Done     0.00s
+
+Creating MIP model......Done     0.00s
+
+Cone types summary:
+Cone       | Count    | Min dim  | Max dim 
+       SOC |       10 |        3 |        3
+
+Solving conic relaxation......Done     0.00s
+ - Relaxation status    =        Optimal
+ - Relaxation objective =    1481.455068
+
+Creating conic subproblem model......Done     0.00s
+
+Starting iterative outer approximation algorithm
+
+Iter | Best obj       | OA obj         | Rel gap     | Time (s)   
+   1 |  +1.683184e+04 |  +1.481440e+03 |   9.120e-01 |   9.289e-03
+   2 |  +5.285532e+03 |  +1.481445e+03 |   7.197e-01 |   2.269e-02
+   3 |  +4.136247e+03 |  +1.481445e+03 |   6.418e-01 |   3.083e-02
+   4 |  +2.154318e+03 |  +1.481453e+03 |   3.123e-01 |   4.306e-02
+   5 |  +2.154318e+03 |  +1.481453e+03 |   3.123e-01 |   5.627e-02
+   6 |  +2.154318e+03 |  +1.481453e+03 |   3.123e-01 |   7.249e-02
+   7 |  +2.054878e+03 |  +1.481453e+03 |   2.791e-01 |   9.122e-02
+   8 |  +1.588141e+03 |  +1.481453e+03 |   6.718e-02 |   1.101e-01
+   9 |  +1.588141e+03 |  +1.481453e+03 |   6.718e-02 |   1.332e-01
+  10 |  +1.493094e+03 |  +1.481453e+03 |   7.796e-03 |   1.566e-01
+  11 |  +1.493094e+03 |  +1.481453e+03 |   7.796e-03 |   1.837e-01
+  12 |  +1.493094e+03 |  +1.481453e+03 |   7.796e-03 |   2.135e-01
+  13 |  +1.484882e+03 |  +1.481453e+03 |   2.309e-03 |   2.448e-01
+  14 |  +1.484882e+03 |  +1.481453e+03 |   2.309e-03 |   2.696e-01
+  15 |  +1.484882e+03 |  +1.481453e+03 |   2.309e-03 |   3.043e-01
+  16 |  +1.484882e+03 |  +1.481453e+03 |   2.309e-03 |   3.288e-01
+  17 |  +1.484882e+03 |  +1.481453e+03 |   2.309e-03 |   3.547e-01
+  18 |  +1.482356e+03 |  +1.481453e+03 |   6.087e-04 |   3.835e-01
+  19 |  +1.481532e+03 |  +1.481453e+03 |   5.295e-05 |   4.175e-01
+  20 |  +1.481532e+03 |  +1.481453e+03 |   5.295e-05 |   4.449e-01
+  21 |  +1.481519e+03 |  +1.481453e+03 |   4.417e-05 |   4.737e-01
+  22 |  +1.481492e+03 |  +1.481453e+03 |   2.570e-05 |   5.035e-01
+  23 |  +1.481492e+03 |  +1.481453e+03 |   2.570e-05 |   5.340e-01
+  24 |  +1.481492e+03 |  +1.481453e+03 |   2.570e-05 |   5.636e-01
+
+Pajarito MICP solve summary:
+ - Total time (s)       =       6.22e-01
+ - Status               =     Suboptimal
+ - Best feasible obj.   =  +1.481492e+03
+ - Final OA obj. bound  =  +1.481453e+03
+ - Relative opt. gap    =      2.570e-05
+ - MIP solve count      =             24
+ - Conic solve count    =             23
+ - Feas. solution count =             23
+ - Integer repeat count =              1
+
+Timers (s):
+ - Setup                =       5.88e-02
+ -- Transform data      =       6.96e-05
+ -- Create conic data   =       4.08e-05
+ -- Create MIP data     =       3.94e-04
+ -- Load/solve relax    =       1.94e-03
+ - Iterative algorithm  =       5.64e-01
+ -- Solve MIPs          =       5.37e-01
+ -- Solve conic model   =       1.81e-02
+ -- Process conic data  =       2.03e-03
+ -- Add conic solution  =       9.25e-05
+ -- Add dual cuts       =       2.51e-03
+ -- Use outer inf/cuts  =       1.63e-04
+
+WARNING: If matrix A has nonzero entries smaller than zero tolerance, performance may be improved by fixing these values to zero
+WARNING: Non-rounded integer solutions are cycling before convergence tolerance is reached: aborting iterative algorithm
+#STATUS# Suboptimal
+#OBJVAL# 1481.49150361393
+#OBJBOUND# 1481.4534322560908
+#TIMESOLVER# 0.6224801540374756
+#TIMEALL# 0.6226999759674072
+#SOLUTION# [222.0,73.0,85.0,250.0,199.0,130.0,210.0,176.0,87.0,140.0,0.00450479,0.0136988,0.0117648,0.00400031,0.00502536,0.00769246,0.00476215,0.00568207,0.0114943,0.00714312,222.0,0.00450479,1.41421,73.0,0.0136988,1.41421,85.0,0.0117648,1.41421,250.0,0.00400031,1.41421,199.0,0.00502536,1.41421,130.0,0.00769246,1.41421,210.0,0.00476215,1.41421,176.0,0.00568207,1.41421,87.0,0.0114943,1.41421,140.0,0.00714312,1.41421]

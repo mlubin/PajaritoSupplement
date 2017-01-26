@@ -1,0 +1,68 @@
+WARNING: Method definition require(Symbol) in module Base at loading.jl:345 overwritten in module ConicBenchmarkUtilities at /home/ubuntu/.julia/v0.5/Requires/src/require.jl:12.
+WARNING: Base.ASCIIString is deprecated, use String instead.
+  likely near /home/ubuntu/run.jl:185
+WARNING: Base.ASCIIString is deprecated, use String instead.
+  likely near /home/ubuntu/run.jl:185
+WARNING: Base.ASCIIString is deprecated, use String instead.
+  likely near /home/ubuntu/run.jl:185
+WARNING: Base.ASCIIString is deprecated, use String instead.
+  likely near /home/ubuntu/run.jl:185
+#SOLVERNAME# MOSEK_MISOCP
+#SOLVER# Mosek.MosekMathProgSolverInterface.MosekSolver(Any[(:LOG,1),(:NUM_THREADS,1),(:OPTIMIZER_MAX_TIME,3600.0),(:MIO_TOL_REL_GAP,1.0e-5)])
+#FILENAME# turbine54GF.cbf.gz
+#INSTANCE# turbine54GF
+#TIMELIMIT# 3600.0
+Problem
+  Name                   :                 
+  Objective sense        : min             
+  Type                   : CONIC (conic optimization problem)
+  Constraints            : 500             
+  Cones                  : 119             
+  Scalar variables       : 369             
+  Matrix variables       : 0               
+  Integer variables      : 12              
+
+Optimizer started.
+Mixed integer optimizer started.
+Threads used: 1
+Presolve started.
+Presolve terminated. Time = 0.01
+Presolved problem: 369 variables, 223 constraints, 2836 non-zeros
+Presolved problem: 0 general integer, 12 binary, 357 continuous
+Clique table size: 0
+BRANCHES RELAXS   ACT_NDS  DEPTH    BEST_INT_OBJ         BEST_RELAX_OBJ       REL_GAP(%)  TIME  
+0        1        0        0        NA                   2.0000000000e+00     NA          0.0   
+Cut generation started.
+0        2        0        0        NA                   2.0000000000e+00     NA          0.1   
+Cut generation terminated. Time = 0.02
+13       16       4        4        NA                   2.0000000000e+00     NA          0.2   
+25       28       4        4        NA                   4.0000000000e+00     NA          0.2   
+29       32       0        5        4.0000013362e+00     4.0000013362e+00     0.00e+00    0.2   
+An optimal solution satisfying the relative gap tolerance of 1.00e-03(%) has been located.
+The relative gap is 0.00e+00(%).
+An optimal solution satisfying the absolute gap tolerance of 0.00e+00 has been located.
+The absolute gap is 0.00e+00.
+
+Objective of best integer solution : 4.000001336217e+00      
+Best objective bound               : 5.000000000000e+00      
+Construct solution objective       : Not employed
+Construct solution # roundings     : 0
+User objective cut value           : 0
+Number of cuts generated           : 0
+Number of branches                 : 29
+Number of relaxations solved       : 32
+Number of interior point iterations: 218
+Number of simplex iterations       : 0
+Time spend presolving the root     : 0.01
+Time spend in the heuristic        : 0.00
+Time spend in the sub optimizers   : 0.00
+  Time spend optimizing the root   : 0.01
+Mixed integer optimizer terminated. Time: 0.24
+
+Optimizer terminated. Time: 0.24    
+#STATUS# Optimal
+#OBJVAL# 4.0000013362171085
+#OBJBOUND# 5.0
+#TIMESOLVER# 0.242995023727417
+#TIMEALL# 1.303251028060913
+#SOLUTION# [1.0,1.0,5.2289e-8,2.80261e-7,1.6277e-7,0.0,2.66265e-8,1.0,7.18239e-8,0.0,1.3452e-8,7.09426e-8,0.0007,0.0,0.0,0.0007,0.000354,0.0,0.0007,0.000362,-0.000303,0.0007,0.0,0.0,0.0007,-3.62783e-11,-4.31973e-11,0.0007,0.0,0.0,0.0007,0.0,0.0,0.0007,0.0,0.0,0.0007,0.0,0.0,0.0004,0.000175,-0.000303,0.0007,0.0,0.0,1.0,-0.04276,0.058061,1.0,-0.02851,0.0828191,1.0,-0.025498,0.0911861,1.0,0.0163511,0.119238,2.0,-0.174576,-0.214804,2.0,-0.174121,-0.211369,2.0,-0.171826,-0.194811,2.0,-0.17692,-0.193799,2.0,-0.180271,-0.194372,2.0,-0.183889,-0.198129,2.0,-0.208227,-0.211219,2.0,-0.198964,-0.243986,2.0,-0.195135,-0.243409,2.0,-0.206737,-0.267095,2.0,-0.145699,-0.257254,2.0,-0.159922,-0.265684,2.0,-0.206411,-0.272589,2.0,-0.221261,-0.277064,2.0,-0.207344,-0.245546,2.0,-0.197859,-0.271813,2.0,-0.195503,-0.268218,2.0,-0.201794,-0.297994,2.0,-0.204139,-0.29728,2.0,-0.187031,-0.356864,2.0,-0.180694,-0.370221,2.0,-0.215038,-0.386513,2.0,-0.229271,-0.389068,2.0,-0.22761,-0.400642,2.0,-0.29423,-0.483082,2.0,-0.289688,-0.483743,5.0,-0.25486,-0.501234,5.0,-0.274192,-0.499533,5.0,-0.274401,-0.514356,5.0,-0.294639,-0.514745,5.0,-0.321477,-0.540544,5.0,-0.333221,-0.555549,5.0,-0.393059,-0.57211,5.0,-0.370986,-0.769505,5.0,-0.481903,-0.728976,5.0,-0.786917,-1.02608,5.0,-0.444286,-1.37027,5.0,-0.461288,-2.30454,5.0,-4.26201,-0.830204,5.0,-3.61745,0.254846,5.0,4.27888,-0.504687,10.0,3.62265,-0.263711,10.0,3.49317,-0.648473,10.0,4.37021,-1.48282,10.0,3.34534,-2.2386,10.0,3.05854,-2.36006,10.0,2.68345,-2.80648,10.0,2.46447,-2.90783,10.0,2.22636,-3.24246,10.0,1.88689,-2.90484,1.0,-0.036984,0.0737051,1.0,-0.02851,0.0942621,1.0,-0.022645,0.11113,1.0,0.0235861,0.145311,2.0,-0.105636,-0.152028,2.0,-0.0997051,-0.145809,2.0,-0.0944421,-0.123096,2.0,-0.0710781,-0.0890751,2.0,-0.0657991,-0.077566,2.0,-0.0604691,-0.074773,2.0,-0.036841,-0.062715,2.0,-0.024932,-0.052312,2.0,-0.014635,-0.060643,2.0,-0.00620104,-0.051252,2.0,0.048817,-0.028687,2.0,0.042956,-0.019981,2.0,0.059811,-0.036706,2.0,0.072157,-0.027264,2.0,0.082469,-0.039014,2.0,0.091325,-0.032109,2.0,0.097043,-0.03884,2.0,0.097816,-0.041115,2.0,0.109179,-0.032518,2.0,0.134819,-0.033032,2.0,0.142993,-0.045093,2.0,0.174488,-0.0319299,2.0,0.174419,-0.0463849,2.0,0.185401,-0.0446109,2.0,0.231495,-0.0247909,2.0,0.24825,-0.0417619,5.0,0.248927,-0.0360969,5.0,0.260194,-0.0376849,5.0,0.265839,-0.0487759,5.0,0.288598,-0.0485989,5.0,0.31107,-0.0547159,5.0,0.325282,-0.0599909,5.0,0.353736,-0.0635079,5.0,0.41403,-0.0244619,5.0,0.515932,-0.180691,5.0,0.749948,-0.150303,5.0,0.677638,0.0233469,5.0,0.753135,0.352733,5.0,3.29327,-0.650845,5.0,2.92972,-1.33212,5.0,-1.7381,-0.198071,10.0,-1.38783,-0.466418,10.0,-1.28583,-0.299917,10.0,-1.86986,-0.0506166,10.0,-1.23476,0.0538521,10.0,-1.06429,-0.0558618,10.0,-0.903436,-0.332511,10.0,-0.661303,-0.530393,10.0,-0.820017,-0.896007,10.0,-0.268052,-1.96406]

@@ -1,0 +1,84 @@
+WARNING: Method definition require(Symbol) in module Base at loading.jl:345 overwritten in module ConicBenchmarkUtilities at /home/ubuntu/.julia/v0.5/Requires/src/require.jl:12.
+WARNING: Base.ASCIIString is deprecated, use String instead.
+  likely near /home/ubuntu/run.jl:185
+WARNING: Base.ASCIIString is deprecated, use String instead.
+  likely near /home/ubuntu/run.jl:185
+WARNING: Base.ASCIIString is deprecated, use String instead.
+  likely near /home/ubuntu/run.jl:185
+WARNING: Base.ASCIIString is deprecated, use String instead.
+  likely near /home/ubuntu/run.jl:185
+#SOLVERNAME# MOSEK_MISOCP
+#SOLVER# Mosek.MosekMathProgSolverInterface.MosekSolver(Any[(:LOG,1),(:NUM_THREADS,1),(:OPTIMIZER_MAX_TIME,3600.0),(:MIO_TOL_REL_GAP,1.0e-5)])
+#FILENAME# estein5_nr1.cbf.gz
+#INSTANCE# estein5_nr1
+#TIMELIMIT# 3600.0
+Problem
+  Name                   :                 
+  Objective sense        : min             
+  Type                   : CONIC (conic optimization problem)
+  Constraints            : 211             
+  Cones                  : 18              
+  Scalar variables       : 132             
+  Matrix variables       : 0               
+  Integer variables      : 18              
+
+Optimizer started.
+Mixed integer optimizer started.
+Threads used: 1
+Presolve started.
+Presolve terminated. Time = 0.00
+Presolved problem: 87 variables, 69 constraints, 166 non-zeros
+Presolved problem: 0 general integer, 16 binary, 71 continuous
+Clique table size: 5
+BRANCHES RELAXS   ACT_NDS  DEPTH    BEST_INT_OBJ         BEST_RELAX_OBJ       REL_GAP(%)  TIME  
+0        1        0        0        NA                   1.6973305761e-10     NA          0.0   
+0        1        0        0        2.1770895747e+00     1.6973305761e-10     100.00      0.0   
+0        1        0        0        1.7338504839e+00     1.6973305761e-10     100.00      0.0   
+Cut generation started.
+0        2        0        0        1.7338504839e+00     1.6973305761e-10     100.00      0.0   
+Cut generation terminated. Time = 0.00
+15       18       14       6        1.7338504839e+00     1.6973305761e-10     100.00      0.1   
+29       32       22       4        1.7338504839e+00     1.6973305761e-10     100.00      0.1   
+51       54       36       6        1.7338504839e+00     7.5771138558e-07     100.00      0.1   
+85       88       54       5        1.7338504839e+00     1.7644575705e-01     89.82       0.1   
+119      122      74       6        1.7338504839e+00     2.8033076604e-01     83.83       0.2   
+153      156      90       8        1.7338504839e+00     5.3298968772e-01     69.26       0.2   
+187      190      98       6        1.7338504839e+00     5.3298976934e-01     69.26       0.3   
+221      224      96       8        1.6643993063e+00     7.1398686956e-01     57.10       0.3   
+255      258      100      7        1.6643993063e+00     7.6186489430e-01     54.23       0.4   
+291      292      92       6        1.6643993063e+00     8.6608315014e-01     47.96       0.4   
+325      326      86       8        1.6643993063e+00     8.8965003200e-01     46.55       0.4   
+361      360      74       7        1.6643993063e+00     8.9259064582e-01     46.37       0.5   
+399      394      64       6        1.6643993063e+00     9.3283987859e-01     43.95       0.5   
+435      428      54       9        1.6643993063e+00     9.6636090072e-01     41.94       0.6   
+469      462      46       9        1.6643993063e+00     1.0199901630e+00     38.72       0.6   
+503      496      30       9        1.6643993063e+00     1.1748624630e+00     29.41       0.6   
+533      526      6        8        1.6643993063e+00     1.4006433611e+00     15.85       0.7   
+An optimal solution satisfying the relative gap tolerance of 1.00e-03(%) has been located.
+The relative gap is 0.00e+00(%).
+An optimal solution satisfying the absolute gap tolerance of 0.00e+00 has been located.
+The absolute gap is 0.00e+00.
+
+Objective of best integer solution : 1.664399306255e+00      
+Best objective bound               : 1.664399306255e+00      
+Construct solution objective       : Not employed
+Construct solution # roundings     : 0
+User objective cut value           : 0
+Number of cuts generated           : 0
+Number of branches                 : 539
+Number of relaxations solved       : 532
+Number of interior point iterations: 4685
+Number of simplex iterations       : 0
+Time spend presolving the root     : 0.00
+Time spend in the heuristic        : 0.00
+Time spend in the sub optimizers   : 0.00
+  Time spend optimizing the root   : 0.00
+Mixed integer optimizer terminated. Time: 0.67
+
+Optimizer terminated. Time: 0.67    
+#STATUS# Optimal
+#OBJVAL# 1.6643993062546738
+#OBJBOUND# 1.6643993062546738
+#TIMESOLVER# 0.673022985458374
+#TIMEALL# 1.7541570663452148
+#SOLUTION# [0.243685,0.190297,0.799473,0.264546,0.88,0.46,1.03446,0.456315,0.769703,1.03446,-0.0994735,0.695454,0.531413,-0.18,0.5,1.03446,0.636315,0.269703,1.03446,0.0805265,0.195454,1.96978e-8,2.47412e-8,5.95142e-9,1.03446,0.636315,-0.030297,0.131963,0.0805265,-0.104546,1.03446,2.47412e-8,-0.3,0.0879803,-0.0536846,0.069703,1.03446,-0.609473,-0.00454555,1.03446,-0.69,-0.2,0.140923,-0.0536846,-0.130297,1.03446,-0.609473,-0.204546,1.03446,-0.69,-0.4,0.560726,-0.555789,-0.0742486,1.03446,-0.636315,-0.269703,0.211393,-0.0805265,-0.195454,-0.0,-0.0,0.531413,-0.0,-0.0,1.96978e-8,-0.0,0.131963,-0.0,0.0879803,-0.0,-0.0,0.140923,-0.0,-0.0,0.560726,-0.0,0.211393,-0.0,0.0,1.0,-0.0,0.0,1.0,-0.0,1.0,0.0,1.0,0.0,-0.0,1.0,-0.0,0.0,1.0,0.0,1.0,1.0,1.0,0.0,1.0,1.0,0.0,1.0,0.0,1.0,0.0,1.0,1.0,0.0,1.0,1.0,0.0,1.0,0.0,0.0,0.0,0.503043,0.0,0.0,1.03446,0.0,0.902493,0.0,0.946476,0.0,0.0,0.893533,0.0,0.0,0.47373,0.0,0.823063]
