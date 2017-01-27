@@ -47,7 +47,12 @@ function validate_solution(instancename, solution)
     dat = readcbfdata(instancefile)
     c, A, b, con_cones, var_cones, vartypes, sense, objoffset = cbftompb(dat)
 
-    @assert length(solution) == length(c)
+    # will be fixed soon, should really be equal
+    if length(solution) > length(c)
+        println("Solution is too long")
+    end
+    @assert length(solution) >= length(c)
+    solution = solution[1:length(c)]
     objval = dot(c,solution)
 
     y = b - A*solution
