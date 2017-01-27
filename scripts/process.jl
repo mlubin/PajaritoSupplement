@@ -5,7 +5,7 @@ resultfiles = readdir(joinpath(pwd(), ARGS[1]))
 fd = open(joinpath(pwd(), ARGS[2]), "w")
 
 # process into a CSV file with columns:
-println(fd,"solver,instance,status,objval_reported,objbound,solvertime,totaltime,filename,objval_solution,max_linear_violation,max_soc_violation")
+println(fd,"solver,instance,status,objval_reported,objbound,solvertime,totaltime,filename,objval_solution,max_linear_violation,max_soc_violation,max_socrot_violation")
 
 # from instance name to file name
 function find_instance(name)
@@ -30,7 +30,7 @@ function violation_cone(subvec,cone)
     elseif cone == :SOC
         return :SOC, max(vecnorm(subvec[2:end])^2-subvec[1]^2,0)
     elseif cone == :SOCRotated
-        return :SOC, max(vecnorm(subvec[3:end])^2-2*subvec[1]*subvec[2],0)
+	return :SOCRotated, max(vecnorm(subvec[3:end])^2-2*subvec[1]*subvec[2],0)
     elseif cone == :ExpPrimal
         error("Unexpected expcone")
         return :Exp, max(subvec[2]*exp(subvec[1]/subvec[2]) - subvec[3],0)
@@ -58,6 +58,7 @@ function validate_solution(instancename, solution)
     y = b - A*solution
     linear_violation = 0.0
     soc_violation = 0.0
+    socrot_violation = 0.0
     exp_violation = 0.0
     for (cones,x) in [(var_cones,solution),(con_cones,y)]
         for (cone, idx) in cones
@@ -66,13 +67,15 @@ function validate_solution(instancename, solution)
                 linear_violation = max(linear_violation,viol)
             elseif t == :SOC
                 soc_violation = max(soc_violation,viol)
+            elseif t == :SOCRotated
+                socrot_violation = max(socrot_violation,viol)
             elseif t == :Exp
                 exp_violation = max(exp_violation,viol)
             end
         end
     end
 
-    return objval, linear_violation, soc_violation, exp_violation
+    return objval, linear_violation, soc_violation, socrot_violation, exp_violation
 end
 
 for filename in resultfiles
@@ -90,6 +93,7 @@ for filename in resultfiles
     objval_sol = " "
     linear_violation = " "
     soc_violation = " "
+    socrot_violation = " "
     exp_violation = " "
     solution = []
     # gaplimit = false
@@ -120,7 +124,7 @@ for filename in resultfiles
         #end
     end
     if length(solution) > 0
-        objval_sol, linear_violation, soc_violation, exp_violation = validate_solution(instance,solution)
+        objval_sol, linear_violation, soc_violation, socrot_violation, exp_violation = validate_solution(instance,solution)
     end
 
     # if gaplimit
@@ -128,7 +132,8 @@ for filename in resultfiles
     #     status = "Optimal"
     # end
 
-    println(fd, "$solver,$instance,$status,$objval,$objbound,$solvertime,$totaltime,$(basename(filename)),$objval_sol,$linear_violation,$soc_violation")
+    println(fd, 
+"$solver,$instance,$status,$objval,$objbound,$solvertime,$totaltime,$(basename(filename)),$objval_sol,$linear_violation,$soc_violation,$socrot_violation")
 end
 
 close(fd)
