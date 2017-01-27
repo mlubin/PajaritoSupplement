@@ -1,14 +1,17 @@
 using ConicBenchmarkUtilities
 using Pajarito
-using ECOS
-#using ConicIP
-using Mosek
-using CPLEX
-#using Cbc
-#using SCIP
 using ConicNonlinearBridge
-#using AmplNLWriter
 
+# print with full precision
+function vec_to_string(v)
+    terms = String[]
+    for x in v
+        b = IOBuffer()
+        show(b, x)
+        push!(terms, takebuf_string(b))
+    end
+    return string("[",join(terms,","),"]")
+end
 
 function solveprint(instance, solver)
     # Convert from cbf to our conic format
@@ -54,7 +57,7 @@ function solveprint(instance, solver)
     println("#OBJBOUND# $objbound")
     println("#TIMESOLVER# $timesolver")
     println("#TIMEALL# $timeall")
-    println("#SOLUTION# $x")
+    println("#SOLUTION# $(vec_to_string(x))")
 end
 
 
