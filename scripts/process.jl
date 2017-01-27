@@ -9,7 +9,7 @@ println(fd,"solver,instance,status,objval_reported,objbound,solvertime,totaltime
 
 # from instance name to file name
 function find_instance(name)
-    instances = joinpath(dirname(@__FILE__),"instancedata")
+    instances = joinpath(dirname(@__FILE__),"..","instancedata")
     try
         match = "$name.*"
         f = readstring(`find $instances -name $match`)
