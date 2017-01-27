@@ -37,7 +37,7 @@ for instancename in instancelist
         process = spawn(pipeline(`julia run.jl $solvername $tlim $datafolder $instancename`, stdout=filename, stderr=filename, append=true))
 
         t = time()
-        sleep(60.0)
+        sleep(10.0)
 
         pid = parse(Int, chomp(readline(open("mypid", "r"))))
 
