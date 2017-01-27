@@ -1,0 +1,64 @@
+WARNING: Method definition require(Symbol) in module Base at loading.jl:345 overwritten in module ConicBenchmarkUtilities at /home/ubuntu/.julia/v0.5/Requires/src/require.jl:12.
+WARNING: Base.ASCIIString is deprecated, use String instead.
+  likely near /home/ubuntu/run.jl:171
+WARNING: Base.ASCIIString is deprecated, use String instead.
+  likely near /home/ubuntu/run.jl:171
+WARNING: Base.ASCIIString is deprecated, use String instead.
+  likely near /home/ubuntu/run.jl:171
+WARNING: Base.ASCIIString is deprecated, use String instead.
+  likely near /home/ubuntu/run.jl:171
+#SOLVERNAME# PAJ_MSD_SCIP_ECOS
+#SOLVER# Pajarito.PajaritoSolver(2,3600.0,1.0e-5,true,SCIP.SCIPSolver(("display/verblevel",0,"limits/gap",1.0e-5,"limits/time",3600.0)),MathProgBase.DefaultMIPSolver(),0,false,true,ECOS.ECOSSolver(Any[(:verbose,false)]),true,false,false,true,false,true,false,true,true,true,true,false,false,true,false,false,false,false,1.0e-10,0.0001,1.0e-6,0.01,1.0e-6)
+#FILENAME# classical_50_2.cbf.gz
+#INSTANCE# classical_50_2
+#TIMELIMIT# 3600.0
+
+Transforming original data......Done     0.00s
+
+Creating conic model data......Done     0.01s
+
+Creating MIP model......Done     0.00s
+
+Cone types summary:
+Cone       | Count    | Min dim  | Max dim 
+       SOC |        1 |       51 |       51
+
+Solving conic relaxation......Done     0.01s
+ - Relaxation status    =        Optimal
+ - Relaxation objective =      -0.092609
+
+Creating conic subproblem model......Done     0.00s
+
+Starting MIP-solver-driven outer approximation algorithm
+
+Pajarito MICP solve summary:
+ - Total time (s)       =       9.84e+00
+ - Status               =        Optimal
+ - Best feasible obj.   =  -9.052797e-02
+ - Final OA obj. bound  =  -9.052813e-02
+ - Relative opt. gap    =      1.664e-06
+ - Conic solve count    =             28
+ - Feas. solution count =             26
+ - Integer repeat count =             17
+
+Timers (s):
+ - Setup                =       6.16e-02
+ -- Transform data      =       2.97e-04
+ -- Create conic data   =       7.20e-03
+ -- Create MIP data     =       1.27e-03
+ -- Load/solve relax    =       1.03e-02
+ - MIP-driven algorithm =       9.78e+00
+ -- Solve conic model   =       2.19e-01
+ -- Process conic data  =       9.64e-04
+ -- Add conic solution  =       1.96e-04
+ -- Add dual cuts       =       7.97e-03
+ -- Use outer inf/cuts  =       3.12e-04
+
+#STATUS# Optimal
+#OBJVAL# -0.09052797489481583
+#OBJBOUND# -0.09052812559110837
+#TIMESOLVER# 9.843629837036133
+#TIMEALL# 9.847754955291748
+#SOLUTION# [-3.88801e-14,2.88742e-13,-1.6961e-13,1.01693e-14,-1.55275e-13,-1.81021e-13,1.3225e-13,2.73524e-13,4.04439e-14,-3.28469e-13,0.182028,0.0829406,-1.72093e-13,-1.57274e-13,-6.73098e-15,1.74064e-13,5.51227e-14,-2.26579e-13,-3.04205e-15,4.68265e-13,2.88166e-13,1.19646e-13,1.29327e-13,-6.51884e-14,1.12761e-14,0.0901311,-1.72217e-13,0.0703719,-1.54464e-14,3.75115e-14,2.305e-13,-2.69897e-13,-1.3966e-13,-2.74558e-13,0.0426533,0.0948733,2.75376e-14,1.01795e-13,-5.41345e-14,-4.67224e-14,-1.72539e-13,2.44341e-13,-3.19713e-13,0.122845,0.0927258,0.144552,3.08739e-14,-2.36158e-13,0.0768791,-2.10508e-13,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,1.0,1.0,0.0,0.0,1.0,0.0,0.0110257,0.0112615,0.0203136,0.0132528,0.0111082,0.015192,0.0202666,0.00485099,0.0111911,0.0195401,0.057481,0.0552962,0.0173697,0.0193282,0.0134386,0.00850507,0.0158517,0.0176889,0.0203613,0.0239177,0.0105787,0.00631515,0.0158782,0.0144979,0.00939636,0.0343995,0.0355202,0.0775376,0.0216361,0.0179736,0.0110065,0.0172,0.0130231,0.0210634,0.040659,0.0426773,0.00958237,0.0196516,0.0259572,0.0116033,0.01578,0.00967746,0.0274551,0.0300314,0.0680634,0.0487072,0.0190666,0.0179907,0.0564104,0.0203116,0.2]
+WARNING: If matrix A has nonzero entries smaller than zero tolerance, performance may be improved by fixing these values to zero
+WARNING: For the MIP-solver-driven algorithm, optimality tolerance must be specified as MIP solver option, not Pajarito option

@@ -1,0 +1,90 @@
+WARNING: Method definition require(Symbol) in module Base at loading.jl:345 overwritten in module ConicBenchmarkUtilities at /home/ubuntu/.julia/v0.5/Requires/src/require.jl:12.
+#SOLVERNAME# PAJ_SUBOPT-8-10_CBC_ECOS
+#SOLVER# Pajarito.PajaritoSolver(2,3600.0,1.0e-5,false,Cbc.CbcMathProgSolverInterface.CbcSolver(Any[(:logLevel,0),(:ratioGap,0.0),(:seconds,3600.0)]),Cbc.CbcMathProgSolverInterface.CbcSolver(Any[(:logLevel,0),(:ratioGap,0.1),(:seconds,120)]),8,false,true,ECOS.ECOSSolver(Any[(:verbose,false)]),true,false,false,true,false,true,false,true,true,true,true,false,false,true,false,false,false,false,1.0e-10,0.0001,1.0e-6,0.01,1.0e-6)
+#FILENAME# sssd-weak-30-8.cbf.gz
+#INSTANCE# sssd-weak-30-8
+#TIMELIMIT# 3600.0
+
+Transforming original data......Done     0.00s
+
+Creating conic model data......Done     0.00s
+
+Creating MIP model......Done     0.00s
+
+Cone types summary:
+Cone       | Count    | Min dim  | Max dim 
+       SOC |       24 |        3 |        3
+
+Solving conic relaxation......Done     0.02s
+ - Relaxation status    =        Optimal
+ - Relaxation objective =  194478.235842
+
+Creating conic subproblem model......Done     0.00s
+
+Starting iterative outer approximation algorithm
+
+Iter | Best obj       | OA obj         | Rel gap     | Time (s)   
+   1 |  +5.335031e+05 |  +4.270187e+05 |   1.996e-01 |   2.399e+00
+   2 |  +5.335031e+05 |  +4.270187e+05 |   1.996e-01 |   1.229e+02
+Presolve 216 (-623) rows, 56 (-432) columns and 520 (-1664) elements
+Perturbing problem by 0.001 % of 282565.28 - largest nonzero change 0.27718545 (% 0.00010918208) - largest zero change 0.27424659
+0  Obj 302631.84 Primal inf 143.44138 (198)
+79  Obj 493141.27 Primal inf 0.75922538 (25)
+103  Obj 533511.23
+Optimal - objective value 533503.15
+After Postsolve, objective 533503.15, infeasibilities - dual 0 (0), primal 0 (0)
+Optimal objective 533503.1456 - 103 iterations time 0.002, Presolve 0.00
+Cbc0045I Solution with objective value 533503 saved
+   3 |  +5.308067e+05 |  +5.257869e+05 |   9.457e-03 |   1.932e+02
+Presolve 264 (-623) rows, 56 (-432) columns and 632 (-1696) elements
+Perturbing problem by 0.001 % of 599767.14 - largest nonzero change 0.52236314 (% 9.0702972e-05) - largest zero change 0.51289064
+0  Obj 302634.37 Primal inf 166.68355 (246)
+80  Obj 510570.52 Primal inf 0.80580978 (39)
+109  Obj 533513.35
+Optimal - objective value 533503.15
+After Postsolve, objective 533503.15, infeasibilities - dual 0 (0), primal 0 (0)
+Optimal objective 533503.1456 - 109 iterations time 0.002, Presolve 0.00
+Cbc0045I Solution with objective value 533503 saved
+   4 |  +5.293743e+05 |  +5.280072e+05 |   2.582e-03 |   2.326e+02
+   5 |  +5.290874e+05 |  +5.280072e+05 |   2.042e-03 |   3.530e+02
+   6 |  +5.290874e+05 |  +5.280072e+05 |   2.042e-03 |   4.427e+02
+   7 |  +5.287849e+05 |  +5.285530e+05 |   4.387e-04 |   4.955e+02
+   8 |  +5.287849e+05 |  +5.285530e+05 |   4.387e-04 |   6.159e+02
+   9 |  +5.287663e+05 |  +5.287663e+05 |  -3.638e-11 |   1.024e+03
+
+Pajarito MICP solve summary:
+ - Total time (s)       =       1.02e+03
+ - Status               =        Optimal
+ - Best feasible obj.   =  +5.287663e+05
+ - Final OA obj. bound  =  +5.287663e+05
+ - Relative opt. gap    =     -3.638e-11
+ - MIP solve count      =              9
+ - Conic solve count    =              9
+ - Feas. solution count =              9
+ - Integer repeat count =              0
+
+Timers (s):
+ - Setup                =       6.17e-02
+ -- Transform data      =       2.33e-04
+ -- Create conic data   =       2.07e-04
+ -- Create MIP data     =       1.23e-03
+ -- Load/solve relax    =       1.82e-02
+ - Iterative algorithm  =       1.02e+03
+ -- Solve MIPs          =       1.02e+03
+ -- Solve conic model   =       5.24e-02
+ -- Process conic data  =       3.02e-04
+ -- Add conic solution  =       9.95e-05
+ -- Add dual cuts       =       8.80e-04
+ -- Use outer inf/cuts  =       1.84e-04
+
+WARNING: Solver does not appear to support adding constraints to an existing model. Hot-start is disabled.
+WARNING: If matrix A has nonzero entries smaller than zero tolerance, performance may be improved by fixing these values to zero
+WARNING: Not solved to optimality, status: UserLimit
+WARNING: Not solved to optimality, status: UserLimit
+WARNING: Not solved to optimality, status: UserLimit
+#STATUS# Optimal
+#OBJVAL# 528766.279843932
+#OBJBOUND# 528766.2798631706
+#TIMESOLVER# 1023.9206969738007
+#TIMEALL# 1023.9210240840912
+#SOLUTION# [1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,1.0,0.0,0.0,1.0,0.0,0.0,1.0,0.0,0.0,1.0,0.0,0.0,1.0,0.0,0.0,1.0,0.0,0.0,1.0,0.724252,0.832734,0.722545,0.794196,0.734249,0.731706,0.739363,0.813409,5.92584e-9,6.16276e-9,0.420039,-2.39428e-8,-2.43426e-8,0.454363,1.63892e-8,1.69304e-8,0.419466,1.36354e-9,1.38573e-9,0.442647,6.92671e-9,7.22807e-9,0.423383,6.96704e-9,7.20813e-9,0.422536,7.02452e-9,7.21055e-9,0.425078,-1.44384e-8,-1.45036e-8,0.44855,0.0,0.362126,0.362126,0.152106,0.416367,0.416367,0.189185,0.361272,0.361272,0.151539,0.397098,0.397098,0.175774,0.367125,0.367125,0.155433,0.365853,0.365853,0.154585,0.369681,0.369681,0.157142,0.406704,0.406704,0.182429,1.72425,1.72425,1.72425,1.83273,1.83273,1.83273,1.72254,1.72254,1.72254,1.7942,1.7942,1.7942,1.73425,1.73425,1.73425,1.73171,1.73171,1.73171,1.73936,1.73936,1.73936,1.81341,1.81341,1.81341,0.724252,0.724252,0.724252,0.832734,0.832734,0.832734,0.722545,0.722545,0.722544,0.794196,0.794196,0.794196,0.734249,0.734249,0.734249,0.731706,0.731706,0.731706,0.739363,0.739363,0.739363,0.813409,0.813409,0.813409]

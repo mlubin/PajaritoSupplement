@@ -1,0 +1,97 @@
+WARNING: Method definition require(Symbol) in module Base at loading.jl:345 overwritten in module ConicBenchmarkUtilities at /home/ubuntu/.julia/v0.5/Requires/src/require.jl:12.
+WARNING: Base.ASCIIString is deprecated, use String instead.
+  likely near /home/ubuntu/run.jl:185
+WARNING: Base.ASCIIString is deprecated, use String instead.
+  likely near /home/ubuntu/run.jl:185
+WARNING: Base.ASCIIString is deprecated, use String instead.
+  likely near /home/ubuntu/run.jl:185
+WARNING: Base.ASCIIString is deprecated, use String instead.
+  likely near /home/ubuntu/run.jl:185
+#SOLVERNAME# MOSEK_MISOCP
+#SOLVER# Mosek.MosekMathProgSolverInterface.MosekSolver(Any[(:LOG,1),(:NUM_THREADS,1),(:OPTIMIZER_MAX_TIME,3600.0),(:MIO_TOL_REL_GAP,1.0e-5)])
+#FILENAME# estein5_A.cbf.gz
+#INSTANCE# estein5_A
+#TIMELIMIT# 3600.0
+Problem
+  Name                   :                 
+  Objective sense        : min             
+  Type                   : CONIC (conic optimization problem)
+  Constraints            : 211             
+  Cones                  : 18              
+  Scalar variables       : 132             
+  Matrix variables       : 0               
+  Integer variables      : 18              
+
+Optimizer started.
+Mixed integer optimizer started.
+Threads used: 1
+Presolve started.
+Presolve terminated. Time = 0.00
+Presolved problem: 87 variables, 69 constraints, 166 non-zeros
+Presolved problem: 0 general integer, 16 binary, 71 continuous
+Clique table size: 5
+BRANCHES RELAXS   ACT_NDS  DEPTH    BEST_INT_OBJ         BEST_RELAX_OBJ       REL_GAP(%)  TIME  
+0        1        0        0        NA                   -1.7279652878e-11    NA          0.0   
+0        1        0        0        1.2183493816e+00     -1.7279652878e-11    100.00      0.0   
+0        1        0        0        1.0948033057e+00     -1.7279652878e-11    100.00      0.0   
+Cut generation started.
+0        2        0        0        1.0948033057e+00     -1.7279652878e-11    100.00      0.0   
+Cut generation terminated. Time = 0.00
+15       18       14       10       1.0948033057e+00     -2.2642905785e-12    100.00      0.1   
+29       32       24       5        1.0948033057e+00     -2.2642905785e-12    100.00      0.1   
+53       56       40       7        1.0699443934e+00     1.7501311371e-01     83.64       0.1   
+87       90       60       6        1.0699443934e+00     1.8659816665e-01     82.56       0.1   
+120      123      75       7        1.0699443934e+00     1.8777275278e-01     82.45       0.2   
+154      157      91       6        1.0699443934e+00     2.8188244547e-01     73.65       0.2   
+188      191      109      7        1.0699443934e+00     2.9879502359e-01     72.07       0.3   
+222      225      127      8        1.0699443934e+00     4.2281241468e-01     60.48       0.3   
+256      259      135      10       1.0699443934e+00     4.2561877658e-01     60.22       0.4   
+289      292      140      10       1.0699443872e+00     4.4061610073e-01     58.82       0.4   
+323      326      156      7        1.0699443872e+00     4.6988480780e-01     56.08       0.4   
+356      359      171      9        1.0699443872e+00     4.9334991475e-01     53.89       0.5   
+390      393      179      8        1.0453724765e+00     5.0322977457e-01     51.86       0.5   
+424      427      183      8        1.0453724765e+00     5.2087495052e-01     50.17       0.5   
+458      461      189      10       1.0453724765e+00     5.2355447187e-01     49.92       0.6   
+491      494      188      10       1.0453724765e+00     5.3661784111e-01     48.67       0.6   
+525      528      186      9        1.0453724765e+00     6.5023830751e-01     37.80       0.7   
+559      562      176      9        1.0453724765e+00     6.8203324907e-01     34.76       0.7   
+593      596      162      10       1.0453724765e+00     6.8661621387e-01     34.32       0.7   
+627      630      150      9        1.0453724765e+00     6.9761128508e-01     33.27       0.8   
+661      664      132      9        1.0453724765e+00     7.0591861332e-01     32.47       0.8   
+695      698      130      9        1.0453724765e+00     7.1806177122e-01     31.31       0.8   
+727      730      124      11       1.0453724765e+00     7.2527986085e-01     30.62       0.9   
+761      764      106      9        1.0453724765e+00     7.2598657402e-01     30.55       0.9   
+795      798      94       8        1.0453724765e+00     7.2663930691e-01     30.49       1.0   
+829      832      86       8        1.0453724765e+00     7.4390147683e-01     28.84       1.0   
+863      866      72       9        1.0453724765e+00     7.5027897378e-01     28.23       1.0   
+897      900      56       9        1.0453724765e+00     7.5074800245e-01     28.18       1.1   
+931      934      38       9        1.0453724765e+00     7.5074951931e-01     28.18       1.1   
+965      968      6        10       1.0453724765e+00     9.7182831580e-01     7.04        1.1   
+An optimal solution satisfying the relative gap tolerance of 1.00e-03(%) has been located.
+The relative gap is 0.00e+00(%).
+An optimal solution satisfying the absolute gap tolerance of 0.00e+00 has been located.
+The absolute gap is 0.00e+00.
+
+Objective of best integer solution : 1.045372476472e+00      
+Best objective bound               : 1.045372476472e+00      
+Construct solution objective       : Not employed
+Construct solution # roundings     : 0
+User objective cut value           : 0
+Number of cuts generated           : 0
+Number of branches                 : 971
+Number of relaxations solved       : 974
+Number of interior point iterations: 8794
+Number of simplex iterations       : 0
+Time spend presolving the root     : 0.00
+Time spend in the heuristic        : 0.00
+Time spend in the sub optimizers   : 0.00
+  Time spend optimizing the root   : 0.00
+Mixed integer optimizer terminated. Time: 1.13
+
+Optimizer terminated. Time: 1.13    
+#STATUS# Optimal
+#OBJVAL# 1.0453724764717511
+#OBJBOUND# 1.0453724764717511
+#TIMESOLVER# 1.133302927017212
+#TIMEALL# 2.2288169860839844
+#SOLUTION# [0.655389,0.641632,0.758739,0.488746,0.420496,0.62496,0.493351,0.163,-0.148655,0.0598003,0.0596504,0.00423069,0.493351,0.397893,-0.131983,0.493351,-0.249389,0.0047705,0.493351,-0.352739,0.157656,0.0258822,-0.0144955,0.0214422,0.493351,0.0119235,-0.340834,0.209006,-0.0914266,-0.187948,0.493351,0.246816,-0.324162,0.493351,-0.327003,-0.206024,0.493351,-0.430353,-0.0531383,0.210567,-0.0921095,-0.189352,0.120094,0.0525325,0.107994,0.493351,-0.0508176,0.26088,0.493351,0.287425,0.124666,0.18454,-0.10335,0.152885,0.235484,0.234893,0.0166717,0.493351,0.338243,-0.136213,-0.0,0.0598003,-0.0,-0.0,-0.0,0.0258822,-0.0,0.209006,-0.0,-0.0,-0.0,0.210567,0.120094,-0.0,-0.0,0.18454,0.235484,-0.0,-0.0,1.0,0.0,-0.0,0.0,1.0,-0.0,1.0,0.0,-0.0,0.0,1.0,1.0,-0.0,0.0,1.0,1.0,0.0,1.0,0.0,1.0,1.0,1.0,0.0,1.0,0.0,1.0,1.0,1.0,0.0,0.0,1.0,1.0,0.0,0.0,1.0,0.0,0.433551,0.0,0.0,0.0,0.467469,0.0,0.284345,0.0,0.0,0.0,0.282784,0.373257,0.0,0.0,0.308811,0.257867,0.0]

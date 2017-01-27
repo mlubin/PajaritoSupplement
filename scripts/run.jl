@@ -1,9 +1,9 @@
 using ConicBenchmarkUtilities
 using Pajarito
-#using ECOS
+using ECOS
 #using ConicIP
-#using Mosek
-#using Gurobi
+using Mosek
+using CPLEX
 #using Cbc
 #using SCIP
 using ConicNonlinearBridge
@@ -128,18 +128,18 @@ solvermap = Dict(
     (["SCIP"],quote ConicNLPWrapper(nlp_solver=SCIPSolver("display/verblevel", 1, "limits/gap", rgap, "limits/time", tlim), soc_as_quadratic=true, disaggregate_soc=true) end),
 
     # COMMERCIAL
-    "PAJ_GUROBI_MOSEK" =>
-    (["Gurobi","Mosek"],quote PajaritoSolver(mip_solver=GurobiSolver(OutputFlag=0, Threads=1, TimeLimit=tlim, MIPGap=0.), cont_solver=MosekSolver(LOG=1, NUM_THREADS=1, OPTIMIZER_MAX_TIME=120.), log_level=logl, timeout=tlim, rel_gap=rgap) end),
-    "PAJ_MSD_GUROBI_MOSEK" =>
-    (["Gurobi","Mosek"],quote PajaritoSolver(mip_solver=GurobiSolver(OutputFlag=0, Threads=1, TimeLimit=tlim, MIPGap=rgap), cont_solver=MosekSolver(LOG=1, NUM_THREADS=1, OPTIMIZER_MAX_TIME=120.), log_level=logl, timeout=tlim, rel_gap=rgap, mip_solver_drives=true) end),
-    "PAJ_GUROBI_ECOS" =>
-    (["Gurobi","ECOS"],quote PajaritoSolver(mip_solver=GurobiSolver(OutputFlag=0, Threads=1, TimeLimit=tlim, MIPGap=0.), cont_solver=ECOSSolver(verbose=false), log_level=logl, timeout=tlim, rel_gap=rgap) end),
-    "PAJ_MSD_GUROBI_ECOS" =>
-    (["Gurobi","ECOS"],quote PajaritoSolver(mip_solver=GurobiSolver(OutputFlag=0, Threads=1, TimeLimit=tlim, MIPGap=rgap), cont_solver=ECOSSolver(verbose=false), log_level=logl, timeout=tlim, rel_gap=rgap, mip_solver_drives=true) end),
-    "GUROBI_MISOCP" =>
-    (["Gurobi"],quote GurobiSolver(OutputFlag=1, Threads=1, TimeLimit=tlim, MIPGap=rgap) end),
-    "MOSEK_MISOCP" =>
-    (["Mosek"],quote MosekSolver(LOG=1, NUM_THREADS=1, OPTIMIZER_MAX_TIME=tlim, MIO_TOL_REL_GAP=rgap) end),
+    "PAJ_CPLEX_MOSEK" =>
+    (["CPLEX","Mosek"],quote PajaritoSolver(mip_solver=CplexSolver(), cont_solver=MosekSolver(LOG=1, NUM_THREADS=1, OPTIMIZER_MAX_TIME=120.), log_level=logl, timeout=tlim, rel_gap=rgap) end),
+    "PAJ_MSD_CPLEX_MOSEK" =>
+    (["CPLEX","Mosek"],quote PajaritoSolver(mip_solver=CplexSolver(), cont_solver=MosekSolver(LOG=1, NUM_THREADS=1, OPTIMIZER_MAX_TIME=120.), log_level=logl, timeout=tlim, rel_gap=rgap, mip_solver_drives=true) end),
+    "PAJ_CPLEX_ECOS" =>
+    (["CPLEX","ECOS"],quote PajaritoSolver(mip_solver=CplexSolver(), cont_solver=ECOSSolver(verbose=false), log_level=logl, timeout=tlim, rel_gap=rgap) end),
+    "PAJ_MSD_CPLEX_ECOS" =>
+    (["CPLEX","ECOS"],quote PajaritoSolver(mip_solver=CplexSolver(), cont_solver=ECOSSolver(verbose=false), log_level=logl, timeout=tlim, rel_gap=rgap, mip_solver_drives=true) end),
+    # "CPLEX_MISOCP" =>
+    # (["CPLEX"],quote CplexSolver(OutputFlag=1, Threads=1, TimeLimit=tlim, MIPGap=rgap) end),
+    # "MOSEK_MISOCP" =>
+    # (["Mosek"],quote MosekSolver(LOG=1, NUM_THREADS=1, OPTIMIZER_MAX_TIME=tlim, MIO_TOL_REL_GAP=rgap) end),
 )
 
 
@@ -172,16 +172,16 @@ tlim = parse(Float64, ARGS[2])
 datafolder = ARGS[3]
 
 # Force Pajarito to compile on a small instance for the solver to avoid measuring compilation time, keep quiet
-if startswith(solvername, "PAJ")
-    TT = STDOUT
-    open("/dev/null", "w") do fd
-        redirect_stdout(fd)
-        instance = readcbfdata(joinpath(datafolder, "estein", "estein4_A.cbf.gz"))
-        solver = getsolver(solvername, 20., 0, rgap)
-        solveprint(instance, solver)
-    end
-    redirect_stdout(TT)
-end
+# if startswith(solvername, "PAJ")
+#     TT = STDOUT
+#     open("/dev/null", "w") do fd
+#         redirect_stdout(fd)
+#         instance = readcbfdata(joinpath(datafolder, "estein", "estein4_A.cbf.gz"))
+#         solver = getsolver(solvername, 20., 0, rgap)
+#         solveprint(instance, solver)
+#     end
+#     redirect_stdout(TT)
+# end
 
 instancename = ARGS[4]
 

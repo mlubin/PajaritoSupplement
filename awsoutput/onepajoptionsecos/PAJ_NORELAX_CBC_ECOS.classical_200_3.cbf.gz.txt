@@ -1,0 +1,60 @@
+WARNING: Method definition require(Symbol) in module Base at loading.jl:345 overwritten in module ConicBenchmarkUtilities at /home/ubuntu/.julia/v0.5/Requires/src/require.jl:12.
+#SOLVERNAME# PAJ_NORELAX_CBC_ECOS
+#SOLVER# Pajarito.PajaritoSolver(2,3600.0,1.0e-5,false,Cbc.CbcMathProgSolverInterface.CbcSolver(Any[(:logLevel,0),(:ratioGap,0.0),(:seconds,3600.0)]),MathProgBase.DefaultMIPSolver(),0,false,true,ECOS.ECOSSolver(Any[(:verbose,false)]),false,false,false,true,false,true,false,true,true,true,true,false,false,true,false,false,false,false,1.0e-10,0.0001,1.0e-6,0.01,1.0e-6)
+#FILENAME# classical_200_3.cbf.gz
+#INSTANCE# classical_200_3
+#TIMELIMIT# 3600.0
+
+Transforming original data......Done     0.01s
+
+Creating conic model data......Done     0.00s
+
+Creating MIP model......Done     0.02s
+
+Cone types summary:
+Cone       | Count    | Min dim  | Max dim 
+       SOC |        1 |      201 |      201
+
+Creating conic subproblem model......Done     0.00s
+
+Starting iterative outer approximation algorithm
+
+Iter | Best obj       | OA obj         | Rel gap     | Time (s)   
+   1 |           +Inf |  -1.693070e-01 |      Infeas |   2.716e+01
+   2 |           +Inf |  -1.367454e-01 |      Infeas |   3.322e+03
+
+Pajarito MICP solve summary:
+ - Total time (s)       =       3.60e+03
+ - Status               =      UserLimit
+ - Best feasible obj.   =           +Inf
+ - Final OA obj. bound  =  -1.367454e-01
+ - Relative opt. gap    =            NaN
+ - MIP solve count      =              3
+ - Conic solve count    =              2
+ - Feas. solution count =              0
+ - Integer repeat count =              0
+
+Timers (s):
+ - Setup                =       7.24e-02
+ -- Transform data      =       5.41e-03
+ -- Create conic data   =       1.52e-03
+ -- Create MIP data     =       1.92e-02
+ -- Load/solve relax    =       0.00e+00
+ - Iterative algorithm  =       3.60e+03
+ -- Solve MIPs          =       3.60e+03
+ -- Solve conic model   =       6.03e-01
+ -- Process conic data  =       2.24e-04
+ -- Add conic solution  =       0.00e+00
+ -- Add dual cuts       =       4.54e-04
+ -- Use outer inf/cuts  =       3.86e-05
+
+WARNING: Solver does not appear to support adding constraints to an existing model. Hot-start is disabled.
+WARNING: If matrix A has nonzero entries smaller than zero tolerance, performance may be improved by fixing these values to zero
+WARNING: Not solving the conic continuous relaxation problem; Pajarito may return status :MIPFailure if the outer approximation MIP is unbounded
+WARNING: Not solved to optimality, status: UserLimit
+#STATUS# UserLimit
+#OBJVAL# Inf
+#OBJBOUND# -0.136745404530736
+#TIMESOLVER# 3600.7380340099335
+#TIMEALL# 3600.738296985626
+#SOLUTION# [NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN]

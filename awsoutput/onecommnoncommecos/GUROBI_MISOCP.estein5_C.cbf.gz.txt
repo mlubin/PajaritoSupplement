@@ -1,0 +1,60 @@
+WARNING: Method definition require(Symbol) in module Base at loading.jl:345 overwritten in module ConicBenchmarkUtilities at /home/ubuntu/.julia/v0.5/Requires/src/require.jl:12.
+WARNING: Base.ASCIIString is deprecated, use String instead.
+  likely near /home/ubuntu/run.jl:185
+WARNING: Base.ASCIIString is deprecated, use String instead.
+  likely near /home/ubuntu/run.jl:185
+WARNING: Base.ASCIIString is deprecated, use String instead.
+  likely near /home/ubuntu/run.jl:185
+WARNING: Base.ASCIIString is deprecated, use String instead.
+  likely near /home/ubuntu/run.jl:185
+Optimize a model with 211 rows, 132 columns and 258 nonzeros
+Model has 18 quadratic constraints
+Variable types: 114 continuous, 18 integer (0 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  QMatrix range    [1e+00, 1e+00]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [1e-01, 1e+00]
+Presolve removed 164 rows and 67 columns
+Presolve time: 0.00s
+Presolved: 47 rows, 65 columns, 105 nonzeros
+Variable types: 54 continuous, 11 integer (11 binary)
+
+Root relaxation: objective 1.776357e-15, 17 iterations, 0.00 seconds
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+H    0     0                       1.7993262  -11.31591   729%     -    0s
+*    0     0               0       1.7993262    0.00000   100%     -    0s
+     0     0    0.00000    0    7    1.79933    0.00000   100%     -    0s
+     0     0    0.00000    0    7    1.79933    0.00000   100%     -    0s
+     0     0    0.00000    0    5    1.79933    0.00000   100%     -    0s
+     0     2    0.00000    0    5    1.79933    0.00000   100%     -    0s
+*   10    10               8       1.7987693    0.00000   100%   9.6    0s
+*   21    15               8       1.7142727    0.00000   100%   9.1    0s
+*   25    17               9       1.5422770    0.00000   100%   9.3    0s
+*   26    16               9       1.5422770    0.00000   100%   9.3    0s
+*   28    14               9       1.4990783    0.00000   100%   9.0    0s
+*   79    27               9       1.4990783    0.00000   100%   8.5    0s
+
+Explored 773 nodes (6768 simplex iterations) in 0.23 seconds
+Thread count was 1 (of 4 available processors)
+
+Solution count 10: 1.49908 1.49908 1.49908 ... 1.79877
+Pool objective bound 1.49908
+
+Optimal solution found (tolerance 1.00e-05)
+Best objective 1.499078267066e+00, best bound 1.499078267066e+00, gap 0.0000%
+#SOLVERNAME# GUROBI_MISOCP
+#SOLVER# Gurobi.GurobiSolver(nothing,Any[(:OutputFlag,1),(:Threads,1),(:TimeLimit,3600.0),(:MIPGap,1.0e-5)])
+#FILENAME# estein5_C.cbf.gz
+#INSTANCE# estein5_C
+#TIMELIMIT# 3600.0
+#STATUS# Optimal
+#OBJVAL# 1.4990782670662766
+#OBJBOUND# 1.499078267066274
+#TIMESOLVER# 0.23137807846069336
+#TIMEALL# 1.6564669609069824
+#SOLUTION# [0.789565,0.655544,0.625525,0.527916,0.481826,0.586309,0.330923,0.192384,0.269255,1.02872,0.356424,0.396883,1.02872,0.500123,0.33849,1.71969e-8,5.17054e-9,2.04953e-9,1.02872,0.16404,0.127628,1.02872,0.307739,0.0692351,1.02872,-0.112065,-0.502865,0.37882,0.0519752,-0.375237,1.02872,0.195674,-0.43363,1.02872,-0.307739,-0.069235,1.02872,-0.143699,0.0583926,1.12435e-7,-4.30731e-9,9.81021e-8,1.02872,-0.685362,-0.267236,1.02872,-0.521322,-0.139608,0.426384,-0.377623,-0.198001,0.207841,0.16404,0.127628,1.02872,0.307739,0.0692351,0.15511,0.143699,-0.0583925,0.330923,2.22045e-16,2.22045e-16,1.71969e-8,2.22045e-16,2.22045e-16,2.22045e-16,0.37882,2.22045e-16,2.22045e-16,2.22045e-16,1.12435e-7,2.22045e-16,2.22045e-16,0.426384,0.207841,2.22045e-16,0.15511,1.0,0.0,0.0,1.0,-0.0,0.0,0.0,1.0,0.0,0.0,-0.0,1.0,0.0,0.0,1.0,1.0,0.0,1.0,0.0,1.0,1.0,0.0,1.0,1.0,1.0,0.0,1.0,1.0,1.0,0.0,1.0,1.0,0.0,0.0,1.0,0.0,0.697796,-2.22045e-16,-2.22045e-16,1.02872,-2.22045e-16,-2.22045e-16,-2.22045e-16,0.649899,-2.22045e-16,-2.22045e-16,-2.22045e-16,1.02872,-2.22045e-16,-2.22045e-16,0.602335,0.820878,-2.22045e-16,0.873609]

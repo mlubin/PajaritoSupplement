@@ -1,0 +1,45 @@
+WARNING: Method definition require(Symbol) in module Base at loading.jl:345 overwritten in module ConicBenchmarkUtilities at /home/ubuntu/.julia/v0.5/Requires/src/require.jl:12.
+WARNING: Base.ASCIIString is deprecated, use String instead.
+  likely near /home/ubuntu/run.jl:171
+WARNING: Base.ASCIIString is deprecated, use String instead.
+  likely near /home/ubuntu/run.jl:171
+WARNING: Base.ASCIIString is deprecated, use String instead.
+  likely near /home/ubuntu/run.jl:171
+WARNING: Base.ASCIIString is deprecated, use String instead.
+  likely near /home/ubuntu/run.jl:171
+#SOLVERNAME# PAJ_SCIP_ECOS
+#SOLVER# Pajarito.PajaritoSolver(2,3600.0,1.0e-5,false,SCIP.SCIPSolver(("display/verblevel",0,"limits/gap",0.0,"limits/time",3600.0)),MathProgBase.DefaultMIPSolver(),0,false,true,ECOS.ECOSSolver(Any[(:verbose,false)]),true,false,false,true,false,true,false,true,true,true,true,false,false,true,false,false,false,false,1.0e-10,0.0001,1.0e-6,0.01,1.0e-6)
+#FILENAME# sssd-strong-20-8.cbf.gz
+#INSTANCE# sssd-strong-20-8
+#TIMELIMIT# 3600.0
+
+Transforming original data......Done     0.00s
+
+Creating conic model data......Done     0.00s
+
+Creating MIP model......Done     0.00s
+
+Cone types summary:
+Cone       | Count    | Min dim  | Max dim 
+       SOC |       24 |        3 |        3
+
+Solving conic relaxation......Done     0.01s
+ - Relaxation status    =        Optimal
+ - Relaxation objective =  403909.619142
+
+Creating conic subproblem model......Done     0.00s
+
+Starting iterative outer approximation algorithm
+
+Iter | Best obj       | OA obj         | Rel gap     | Time (s)   
+   1 |  +6.159913e+05 |  +5.850574e+05 |   5.022e-02 |   5.014e+01
+
+signal (15): Terminated
+while loading /home/ubuntu/run.jl, in expression starting on line 196
+unknown function (ip: 0x7f280b3e110f)
+unknown function (ip: 0xffffffffffffffff)
+Allocations: 17023183 (Pool: 17017672; Big: 5511); GC: 28
+
+signal (11): Segmentation fault
+while loading /home/ubuntu/run.jl, in expression starting on line 196
+#STATUS# KilledTime

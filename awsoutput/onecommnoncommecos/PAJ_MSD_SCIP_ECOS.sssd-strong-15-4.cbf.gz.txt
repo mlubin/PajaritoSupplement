@@ -1,0 +1,81 @@
+WARNING: Method definition require(Symbol) in module Base at loading.jl:345 overwritten in module ConicBenchmarkUtilities at /home/ubuntu/.julia/v0.5/Requires/src/require.jl:12.
+WARNING: The curly syntax (sum{},prod{},norm2{}) is deprecated in favor of the new generator syntax (sum(),prod(),norm()).
+WARNING: Replace sum{x[i] ^ 2,i in ind[2:length(ind)]} with sum(x[i] ^ 2 for i in ind[2:length(ind)]).
+WARNING: Replace sum{x[i] ^ 2,i in ind[3:length(ind)]} with sum(x[i] ^ 2 for i in ind[3:length(ind)]).
+WARNING: Replace sum{A_vals[k] * x[A_colidx[k]],k in nzrange(A_byrow,ind[i])} with sum(A_vals[k] * x[A_colidx[k]] for k in nzrange(A_byrow,ind[i])).
+WARNING: The curly syntax (sum{},prod{},norm2{}) is deprecated in favor of the new generator syntax (sum(),prod(),norm()).
+WARNING: Replace norm2{vars[j],j in 2:len} with norm(vars[j] for j in 2:len).
+WARNING: Replace norm2{if k == ind_min
+        vars_smat[ind_min,ind_min] - z_expr
+    else 
+        2 * smat[k,ind_min] * smat[k,v] * vars_smat[k,ind_min]
+    end,k in 1:dim} with norm(if k == ind_min
+    vars_smat[ind_min,ind_min] - z_expr
+else 
+    2 * smat[k,ind_min] * smat[k,v] * vars_smat[k,ind_min]
+end for k in 1:dim).
+WARNING: Base.ASCIIString is deprecated, use String instead.
+  likely near /home/ubuntu/run.jl:171
+WARNING: Base.ASCIIString is deprecated, use String instead.
+  likely near /home/ubuntu/run.jl:171
+WARNING: Base.ASCIIString is deprecated, use String instead.
+  likely near /home/ubuntu/run.jl:171
+WARNING: Base.ASCIIString is deprecated, use String instead.
+  likely near /home/ubuntu/run.jl:171
+#SOLVERNAME# PAJ_MSD_SCIP_ECOS
+#SOLVER# Pajarito.PajaritoSolver(2,3600.0,1.0e-5,true,SCIP.SCIPSolver(("display/verblevel",0,"limits/gap",1.0e-5,"limits/time",3600.0)),MathProgBase.DefaultMIPSolver(),0,false,true,ECOS.ECOSSolver(Any[(:verbose,false)]),true,false,false,true,false,true,false,true,true,true,true,false,false,true,false,false,false,false,1.0e-10,0.0001,1.0e-6,0.01,1.0e-6)
+#FILENAME# sssd-strong-15-4.cbf.gz
+#INSTANCE# sssd-strong-15-4
+#TIMELIMIT# 3600.0
+
+Transforming original data......Done     0.00s
+
+Creating conic model data......Done     0.00s
+
+Creating MIP model......Done     0.00s
+
+Cone types summary:
+Cone       | Count    | Min dim  | Max dim 
+       SOC |       12 |        3 |        3
+
+Solving conic relaxation......Done     0.01s
+ - Relaxation status    =        Optimal
+ - Relaxation objective =  236044.067217
+
+Creating conic subproblem model......Done     0.00s
+
+Starting MIP-solver-driven outer approximation algorithm
+
+Pajarito MICP solve summary:
+ - Total time (s)       =       7.56e-02
+ - Status               =   ConicFailure
+ - Best feasible obj.   =           +Inf
+ - Final OA obj. bound  =  -1.000000e+20
+ - Relative opt. gap    =            NaN
+ - Conic solve count    =              1
+ - Feas. solution count =              0
+ - Integer repeat count =              0
+
+Timers (s):
+ - Setup                =       5.03e-02
+ -- Transform data      =       1.00e-04
+ -- Create conic data   =       6.77e-05
+ -- Create MIP data     =       7.08e-04
+ -- Load/solve relax    =       8.56e-03
+ - MIP-driven algorithm =       2.53e-02
+ -- Solve conic model   =       6.00e-03
+ -- Process conic data  =       7.70e-05
+ -- Add conic solution  =       0.00e+00
+ -- Add dual cuts       =       4.74e-05
+ -- Use outer inf/cuts  =       9.34e-06
+
+#STATUS# ConicFailure
+#OBJVAL# Inf
+#OBJBOUND# -1.0e20
+#TIMESOLVER# 0.07557296752929688
+#TIMEALL# 0.07889699935913086
+#SOLUTION# [NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN]
+WARNING: If matrix A has nonzero entries smaller than zero tolerance, performance may be improved by fixing these values to zero
+WARNING: For the MIP-solver-driven algorithm, optimality tolerance must be specified as MIP solver option, not Pajarito option
+WARNING: Continuous solver returned conic subproblem status UserLimit: terminating Pajarito
+WARNING: Not solved to optimality, status: UserLimit

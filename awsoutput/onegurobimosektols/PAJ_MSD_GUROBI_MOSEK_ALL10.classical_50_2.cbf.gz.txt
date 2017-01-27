@@ -1,0 +1,56 @@
+WARNING: Method definition require(Symbol) in module Base at loading.jl:345 overwritten in module ConicBenchmarkUtilities at /home/ubuntu/.julia/v0.5/Requires/src/require.jl:12.
+#SOLVERNAME# PAJ_MSD_GUROBI_MOSEK_ALL10
+#SOLVER# Pajarito.PajaritoSolver(2,3600.0,1.0e-5,true,Gurobi.GurobiSolver(nothing,Any[(:OutputFlag,0),(:Threads,1),(:TimeLimit,3600.0),(:MIPGap,1.0e-5)]),MathProgBase.DefaultMIPSolver(),0,false,true,Mosek.MosekMathProgSolverInterface.MosekSolver(Any[(:LOG,0),(:NUM_THREADS,1),(:OPTIMIZER_MAX_TIME,120.0),(:INTPNT_CO_TOL_REL_GAP,1.0e-10),(:INTPNT_CO_TOL_PFEAS,1.0e-10),(:INTPNT_CO_TOL_DFEAS,1.0e-10)]),true,false,false,true,false,true,false,true,true,true,true,false,false,true,false,false,false,false,1.0e-10,0.0001,1.0e-6,0.01,1.0e-6)
+#FILENAME# classical_50_2.cbf.gz
+#INSTANCE# classical_50_2
+#TIMELIMIT# 3600.0
+
+Transforming original data......Done     0.00s
+
+Creating conic model data......Done     0.00s
+
+Creating MIP model......Done     0.00s
+
+Cone types summary:
+Cone       | Count    | Min dim  | Max dim 
+       SOC |        1 |       51 |       51
+
+Solving conic relaxation......Done     0.01s
+ - Relaxation status    =        Optimal
+ - Relaxation objective =      -0.092609
+
+Creating conic subproblem model......Done     0.00s
+
+Starting MIP-solver-driven outer approximation algorithm
+
+Pajarito MICP solve summary:
+ - Total time (s)       =       3.27e+00
+ - Status               =        Optimal
+ - Best feasible obj.   =  -9.052797e-02
+ - Final OA obj. bound  =  -9.071063e-02
+ - Relative opt. gap    =      2.017e-03
+ - Conic solve count    =             10
+ - Feas. solution count =             10
+ - Integer repeat count =              4
+
+Timers (s):
+ - Setup                =       6.66e-02
+ -- Transform data      =       3.46e-04
+ -- Create conic data   =       2.02e-04
+ -- Create MIP data     =       1.37e-03
+ -- Load/solve relax    =       5.86e-03
+ - MIP-driven algorithm =       3.20e+00
+ -- Solve conic model   =       1.85e-02
+ -- Process conic data  =       1.89e-03
+ -- Add conic solution  =       6.44e-05
+ -- Add dual cuts       =       2.39e-03
+ -- Use outer inf/cuts  =       1.26e-04
+
+WARNING: If matrix A has nonzero entries smaller than zero tolerance, performance may be improved by fixing these values to zero
+WARNING: For the MIP-solver-driven algorithm, optimality tolerance must be specified as MIP solver option, not Pajarito option
+#STATUS# Optimal
+#OBJVAL# -0.09052797459899473
+#OBJBOUND# -0.09071062970009136
+#TIMESOLVER# 3.2668168544769287
+#TIMEALL# 3.2709970474243164
+#SOLUTION# [0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.182021,0.0829395,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0901365,0.0,0.0703722,0.0,0.0,0.0,0.0,0.0,0.0,0.0426575,0.0948705,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.122847,0.0927249,0.14455,0.0,0.0,0.0768815,0.0,0.0,-0.0,0.0,-0.0,-0.0,-0.0,-0.0,-0.0,-0.0,-0.0,-0.0,1.0,1.0,-0.0,-0.0,-0.0,0.0,-0.0,-0.0,-0.0,0.0,0.0,-0.0,0.0,-0.0,-0.0,1.0,-0.0,1.0,-0.0,0.0,-0.0,-0.0,-0.0,-0.0,1.0,1.0,-0.0,0.0,-0.0,-0.0,-0.0,0.0,-0.0,1.0,1.0,1.0,-0.0,-0.0,1.0,-0.0,0.0110259,0.0112617,0.0203135,0.0132527,0.0111083,0.015192,0.0202665,0.004851,0.0111913,0.0195403,0.0574789,0.0552957,0.0173699,0.0193281,0.0134384,0.00850523,0.0158515,0.0176889,0.0203608,0.0239166,0.0105785,0.00631526,0.0158783,0.0144978,0.00939647,0.0344009,0.0355197,0.077538,0.0216362,0.0179739,0.0110065,0.0172002,0.0130231,0.0210635,0.0406623,0.0426764,0.00958243,0.0196515,0.0259569,0.0116033,0.01578,0.00967743,0.0274552,0.0300318,0.0680629,0.0487068,0.0190665,0.0179908,0.0564114,0.0203117,0.2]

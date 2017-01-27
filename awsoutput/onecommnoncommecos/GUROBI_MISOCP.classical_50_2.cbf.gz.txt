@@ -1,0 +1,74 @@
+WARNING: Method definition require(Symbol) in module Base at loading.jl:345 overwritten in module ConicBenchmarkUtilities at /home/ubuntu/.julia/v0.5/Requires/src/require.jl:12.
+WARNING: Base.ASCIIString is deprecated, use String instead.
+  likely near /home/ubuntu/run.jl:185
+WARNING: Base.ASCIIString is deprecated, use String instead.
+  likely near /home/ubuntu/run.jl:185
+WARNING: Base.ASCIIString is deprecated, use String instead.
+  likely near /home/ubuntu/run.jl:185
+WARNING: Base.ASCIIString is deprecated, use String instead.
+  likely near /home/ubuntu/run.jl:185
+Optimize a model with 255 rows, 203 columns and 2953 nonzeros
+Model has 1 quadratic constraint
+Variable types: 153 continuous, 50 integer (0 binary)
+Coefficient statistics:
+  Matrix range     [3e-05, 2e+00]
+  QMatrix range    [1e+00, 1e+00]
+  Objective range  [1e-02, 1e+00]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [2e-01, 1e+01]
+Presolve removed 153 rows and 53 columns
+Presolve time: 0.00s
+Presolved: 103 rows, 200 columns, 2790 nonzeros
+Variable types: 150 continuous, 50 integer (50 binary)
+
+Root relaxation: objective -1.612789e-01, 10 iterations, 0.00 seconds
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0   -0.09858    0    2          -   -0.09858      -     -    0s
+     0     0   -0.09562    0    5          -   -0.09562      -     -    0s
+     0     0   -0.09451    0    5          -   -0.09451      -     -    0s
+     0     0   -0.09407    0    7          -   -0.09407      -     -    0s
+     0     0   -0.09407    0    8          -   -0.09407      -     -    0s
+     0     0   -0.09349    0    9          -   -0.09349      -     -    0s
+     0     0   -0.09303    0   10          -   -0.09303      -     -    0s
+     0     0   -0.09287    0   11          -   -0.09287      -     -    0s
+     0     0   -0.09287    0   11          -   -0.09287      -     -    0s
+     0     2   -0.09287    0   11          -   -0.09287      -     -    0s
+*   29    29              19      -0.0848499   -0.09287  9.45%  11.6    0s
+*   37    31              23      -0.0852513   -0.09287  8.93%  13.9    0s
+*   42    34              28      -0.0859538   -0.09287  8.04%  13.0    0s
+*   75    56              19      -0.0865737   -0.09284  7.23%  14.6    0s
+*   86    61              28      -0.0871949   -0.09284  6.47%  14.5    0s
+*  154   111              18      -0.0875485   -0.09272  5.91%  17.3    0s
+*  292   161              24      -0.0882731   -0.09267  4.98%  18.2    0s
+*  325   144              23      -0.0898699   -0.09267  3.12%  18.1    0s
+*  341   131              31      -0.0899522   -0.09267  3.02%  18.2    0s
+*  623    88              30      -0.0900137   -0.09185  2.04%  17.8    1s
+*  996   123              24      -0.0903885   -0.09156  1.30%  16.1    1s
+* 1546   151              30      -0.0904151   -0.09127  0.94%  15.1    1s
+* 1572   113              27      -0.0905275   -0.09125  0.80%  15.1    1s
+
+Cutting planes:
+  Flow cover: 7
+
+Explored 2463 nodes (33449 simplex iterations) in 2.45 seconds
+Thread count was 1 (of 4 available processors)
+
+Solution count 10: -0.0905275 -0.0904151 -0.0903885 ... -0.0865737
+Pool objective bound -0.0905275
+
+Optimal solution found (tolerance 1.00e-05)
+Best objective -9.052745699446e-02, best bound -9.052745699446e-02, gap 0.0000%
+#SOLVERNAME# GUROBI_MISOCP
+#SOLVER# Gurobi.GurobiSolver(nothing,Any[(:OutputFlag,1),(:Threads,1),(:TimeLimit,3600.0),(:MIPGap,1.0e-5)])
+#FILENAME# classical_50_2.cbf.gz
+#INSTANCE# classical_50_2
+#TIMELIMIT# 3600.0
+#STATUS# Optimal
+#OBJVAL# -0.09052745699445669
+#OBJBOUND# -0.09052745699445669
+#TIMESOLVER# 2.451428174972534
+#TIMEALL# 4.043247938156128
+#SOLUTION# [0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.182044,0.0829915,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0902603,0.0,0.0703124,0.0,0.0,0.0,0.0,0.0,0.0,0.0426676,0.0947395,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.122717,0.0927815,0.144591,0.0,0.0,0.076896,0.0,0.0,-0.0,-0.0,-0.0,-0.0,-0.0,-0.0,0.0,-0.0,-0.0,-0.0,1.0,1.0,-0.0,-0.0,-0.0,0.0,-0.0,-0.0,-0.0,-0.0,-0.0,-0.0,-0.0,-0.0,-0.0,1.0,-0.0,1.0,0.0,-0.0,0.0,-0.0,-0.0,-0.0,1.0,1.0,-0.0,-0.0,-0.0,-0.0,-0.0,-0.0,0.0,1.0,1.0,1.0,-0.0,-0.0,1.0,-0.0,0.011026,0.0112633,0.0203137,0.0132534,0.0111058,0.0151948,0.02027,0.00485426,0.0111949,0.0195395,0.057489,0.0553224,0.0173689,0.0193242,0.0134368,0.00850475,0.0158516,0.017688,0.0203474,0.0239114,0.0105765,0.0063149,0.0158772,0.0144973,0.00939426,0.0344365,0.0355265,0.0774893,0.0216398,0.0179788,0.0110058,0.0172015,0.0130232,0.0210643,0.0406698,0.0426312,0.00958189,0.01964,0.0259578,0.0116033,0.0157795,0.00967994,0.0274547,0.0300071,0.0680984,0.048714,0.0190631,0.0179932,0.0564143,0.0203084,0.2,0.2,0.011026,0.0112633,0.0203137,0.0132534,0.0111058,0.0151948,0.02027,0.00485426,0.0111949,0.0195395,0.057489,0.0553224,0.0173689,0.0193242,0.0134368,0.00850475,0.0158516,0.017688,0.0203474,0.0239114,0.0105765,0.0063149,0.0158772,0.0144973,0.00939426,0.0344365,0.0355265,0.0774893,0.0216398,0.0179788,0.0110058,0.0172015,0.0130232,0.0210643,0.0406698,0.0426312,0.00958189,0.01964,0.0259578,0.0116033,0.0157795,0.00967994,0.0274547,0.0300071,0.0680984,0.048714,0.0190631,0.0179932,0.0564143,0.0203084]

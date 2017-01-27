@@ -1,0 +1,93 @@
+WARNING: Method definition require(Symbol) in module Base at loading.jl:345 overwritten in module ConicBenchmarkUtilities at /home/ubuntu/.julia/v0.5/Requires/src/require.jl:12.
+WARNING: The curly syntax (sum{},prod{},norm2{}) is deprecated in favor of the new generator syntax (sum(),prod(),norm()).
+WARNING: Replace sum{x[i] ^ 2,i in ind[2:length(ind)]} with sum(x[i] ^ 2 for i in ind[2:length(ind)]).
+WARNING: Replace sum{x[i] ^ 2,i in ind[3:length(ind)]} with sum(x[i] ^ 2 for i in ind[3:length(ind)]).
+WARNING: Replace sum{A_vals[k] * x[A_colidx[k]],k in nzrange(A_byrow,ind[i])} with sum(A_vals[k] * x[A_colidx[k]] for k in nzrange(A_byrow,ind[i])).
+WARNING: The curly syntax (sum{},prod{},norm2{}) is deprecated in favor of the new generator syntax (sum(),prod(),norm()).
+WARNING: Replace norm2{vars[j],j in 2:len} with norm(vars[j] for j in 2:len).
+WARNING: Replace norm2{if k == ind_min
+        vars_smat[ind_min,ind_min] - z_expr
+    else 
+        2 * smat[k,ind_min] * smat[k,v] * vars_smat[k,ind_min]
+    end,k in 1:dim} with norm(if k == ind_min
+    vars_smat[ind_min,ind_min] - z_expr
+else 
+    2 * smat[k,ind_min] * smat[k,v] * vars_smat[k,ind_min]
+end for k in 1:dim).
+WARNING: Base.ASCIIString is deprecated, use String instead.
+  likely near /home/ubuntu/run.jl:185
+WARNING: Base.ASCIIString is deprecated, use String instead.
+  likely near /home/ubuntu/run.jl:185
+WARNING: Base.ASCIIString is deprecated, use String instead.
+  likely near /home/ubuntu/run.jl:185
+WARNING: Base.ASCIIString is deprecated, use String instead.
+  likely near /home/ubuntu/run.jl:185
+Optimize a model with 180 rows, 161 columns and 408 nonzeros
+Model has 12 quadratic constraints
+Variable types: 89 continuous, 72 integer (0 binary)
+Coefficient statistics:
+  Matrix range     [6e-01, 8e+00]
+  QMatrix range    [1e+00, 1e+00]
+  Objective range  [3e+01, 8e+04]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 121 rows and 49 columns
+Presolve time: 0.02s
+Presolved: 59 rows, 112 columns, 240 nonzeros
+Variable types: 40 continuous, 72 integer (72 binary)
+
+Root relaxation: objective 8.474687e+04, 63 iterations, 0.00 seconds
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0 84746.8666    0   16          - 84746.8666      -     -    0s
+     0     0 194030.589    0   20          - 194030.589      -     -    0s
+     0     0 194040.192    0   22          - 194040.192      -     -    0s
+     0     0 227378.155    0   18          - 227378.155      -     -    0s
+     0     0 237211.050    0   20          - 237211.050      -     -    0s
+     0     0 250188.625    0   26          - 250188.625      -     -    0s
+     0     0 256593.729    0   27          - 256593.729      -     -    0s
+H    0     0                    341657.77298 256593.729  24.9%     -    0s
+     0     2 261585.466    0   16 341657.773 261585.466  23.4%     -    0s
+H   47    40                    333388.52450 309852.337  7.06%   2.9    0s
+*   47    41              40    333388.52450 309852.337  7.06%   3.0    0s
+*   48    36              40    330048.47808 309852.337  6.12%   3.0    0s
+H   82    55                    329535.70092 322255.474  2.21%   3.4    0s
+H  173   124                    329326.41949 322258.562  2.15%   2.8    0s
+H  389   220                    329258.11325 322548.810  2.04%   2.7    0s
+*  389   220              32    329258.10827 322548.810  2.04%   2.7    0s
+*  752   344              42    328739.00565 327419.790  0.40%   3.0    0s
+*  931   371              40    328647.57236 327497.467  0.35%   2.9    0s
+*  934   343              42    328502.77138 327497.467  0.31%   2.9    0s
+* 1074   342              41    328385.74929 327520.286  0.26%   2.9    0s
+* 3175  1124              35    328201.60792 327621.009  0.18%   2.5    0s
+* 3662  1219              34    328170.83954 327635.211  0.16%   2.5    0s
+* 3770  1135              29    328098.47228 327637.978  0.14%   2.5    0s
+* 4339  1261              33    328094.37631 327653.244  0.13%   2.5    0s
+* 4597  1292              28    328075.31508 327661.652  0.13%   2.5    0s
+* 7021  1374              30    327997.91870 327728.176  0.08%   2.5    0s
+
+Cutting planes:
+  Gomory: 1
+  Flow cover: 1
+
+Explored 12544 nodes (30781 simplex iterations) in 1.40 seconds
+Thread count was 1 (of 4 available processors)
+
+Solution count 10: 327998 328075 328094 ... 328739
+Pool objective bound 327995
+
+Optimal solution found (tolerance 1.00e-05)
+Best objective 3.279979186958e+05, best bound 3.279947228579e+05, gap 0.0010%
+#SOLVERNAME# GUROBI_MISOCP
+#SOLVER# Gurobi.GurobiSolver(nothing,Any[(:OutputFlag,1),(:Threads,1),(:TimeLimit,3600.0),(:MIPGap,1.0e-5)])
+#FILENAME# sssd-strong-15-4.cbf.gz
+#INSTANCE# sssd-strong-15-4
+#TIMELIMIT# 3600.0
+#STATUS# Optimal
+#OBJVAL# 327997.9186958249
+#OBJBOUND# 327994.72285789915
+#TIMESOLVER# 1.3975369930267334
+#TIMEALL# 3.0539450645446777
+#SOLUTION# [-0.0,0.0,1.0,-0.0,-0.0,-0.0,-0.0,1.0,1.0,0.0,0.0,-0.0,-0.0,-0.0,-0.0,1.0,-0.0,1.0,-0.0,-0.0,1.0,-0.0,-0.0,-0.0,0.0,-0.0,-0.0,1.0,1.0,-0.0,-0.0,0.0,-0.0,1.0,0.0,-0.0,-0.0,-0.0,1.0,-0.0,-0.0,-0.0,1.0,-0.0,-0.0,-0.0,1.0,-0.0,-0.0,1.0,-0.0,0.0,-0.0,-0.0,-0.0,1.0,1.0,-0.0,-0.0,-0.0,-0.0,-0.0,1.0,-0.0,-0.0,1.0,0.0,-0.0,1.0,-0.0,-0.0,1.0,0.987148,0.882115,1.02566,1.02164,0.0,0.0,0.496766,0.0,0.0,0.468683,0.0,0.0,0.506335,0.0,0.0,0.505352,0.0,0.493574,0.493574,0.245191,0.441058,0.441058,0.206716,0.512832,0.512832,0.259664,0.51082,0.51082,0.258144,0.987148,0.987149,1.98715,0.882115,0.882115,1.88212,1.02566,1.02566,2.02566,1.02164,1.02164,2.02164,0.987148,0.987148,0.987148,0.882115,0.882115,0.882115,1.02566,1.02566,1.02566,1.02164,1.02164,1.02164,1.39604,0.698019,0.987148,1.39604,0.698019,0.987148,2.81025,0.346753,0.987148,1.2475,0.62375,0.882115,1.2475,0.62375,0.882115,2.66171,0.292341,0.882115,1.45051,0.725253,1.02566,1.45051,0.725253,1.02566,2.86472,0.367221,1.02566,1.44482,0.722408,1.02164,1.44482,0.722408,1.02164,2.85903,0.365071,1.02164]

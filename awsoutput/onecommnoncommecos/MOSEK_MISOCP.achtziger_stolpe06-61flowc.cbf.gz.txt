@@ -1,0 +1,85 @@
+WARNING: Method definition require(Symbol) in module Base at loading.jl:345 overwritten in module ConicBenchmarkUtilities at /home/ubuntu/.julia/v0.5/Requires/src/require.jl:12.
+WARNING: The curly syntax (sum{},prod{},norm2{}) is deprecated in favor of the new generator syntax (sum(),prod(),norm()).
+WARNING: Replace sum{x[i] ^ 2,i in ind[2:length(ind)]} with sum(x[i] ^ 2 for i in ind[2:length(ind)]).
+WARNING: Replace sum{x[i] ^ 2,i in ind[3:length(ind)]} with sum(x[i] ^ 2 for i in ind[3:length(ind)]).
+WARNING: Replace sum{A_vals[k] * x[A_colidx[k]],k in nzrange(A_byrow,ind[i])} with sum(A_vals[k] * x[A_colidx[k]] for k in nzrange(A_byrow,ind[i])).
+WARNING: The curly syntax (sum{},prod{},norm2{}) is deprecated in favor of the new generator syntax (sum(),prod(),norm()).
+WARNING: Replace norm2{vars[j],j in 2:len} with norm(vars[j] for j in 2:len).
+WARNING: Replace norm2{if k == ind_min
+        vars_smat[ind_min,ind_min] - z_expr
+    else 
+        2 * smat[k,ind_min] * smat[k,v] * vars_smat[k,ind_min]
+    end,k in 1:dim} with norm(if k == ind_min
+    vars_smat[ind_min,ind_min] - z_expr
+else 
+    2 * smat[k,ind_min] * smat[k,v] * vars_smat[k,ind_min]
+end for k in 1:dim).
+WARNING: Base.ASCIIString is deprecated, use String instead.
+  likely near /home/ubuntu/run.jl:185
+WARNING: Base.ASCIIString is deprecated, use String instead.
+  likely near /home/ubuntu/run.jl:185
+WARNING: Base.ASCIIString is deprecated, use String instead.
+  likely near /home/ubuntu/run.jl:185
+WARNING: Base.ASCIIString is deprecated, use String instead.
+  likely near /home/ubuntu/run.jl:185
+#SOLVERNAME# MOSEK_MISOCP
+#SOLVER# Mosek.MosekMathProgSolverInterface.MosekSolver(Any[(:LOG,1),(:NUM_THREADS,1),(:OPTIMIZER_MAX_TIME,3600.0),(:MIO_TOL_REL_GAP,1.0e-5)])
+#FILENAME# achtziger_stolpe06-61flowc.cbf.gz
+#INSTANCE# achtziger_stolpe06-61flowc
+#TIMELIMIT# 3600.0
+Problem
+  Name                   :                 
+  Objective sense        : min             
+  Type                   : CONIC (conic optimization problem)
+  Constraints            : 118             
+  Cones                  : 26              
+  Scalar variables       : 157             
+  Matrix variables       : 0               
+  Integer variables      : 26              
+
+Optimizer started.
+Mixed integer optimizer started.
+Threads used: 1
+Presolve started.
+Presolve terminated. Time = 0.00
+Presolved problem: 78 variables, 13 constraints, 87 non-zeros
+Presolved problem: 0 general integer, 26 binary, 52 continuous
+Clique table size: 0
+BRANCHES RELAXS   ACT_NDS  DEPTH    BEST_INT_OBJ         BEST_RELAX_OBJ       REL_GAP(%)  TIME  
+0        1        0        0        NA                   1.6716600524e+00     NA          0.0   
+Cut generation started.
+0        2        0        0        NA                   1.6716600524e+00     NA          0.0   
+Cut generation terminated. Time = 0.00
+15       17       12       8        2.7670975442e+00     1.7230456121e+00     37.73       0.0   
+27       28       20       3        2.7670975442e+00     1.7528903338e+00     36.65       0.1   
+47       46       26       5        2.7670975442e+00     1.7742404911e+00     35.88       0.1   
+73       68       34       3        2.2125607822e+00     1.7884060773e+00     19.17       0.1   
+107      91       22       10       1.8563402204e+00     1.8563402204e+00     0.00e+00    0.1   
+An optimal solution satisfying the relative gap tolerance of 1.00e-03(%) has been located.
+The relative gap is 0.00e+00(%).
+An optimal solution satisfying the absolute gap tolerance of 0.00e+00 has been located.
+The absolute gap is 0.00e+00.
+
+Objective of best integer solution : 1.856340220355e+00      
+Best objective bound               : 1.856340220355e+00      
+Construct solution objective       : Not employed
+Construct solution # roundings     : 0
+User objective cut value           : 0
+Number of cuts generated           : 0
+Number of branches                 : 107
+Number of relaxations solved       : 91
+Number of interior point iterations: 992
+Number of simplex iterations       : 0
+Time spend presolving the root     : 0.00
+Time spend in the heuristic        : 0.00
+Time spend in the sub optimizers   : 0.00
+  Time spend optimizing the root   : 0.00
+Mixed integer optimizer terminated. Time: 0.13
+
+Optimizer terminated. Time: 0.13    
+#STATUS# Optimal
+#OBJVAL# 1.8563402203545127
+#OBJBOUND# 1.8563402203545127
+#TIMESOLVER# 0.13340306282043457
+#TIMEALL# 1.2091739177703857
+#SOLUTION# [1.85634,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,1.0,1.0,0.0,0.0,0.0,1.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.159546,0.0,0.0,0.159546,0.225633,0.0,0.0,0.0,0.96755,0.344064,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.399433,0.0,0.0,-0.399433,0.475008,0.0,-0.983641,0.58657,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0797732,0.399433,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0797732,-0.399433,1.0,0.112816,0.475008,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.483775,-0.983641,1.0,0.172032,0.58657,0.0,0.0,0.0]

@@ -1,0 +1,58 @@
+WARNING: Method definition require(Symbol) in module Base at loading.jl:345 overwritten in module ConicBenchmarkUtilities at /home/ubuntu/.julia/v0.5/Requires/src/require.jl:12.
+#SOLVERNAME# PAJ_NORELAX_CBC_ECOS
+#SOLVER# Pajarito.PajaritoSolver(2,3600.0,1.0e-5,false,Cbc.CbcMathProgSolverInterface.CbcSolver(Any[(:logLevel,0),(:ratioGap,0.0),(:seconds,3600.0)]),MathProgBase.DefaultMIPSolver(),0,false,true,ECOS.ECOSSolver(Any[(:verbose,false)]),false,false,false,true,false,true,false,true,true,true,true,false,false,true,false,false,false,false,1.0e-10,0.0001,1.0e-6,0.01,1.0e-6)
+#FILENAME# turbine07GF.cbf.gz
+#INSTANCE# turbine07GF
+#TIMELIMIT# 3600.0
+
+Transforming original data......Done     0.00s
+
+Creating conic model data......Done     0.00s
+
+Creating MIP model......Done     0.00s
+
+Cone types summary:
+Cone       | Count    | Min dim  | Max dim 
+       SOC |       25 |        3 |        3
+
+Creating conic subproblem model......Done     0.00s
+
+Starting iterative outer approximation algorithm
+
+Iter | Best obj       | OA obj         | Rel gap     | Time (s)   
+   1 |  +3.000000e+00 |  +3.000000e+00 |   0.000e+00 |   1.438e-02
+
+Pajarito MICP solve summary:
+ - Total time (s)       =       5.77e-02
+ - Status               =        Optimal
+ - Best feasible obj.   =  +3.000000e+00
+ - Final OA obj. bound  =  +3.000000e+00
+ - Relative opt. gap    =      0.000e+00
+ - MIP solve count      =              1
+ - Conic solve count    =              1
+ - Feas. solution count =              1
+ - Integer repeat count =              0
+
+Timers (s):
+ - Setup                =       4.01e-02
+ -- Transform data      =       9.14e-05
+ -- Create conic data   =       1.12e-04
+ -- Create MIP data     =       7.15e-04
+ -- Load/solve relax    =       0.00e+00
+ - Iterative algorithm  =       1.76e-02
+ -- Solve MIPs          =       1.35e-02
+ -- Solve conic model   =       7.39e-04
+ -- Process conic data  =       9.02e-05
+ -- Add conic solution  =       0.00e+00
+ -- Add dual cuts       =       5.14e-05
+ -- Use outer inf/cuts  =       1.14e-05
+
+WARNING: Solver does not appear to support adding constraints to an existing model. Hot-start is disabled.
+WARNING: If matrix A has nonzero entries smaller than zero tolerance, performance may be improved by fixing these values to zero
+WARNING: Not solving the conic continuous relaxation problem; Pajarito may return status :MIPFailure if the outer approximation MIP is unbounded
+#STATUS# Optimal
+#OBJVAL# 3.0
+#OBJBOUND# 3.0
+#TIMESOLVER# 0.05771899223327637
+#TIMEALL# 0.057969093322753906
+#SOLUTION# [1.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0007,0.0,0.0,0.0007,0.0,0.0,0.0007,0.000362,-0.000303,0.0007,0.0,0.0,0.0007,0.0,0.0,0.0007,0.0,0.0,0.0007,0.0,0.0,0.0007,0.0,0.0,0.0007,0.0,0.0,0.0004,0.000175,-0.000303,0.0007,0.0,0.0,0.5,0.035023,0.023006,0.5,0.144823,0.057421,1.0,-0.176252,-0.298553,1.0,-0.163582,-0.637503,2.5,0.048364,-2.12175,2.5,-0.771979,-2.03033,5.0,-0.44086,-1.53621,0.5,0.030809,0.043041,0.5,0.14535,0.084798,1.0,-0.148122,0.011532,1.0,-0.10005,0.143815,2.5,-0.113686,0.779104,2.5,0.885422,1.03085,5.0,-0.347081,-1.86175]

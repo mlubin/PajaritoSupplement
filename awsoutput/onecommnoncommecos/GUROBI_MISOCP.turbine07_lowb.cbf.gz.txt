@@ -1,0 +1,69 @@
+WARNING: Method definition require(Symbol) in module Base at loading.jl:345 overwritten in module ConicBenchmarkUtilities at /home/ubuntu/.julia/v0.5/Requires/src/require.jl:12.
+WARNING: Base.ASCIIString is deprecated, use String instead.
+  likely near /home/ubuntu/run.jl:185
+WARNING: Base.ASCIIString is deprecated, use String instead.
+  likely near /home/ubuntu/run.jl:185
+WARNING: Base.ASCIIString is deprecated, use String instead.
+  likely near /home/ubuntu/run.jl:185
+WARNING: Base.ASCIIString is deprecated, use String instead.
+  likely near /home/ubuntu/run.jl:185
+Optimize a model with 354 rows, 212 columns and 621 nonzeros
+Model has 27 quadratic constraints
+Variable types: 156 continuous, 56 integer (0 binary)
+Coefficient statistics:
+  Matrix range     [7e-05, 9e+00]
+  QMatrix range    [1e+00, 1e+00]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [4e-04, 1e+01]
+Solve qcp for cone disaggregation ...
+Presolve removed 250 rows and 112 columns
+Presolve time: 0.01s
+Presolved: 105 rows, 108 columns, 447 nonzeros
+Variable types: 52 continuous, 56 integer (56 binary)
+
+Root relaxation: objective 0.000000e+00, 42 iterations, 0.00 seconds
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+H    0     0                       2.8854186    0.00000   100%     -    0s
+*    0     0               0       2.8854186    0.27662  90.4%     -    0s
+     0     0    0.66584    0   17    2.88542    0.66584  76.9%     -    0s
+     0     0    0.69469    0   16    2.88542    0.69469  75.9%     -    0s
+     0     0    0.69469    0   16    2.88542    0.69469  75.9%     -    0s
+     0     0    0.69937    0   13    2.88542    0.69937  75.8%     -    0s
+     0     0    0.70076    0   13    2.88542    0.70076  75.7%     -    0s
+     0     0    0.70076    0    8    2.88542    0.70076  75.7%     -    0s
+     0     2    0.70076    0    8    2.88542    0.70076  75.7%     -    0s
+*   18    16              15       1.6881453    0.70106  58.5%   8.6    0s
+*   35    26              13       1.4656432    0.70817  51.7%   8.9    0s
+*   39    25              15       1.4480318    0.70817  51.1%   8.2    0s
+*   43    24              17       1.4350093    0.70817  50.7%   7.6    0s
+*   79    27              16       0.9180619    0.78437  14.6%   8.2    0s
+*  126    20              11       0.8964439    0.83850  6.46%   9.0    0s
+H  141     2                       0.8865920    0.87069  1.79%   9.7    0s
+*  145     4              12       0.8861077    0.88208  0.46%   9.6    0s
+
+Cutting planes:
+  Gomory: 1
+
+Explored 154 nodes (1800 simplex iterations) in 0.13 seconds
+Thread count was 1 (of 4 available processors)
+
+Solution count 10: 0.886108 0.886592 0.896444 ... 1.68815
+Pool objective bound 0.886108
+
+Optimal solution found (tolerance 1.00e-05)
+Best objective 8.861076922743e-01, best bound 8.861076922743e-01, gap 0.0000%
+#SOLVERNAME# GUROBI_MISOCP
+#SOLVER# Gurobi.GurobiSolver(nothing,Any[(:OutputFlag,1),(:Threads,1),(:TimeLimit,3600.0),(:MIPGap,1.0e-5)])
+#FILENAME# turbine07_lowb.cbf.gz
+#INSTANCE# turbine07_lowb
+#TIMELIMIT# 3600.0
+#STATUS# Optimal
+#OBJVAL# 0.8861076922743458
+#OBJBOUND# 0.8861076922743458
+#TIMESOLVER# 0.12606382369995117
+#TIMEALL# 1.4789550304412842
+#SOLUTION# [0.886108,-0.0,17.095,1.10333,-0.215378,0.585471,-1.9774,-0.245322,-1.72529,0.191037,1.11206,0.0007,0.0,0.0,0.0007,0.000207257,-0.0007,0.0007,0.000203612,0.000172246,0.0007,0.0,0.0,0.0007,-0.000411621,0.000459849,0.0007,0.0,0.0,0.0007,0.0,0.0,0.0007,0.0,0.0,0.0007,0.0,0.0,0.0004,0.000127823,-0.000372,0.0007,0.0,0.0,0.0886108,0.0497074,-0.00205965,0.0886108,0.0660502,0.0379343,0.177222,0.0176343,-0.176342,0.177222,-0.0296306,-0.0813673,0.443054,0.213241,0.200428,0.443054,-0.410686,0.166233,0.886108,0.404222,-0.00648327,0.0886108,0.0418119,0.00976934,0.0886108,0.0565926,0.0564561,0.177222,-0.08,0.00941744,0.177222,-0.103019,0.144203,0.443054,-0.2,0.121272,0.443054,0.0298311,0.442048,0.886108,-0.665252,-0.585343,1.0,-0.0,-0.0,-0.0,1.0,-0.0,-0.0,-0.0,-0.0,-0.0,0.0,1.0,0.0,-0.0,-0.0,1.0,1.0,-0.0,-0.0,-0.0,-0.0,1.0,-0.0,-0.0,1.0,-0.0,-0.0,-0.0,1.0,-0.0,0.0,-0.0,-0.0,-0.0,1.0,0.0,-0.0,1.0,-0.0,0.0,-0.0,-0.0,1.0,-0.0,-0.0,1.0,0.0,-0.0,-0.0,-0.0,1.0,-0.0,-0.0,1.0,-0.0,-0.0,0.00970738,0.350293,0.39794,0.40206,0.0260502,0.33395,0.437934,0.362066,0.817634,0.782366,0.623658,0.096342,0.770369,0.829631,0.718633,0.00136733,0.0132414,1.78676,2.20043,1.79957,1.58931,0.210686,2.16623,1.83377,0.00422225,3.59578,3.99352,4.00648,0.00181186,0.358188,0.409769,0.390231,0.456593,0.343407,0.0164561,0.343544,0.72,5.14262e-11,0.809417,0.790583,0.696981,0.903019,0.0642034,0.655797,1.8,3.27841e-10,2.12127,1.87873,2.02983,1.97017,0.242048,1.55795,3.33475,0.265252,3.41466,4.58534,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0]

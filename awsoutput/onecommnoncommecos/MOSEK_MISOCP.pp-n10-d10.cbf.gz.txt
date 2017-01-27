@@ -1,0 +1,70 @@
+WARNING: Method definition require(Symbol) in module Base at loading.jl:345 overwritten in module ConicBenchmarkUtilities at /home/ubuntu/.julia/v0.5/Requires/src/require.jl:12.
+WARNING: Base.ASCIIString is deprecated, use String instead.
+  likely near /home/ubuntu/run.jl:185
+WARNING: Base.ASCIIString is deprecated, use String instead.
+  likely near /home/ubuntu/run.jl:185
+WARNING: Base.ASCIIString is deprecated, use String instead.
+  likely near /home/ubuntu/run.jl:185
+WARNING: Base.ASCIIString is deprecated, use String instead.
+  likely near /home/ubuntu/run.jl:185
+#SOLVERNAME# MOSEK_MISOCP
+#SOLVER# Mosek.MosekMathProgSolverInterface.MosekSolver(Any[(:LOG,1),(:NUM_THREADS,1),(:OPTIMIZER_MAX_TIME,3600.0),(:MIO_TOL_REL_GAP,1.0e-5)])
+#FILENAME# pp-n10-d10.cbf.gz
+#INSTANCE# pp-n10-d10
+#TIMELIMIT# 3600.0
+Problem
+  Name                   :                 
+  Objective sense        : min             
+  Type                   : CONIC (conic optimization problem)
+  Constraints            : 31              
+  Cones                  : 10              
+  Scalar variables       : 50              
+  Matrix variables       : 0               
+  Integer variables      : 10              
+
+Optimizer started.
+Mixed integer optimizer started.
+Threads used: 1
+Presolve started.
+Presolve terminated. Time = 0.00
+Presolved problem: 30 variables, 1 constraints, 9 non-zeros
+Presolved problem: 10 general integer, 0 binary, 20 continuous
+Clique table size: 0
+BRANCHES RELAXS   ACT_NDS  DEPTH    BEST_INT_OBJ         BEST_RELAX_OBJ       REL_GAP(%)  TIME  
+0        1        0        0        NA                   7.2292212581e+01     NA          0.0   
+0        1        0        0        7.2618118604e+01     7.2292212581e+01     0.45        0.0   
+Cut generation started.
+0        2        0        0        7.2618118604e+01     7.2292212581e+01     0.45        0.0   
+Cut generation terminated. Time = 0.00
+15       18       12       2        7.2618118604e+01     7.2338897113e+01     0.38        0.0   
+27       30       16       7        7.2618118604e+01     7.2338897113e+01     0.38        0.0   
+43       46       22       7        7.2618118604e+01     7.2429834746e+01     0.26        0.0   
+65       66       20       10       7.2481277464e+01     7.2460242168e+01     0.03        0.1   
+An optimal solution satisfying the relative gap tolerance of 1.00e-03(%) has been located.
+The relative gap is 0.00e+00(%).
+An optimal solution satisfying the absolute gap tolerance of 0.00e+00 has been located.
+The absolute gap is 0.00e+00.
+
+Objective of best integer solution : 7.248127746384e+01      
+Best objective bound               : 7.248127746384e+01      
+Construct solution objective       : Not employed
+Construct solution # roundings     : 0
+User objective cut value           : 0
+Number of cuts generated           : 0
+Number of branches                 : 85
+Number of relaxations solved       : 71
+Number of interior point iterations: 773
+Number of simplex iterations       : 0
+Time spend presolving the root     : 0.00
+Time spend in the heuristic        : 0.00
+Time spend in the sub optimizers   : 0.00
+  Time spend optimizing the root   : 0.00
+Mixed integer optimizer terminated. Time: 0.05
+
+Optimizer terminated. Time: 0.05    
+#STATUS# Optimal
+#OBJVAL# 72.4812774638421
+#OBJBOUND# 72.48127746384209
+#TIMESOLVER# 0.0537409782409668
+#TIMEALL# 1.1403820514678955
+#SOLUTION# [5.0,9.0,6.0,4.0,3.0,7.0,5.0,9.0,2.0,5.0,0.2,0.111111,0.166667,0.25,0.333333,0.142857,0.2,0.111111,0.5,0.2,5.0,0.2,1.41421,9.0,0.111111,1.41421,6.0,0.166667,1.41421,4.0,0.25,1.41421,3.0,0.333333,1.41421,7.0,0.142857,1.41421,5.0,0.2,1.41421,9.0,0.111111,1.41421,2.0,0.5,1.41421,5.0,0.2,1.41421]

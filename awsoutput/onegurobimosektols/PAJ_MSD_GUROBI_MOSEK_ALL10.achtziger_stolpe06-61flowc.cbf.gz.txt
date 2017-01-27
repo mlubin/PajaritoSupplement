@@ -1,0 +1,71 @@
+WARNING: Method definition require(Symbol) in module Base at loading.jl:345 overwritten in module ConicBenchmarkUtilities at /home/ubuntu/.julia/v0.5/Requires/src/require.jl:12.
+WARNING: The curly syntax (sum{},prod{},norm2{}) is deprecated in favor of the new generator syntax (sum(),prod(),norm()).
+WARNING: Replace sum{x[i] ^ 2,i in ind[2:length(ind)]} with sum(x[i] ^ 2 for i in ind[2:length(ind)]).
+WARNING: Replace sum{x[i] ^ 2,i in ind[3:length(ind)]} with sum(x[i] ^ 2 for i in ind[3:length(ind)]).
+WARNING: Replace sum{A_vals[k] * x[A_colidx[k]],k in nzrange(A_byrow,ind[i])} with sum(A_vals[k] * x[A_colidx[k]] for k in nzrange(A_byrow,ind[i])).
+WARNING: The curly syntax (sum{},prod{},norm2{}) is deprecated in favor of the new generator syntax (sum(),prod(),norm()).
+WARNING: Replace norm2{vars[j],j in 2:len} with norm(vars[j] for j in 2:len).
+WARNING: Replace norm2{if k == ind_min
+        vars_smat[ind_min,ind_min] - z_expr
+    else 
+        2 * smat[k,ind_min] * smat[k,v] * vars_smat[k,ind_min]
+    end,k in 1:dim} with norm(if k == ind_min
+    vars_smat[ind_min,ind_min] - z_expr
+else 
+    2 * smat[k,ind_min] * smat[k,v] * vars_smat[k,ind_min]
+end for k in 1:dim).
+#SOLVERNAME# PAJ_MSD_GUROBI_MOSEK_ALL10
+#SOLVER# Pajarito.PajaritoSolver(2,3600.0,1.0e-5,true,Gurobi.GurobiSolver(nothing,Any[(:OutputFlag,0),(:Threads,1),(:TimeLimit,3600.0),(:MIPGap,1.0e-5)]),MathProgBase.DefaultMIPSolver(),0,false,true,Mosek.MosekMathProgSolverInterface.MosekSolver(Any[(:LOG,0),(:NUM_THREADS,1),(:OPTIMIZER_MAX_TIME,120.0),(:INTPNT_CO_TOL_REL_GAP,1.0e-10),(:INTPNT_CO_TOL_PFEAS,1.0e-10),(:INTPNT_CO_TOL_DFEAS,1.0e-10)]),true,false,false,true,false,true,false,true,true,true,true,false,false,true,false,false,false,false,1.0e-10,0.0001,1.0e-6,0.01,1.0e-6)
+#FILENAME# achtziger_stolpe06-61flowc.cbf.gz
+#INSTANCE# achtziger_stolpe06-61flowc
+#TIMELIMIT# 3600.0
+
+Transforming original data......Done     0.00s
+
+Creating conic model data......Done     0.00s
+
+Creating MIP model......Done     0.00s
+
+Cone types summary:
+Cone       | Count    | Min dim  | Max dim 
+       SOC |       26 |        3 |        3
+
+Solving conic relaxation......Done     0.00s
+ - Relaxation status    =        Optimal
+ - Relaxation objective =       1.671660
+
+Creating conic subproblem model......Done     0.00s
+
+Starting MIP-solver-driven outer approximation algorithm
+
+Pajarito MICP solve summary:
+ - Total time (s)       =       1.61e-01
+ - Status               =        Optimal
+ - Best feasible obj.   =  +1.856340e+00
+ - Final OA obj. bound  =  +1.856340e+00
+ - Relative opt. gap    =     -9.293e-12
+ - Conic solve count    =              4
+ - Feas. solution count =              4
+ - Integer repeat count =              1
+
+Timers (s):
+ - Setup                =       6.27e-02
+ -- Transform data      =       1.61e-04
+ -- Create conic data   =       1.33e-04
+ -- Create MIP data     =       8.53e-04
+ -- Load/solve relax    =       3.39e-03
+ - MIP-driven algorithm =       9.83e-02
+ -- Solve conic model   =       8.70e-03
+ -- Process conic data  =       1.41e-03
+ -- Add conic solution  =       4.70e-05
+ -- Add dual cuts       =       7.98e-04
+ -- Use outer inf/cuts  =       5.83e-05
+
+WARNING: If matrix A has nonzero entries smaller than zero tolerance, performance may be improved by fixing these values to zero
+WARNING: For the MIP-solver-driven algorithm, optimality tolerance must be specified as MIP solver option, not Pajarito option
+#STATUS# Optimal
+#OBJVAL# 1.856340197132309
+#OBJBOUND# 1.8563401971495594
+#TIMESOLVER# 0.16099309921264648
+#TIMEALL# 0.1651160717010498
+#SOLUTION# [1.85634,0.0,0.0,0.0,0.0,0.0,-0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,1.0,1.0,0.0,0.0,0.0,1.0,1.0,0.0,7.75979e-12,7.90766e-12,8.94947e-12,7.86544e-12,1.04561e-11,7.7643e-12,8.2888e-12,7.8433e-12,7.91018e-12,7.76199e-12,7.92434e-12,9.12693e-12,7.71926e-12,8.60683e-12,7.88248e-12,0.159522,8.1066e-12,8.78063e-12,0.159522,0.225598,8.02162e-12,7.68464e-12,8.12255e-12,0.96758,0.344118,7.83559e-12,-5.14795e-13,-1.47315e-12,-4.6142e-13,-2.05209e-12,3.85502e-13,9.8351e-13,5.29442e-13,-7.63474e-13,-6.06755e-13,-1.63894e-12,-4.90309e-13,1.10222e-12,5.51636e-13,0.399402,9.65434e-13,-1.63388e-12,-0.399402,0.474972,5.85302e-14,-0.983656,0.586615,-7.80184e-13,3.34437e-13,-6.19884e-13,-6.62268e-13,8.70101e-13,0.0,3.8799e-12,3.34437e-13,0.0,3.95383e-12,-5.14795e-13,0.0,4.47473e-12,-1.47315e-12,0.0,3.93272e-12,-4.6142e-13,0.0,5.22804e-12,-2.05209e-12,0.0,3.88215e-12,3.85502e-13,0.0,4.1444e-12,9.8351e-13,0.0,3.92165e-12,-6.19884e-13,0.0,3.95509e-12,5.29442e-13,0.0,3.88099e-12,-7.63474e-13,0.0,3.96217e-12,-6.06755e-13,0.0,4.56346e-12,-1.63894e-12,0.0,3.85963e-12,-4.90309e-13,0.0,4.30342e-12,1.10222e-12,0.0,3.94124e-12,5.51636e-13,1.0,0.0797611,0.399402,0.0,4.0533e-12,9.65434e-13,0.0,4.39031e-12,-1.63388e-12,1.0,0.0797611,-0.399402,1.0,0.112799,0.474972,0.0,4.01081e-12,-6.62268e-13,0.0,3.84232e-12,5.85302e-14,0.0,4.06128e-12,8.70101e-13,1.0,0.48379,-0.983656,1.0,0.172059,0.586615,0.0,3.91779e-12,-7.80184e-13]
