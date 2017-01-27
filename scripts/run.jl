@@ -1,6 +1,6 @@
 using ConicBenchmarkUtilities
 using Pajarito
-#using ECOS
+using ECOS
 #using ConicIP
 using Mosek
 using CPLEX
