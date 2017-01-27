@@ -171,16 +171,16 @@ tlim = parse(Float64, ARGS[2])
 datafolder = ARGS[3]
 
 # Force Pajarito to compile on a small instance for the solver to avoid measuring compilation time, keep quiet
-# if startswith(solvername, "PAJ")
-#     TT = STDOUT
-#     open("/dev/null", "w") do fd
-#         redirect_stdout(fd)
-#         instance = readcbfdata(joinpath(datafolder, "estein", "estein4_A.cbf.gz"))
-#         solver = getsolver(solvername, 20., 0, rgap)
-#         solveprint(instance, solver)
-#     end
-#     redirect_stdout(TT)
-# end
+if startswith(solvername, "PAJ")
+    TT = STDOUT
+    open("/dev/null", "w") do fd
+        redirect_stdout(fd)
+        instance = readcbfdata(joinpath(datafolder, "estein", "estein4_A.cbf.gz"))
+        solver = getsolver(solvername, 20., 0, rgap)
+        solveprint(instance, solver)
+    end
+    redirect_stdout(TT)
+end
 
 instancename = ARGS[4]
 
