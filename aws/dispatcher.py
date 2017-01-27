@@ -6,11 +6,12 @@ import sys
 import time
 
 import cloud_setup
-import gurobi_aws
 
 
-def create_instances(job, tags, ami_name, user_data, instance_types,
-                     verbose=True):
+DEFAULT_AMI_NAME = ......
+
+
+def create_instances(job, tags, instance_types, verbose=True):
     """
     Simply create an instance for each tag. Uses multiprocessing to create them
     in parallel.
@@ -32,8 +33,7 @@ def create_instances(job, tags, ami_name, user_data, instance_types,
                 "key_name": job,
                 "group_name": job,
                 "inst_type": instance_type,
-                "ami_name": ami_name,
-                "user_data": user_data,
+                "ami_name": DEFAULT_AMI_NAME,
                 "wait": True,
                 "returninfo": returninfo,
             }
@@ -94,7 +94,7 @@ def connect_instances(job, tags, verbose=True):
                     insts[tag], cmds[tag] = cloud_setup.connect_instance(
                         tag=tag,
                         key_name=job,
-                        user_name=gurobi_aws.DEFAULT_USER,
+                        user_name="ubuntu"
                     )
                     cmds[tag].run("ls")
                 except:
@@ -130,36 +130,19 @@ def setup_instances(tags, cmds, insts, verbose=True):
         print "    Copying files to %s ..." % (tag)
         f = cmds[tag].open_sftp()
 
-        # The install script
+        # Put the required scripts on the machine
         f.put("INSTALL.sh", "INSTALL.sh")
-
-        # Python script to run INSTALL.sh
         f.put("INSTALL.py", "INSTALL.py")
+        f.put("../scripts/run.jl", "run.jl")
+        f.put("../scripts/runmeta.jl", "runmeta.jl")
+        for filename in os.listdir("../instancesets"):
+            f.put("../instancesets/" + filename, filename)
 
-        # MOSEK license file (gets moved to mosek/ in install)
-        f.put("mosek.lic", "mosek.lic")
-
-        # cblib code
-        f.put("run.jl", "run.jl")
-        f.put("runmeta.jl", "runmeta.jl")
-        for filename in os.listdir("jobinfo"):
-            f.put("jobinfo/" + filename, filename)
-
-        # For updating tags and results
-        f.put("update_tags.py", "update_tags.py")
         f.put("save_results.py", "save_results.py")
         f.put("cloud_setup.py", "cloud_setup.py")
         f.put(botoloc, ".boto")
 
         f.close()
-
-        # Setting CLOUDKEY by user data doesn't seem to work
-        # Set it by curl instead
-        inst_id = insts[tag].id
-        cloudkey = gurobi_aws.get_cloudkey()
-        cmds[tag].run(
-            "curl --data \"type=CLOUDKEY&adminpassword=%s&data=%s\" "
-            "http://localhost/update_settings" % (inst_id, cloudkey))
 
         # Make script executable
         cmds[tag].run("chmod +x INSTALL.sh")
@@ -269,10 +252,6 @@ def run_dispatch(job, commands, instance_types, create,
         print "described in README.md. Store this file either in the "
         print "aws-runner folder or in your home directory."
         exit(1)
-    if (not os.path.exists(gurobi_aws.CLOUDKEY_FILE_PATH)):
-        print "Please create a GUROBI_CLOUD_KEY file containing your AWS",
-        print "Gurobi prepaid license."
-        exit(1)
     if (not os.path.exists("INSTALL.py")):
         print "Please run this script from the aws-runner directory."
         exit(1)
@@ -287,26 +266,6 @@ def run_dispatch(job, commands, instance_types, create,
     for tag, inst_type, command in zip(tags, instance_types, commands):
         print "   %s%s%s" % (tag.ljust(20), inst_type.ljust(20), command)
 
-    # Get the Gurobi AMI for the selected AWS region
-    resolver = gurobi_aws.AMIResolver()
-    ami_name = resolver.get_ami_name(cloud_setup.AWS_REGION)
-    if not ami_name:
-        print "There was no Gurobi AMI found for the specified AWS region."
-        print "The specified AWS region was:"
-        print "    %s" % cloud_setup.AWS_REGION
-        print "All available Gurobi AMIs:"
-        for (region, ami) in resolver.get_ami_list().iteritems():
-            print "    %s%s" % (region.ljust(20), ami)
-
-    print "Using Gurobi AMI:"
-    print "    %s" % ami_name
-
-    cloudkey = gurobi_aws.get_cloudkey()
-    user_data = gurobi_aws.generate_user_data(cloudkey, job)
-
-    print "Using user_data:"
-    print user_data
-
     # Setup security group and key pair (these are no-ops if done before)
     cloud_setup.create_security_group(job)
     cloud_setup.create_keypair(job)
@@ -318,8 +277,7 @@ def run_dispatch(job, commands, instance_types, create,
 
     # Create instances if desired
     if create:
-        create_instances(job, tags, ami_name, user_data, instance_types,
-                         verbose)
+        create_instances(job, tags, instance_types, verbose)
 
     # Connect to all the instances
     if create or dispatch:

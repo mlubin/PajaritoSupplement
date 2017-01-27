@@ -28,8 +28,7 @@ def create_keypair(key_name):
 def create_security_group(group_name):
     """
     Instances are pretty locked down by default. We can assign them to
-    security groups to give access rights. This creates a group that mirrors
-    the settings recommended by Gurobi.
+    security groups to give access rights.
     """
     ec2 = boto.ec2.connect_to_region(AWS_REGION)
     for g in ec2.get_all_security_groups():
@@ -47,7 +46,7 @@ def launch_instance(tag, key_name, group_name, inst_type, ami_name, user_data,
                     wait=True, returninfo=None):
     """
     Launch a testing instance. Doesn't actually attempt to connect as
-    it can take quite a while between 'running' and connectability
+    it can take quite a while between 'running' and connectability.
     """
     ec2 = boto.ec2.connect_to_region(AWS_REGION)
     failures = 0
@@ -238,7 +237,6 @@ def download_s3_bucket(bucket_name, output_folder):
       d = os.path.join(output_folder, os.path.split(key.key)[1])
       print(os.path.split(key.key)[1])
       key.get_contents_to_filename(d)
-
 
 ###############################################################################
 
