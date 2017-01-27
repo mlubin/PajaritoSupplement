@@ -3,7 +3,7 @@ using Pajarito
 #using ECOS
 #using ConicIP
 using Mosek
-#using CPLEX
+using CPLEX
 #using Cbc
 #using SCIP
 using ConicNonlinearBridge
@@ -132,10 +132,10 @@ solvermap = Dict(
     (["CPLEX","Mosek"],quote PajaritoSolver(mip_solver=CplexSolver(), cont_solver=MosekSolver(LOG=1, NUM_THREADS=1, OPTIMIZER_MAX_TIME=120.), log_level=logl, timeout=tlim, rel_gap=rgap) end),
     "PAJ_MSD_CPLEX_MOSEK" =>
     (["CPLEX","Mosek"],quote PajaritoSolver(mip_solver=CplexSolver(), cont_solver=MosekSolver(LOG=1, NUM_THREADS=1, OPTIMIZER_MAX_TIME=120.), log_level=logl, timeout=tlim, rel_gap=rgap, mip_solver_drives=true) end),
-    # "PAJ_CPLEX_ECOS" =>
-    # (["CPLEX","ECOS"],quote PajaritoSolver(mip_solver=CplexSolver(OutputFlag=0, Threads=1, TimeLimit=tlim, MIPGap=0.), cont_solver=ECOSSolver(verbose=false), log_level=logl, timeout=tlim, rel_gap=rgap) end),
-    # "PAJ_MSD_CPLEX_ECOS" =>
-    # (["CPLEX","ECOS"],quote PajaritoSolver(mip_solver=CplexSolver(OutputFlag=0, Threads=1, TimeLimit=tlim, MIPGap=rgap), cont_solver=ECOSSolver(verbose=false), log_level=logl, timeout=tlim, rel_gap=rgap, mip_solver_drives=true) end),
+    "PAJ_CPLEX_ECOS" =>
+    (["CPLEX","ECOS"],quote PajaritoSolver(mip_solver=CplexSolver(), cont_solver=ECOSSolver(verbose=false), log_level=logl, timeout=tlim, rel_gap=rgap) end),
+    "PAJ_MSD_CPLEX_ECOS" =>
+    (["CPLEX","ECOS"],quote PajaritoSolver(mip_solver=CplexSolver(), cont_solver=ECOSSolver(verbose=false), log_level=logl, timeout=tlim, rel_gap=rgap, mip_solver_drives=true) end),
     # "CPLEX_MISOCP" =>
     # (["CPLEX"],quote CplexSolver(OutputFlag=1, Threads=1, TimeLimit=tlim, MIPGap=rgap) end),
     # "MOSEK_MISOCP" =>
