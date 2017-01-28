@@ -17,5 +17,7 @@ set -e
 # cd ~/.julia/v0.5/ConicNonlinearBridge; git checkout master; git pull; cd -
 # cd ~/.julia/v0.5/AmplNLWriter; git checkout master; git pull; cd -
 
+cd ~/PajaritoSupplement; git pull; cd -
+
 # Send signal to start job
 touch READY
