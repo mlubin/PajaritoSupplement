@@ -8,7 +8,7 @@ import time
 import cloud_setup
 
 
-DEFAULT_AMI_NAME = "ami-76ce3360"
+DEFAULT_AMI_NAME = "ami-88c13c9e"
 
 
 def create_instances(job, tags, instance_types, verbose=True):
