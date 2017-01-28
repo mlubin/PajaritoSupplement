@@ -34,6 +34,7 @@ def create_instances(job, tags, instance_types, verbose=True):
                 "group_name": job,
                 "inst_type": instance_type,
                 "ami_name": DEFAULT_AMI_NAME,
+                "user_data": "",
                 "wait": True,
                 "returninfo": returninfo,
             }
