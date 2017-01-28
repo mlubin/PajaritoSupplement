@@ -1,7 +1,7 @@
 (on instance)
-wget https://julialang.s3.amazonaws.com/bin/linux/x64/0.5/julia-0.5.0-linux-x86_64.tar.gz
-tar -xvzf julia-0.5.0-linux-x86_64.tar.gz
-echo "export PATH=\$PATH:$HOME/julia-3c9d75391c/bin" >> ~/.bashrc
+sudo apt-get update --yes
+sudo apt-get -y --force-yes install git python-pip python-paramiko
+sudo apt-get -y install build-essential gfortran pkg-config unzip libgmp-dev libz-dev libreadline-dev libncurses-dev
 
 (on local)
 scp -i ~/oct7test.pem mosek.lic ubuntu@ec2-107-20-52-113.compute-1.amazonaws.com:
@@ -9,6 +9,9 @@ scp -i ~/oct7test.pem scipoptsuite-3.2.1.tgz ubuntu@ec2-54-158-166-128.compute-1
 scp -i ~/oct7test.pem cplex_studio127.linux-x86-64.bin ubuntu@ec2-54-158-166-128.compute-1.amazonaws.com:
 
 (on instance)
+wget https://julialang.s3.amazonaws.com/bin/linux/x64/0.5/julia-0.5.0-linux-x86_64.tar.gz
+tar -xvzf julia-0.5.0-linux-x86_64.tar.gz
+echo "export PATH=\$PATH:$HOME/julia-3c9d75391c/bin" >> ~/.bashrc
 wget http://download.mosek.com/stable/8.0.0.53/mosektoolslinux64x86.tar.bz2
 tar -xvjf mosektoolslinux64x86.tar.bz2
 mv mosek.lic mosek
@@ -31,7 +34,6 @@ make SHARED=true GMP=false READLINE=false ZLIB=false OPT=opt IPOPT=true scipoptl
 
 echo "export SCIPOPTDIR=/home/ubuntu/scipoptsuite-3.2.1" >> ~/.bashrc
 
-sudo apt-get update
 sudo apt-get install sdpa libopenblas-dev
 
 # now we need another copy of SCIP for SCIP-SDP
@@ -58,25 +60,25 @@ ln -s /home/ubuntu/sdp/scipoptsuite-3.2.1/scip-3.2.1 scip
 cd ..
 make SDPS=sdpa
 
-> Enter soft-link target file or directory for "lib/sdpainc" (return if not needed): 
+> Enter soft-link target file or directory for "lib/sdpainc" (return if not needed):
 > /home/ubuntu/sdpa.7.3.8/include
 
-> Enter soft-link target file or directory for "lib/libsdpa.a" (return if not needed): 
+> Enter soft-link target file or directory for "lib/libsdpa.a" (return if not needed):
 > /home/ubuntu/sdpa.7.3.8/lib/libsdpa.a
 
-> Enter soft-link target file or directory for "lib/libsdpa.so" (return if not needed): 
+> Enter soft-link target file or directory for "lib/libsdpa.so" (return if not needed):
 >
 
-> Enter soft-link target file or directory for "lib/mumpsinc" (return if not needed): 
+> Enter soft-link target file or directory for "lib/mumpsinc" (return if not needed):
 > /home/ubuntu/sdp/sdpa-7.3.8/mumps/build/include
 
-> Enter soft-link target file or directory for "lib/mumpslib" (return if not needed): 
+> Enter soft-link target file or directory for "lib/mumpslib" (return if not needed):
 > /home/ubuntu/sdp/sdpa-7.3.8/mumps/build/lib
 
-> Enter soft-link target file or directory for "lib/mumpslibseq" (return if not needed): 
+> Enter soft-link target file or directory for "lib/mumpslibseq" (return if not needed):
 > /home/ubuntu/sdp/sdpa-7.3.8/mumps/build/libseq
 
-> Enter soft-link target file or directory for "lib/libopenblas.so.0" (return if not needed): 
+> Enter soft-link target file or directory for "lib/libopenblas.so.0" (return if not needed):
 > /usr/lib/libopenblas.so.0
 
 make SDPS=sdpa test
@@ -84,9 +86,7 @@ make SDPS=sdpa test
 cd
 source .bashrc
 
-sudo apt-get update
-sudo apt-get -y install build-essential gfortran pkg-config unzip libgmp-dev libz-dev libreadline-dev libncurses-dev
-julia-3c9d75391c/bin/julia
+julia
 Pkg.add("Mosek")
 Pkg.add("CPLEX")
 Pkg.add("JuMP")
@@ -108,5 +108,10 @@ Pkg.test("Pajarito")
 rm -rf .julia/v0.5/CoinOptServices/deps/src
 rm -rf .julia/v0.5/Cbc/deps/src/
 rm -rf .julia/v0.5/Ipopt/deps/src/
+rm julia-0.5.0-linux-x86_64.tar.gz
+rm cplex_studio127.linux-x86-64.bin
+rm scipoptsuite-3.2.1.tgz
+rm scipsdp-2.1.0.tgz
+rm mosektoolslinux64x86.tar.bz2
 
 git clone https://github.com/mlubin/PajaritoSupplement.git
