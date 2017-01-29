@@ -7,7 +7,7 @@ import time
 
 import cloud_setup
 
-
+# Change this AMI name to whatever AMI you have set up to run the computational tests
 DEFAULT_AMI_NAME = "ami-88c13c9e"
 
 
@@ -326,6 +326,10 @@ if __name__ == "__main__":
     dispatch = args.dispatch
     verbose = args.verbose
     tag_offset = args.tag_offset
+
+    print "AMI name:"
+    print DEFAULT_AMI_NAME
+    print ""
 
     commands, instance_types = extract_job_details(jobfile)
 

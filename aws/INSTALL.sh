@@ -9,7 +9,6 @@ set -e
 
 # Julia packages
 # cd ~/.julia/v0.5/Pajarito; git checkout master; git pull; cd -
-# cd ~/.julia/v0.5/WoodburyMatrices; git checkout master; git pull; cd -
 # cd ~/.julia/v0.5/CPLEX; git checkout master; git pull; cd -
 # cd ~/.julia/v0.5/Mosek; git checkout master; git pull; cd -
 # cd ~/.julia/v0.5/MathProgBase; git checkout master; git pull; cd -
