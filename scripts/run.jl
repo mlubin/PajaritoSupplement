@@ -151,7 +151,7 @@ solvermap = Dict(
 
     # NEW MSD WITH CPLEX ONLY
     "PAJ_NEW_MSD_CPLEX_MOSEK" =>
-    (["CPLEX","Mosek"],quote Pkg.checkout("Pajarito", "cplexincumbent"); PajaritoSolver(mip_solver=CplexSolver(CPX_PARAM_THREADS=1,CPX_PARAM_TILIM=tlim,CPX_PARAM_SCRIND=0,CPX_PARAM_EPGAP=rgap), cont_solver=MosekSolver(LOG=0, NUM_THREADS=1, OPTIMIZER_MAX_TIME=120.), log_level=logl, timeout=tlim, rel_gap=rgap, mip_solver_drives=true) end),
+    (["CPLEX","Mosek"],quote PajaritoSolver(mip_solver=CplexSolver(CPX_PARAM_THREADS=1,CPX_PARAM_TILIM=tlim,CPX_PARAM_SCRIND=0,CPX_PARAM_EPGAP=rgap), cont_solver=MosekSolver(LOG=0, NUM_THREADS=1, OPTIMIZER_MAX_TIME=120.), log_level=logl, timeout=tlim, rel_gap=rgap, mip_solver_drives=true) end),
 )
 
 

@@ -8,6 +8,11 @@ mlim = parse(Int, ARGS[3])
 datafolder = ARGS[4]
 instfile = ARGS[5]
 
+# Check out special new MSD branch of Pajarito if that is the solver specified
+if startswith(solvername, "PAJ_NEW_")
+    Pkg.checkout("Pajarito", "cplexincumbent")
+end
+
 # Print info and all instances in the set to a META file for the solver
 fdmeta = open("output/META.$solvername.$(split(basename(instfile),'.')[1]).txt", "w")
 println(fdmeta, "#SOLVER# $solvername")
