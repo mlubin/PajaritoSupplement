@@ -16,7 +16,7 @@ def create_instances(job, tags, instance_types, verbose=True):
     Simply create an instance for each tag. Uses multiprocessing to create them
     in parallel.
     """
-s
+
     if verbose:
         print "Launching instances... "
     procs = []
