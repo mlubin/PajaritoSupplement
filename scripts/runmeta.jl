@@ -58,7 +58,7 @@ for instancename in instancelist
                 kill(process)
                 sleep(1.0)
                 println(fdmeta, "killed by time limit\n")
-                Aopen(filename, "a") do fd
+                open(filename, "a") do fd
                     println(fd, "#STATUS# KilledTime")
                 end
             else
