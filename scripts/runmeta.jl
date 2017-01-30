@@ -32,7 +32,7 @@ for instancename in instancelist
     # Try to start a process to run the current instance on
     # If this fails, it won't affect running future instances
     try
-        process = spawn(pipeline(`julia run.jl $solvername $tlim $datafolder $instancename`, stdout=filename, stderr=filename, append=true))
+        process = spawn(pipeline(`julia PajaritoSupplement/scripts/run.jl $solvername $tlim $datafolder $instancename`, stdout=filename, stderr=filename, append=true))
 
         t = time()
         sleep(20.0)
