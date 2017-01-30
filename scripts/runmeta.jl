@@ -11,6 +11,14 @@ instfile = ARGS[5]
 # Check out special new MSD branch of Pajarito if that is the solver specified
 if startswith(solvername, "PAJ_NEW_")
     Pkg.checkout("Pajarito", "cplexincumbent")
+elseif startswith(solvername, "PAJ_")
+    d = pwd()
+    cd(Pkg.dir("Pajarito"))
+    s = readstring(`git status`)
+    if contains(s, "cplexincumbent")
+        error(......)
+    end
+    cd(d)
 end
 
 # Print info and all instances in the set to a META file for the solver
