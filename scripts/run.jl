@@ -107,8 +107,6 @@ solvermap = Dict(
     (["Cbc","ECOS"],quote PajaritoSolver(mip_solver=CbcSolver(logLevel=0, ratioGap=0., seconds=tlim), cont_solver=ECOSSolver(verbose=false), log_level=logl, timeout=tlim, rel_gap=rgap, mip_subopt_count=8, mip_subopt_solver=CbcSolver(logLevel=0, ratioGap=0.1, seconds=120)) end),
 
     # OPEN-SOURCE
-    "PAJ_CBC_CIP" =>
-    (["Cbc","ConicIP"],quote PajaritoSolver(mip_solver=CbcSolver(logLevel=0, ratioGap=0., seconds=tlim), cont_solver=ConicIPSolver(verbose=false), log_level=logl, timeout=tlim, rel_gap=rgap) end),
     "BONMIN_OA" =>
     (["AmplNLWriter"],quote ConicNLPWrapper(nlp_solver=BonminNLSolver(["bonmin.algorithm=\"B-OA\"", "bonmin.time_limit=$tlim", "halt_on_ampl_error=yes", "bonmin.allowable_fraction_gap=$rgap", "bonmin.oa_log_level=1", "bonmin.bb_log_level=1"]), disaggregate_soc=false) end),
     "BONMIN_OADIS" =>
@@ -150,11 +148,14 @@ solvermap = Dict(
     (["CPLEX","Mosek"],quote PajaritoSolver(mip_solver=CplexSolver(CPX_PARAM_EPINT=1e-8,CPX_PARAM_EPRHS=1e-8,CPX_PARAM_THREADS=1,CPX_PARAM_TILIM=tlim,CPX_PARAM_SCRIND=0,CPX_PARAM_EPGAP=0.), cont_solver=MosekSolver(LOG=1, NUM_THREADS=1, OPTIMIZER_MAX_TIME=120., INTPNT_CO_TOL_REL_GAP=1e-9, INTPNT_CO_TOL_DFEAS=1e-10), log_level=logl, timeout=tlim, rel_gap=rgap) end),
     "PAJ_MSD_CPLEX_tols_MOSEK_tols" =>
     (["CPLEX","Mosek"],quote PajaritoSolver(mip_solver=CplexSolver(CPX_PARAM_EPINT=1e-8,CPX_PARAM_EPRHS=1e-8,CPX_PARAM_THREADS=1,CPX_PARAM_TILIM=tlim,CPX_PARAM_SCRIND=0,CPX_PARAM_EPGAP=rgap), cont_solver=MosekSolver(LOG=1, NUM_THREADS=1, OPTIMIZER_MAX_TIME=120., INTPNT_CO_TOL_REL_GAP=1e-9, INTPNT_CO_TOL_DFEAS=1e-10), log_level=logl, timeout=tlim, rel_gap=rgap, mip_solver_drives=true) end),
+
+    # NEW MSD WITH CPLEX ONLY
+    "NEW_PAJ_MSD_CPLEX_MOSEK" =>
+    (["CPLEX","Mosek"],quote Pkg.checkout("Pajarito", "cplexincumbent"); PajaritoSolver(mip_solver=CplexSolver(CPX_PARAM_THREADS=1,CPX_PARAM_TILIM=tlim,CPX_PARAM_SCRIND=0,CPX_PARAM_EPGAP=rgap), cont_solver=MosekSolver(LOG=1, NUM_THREADS=1, OPTIMIZER_MAX_TIME=120.), log_level=logl, timeout=tlim, rel_gap=rgap, mip_solver_drives=true) end),
 )
 
 
 function getsolver(solvername, tlim, logl, rgap)
-
     packages, solvername = solvermap[solvername]
     for p in packages
         eval(parse("using $p"))
@@ -170,7 +171,7 @@ end
 @assert length(ARGS) >= 3
 
 # Save process ID for runmeta.jl
-open("mypid", "w") do fd
+open("~/mypid", "w") do fd
     print(fd, getpid())
 end
 

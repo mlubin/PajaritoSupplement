@@ -1,0 +1,67 @@
+# on local
+scp -i ~/oct7test.pem mosek.lic ubuntu@ec2-107-20-52-113.compute-1.amazonaws.com:
+scp -i ~/oct7test.pem scipoptsuite-3.2.1.tgz ubuntu@ec2-54-158-166-128.compute-1.amazonaws.com:
+scp -i ~/oct7test.pem cplex_studio127.linux-x86-64.bin ubuntu@ec2-54-158-166-128.compute-1.amazonaws.com:
+
+# on instance
+sudo apt-get update --yes
+sudo apt-get -y --force-yes install git python-pip python-paramiko
+sudo apt-get -y install build-essential gfortran pkg-config unzip libgmp-dev libz-dev libreadline-dev libncurses-dev
+
+# install julia
+wget https://julialang.s3.amazonaws.com/bin/linux/x64/0.5/julia-0.5.0-linux-x86_64.tar.gz
+tar -xvzf julia-0.5.0-linux-x86_64.tar.gz
+echo "export PATH=\$PATH:$HOME/julia-3c9d75391c/bin" >> ~/.bashrc
+
+# install mosek
+wget http://download.mosek.com/stable/8.0.0.53/mosektoolslinux64x86.tar.bz2
+tar -xvjf mosektoolslinux64x86.tar.bz2
+mv mosek.lic mosek
+
+# install CPLEX to /home/ubuntu/CPLEX_Studio127:
+chmod +x cplex_studio127.linux-x86-64.bin
+./cplex_studio127.linux-x86-64.bin
+echo "export LD_LIBRARY_PATH=/home/ubuntu/CPLEX_Studio127/cplex/bin/x86-64_linux" >> ~/.bashrc
+
+# compile scip for scip.jl
+echo "export SCIPOPTDIR=/home/ubuntu/scipoptsuite-3.2.1" >> ~/.bashrc
+tar xvzf scipoptsuite-3.2.1.tgz
+cd scipoptsuite-3.2.1
+rm Makefile.doit
+wget http://scip.zib.de/download/bugfixes/scip-3.2.1/Makefile.doit
+make SHARED=true GMP=false READLINE=false ZLIB=false OPT=opt IPOPT=true scipoptlib
+# after > Enter soft-link ... [Press enter] > Enter soft-link target file or directory for "lib/ipopt.linux.x86_64.gnu.opt" (return if not needed):
+/home/ubuntu/.julia/v0.5/Ipopt/deps/usr
+
+# get julia packages and test
+cd
+source .bashrc
+julia
+Pkg.update()
+Pkg.add("Mosek")
+Pkg.add("CPLEX")
+Pkg.add("JuMP")
+Pkg.add("Convex")
+Pkg.add("ECOS")
+Pkg.add("Cbc")
+Pkg.add("Ipopt")
+Pkg.add("CoinOptServices")
+Pkg.add("AmplNLWriter")
+Pkg.add("SCS") # for Pajarito tests
+Pkg.add("GLPKMathProgInterface") # for Pajarito tests
+Pkg.add("SCIP")
+Pkg.clone("https://github.com/mlubin/ConicBenchmarkUtilities.jl.git")
+Pkg.add("Pajarito")
+Pkg.test("Pajarito")
+
+# tidy up to reduce size of AMI
+rm -rf .julia/v0.5/CoinOptServices/deps/src
+rm -rf .julia/v0.5/Cbc/deps/src/
+rm -rf .julia/v0.5/Ipopt/deps/src/
+rm julia-0.5.0-linux-x86_64.tar.gz
+rm cplex_studio127.linux-x86-64.bin
+rm scipoptsuite-3.2.1.tgz
+rm mosektoolslinux64x86.tar.bz2
+
+# clone supplement repo with data instances and scripts
+git clone https://github.com/mlubin/PajaritoSupplement.git
