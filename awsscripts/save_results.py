@@ -26,7 +26,7 @@ def save_results(job, tag):
 if __name__ == "__main__":
     # Validate command-line arguments
     if len(sys.argv) < 3:
-        print "Usage: python save_results.py job tag"
+        print "Usage: python2 save_results.py job tag"
         exit(1)
 
     save_results(sys.argv[1], sys.argv[2])

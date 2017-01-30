@@ -11,5 +11,5 @@ if __name__ == "__main__":
         output_folder = sys.argv[2]
         cloud_setup.download_s3_bucket(job, os.path.join(os.getcwd(), output_folder))
     else:
-        print "Usage: python get_s3_files.py jobname output_folder"
+        print "Usage: python2 get_s3_files.py jobname output_folder"
         exit(1)

@@ -170,7 +170,7 @@ def dispatch_and_run(job, tags, cmds, commands, verbose=True):
             f.write("\n")
             f.write(command)
             f.write("\n")
-            f.write("python awsscripts/save_results.py %s %s" % (job, tag))
+            f.write("python2 awsscripts/save_results.py %s %s" % (job, tag))
 
         # Put runner to server
         f = cmds[tag].open_sftp()
