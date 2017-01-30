@@ -14,8 +14,8 @@ def save_results(job, tag):
         s3, bucket = cloud_setup.setup_s3_bucket(job)
 
         # Add all files in output/ to bucket
-        for filename in os.listdir("output"):
-            cloud_setup.add_file_to_s3_bucket(bucket, tag, os.path.join("output", filename))
+        for filename in os.listdir("~/output"):
+            cloud_setup.add_file_to_s3_bucket(bucket, tag, os.path.join("~/output", filename))
 
         # Self-terminate at completion
         cloud_setup.terminate_instance(tag)

@@ -22,6 +22,7 @@ elseif startswith(solvername, "PAJ_")
 end
 
 # Print info and all instances in the set to a META file for the solver
+mkdir output
 fdmeta = open("output/META.$solvername.$(split(basename(instfile),'.')[1]).txt", "w")
 println(fdmeta, "#SOLVER# $solvername")
 println(fdmeta, "#TIMELIMIT# $tlim")
@@ -45,7 +46,7 @@ for instancename in instancelist
     # Try to start a process to run the current instance on
     # If this fails, it won't affect running future instances
     try
-        process = spawn(pipeline(`julia PajaritoSupplement/scripts/run.jl $solvername $tlim $datafolder $(instancename).cbf.gz`, stdout=filename, stderr=filename, append=true))
+        process = spawn(pipeline(`julia scripts/run.jl $solvername $tlim $datafolder $(instancename).cbf.gz`, stdout=filename, stderr=filename, append=true))
 
         t = time()
         sleep(30.0)

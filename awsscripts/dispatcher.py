@@ -125,39 +125,21 @@ def setup_instances(tags, cmds, insts, verbose=True):
         exit(1)
 
     if verbose:
-        print "Copying keys, etc. to all instances, running INSTALL... "
+        print "Copying keys to instances"
 
     for tag in tags:
         print "    Copying files to %s ..." % (tag)
         f = cmds[tag].open_sftp()
-
-        # Put the required scripts on the machine
-        f.put("INSTALL.sh", "INSTALL.sh")
-        f.put("INSTALL.py", "INSTALL.py")
-        f.put("../scripts/run.jl", "run.jl")
-        f.put("../scripts/runmeta.jl", "runmeta.jl")
-        for filename in os.listdir("../instancesets"):
-            f.put("../instancesets/" + filename, filename)
-
-        f.put("save_results.py", "save_results.py")
-        f.put("cloud_setup.py", "cloud_setup.py")
         f.put(botoloc, ".boto")
-
         f.close()
 
-        # Make script executable
-        cmds[tag].run("chmod +x INSTALL.sh")
+        cmds[tag].run("cd ~/PajaritoSupplement; git pull; touch READY")
 
-        # Spawn the install runner (non-blocking)
-        print "    Launching INSTALL.py on %s ..." % (tag)
-        stdin, stdout, stderr = cmds[tag]._ssh_client.exec_command(
-            "python INSTALL.py")
-
-    print "    Waiting for INSTALL.py to complete on all machines"
+    print "    Waiting for all machines"
     while True:
-        time.sleep(10)
+        time.sleep(1)
         done = [cmds[tag].run("ls .")[1].find("READY") >= 0 for tag in tags]
-        print "      - Installation complete on",
+        print "      - Ready on",
         print sum(done), "/", len(done), "boxes"
         if sum(done) == len(done):
             break
@@ -180,13 +162,13 @@ def dispatch_and_run(job, tags, cmds, commands, verbose=True):
             print " %s" % tag
 
         # Make a shell script to run the command and then save the results
-        runner_path = "runner_%s.sh" % tag
+        runner_path = "~/runner_%s.sh" % tag
         with open(runner_path, "w") as f:
             f.write("export TAG=%s" % tag)  # Inject tag as environment var
             f.write("\n")
             f.write(command)
             f.write("\n")
-            f.write("python ~/save_results.py %s %s" % (job, tag))
+            f.write("python ~/PajaritoSupplement/awsscripts/save_results.py %s %s" % (job, tag))
 
         # Put runner to server
         f = cmds[tag].open_sftp()
