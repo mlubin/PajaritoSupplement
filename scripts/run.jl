@@ -40,11 +40,11 @@ function solveprint(instance, solver)
     try
         objval = MathProgBase.getobjval(m)
         if sense == :Max
-            objval = -objval
+B            objval = -objval
         end
         objval += objoffset
     end
-    try
+ B   try
         objbound = MathProgBase.getobjbound(m)
         if sense == :Max
             objbound = -objbound
@@ -171,7 +171,7 @@ end
 @assert length(ARGS) >= 3
 
 # Save process ID for runmeta.jl
-open("~/mypid", "w") do fd
+open("mypid", "w") do fd
     print(fd, getpid())
 end
 

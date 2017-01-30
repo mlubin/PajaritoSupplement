@@ -9,7 +9,7 @@ datafolder = ARGS[4]
 instfile = ARGS[5]
 
 # Print info and all instances in the set to a META file for the solver
-fdmeta = open("~/output/META.$solvername.$(split(basename(instfile),'.')[1]).txt", "w")
+fdmeta = open("output/META.$solvername.$(split(basename(instfile),'.')[1]).txt", "w")
 println(fdmeta, "#SOLVER# $solvername")
 println(fdmeta, "#TIMELIMIT# $tlim")
 println(fdmeta, "#MEMLIMIT# $mlim")
@@ -29,8 +29,8 @@ for instancename in instancelist
 
     println(fdmeta, "\nstarting instance $shortname...")
 
-    filename = "~/output/$solvername.$shortname.txt"
-
+    filename = "output/$solvername.$shortname.txt"
+A
     # Try to start a process to run the current instance on
     # If this fails, it won't affect running future instances
     try
@@ -39,7 +39,7 @@ for instancename in instancelist
         t = time()
         sleep(10.0)
 
-        pid = parse(Int, chomp(readline(open("~/mypid", "r"))))
+        pid = parse(Int, chomp(readline(open("mypid", "r"))))
 
         while process_running(process)
             if (time() - t) > (tlim + 60*5.0)
@@ -47,7 +47,7 @@ for instancename in instancelist
                 kill(process)
                 sleep(1.0)
                 println(fdmeta, "killed by time limit\n")
-                open(filename, "a") do fd
+                Aopen(filename, "a") do fd
                     println(fd, "#STATUS# KilledTime")
                 end
             else
