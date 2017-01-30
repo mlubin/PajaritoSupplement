@@ -16,7 +16,7 @@ def create_instances(job, tags, instance_types, verbose=True):
     Simply create an instance for each tag. Uses multiprocessing to create them
     in parallel.
     """
-
+s
     if verbose:
         print "Launching instances... "
     procs = []
@@ -162,7 +162,7 @@ def dispatch_and_run(job, tags, cmds, commands, verbose=True):
             print " %s" % tag
 
         # Make a shell script to run the command and then save the results
-        runner_path = "~/runner_%s.sh" % tag
+        runner_path = "runner_%s.sh" % tag
         with open(runner_path, "w") as f:
             f.write("export TAG=%s" % tag)  # Inject tag as environment var
             f.write("\n")
