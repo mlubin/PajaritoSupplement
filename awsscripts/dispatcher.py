@@ -235,13 +235,6 @@ def run_dispatch(job, commands, instance_types, create,
         print "described in README.md. Store this file either in the "
         print "aws-runner folder or in your home directory."
         exit(1)
-    if (not os.path.exists("INSTALL.py")):
-        print "Please run this script from the awsscripts directory."
-        exit(1)
-    if (not os.path.exists("INSTALL.sh")):
-        print "Could not find the install file:"
-        print "    %s" % "INSTALL.sh"
-        exit(1)
 
     tags = ["%s%d" % (job, i + tag_offset) for i in range(len(commands))]
 
