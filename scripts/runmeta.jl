@@ -22,7 +22,6 @@ elseif startswith(solvername, "PAJ_")
 end
 
 # Print info and all instances in the set to a META file for the solver
-mkdir output
 fdmeta = open("output/META.$solvername.$(split(basename(instfile),'.')[1]).txt", "w")
 println(fdmeta, "#SOLVER# $solvername")
 println(fdmeta, "#TIMELIMIT# $tlim")

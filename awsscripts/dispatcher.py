@@ -166,9 +166,11 @@ def dispatch_and_run(job, tags, cmds, commands, verbose=True):
         with open(runner_path, "w") as f:
             f.write("export TAG=%s" % tag)  # Inject tag as environment var
             f.write("\n")
+            f.write("cd PajaritoSupplement; mkdir output")
+            f.write("\n")
             f.write(command)
             f.write("\n")
-            f.write("python ~/PajaritoSupplement/awsscripts/save_results.py %s %s" % (job, tag))
+            f.write("python awsscripts/save_results.py %s %s" % (job, tag))
 
         # Put runner to server
         f = cmds[tag].open_sftp()
@@ -269,6 +271,8 @@ def run_dispatch(job, commands, instance_types, create,
 
     print ""
     print "All dispatcher tasks successfully completed."
+
+    quit()
 
 
 if __name__ == "__main__":
