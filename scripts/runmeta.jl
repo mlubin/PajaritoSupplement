@@ -35,7 +35,7 @@ for instancename in instancelist
         process = spawn(pipeline(`julia PajaritoSupplement/scripts/run.jl $solvername $tlim $datafolder $instancename`, stdout=filename, stderr=filename, append=true))
 
         t = time()
-        sleep(20.0)
+        sleep(30.0)
 
         pid = parse(Int, chomp(readline(open("mypid", "r"))))
 

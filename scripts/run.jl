@@ -40,11 +40,11 @@ function solveprint(instance, solver)
     try
         objval = MathProgBase.getobjval(m)
         if sense == :Max
-B            objval = -objval
+            objval = -objval
         end
         objval += objoffset
     end
- B   try
+    try
         objbound = MathProgBase.getobjbound(m)
         if sense == :Max
             objbound = -objbound
