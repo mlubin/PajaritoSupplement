@@ -203,8 +203,7 @@ solver = getsolver(solvername, tlim, logl, rgap)
 
 println("#SOLVERNAME# $solvername")
 println("#SOLVER# $solver")
-println("#FILENAME# $(basename(instancename))")
-println("#INSTANCE# $(instance.name)")
+println("#INSTANCE# $instancename")
 println("#TIMELIMIT# $tlim")
 
 # Attempt to solve, print solve info
