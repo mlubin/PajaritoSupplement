@@ -187,7 +187,7 @@ if startswith(solvername, "PAJ")
     TT = STDOUT
     open("/dev/null", "w") do fd
         redirect_stdout(fd)
-        instance = readcbfdata(joinpath(datafolder, "estein", "estein4_A.cbf.gz"))
+        instance = readcbfdata(joinpath(datafolder, "estein4_A.cbf.gz"))
         solver = getsolver(solvername, 20., 0, rgap)
         solveprint(instance, solver)
     end

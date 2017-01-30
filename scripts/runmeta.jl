@@ -25,11 +25,9 @@ flush(fdmeta)
 # Run each instance one by one
 # This only works on Linux because we check the memory use with Linux commands
 for instancename in instancelist
-    shortname = chomp(split(instancename, "/")[2])
+    println(fdmeta, "\nstarting instance $instancename...")
 
-    println(fdmeta, "\nstarting instance $shortname...")
-
-    filename = "output/$solvername.$shortname.txt"
+    filename = "output/$solvername.$instancename.txt"
 
     # Try to start a process to run the current instance on
     # If this fails, it won't affect running future instances
