@@ -16,7 +16,7 @@ elseif startswith(solvername, "PAJ_")
     cd(Pkg.dir("Pajarito"))
     s = readstring(`git status`)
     if contains(s, "cplexincumbent")
-        error(......)
+        error("Currently on cplexincumbent branch of Pajarito - switch to correct version before running a standard Pajarito solver")
     end
     cd(d)
 end
