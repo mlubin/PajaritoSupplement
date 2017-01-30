@@ -133,7 +133,7 @@ def setup_instances(tags, cmds, insts, verbose=True):
         f.put(botoloc, ".boto")
         f.close()
 
-        cmds[tag].run("cd ~/PajaritoSupplement; git pull; touch READY")
+        cmds[tag].run("cd ~/PajaritoSupplement; git pull; cd -; touch READY")
 
     print "    Waiting for all machines"
     while True:
