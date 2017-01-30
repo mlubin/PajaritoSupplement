@@ -30,7 +30,7 @@ for instancename in instancelist
     println(fdmeta, "\nstarting instance $shortname...")
 
     filename = "output/$solvername.$shortname.txt"
-A
+
     # Try to start a process to run the current instance on
     # If this fails, it won't affect running future instances
     try
