@@ -162,6 +162,7 @@ def dispatch_and_run(job, tags, cmds, commands, verbose=True):
             print " %s" % tag
 
         cmds[tag].run("export TAG=%s" % tag)
+        print command
         cmds[tag].run("cd ~/PajaritoSupplement; %s >cmdoutput 2>&1" % command)
         # cmds[tag].run("cd ~/PajaritoSupplement/awsscripts; python2 save_results.py %s %s" % (job, tag))
 
