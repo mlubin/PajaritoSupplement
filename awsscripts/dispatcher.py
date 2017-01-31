@@ -164,7 +164,7 @@ def dispatch_and_run(job, tags, cmds, commands, verbose=True):
 
         cmds[tag].run("export TAG=%s" % tag)
         cmds[tag].run("cd ~/PajaritoSupplement; ~/julia-3c9d75391c/bin/julia scripts/runmeta.jl %s >cmdoutput 2>&1" % command)
-        # cmds[tag].run("cd ~/PajaritoSupplement/awsscripts; python2 save_results.py %s %s" % (job, tag))
+        cmds[tag].run("cd ~/PajaritoSupplement/awsscripts; python2 save_results.py %s %s" % (job, tag))
 
     if verbose:
         print "\n  Computation started on all machines"
