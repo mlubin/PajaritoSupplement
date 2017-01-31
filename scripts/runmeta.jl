@@ -45,7 +45,7 @@ for instancename in instancelist
     # Try to start a process to run the current instance on
     # If this fails, it won't affect running future instances
     try
-        process = spawn(pipeline(`julia scripts/run.jl $solvername $tlim $datafolder $(instancename).cbf.gz`, stdout=filename, stderr=filename, append=true))
+        process = spawn(pipeline(`$(Base.JULIA_HOME)/julia scripts/run.jl $solvername $tlim $datafolder $(instancename).cbf.gz`, stdout=filename, stderr=filename, append=true))
 
         t = time()
         sleep(30.0)
