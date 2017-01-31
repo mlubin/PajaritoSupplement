@@ -155,39 +155,15 @@ def dispatch_and_run(job, tags, cmds, commands, verbose=True):
     """
     # Write out and copy to instances
     if verbose:
-        print "Writing args file and starting run... "
+        print "Starting run... "
 
     for tag, command in zip(tags, commands):
         if verbose:
             print " %s" % tag
 
-        # Make a shell script to run the command and then save the results
-        runner_path = "runner_%s.sh" % tag
-        with open(runner_path, "w") as f:
-            f.write("export TAG=%s" % tag)  # Inject tag as environment var
-            f.write("\n")
-            f.write("mkdir output")
-            f.write("\n")
-            f.write(command)
-            f.write("\n")
-            f.write("cd awsscripts; python2 save_results.py %s %s" % (job, tag))
-
-        # Put runner to server
-        f = cmds[tag].open_sftp()
-        f.put(runner_path, "PajaritoSupplement/runner.sh")
-        f.close()
-
-        # Cleanup
-        try:
-            os.remove(runner_path)
-        except:
-            pass
-
-        cmds[tag].run("chmod +x PajaritoSupplement/runner.sh")
-
-        cmds[tag]._ssh_client.exec_command(
-            "cd PajaritoSupplement; nohup bash runner.sh &> screen_output.txt &"
-        )
+        cmds[tag].run("export TAG=%s" % tag)
+        cmds[tag].run("cd ~/PajaritoSupplement; mkdir output; %s" % command)
+        cmds[tag].run("cd ~/PajaritoSupplement/awsscripts; python2 save_results.py %s %s" % (job, tag))
 
     if verbose:
         print "\n  Computation started on all machines"
