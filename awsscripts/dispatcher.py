@@ -127,15 +127,19 @@ def setup_instances(job, tags, cmds, commands, insts, verbose=True):
     if verbose:
         print "Copying keys to instances"
 
-    for tag in tags:
+    for tag, command in zip(tags, commands):
         print "    Copying files to %s ..." % (tag)
         f = cmds[tag].open_sftp()
         f.put(botoloc, ".boto")
         f.close()
 
+        print "    Running commands on %s ..." % (tag)
         cmds[tag].run("cd ~/.julia/v0.5/Pajarito; git fetch; git checkout bc5eaeeb99172bf388e880dfd59394a2243976fd")
-        cmds[tag].run("cd ~/PajaritoSupplement; git pull; mkdir output; cd; touch READY")
+        cmds[tag].run("cd ~/PajaritoSupplement; git pull; mkdir output; cd")
         cmds[tag].run("export TAG=%s" % tag)
+        
+        cmds[tag].run("touch READY")
+
         cmds[tag].run("cd ~/PajaritoSupplement; ~/julia-3c9d75391c/bin/julia scripts/runmeta.jl %s >cmdoutput 2>&1" % command)
         cmds[tag].run("cd ~/PajaritoSupplement/awsscripts; python2 save_results.py %s %s" % (job, tag))
 
