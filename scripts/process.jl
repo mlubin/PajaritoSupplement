@@ -103,6 +103,9 @@ for filename in resultfiles
             solver = split(line)[2]
         elseif startswith(line, "#INSTANCE#")
             instance = split(line)[2]
+            if endswith(instance, ".gz")
+                instance = instance[1:end-3]
+            end
         elseif startswith(line, "#STATUS#")
             status = split(line)[2]
         elseif startswith(line, "#OBJVAL#")
