@@ -247,6 +247,33 @@ def run_dispatch(job, commands, instance_types, create,
     quit()
 
 
+def extract_job_details(jobfile):
+    commands = []
+    instance_types = []
+    with open(jobfile, "rU") as f:
+        reader = csv.reader(f)
+        header_line = reader.next()
+        if header_line[0] != "instance_type" or header_line[1] != "command":
+            print "Error reading specified jobfile: %s" % jobfile
+            print ""
+            print "Make sure the jobfile is a csv file with instance types "
+            print "in the first column and commands in the second."
+            print "The headers should be 'instance_type' and 'command'."
+            exit(1)
+
+        for line in reader:
+            if len(line) > 2:
+                print "Error reading specified jobfile: %s" % jobfile
+                print ""
+                print "Make sure the jobfile is a csv file with instance types "
+                print "in the first column and commands in the second."
+                print "A row had more than two columns."
+                exit(1)
+            instance_types.append(line[0])
+            commands.append(line[1])
+    return commands, instance_types
+
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(
         description="A helper script to dispatch computation to AWS. "
