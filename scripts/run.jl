@@ -175,7 +175,7 @@ open("mypid", "w") do fd
     print(fd, getpid())
 end
 
-logl = 1
+logl = 2
 rgap = 1e-5
 
 solvername = ARGS[1]
