@@ -108,7 +108,7 @@ def connect_instances(job, tags, verbose=True):
     return insts, cmds
 
 
-def setup_instances(tags, cmds, insts, verbose=True):
+def setup_instances(job, tags, cmds, commands, insts, verbose=True):
     """
     Install dependencies and build so it is ready for the run. This takes
     a while so after copying the files we just fire off a script.
@@ -135,6 +135,9 @@ def setup_instances(tags, cmds, insts, verbose=True):
 
         cmds[tag].run("cd ~/.julia/v0.5/Pajarito; git fetch; git checkout bc5eaeeb99172bf388e880dfd59394a2243976fd")
         cmds[tag].run("cd ~/PajaritoSupplement; git pull; mkdir output; cd; touch READY")
+        cmds[tag].run("export TAG=%s" % tag)
+        cmds[tag].run("cd ~/PajaritoSupplement; ~/julia-3c9d75391c/bin/julia scripts/runmeta.jl %s >cmdoutput 2>&1" % command)
+        cmds[tag].run("cd ~/PajaritoSupplement/awsscripts; python2 save_results.py %s %s" % (job, tag))
 
     print "    Waiting for all machines"
     while True:
@@ -148,26 +151,6 @@ def setup_instances(tags, cmds, insts, verbose=True):
     if verbose:
         print " Hit [RETURN] when ready to proceed."
         raw_input()
-
-
-def dispatch_and_run(job, tags, cmds, commands, verbose=True):
-    """
-    Spawn the relevant command on each instance
-    """
-    # Write out and copy to instances
-    if verbose:
-        print "Starting run... "
-
-    for tag, command in zip(tags, commands):
-        if verbose:
-            print " %s" % tag
-
-        cmds[tag].run("export TAG=%s" % tag)
-        cmds[tag].run("cd ~/PajaritoSupplement; ~/julia-3c9d75391c/bin/julia scripts/runmeta.jl %s >cmdoutput 2>&1" % command)
-        cmds[tag].run("cd ~/PajaritoSupplement/awsscripts; python2 save_results.py %s %s" % (job, tag))
-
-    if verbose:
-        print "\n  Computation started on all machines"
 
 
 def extract_job_details(jobfile):
@@ -240,11 +223,7 @@ def run_dispatch(job, commands, instance_types, create,
 
     # Set them up (if desired)
     if create:
-        setup_instances(tags, cmds, insts, verbose)
-
-    # Send out jobs and start machines working (if desired)
-    if dispatch:
-        dispatch_and_run(job, tags, cmds, commands, verbose)
+        setup_instances(job, tags, cmds, commands, insts, verbose)
 
     print ""
     print "All dispatcher tasks successfully completed."
