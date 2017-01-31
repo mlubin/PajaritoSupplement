@@ -117,12 +117,13 @@ solvermap = Dict(
     # NON-COMMERCIAL
     "PAJ_SCIP_MOSEK" =>
     (["SCIP","Mosek"],quote PajaritoSolver(mip_solver=SCIPSolver("display/verblevel", 0, "limits/gap", 0.0, "limits/time", tlim), cont_solver=MosekSolver(LOG=0, NUM_THREADS=1, OPTIMIZER_MAX_TIME=120.), log_level=logl, timeout=tlim, rel_gap=rgap) end),
-    "PAJ_MSD_SCIP_MOSEK" =>
-    (["SCIP","Mosek"],quote PajaritoSolver(mip_solver=SCIPSolver("display/verblevel", 0, "limits/gap", rgap, "limits/time", tlim), cont_solver=MosekSolver(LOG=0, NUM_THREADS=1, OPTIMIZER_MAX_TIME=120.), log_level=logl, timeout=tlim, rel_gap=rgap, mip_solver_drives=true) end),
+    # SCIP does not support info cb
+    # "PAJ_MSD_SCIP_MOSEK" =>
+    # (["SCIP","Mosek"],quote PajaritoSolver(mip_solver=SCIPSolver("display/verblevel", 0, "limits/gap", rgap, "limits/time", tlim), cont_solver=MosekSolver(LOG=0, NUM_THREADS=1, OPTIMIZER_MAX_TIME=120.), log_level=logl, timeout=tlim, rel_gap=rgap, mip_solver_drives=true) end),
     "PAJ_SCIP_ECOS" =>
     (["SCIP","ECOS"],quote PajaritoSolver(mip_solver=SCIPSolver("display/verblevel", 0, "limits/gap", 0.0, "limits/time", tlim), cont_solver=ECOSSolver(verbose=false), log_level=logl, timeout=tlim, rel_gap=rgap) end),
-    "PAJ_MSD_SCIP_ECOS" =>
-    (["SCIP","ECOS"],quote PajaritoSolver(mip_solver=SCIPSolver("display/verblevel", 0, "limits/gap", rgap, "limits/time", tlim), cont_solver=ECOSSolver(verbose=false), log_level=logl, timeout=tlim, rel_gap=rgap, mip_solver_drives=true) end),
+    # "PAJ_MSD_SCIP_ECOS" =>
+    # (["SCIP","ECOS"],quote PajaritoSolver(mip_solver=SCIPSolver("display/verblevel", 0, "limits/gap", rgap, "limits/time", tlim), cont_solver=ECOSSolver(verbose=false), log_level=logl, timeout=tlim, rel_gap=rgap, mip_solver_drives=true) end),
     "SCIP_MISOCP" =>
     (["SCIP"],quote ConicNLPWrapper(nlp_solver=SCIPSolver("display/verblevel", 1, "limits/gap", rgap, "limits/time", tlim), soc_as_quadratic=true, disaggregate_soc=false) end),
     "SCIP_MISOCPDIS" =>
