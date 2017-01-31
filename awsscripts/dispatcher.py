@@ -162,7 +162,7 @@ def dispatch_and_run(job, tags, cmds, commands, verbose=True):
             print " %s" % tag
 
         cmds[tag].run("export TAG=%s" % tag)
-        cmds[tag].run("cd ~/PajaritoSupplement; %s; cd awsscripts; python2 save_results.py %s %s" % (command, job, tag))
+        # cmds[tag].run("cd ~/PajaritoSupplement; %s; cd awsscripts; python2 save_results.py %s %s" % (command, job, tag))
 
     if verbose:
         print "\n  Computation started on all machines"
