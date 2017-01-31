@@ -133,7 +133,7 @@ def setup_instances(tags, cmds, insts, verbose=True):
         f.put(botoloc, ".boto")
         f.close()
 
-        cmds[tag].run("cd ~/PajaritoSupplement; git pull; cd -; touch READY")
+        cmds[tag].run("cd PajaritoSupplement; git pull; cd -; touch READY")
 
     print "    Waiting for all machines"
     while True:
@@ -166,15 +166,15 @@ def dispatch_and_run(job, tags, cmds, commands, verbose=True):
         with open(runner_path, "w") as f:
             f.write("export TAG=%s" % tag)  # Inject tag as environment var
             f.write("\n")
-            f.write("cd PajaritoSupplement; mkdir output")
+            f.write("mkdir output")
             f.write("\n")
             f.write(command)
             f.write("\n")
-            f.write("python2 awsscripts/save_results.py %s %s" % (job, tag))
+            f.write("cd awsscripts; python2 save_results.py %s %s" % (job, tag))
 
         # Put runner to server
         f = cmds[tag].open_sftp()
-        f.put(runner_path, "runner.sh")
+        f.put(runner_path, "PajaritoSupplement/runner.sh")
         f.close()
 
         # Cleanup
@@ -183,10 +183,10 @@ def dispatch_and_run(job, tags, cmds, commands, verbose=True):
         except:
             pass
 
-        cmds[tag].run("chmod +x runner.sh")
+        cmds[tag].run("chmod +x PajaritoSupplement/runner.sh")
 
         cmds[tag]._ssh_client.exec_command(
-            "nohup bash runner.sh &> screen_output.txt &"
+            "cd PajaritoSupplement; nohup bash runner.sh &> screen_output.txt &"
         )
 
     if verbose:
