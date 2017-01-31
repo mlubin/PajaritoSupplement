@@ -172,7 +172,7 @@ def dispatch_and_run(job, tags, cmds, commands, verbose=True):
             f.write("\n")
             f.write("~/julia-3c9d75391c/bin/julia runmeta.jl %s" % command)
             f.write("\n")
-            f.write("cd ~/PajaritoSupplement/awsscripts; python2 save_results.py %s %s" % (job, tag))
+            # f.write("cd ~/PajaritoSupplement/awsscripts; python2 save_results.py %s %s" % (job, tag))
 
         # Put runner to server
         f = cmds[tag].open_sftp()
