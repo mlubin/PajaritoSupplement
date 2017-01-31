@@ -108,7 +108,7 @@ def connect_instances(job, tags, verbose=True):
     return insts, cmds
 
 
-def setup_instances(job, tags, cmds, commands, insts, verbose=True):
+def setup_instances(tags, cmds, insts, verbose=True):
     """
     Install dependencies and build so it is ready for the run. This takes
     a while so after copying the files we just fire off a script.
@@ -127,21 +127,14 @@ def setup_instances(job, tags, cmds, commands, insts, verbose=True):
     if verbose:
         print "Copying keys to instances"
 
-    for tag, command in zip(tags, commands):
+    for tag in tags:
         print "    Copying files to %s ..." % (tag)
         f = cmds[tag].open_sftp()
         f.put(botoloc, ".boto")
         f.close()
 
-        print "    Running commands on %s ..." % (tag)
         cmds[tag].run("cd ~/.julia/v0.5/Pajarito; git fetch; git checkout bc5eaeeb99172bf388e880dfd59394a2243976fd")
-        cmds[tag].run("cd ~/PajaritoSupplement; git pull; mkdir output; cd")
-        cmds[tag].run("export TAG=%s" % tag)
-        
-        cmds[tag].run("touch READY")
-
-        cmds[tag].run("cd ~/PajaritoSupplement; ~/julia-3c9d75391c/bin/julia scripts/runmeta.jl %s >cmdoutput 2>&1" % command)
-        cmds[tag].run("cd ~/PajaritoSupplement/awsscripts; python2 save_results.py %s %s" % (job, tag))
+        cmds[tag].run("cd ~/PajaritoSupplement; git pull; mkdir output; cd; touch READY")
 
     print "    Waiting for all machines"
     while True:
@@ -157,31 +150,46 @@ def setup_instances(job, tags, cmds, commands, insts, verbose=True):
         raw_input()
 
 
-def extract_job_details(jobfile):
-    commands = []
-    instance_types = []
-    with open(jobfile, "rU") as f:
-        reader = csv.reader(f)
-        header_line = reader.next()
-        if header_line[0] != "instance_type" or header_line[1] != "command":
-            print "Error reading specified jobfile: %s" % jobfile
-            print ""
-            print "Make sure the jobfile is a csv file with instance types "
-            print "in the first column and commands in the second."
-            print "The headers should be 'instance_type' and 'command'."
-            exit(1)
+def dispatch_and_run(job, tags, cmds, commands, verbose=True):
+    """
+    Spawn the relevant command on each instance
+    """
+    # Write out and copy to instances
+    if verbose:
+        print "Writing args file and starting run... "
 
-        for line in reader:
-            if len(line) > 2:
-                print "Error reading specified jobfile: %s" % jobfile
-                print ""
-                print "Make sure the jobfile is a csv file with instance types "
-                print "in the first column and commands in the second."
-                print "A row had more than two columns."
-                exit(1)
-            instance_types.append(line[0])
-            commands.append(line[1])
-    return commands, instance_types
+    for tag, command in zip(tags, commands):
+        if verbose:
+            print " %s" % tag
+
+        # Make a shell script to run the command and then save the results
+        runner_path = "runner_%s.sh" % tag
+        with open(runner_path, "w") as f:
+            f.write("export TAG=%s" % tag)  # Inject tag as environment var
+            f.write("\n")
+            f.write("~/julia-3c9d75391c/bin/julia runmeta.jl %s" % command)
+            f.write("\n")
+            f.write("cd ~/PajaritoSupplement/awsscripts; python2 save_results.py %s %s" % (job, tag))
+
+        # Put runner to server
+        f = cmds[tag].open_sftp()
+        f.put(runner_path, "~/PajaritoSupplement/runner.sh")
+        f.close()
+
+        # Cleanup
+        try:
+            os.remove(runner_path)
+        except:
+            pass
+
+        cmds[tag].run("chmod +x ~/PajaritoSupplement/runner.sh")
+
+        cmds[tag]._ssh_client.exec_command(
+            "cd ~/PajaritoSupplement; nohup bash runner.sh &> screen_output.txt &"
+        )
+
+    if verbose:
+        print "\n  Computation started on all machines"
 
 
 def run_dispatch(job, commands, instance_types, create,
@@ -227,7 +235,11 @@ def run_dispatch(job, commands, instance_types, create,
 
     # Set them up (if desired)
     if create:
-        setup_instances(job, tags, cmds, commands, insts, verbose)
+        setup_instances(tags, cmds, insts, verbose)
+
+    # Send out jobs and start machines working (if desired)
+    if dispatch:
+        dispatch_and_run(job, tags, cmds, commands, verbose)
 
     print ""
     print "All dispatcher tasks successfully completed."
