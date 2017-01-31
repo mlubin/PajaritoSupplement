@@ -133,8 +133,7 @@ def setup_instances(tags, cmds, insts, verbose=True):
         f.put(botoloc, ".boto")
         f.close()
 
-        cmds[tag].run("cd ~/.julia/v0.5/Pajarito; git fetch; git checkout bc5eaeeb99172bf388e880dfd59394a2243976fd")
-        cmds[tag].run("cd ~/PajaritoSupplement; git pull; mkdir output; cd; touch READY")
+        cmds[tag].run("touch READY")
 
     print "    Waiting for all machines"
     while True:
@@ -165,6 +164,10 @@ def dispatch_and_run(job, tags, cmds, commands, verbose=True):
         # Make a shell script to run the command and then save the results
         runner_path = "runner_%s.sh" % tag
         with open(runner_path, "w") as f:
+            f.write("cd ~/.julia/v0.5/Pajarito; git fetch; git checkout bc5eaeeb99172bf388e880dfd59394a2243976fd")
+            f.write("\n")
+            f.write("cd ~/PajaritoSupplement; git pull; mkdir output")
+            f.write("\n")
             f.write("export TAG=%s" % tag)  # Inject tag as environment var
             f.write("\n")
             f.write("~/julia-3c9d75391c/bin/julia runmeta.jl %s" % command)
@@ -173,7 +176,7 @@ def dispatch_and_run(job, tags, cmds, commands, verbose=True):
 
         # Put runner to server
         f = cmds[tag].open_sftp()
-        f.put(runner_path, "~/PajaritoSupplement/runner.sh")
+        f.put(runner_path, "PajaritoSupplement/runner.sh")
         f.close()
 
         # Cleanup
