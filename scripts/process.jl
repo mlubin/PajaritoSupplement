@@ -81,9 +81,9 @@ end
 function validate_with_conic_solver(dat, solution)
     c, A, b, con_cones, var_cones, vartypes, sense, objoffset = cbftompb(dat)
     @assert sense == :Min
-    @assert offset = 0.0
+    @assert objoffset == 0.0
 
-    con_cones = copy_con(cones)
+    con_cones = copy(con_cones)
     I_eq = Int[]
     J_eq = Int[]
     b_eq = Float64[]
@@ -94,15 +94,15 @@ function validate_with_conic_solver(dat, solution)
             intcount += 1
             push!(J_eq,i)
             push!(b_eq, round(solution[i]))
-            push!(con_cones, :Zero)
         else
-            @assert vartype[i] == :Cont
+            @assert vartypes[i] == :Cont
         end
     end
+    con_cones = vcat(con_cones, (:Zero,size(A,1)+1:size(A,1)+intcount-1))
     A = vcat(A, sparse(I_eq,J_eq,ones(length(I_eq)),length(I_eq),length(c)))
     b = vcat(b, b_eq)
 
-    m = MathProgBase.ConicModel(MosekSolver())
+    m = MathProgBase.ConicModel(MosekSolver(LOG=0))
     MathProgBase.loadproblem!(m, c, A, b, con_cones, var_cones)
     MathProgBase.optimize!(m)
     status = MathProgBase.status(m)
@@ -165,7 +165,7 @@ for filename in resultfiles
         #end
     end
     if length(solution) > 0
-        instancefile = find_instance(instancename)
+        instancefile = find_instance(instance)
         dat = readcbfdata(instancefile)
 
         objval_sol, linear_violation, soc_violation, socrot_violation, exp_violation = compute_violations(dat,solution)

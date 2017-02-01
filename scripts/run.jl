@@ -162,6 +162,9 @@ solvermap = Dict(
     (["CPLEX","ECOS"],quote PajaritoSolver(mip_solver=CplexSolver(CPX_PARAM_THREADS=1,CPX_PARAM_TILIM=tlim,CPX_PARAM_SCRIND=0,CPX_PARAM_EPGAP=0.), cont_solver=ECOSSolver(verbose=false), log_level=logl, timeout=tlim, rel_gap=rgap) end),
     "PAJ_MSD_CPLEX_ECOS" =>
     (["CPLEX","ECOS"],quote PajaritoSolver(mip_solver=CplexSolver(CPX_PARAM_THREADS=1,CPX_PARAM_TILIM=tlim,CPX_PARAM_SCRIND=0,CPX_PARAM_EPGAP=rgap), cont_solver=ECOSSolver(verbose=false), log_level=logl, timeout=tlim, rel_gap=rgap, mip_solver_drives=true) end),
+    "CPLEX_MISOCP_EP" =>
+    (["CPLEX"],quote CplexSolver(CPX_PARAM_BAREPCOMP=1e-12,CPX_PARAM_THREADS=1,CPX_PARAM_TILIM=tlim,CPX_PARAM_SCRIND=1,CPX_PARAM_EPGAP=rgap) 
+end),
     "CPLEX_MISOCP" =>
     (["CPLEX"],quote CplexSolver(CPX_PARAM_THREADS=1,CPX_PARAM_TILIM=tlim,CPX_PARAM_SCRIND=1,CPX_PARAM_EPGAP=rgap) end),
     "PAJ_CPLEX_MOSEK_tols" =>
