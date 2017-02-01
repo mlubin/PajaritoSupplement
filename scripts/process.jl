@@ -170,7 +170,7 @@ for filename in resultfiles
         #     gaplimit=true
         #end
     end
-    if length(solution) > 0
+    if length(solution) > 0 && all(isfinite,solution)
         instancefile = find_instance(instance)
         dat = readcbfdata(instancefile)
 
