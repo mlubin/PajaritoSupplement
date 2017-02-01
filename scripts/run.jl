@@ -130,6 +130,10 @@ solvermap = Dict(
     (["SCIP"],quote ConicNLPWrapper(nlp_solver=SCIPSolver("display/verblevel", 1, "limits/gap", rgap, "limits/time", tlim), soc_as_quadratic=true, disaggregate_soc=true) end),
 
     # COMMERCIAL
+    "GUROBI_MISOCP" =>
+    (["Gurobi"],quote GurobiSolver(OutputFlag=1, Threads=1, TimeLimit=tlim, MIPGap=rgap) end),
+
+
     # CPX_PARAM_EPGAP=0., CPX_PARAM_EPINT=1e-8, CPX_PARAM_EPRHS=1e-8,
     "PAJ_CPLEX_MOSEK" =>
     (["CPLEX","Mosek"],quote PajaritoSolver(mip_solver=CplexSolver(CPX_PARAM_THREADS=1,CPX_PARAM_TILIM=tlim,CPX_PARAM_SCRIND=0,CPX_PARAM_EPGAP=0.), cont_solver=MosekSolver(LOG=0, NUM_THREADS=1, OPTIMIZER_MAX_TIME=120.), log_level=logl, timeout=tlim, rel_gap=rgap) end),
