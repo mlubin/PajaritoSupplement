@@ -80,8 +80,11 @@ end
 
 function validate_with_conic_solver(dat, solution)
     c, A, b, con_cones, var_cones, vartypes, sense, objoffset = cbftompb(dat)
-    @assert sense == :Min
     @assert objoffset == 0.0
+
+    if sense == :Max
+        c = -c
+    end
 
     con_cones = copy(con_cones)
     I_eq = Int[]
@@ -108,6 +111,9 @@ function validate_with_conic_solver(dat, solution)
     status = MathProgBase.status(m)
     if status == :Optimal
         objval = MathProgBase.getobjval(m)
+        if sense == :Max
+            objval *= -1
+        end
     else
         objval = NaN
     end
