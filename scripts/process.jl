@@ -48,9 +48,9 @@ function validate_solution(instancename, solution)
     c, A, b, con_cones, var_cones, vartypes, sense, objoffset = cbftompb(dat)
 
     # will be fixed soon, should really be equal
-    if length(solution) > length(c)
-        println("Solution is too long")
-    end
+    #if length(solution) > length(c)
+    #    println("Solution is too long")
+    #end
     @assert length(solution) >= length(c)
     solution = solution[1:length(c)]
     objval = dot(c,solution)
@@ -118,7 +118,7 @@ for filename in resultfiles
             totaltime = split(line)[2]
         elseif startswith(line, "#SOLUTION#")
             solutionvec = split(line)[2]
-            if startswith(solutionvec,'[') && endswith(solutionvec,']')
+            if startswith(solutionvec,'[') && endswith(solutionvec,']') && !startswith(solutionvec, "[]")
                 solution = [parse(Float64,x) for x in split(solutionvec[2:end-1],',')]
             end
         end
