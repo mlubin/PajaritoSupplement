@@ -1,11 +1,13 @@
 using ConicBenchmarkUtilities
+using Mosek
+using MathProgBase
 
 resultfiles = readdir(joinpath(pwd(), ARGS[1]))
 
 fd = open(joinpath(pwd(), ARGS[2]), "w")
 
 # process into a CSV file with columns:
-println(fd,"solver,instance,status,objval_reported,objbound,solvertime,totaltime,filename,objval_solution,max_linear_violation,max_soc_violation,max_socrot_violation")
+println(fd,"solver,instance,status,objval_reported,objbound,solvertime,totaltime,filename,objval_solution,max_linear_violation,max_soc_violation,max_socrot_violation,validator_status,validator_objval")
 
 # from instance name to file name
 function find_instance(name)
@@ -42,9 +44,7 @@ function violation_cone(subvec,cone)
 end
 
 
-function validate_solution(instancename, solution)
-    instancefile = find_instance(instancename)
-    dat = readcbfdata(instancefile)
+function compute_violations(dat, solution)
     c, A, b, con_cones, var_cones, vartypes, sense, objoffset = cbftompb(dat)
 
     # will be fixed soon, should really be equal
@@ -78,6 +78,42 @@ function validate_solution(instancename, solution)
     return objval, linear_violation, soc_violation, socrot_violation, exp_violation
 end
 
+function validate_with_conic_solver(dat, solution)
+    c, A, b, con_cones, var_cones, vartypes, sense, objoffset = cbftompb(dat)
+    @assert sense == :Min
+    @assert offset = 0.0
+
+    con_cones = copy_con(cones)
+    I_eq = Int[]
+    J_eq = Int[]
+    b_eq = Float64[]
+    intcount = 1
+    for i in 1:length(vartypes)
+        if vartypes[i] == :Int
+            push!(I_eq,intcount)
+            intcount += 1
+            push!(J_eq,i)
+            push!(b_eq, round(solution[i]))
+            push!(con_cones, :Zero)
+        else
+            @assert vartype[i] == :Cont
+        end
+    end
+    A = vcat(A, sparse(I_eq,J_eq,ones(length(I_eq)),length(I_eq),length(c)))
+    b = vcat(b, b_eq)
+
+    m = MathProgBase.ConicModel(MosekSolver())
+    MathProgBase.loadproblem!(m, c, A, b, con_cones, var_cones)
+    MathProgBase.optimize!(m)
+    status = MathProgBase.status(m)
+    if status == :Optimal
+        objval = MathProgBase.getobjval(m)
+    else
+        objval = NaN
+    end
+    return status, objval
+end
+
 for filename in resultfiles
     if filename == ".DS_Store" || contains(filename,"META")
         continue
@@ -95,6 +131,8 @@ for filename in resultfiles
     soc_violation = " "
     socrot_violation = " "
     exp_violation = " "
+    validator_status = " "
+    validator_objval = " "
     solution = []
     # gaplimit = false
 
@@ -127,7 +165,11 @@ for filename in resultfiles
         #end
     end
     if length(solution) > 0
-        objval_sol, linear_violation, soc_violation, socrot_violation, exp_violation = validate_solution(instance,solution)
+        instancefile = find_instance(instancename)
+        dat = readcbfdata(instancefile)
+
+        objval_sol, linear_violation, soc_violation, socrot_violation, exp_violation = compute_violations(dat,solution)
+        validator_status, validator_objval = validate_with_conic_solver(dat,solution)
     end
 
     # if gaplimit
@@ -136,7 +178,7 @@ for filename in resultfiles
     # end
 
     println(fd, 
-"$solver,$instance,$status,$objval,$objbound,$solvertime,$totaltime,$(basename(filename)),$objval_sol,$linear_violation,$soc_violation,$socrot_violation")
+"$solver,$instance,$status,$objval,$objbound,$solvertime,$totaltime,$(basename(filename)),$objval_sol,$linear_violation,$soc_violation,$socrot_violation,$validator_status,$validator_objval")
 end
 
 close(fd)
