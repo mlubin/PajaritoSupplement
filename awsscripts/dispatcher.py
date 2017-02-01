@@ -166,6 +166,8 @@ def dispatch_and_run(job, tags, cmds, commands, verbose=True):
         with open(runner_path, "w") as f:
             f.write("cd ~/.julia/v0.5/Pajarito; git fetch; git checkout bc5eaeeb99172bf388e880dfd59394a2243976fd")
             f.write("\n")
+            f.write("cd ~/.julia/v0.5/Mosek; git fetch; git checkout d396fe450334655aaaf9abf27e126e5198afad40")
+            f.write("\n")
             f.write("cd ~/PajaritoSupplement; git pull; mkdir output")
             f.write("\n")
             f.write("export TAG=%s" % tag)  # Inject tag as environment var
