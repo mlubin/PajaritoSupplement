@@ -1,0 +1,45 @@
+WARNING: Method definition require(Symbol) in module Base at loading.jl:345 overwritten in module ConicBenchmarkUtilities at /home/ubuntu/.julia/v0.5/Requires/src/require.jl:12.
+Tried aggregator 2 times.
+MIQCP Presolve eliminated 599 rows and 300 columns.
+Aggregator did 729 substitutions.
+Reduced MIQCP has 813 rows, 1831 columns, and 3349 nonzeros.
+Reduced MIQCP has 299 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Reduced MIQCP has 467 quadratic constraints.
+Presolve time = 0.01 sec. (3.43 ticks)
+Probing time = 0.00 sec. (0.10 ticks)
+MIP emphasis: balance optimality and feasibility.
+MIP search method: dynamic search.
+Parallel mode: none, using 1 thread.
+Root relaxation solution time = 0.00 sec. (0.86 ticks)
+
+        Nodes                                         Cuts/
+   Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
+
+      0     0        0.0000     0                      0.0000        0         
+      0     0        0.0000     0                     Cone: 5        1         
+      0     0        0.0000     0                    Cone: 10        3         
+      0     0        0.0000     0                    Cone: 15        9         
+      0     0        0.0000     1                    Cone: 31       17         
+      0     0        0.0000     1                    Cone: 48       31         
+      0     0        0.0000     1                    Cone: 73       56         
+      0     0        5.2946    28                      5.2946      347         
+      0     2        5.2946    28                      5.2946      347         
+Elapsed time = 2.45 sec. (2941.16 ticks, tree = 0.01 MB, solutions = 0)
+      6     8        5.4762    18                      5.4246      465         
+     10    12        5.6125    12                      5.4246      546         
+     16    18        6.5532     8                      5.4246      653         
+     20    22        8.1654     4                      5.4246      722         
+     24    26   no solution                            5.4246      831         
+#SOLVERNAME# CPLEX_MISOCP
+#SOLVER# CPLEX.CplexSolver(Any[(:CPX_PARAM_THREADS,1),(:CPX_PARAM_TILIM,3600.0),(:CPX_PARAM_SCRIND,1),(:CPX_PARAM_EPGAP,1.0e-5)])
+#INSTANCE# achtziger_stolpe06-6.5flowc.cbf.gz
+#TIMELIMIT# 3600.0
+#ERROR# CPLEX.CplexError(3019,"CPLEX Error  3019: Failure to solve MIP subproblem.\n")
+
+Root node processing (before b&c):
+  Real time             =    2.45 sec. (2941.15 ticks)
+Sequential b&c:
+  Real time             =    2.34 sec. (2782.91 ticks)
+                          ------------
+Total (root+branch&cut) =    4.80 sec. (5724.06 ticks)
+CPLEX Error  3019: Failure to solve MIP subproblem.

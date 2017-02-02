@@ -1,0 +1,57 @@
+WARNING: Method definition require(Symbol) in module Base at loading.jl:345 overwritten in module ConicBenchmarkUtilities at /home/ubuntu/.julia/v0.5/Requires/src/require.jl:12.
+error in running finalizer: CPLEX.CplexError(code=1804, msg="CPLEX Error  1804: Calling routines not allowed in informational callback.
+")
+#SOLVERNAME# PAJ_PRAS_NEW_MSD_CPLEX_tols_MOSEK
+#SOLVER# Pajarito.PajaritoSolver(2,60.0,1.0e-5,true,CPLEX.CplexSolver(Any[(:CPX_PARAM_THREADS,1),(:CPX_PARAM_TILIM,60.0),(:CPX_PARAM_EPINT,1.0e-8),(:CPX_PARAM_EPRHS,1.0e-8),(:CPX_PARAM_SCRIND,0),(:CPX_PARAM_EPGAP,1.0e-5)]),MathProgBase.DefaultMIPSolver(),0,false,true,Mosek.MosekMathProgSolverInterface.MosekSolver(Any[(:LOG,0),(:NUM_THREADS,1),(:OPTIMIZER_MAX_TIME,120.0)]),true,false,false,true,false,true,false,true,true,true,true,false,false,true,false,false,false,true,1.0e-10,0.0001,1.0e-6,0.01,1.0e-6)
+#INSTANCE# tls2.cbf.gz
+#TIMELIMIT# 60.0
+
+Transforming original data......Done     0.00s
+
+Creating conic model data......Done     0.00s
+
+Creating MIP model......Done     0.00s
+
+Cone types summary:
+Cone       | Count    | Min dim  | Max dim 
+       SOC |        4 |        3 |        3
+
+Solving conic relaxation......Done     0.00s
+ - Relaxation status    =        Optimal
+ - Relaxation objective =       0.718307
+
+Creating conic subproblem model......Done     0.00s
+
+Starting MIP-solver-driven outer approximation algorithm
+
+Pajarito MICP solve summary:
+ - Total time (s)       =       2.48e-02
+ - Status               =        Optimal
+ - Best feasible obj.   =  +5.300000e+00
+ - Final OA obj. bound  =  +5.300000e+00
+ - Relative opt. gap    =     -1.676e-16
+ - Conic solve count    =              4
+ - Feas. solution count =              3
+ - Integer repeat count =             10
+
+Timers (s):
+ - Setup                =       3.83e-03
+ -- Transform data      =       1.13e-04
+ -- Create conic data   =       3.41e-05
+ -- Create MIP data     =       7.54e-04
+ -- Load/solve relax    =       2.25e-03
+ - MIP-driven algorithm =       2.10e-02
+ -- Solve conic model   =       4.77e-04
+ -- Process conic data  =       6.09e-04
+ -- Add conic solution  =       1.92e-05
+ -- Add dual cuts       =       7.03e-05
+ -- Use outer inf/cuts  =       3.69e-04
+
+WARNING: For the MIP-solver-driven algorithm, optimality tolerance must be specified as MIP solver option, not Pajarito option
+WARNING: For the MIP-solver-driven algorithm, optimality tolerance must be specified as MIP solver option, not Pajarito option
+#STATUS# Optimal
+#OBJVAL# 5.3
+#OBJBOUND# 5.300000000000001
+#TIMESOLVER# 0.0247800350189209
+#TIMEALL# 0.025371074676513672
+#SOLUTION# [1.0,1.0,0.0,0.0,1.0,0.0,-0.0,-0.0,-0.0,-0.0,0.0,1.0,0.0,-0.0,-0.0,-0.0,-0.0,5.3,-0.0,0.0,0.0,-0.0,0.0,0.0,1.0,-0.0,0.0,0.0,1.0,0.0,0.0,-0.0,16.0,9.0,1.0,25.0,16.0,1.0,4.0,15.0,16.0,3.0]

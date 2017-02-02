@@ -1,0 +1,53 @@
+WARNING: Method definition require(Symbol) in module Base at loading.jl:345 overwritten in module ConicBenchmarkUtilities at /home/ubuntu/.julia/v0.5/Requires/src/require.jl:12.
+Tried aggregator 2 times.
+MIQCP Presolve eliminated 152 rows and 38 columns.
+Aggregator did 7 substitutions.
+Reduced MIQCP has 52 rows, 87 columns, and 132 nonzeros.
+Reduced MIQCP has 16 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Reduced MIQCP has 18 quadratic constraints.
+Presolve time = 0.00 sec. (0.22 ticks)
+Probing time = 0.00 sec. (0.01 ticks)
+Clique table members: 5.
+MIP emphasis: balance optimality and feasibility.
+MIP search method: dynamic search.
+Parallel mode: none, using 1 thread.
+Root relaxation solution time = 0.00 sec. (0.04 ticks)
+
+        Nodes                                         Cuts/
+   Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
+
+      0     0        0.0000     0                      0.0000        0         
+      0     0        0.0000     0                     Cone: 7       11         
+      0     0        0.0000     9                    Cone: 16       18         
+      0     0        0.0000    10                    Cone: 30       27         
+      0     0        0.0000    11                    Cone: 40       33         
+      0     0        0.0000    11                    Cone: 49       42         
+      0     0        0.0000    11                    Cone: 57       50         
+      0     0        0.0000    11                    Cone: 75       51         
+      0     0        0.0000    11                      0.0000       51         
+*     0+    0                            1.7993        0.0000           100.00%
+*     0+    0                            1.7993        0.0000           100.00%
+*     0+    0                            1.5423        0.0000           100.00%
+      0     2        0.0000    12        1.5423        0.0000       51  100.00%
+Elapsed time = 0.02 sec. (15.63 ticks, tree = 0.01 MB, solutions = 4)
+*    37    20      integral     0        1.4991        0.1545      328   89.69%
+#SOLVERNAME# CPLEX_MISOCP
+#SOLVER# CPLEX.CplexSolver(Any[(:CPX_PARAM_THREADS,1),(:CPX_PARAM_TILIM,60.0),(:CPX_PARAM_SCRIND,1),(:CPX_PARAM_EPGAP,1.0e-5)])
+#INSTANCE# estein5_C.cbf.gz
+#TIMELIMIT# 60.0
+#STATUS# Optimal
+#OBJVAL# 1.4990779523688418
+#OBJBOUND# 1.4990779523688418
+#TIMESOLVER# 0.10569190979003906
+#TIMEALL# 1.365468978881836
+#SOLUTION# [0.4818260067455271,0.5863089773779375,0.6255337949064536,0.5279103333253901,0.7895650002090204,0.6555440046654648,1.028719,0.5001229932544728,0.33849002262206257,1.028719,0.3564152050935464,0.3968886666746099,0.33092273819574264,0.19238399979097956,0.2692549953345353,1.028719,0.3077389955139286,0.06923502584812476,1.028719,0.1640312072758629,0.12763366974312054,9.325920632222337e-9,1.6747828442043377e-9,-2.0654677955756136e-9,1.028719,0.1956739968219554,-0.43362996828241807,0.37881266701728883,0.05196620874264526,-0.37523132464917186,1.028719,-0.11206499696592563,-0.5028649959726177,3.134337153871712e-8,-9.45719318781253e-10,2.6534606177668128e-8,1.028719,-0.14370778883020613,0.058398670696336794,1.028719,-0.30773899466942667,-0.06923500114299996,0.4263842344394282,-0.37762299616255257,-0.19800097093346197,1.028719,-0.5213307844506708,-0.13960232694794045,1.028719,-0.6853619903363105,-0.26723599883430205,0.1551203697084087,-0.14370778539872311,0.058398643069965915,1.028719,-0.3077389942266283,-0.06923502777317526,0.2078379023386811,-0.16403120583271705,-0.12763367203541318,0.0,0.0,0.33092273819574264,0.0,0.0,9.325920632222337e-9,0.0,0.37881266701728883,0.0,3.134337153871712e-8,0.0,0.0,0.4263842344394282,0.0,0.0,0.1551203697084087,0.0,0.2078379023386811,-0.0,-0.0,1.0,-0.0,-0.0,1.0,-0.0,1.0,-0.0,1.0,-0.0,-0.0,1.0,-0.0,-0.0,1.0,-0.0,1.0,1.0,1.0,0.0,1.0,1.0,0.0,1.0,0.0,1.0,0.0,1.0,1.0,0.0,1.0,1.0,0.0,1.0,0.0,-0.0,-0.0,0.6977962618042572,-0.0,-0.0,1.0287189906740792,-0.0,0.649906332982711,-0.0,1.0287189686566285,-0.0,-0.0,0.6023347655605717,-0.0,-0.0,0.8735986302915912,-0.0,0.8208810976613188]
+
+Gomory fractional cuts applied:  1
+Cone linearizations applied:  191
+
+Root node processing (before b&c):
+  Real time             =    0.02 sec. (15.63 ticks)
+Sequential b&c:
+  Real time             =    0.09 sec. (75.14 ticks)
+                          ------------
+Total (root+branch&cut) =    0.11 sec. (90.78 ticks)

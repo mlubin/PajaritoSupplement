@@ -1,0 +1,84 @@
+WARNING: Method definition require(Symbol) in module Base at loading.jl:345 overwritten in module ConicBenchmarkUtilities at /home/ubuntu/.julia/v0.5/Requires/src/require.jl:12.
+Tried aggregator 2 times.
+MIQCP Presolve eliminated 91 rows and 11 columns.
+MIQCP Presolve modified 94 coefficients.
+Aggregator did 10 substitutions.
+Reduced MIQCP has 14 rows, 33 columns, and 96 nonzeros.
+Reduced MIQCP has 19 binaries, 2 generals, 0 SOSs, and 0 indicators.
+Reduced MIQCP has 4 quadratic constraints.
+Presolve time = 0.00 sec. (0.26 ticks)
+Probing time = 0.00 sec. (0.04 ticks)
+Clique table members: 2.
+MIP emphasis: balance optimality and feasibility.
+MIP search method: dynamic search.
+Parallel mode: none, using 1 thread.
+Root relaxation solution time = 0.00 sec. (0.03 ticks)
+
+        Nodes                                         Cuts/
+   Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
+
+      0     0        0.0000     0                      0.0000        1         
+      0     0        0.0000     0                     Cone: 4        5         
+      0     0        0.3265     0                     Cone: 7        9         
+      0     0        0.5673     7                    Cone: 10       13         
+      0     0        0.7003    15                    Cone: 14       17         
+      0     0        0.7261    16                    Cone: 18       21         
+      0     0        0.7440    16                    Cone: 22       24         
+      0     0        0.7495    16                    Cone: 30       34         
+      0     0        0.7495    16                    Cone: 32       35         
+      0     0        0.7495    16                    Cone: 34       36         
+      0     0        0.7495    16                    Cone: 36       37         
+      0     0        0.7495    16                    Cone: 38       38         
+      0     0        0.7495    16                    Cone: 40       39         
+      0     0        0.7495    16                      0.7495       39         
+      0     0        1.3986    14                     Cuts: 6       49         
+      0     0        2.2001     7                     Cuts: 5       53         
+      0     0        2.2008    16                    Cuts: 10       60         
+      0     0        2.3105    16                     Cuts: 5       64         
+      0     0        2.3506    16                    Cuts: 10       70         
+      0     0        2.3604    16                     Cuts: 7       73         
+      0     0        2.3648    17                     Cuts: 6       76         
+      0     0        2.4770    17                     Cuts: 9       81         
+      0     0        2.5069    17                    Cuts: 10       84         
+      0     0        2.5108    17                 LiftProj: 8       86         
+      0     0        2.5146    17                     Cuts: 5       87         
+      0     0        2.5627    17                 LiftProj: 4       92         
+      0     0        2.5761    18                     Cuts: 5       94         
+      0     0        2.5802    17                     Cuts: 6       97         
+      0     0        2.5991    19                 LiftProj: 5      101         
+      0     0        2.5994    18                     Cuts: 3      105         
+      0     0        2.6002    19                 LiftProj: 8      108         
+      0     0        2.6425    17                 LiftProj: 3      113         
+      0     0        2.6476    18                     Cuts: 9      114         
+      0     0        2.6590    18                 LiftProj: 5      116         
+      0     0        2.7172    18                 LiftProj: 4      120         
+      0     0        2.7863    18                     Cuts: 7      125         
+      0     0        2.7880    19                     Cuts: 5      127         
+      0     0        2.7888    19                     Cuts: 2      131         
+*     0+    0                           10.3000        2.7888            72.92%
+      0     2        2.7888    19       10.3000        2.7889      131   72.92%
+Elapsed time = 0.31 sec. (110.98 ticks, tree = 0.01 MB, solutions = 1)
+*    50     3      integral     0        5.3000        4.3000      273   18.87%
+*    53     0      integral     0        5.3000        4.3113      288   18.65%
+#SOLVERNAME# CPLEX_MISOCP
+#SOLVER# CPLEX.CplexSolver(Any[(:CPX_PARAM_THREADS,1),(:CPX_PARAM_TILIM,3600.0),(:CPX_PARAM_SCRIND,1),(:CPX_PARAM_EPGAP,1.0e-5)])
+#INSTANCE# tls2.cbf.gz
+#TIMELIMIT# 3600.0
+#STATUS# Optimal
+#OBJVAL# 5.300000554723355
+#OBJBOUND# 5.300000554723356
+#TIMESOLVER# 0.31661295890808105
+#TIMEALL# 2.0578978061676025
+#SOLUTION# [1.0,1.0,-0.0,-0.0,0.999999876455667,9.149455558555467e-8,3.6062773290113305e-8,-0.0,-0.0,-0.0,-0.0,0.9999998086901302,8.007925418954445e-8,6.480433552798872e-8,5.2445780223968046e-8,-0.0,-0.0,5.300000554723355,-0.0,0.0,0.0,-0.0,0.0,0.0,1.0,-0.0,0.0,0.0,0.999999717431467,0.0,0.0,2.825685330165584e-7,16.000001455244956,9.000002915141694,1.0,24.999993218355208,16.0,1.0000042385279961,3.999999806031053,15.000000294214724,15.332958667250361,2.3704098381479484,17.000001455244956,-15.000001456420332,7.999999612062106,33.999996066106796,15.999990273115985,30.000000588429447,32.00000142514742,-1.486517832488547e-6,30.665917334500723,10.000007134435801,-7.999998658555193,4.740819676295897]
+
+Mixed integer rounding cuts applied:  1
+Lift and project cuts applied:  5
+Gomory fractional cuts applied:  1
+Cone linearizations applied:  39
+
+Root node processing (before b&c):
+  Real time             =    0.31 sec. (110.98 ticks)
+Sequential b&c:
+  Real time             =    0.01 sec. (5.39 ticks)
+                          ------------
+Total (root+branch&cut) =    0.32 sec. (116.37 ticks)

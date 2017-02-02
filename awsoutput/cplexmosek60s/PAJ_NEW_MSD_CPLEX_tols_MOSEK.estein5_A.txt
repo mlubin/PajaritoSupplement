@@ -1,0 +1,53 @@
+WARNING: Method definition require(Symbol) in module Base at loading.jl:345 overwritten in module ConicBenchmarkUtilities at /home/ubuntu/.julia/v0.5/Requires/src/require.jl:12.
+#SOLVERNAME# PAJ_NEW_MSD_CPLEX_tols_MOSEK
+#SOLVER# Pajarito.PajaritoSolver(2,60.0,1.0e-5,true,CPLEX.CplexSolver(Any[(:CPX_PARAM_THREADS,1),(:CPX_PARAM_TILIM,60.0),(:CPX_PARAM_EPINT,1.0e-8),(:CPX_PARAM_EPRHS,1.0e-8),(:CPX_PARAM_SCRIND,0),(:CPX_PARAM_EPGAP,1.0e-5)]),CPLEX.CplexSolver(Any[]),0,false,true,Mosek.MosekMathProgSolverInterface.MosekSolver(Any[(:LOG,0),(:NUM_THREADS,1),(:OPTIMIZER_MAX_TIME,120.0)]),true,false,false,true,false,true,false,true,true,true,true,false,false,true,false,false,false,true,1.0e-8,1.0e-6,1.0e-6,0.01,1.0e-6)
+#INSTANCE# estein5_A.cbf.gz
+#TIMELIMIT# 60.0
+
+Transforming original data......Done     0.00s
+
+Creating conic model data......Done     0.00s
+
+Creating MIP model......Done     0.00s
+
+Cone types summary:
+Cone       | Count    | Min dim  | Max dim 
+       SOC |       18 |        3 |        3
+
+Solving conic relaxation......Done     0.00s
+ - Relaxation status    =        Optimal
+ - Relaxation objective =      -0.000000
+
+Creating conic subproblem model......Done
+
+Starting MIP-solver-driven outer approximation algorithm
+
+Pajarito MICP solve summary:
+ - Total time (s)       =       6.70e-01
+ - Status               =        Optimal
+ - Best feasible obj.   =  +1.045372e+00
+ - Final OA obj. bound  =  +1.045372e+00
+ - Relative opt. gap    =      0.000e+00
+ - Conic solve count    =             13
+ - Feas. solution count =             13
+ - Integer repeat count =            169
+
+Timers (s):
+ - Setup                =       5.37e-03
+ -- Transform data      =       1.10e-04
+ -- Create conic data   =       5.98e-05
+ -- Create MIP data     =       1.16e-03
+ -- Load/solve relax    =       2.69e-03
+ - MIP-driven algorithm =       6.65e-01
+ -- Solve conic model   =       1.85e-02
+
+WARNING: For the MIP-solver-driven algorithm, optimality tolerance must be specified as MIP solver option, not Pajarito option
+WARNING: When using primal cuts, primal cut zero tolerance should be at least 1e-5 to avoid numerical issues
+WARNING: For the MIP-solver-driven algorithm, optimality tolerance must be specified as MIP solver option, not Pajarito option
+WARNING: When using primal cuts, primal cut zero tolerance should be at least 1e-5 to avoid numerical issues
+#STATUS# Optimal
+#OBJVAL# 1.0453724933031092
+#OBJBOUND# 1.0453724933031092
+#TIMESOLVER# 0.6704409122467041
+#TIMEALL# 0.670659065246582
+#SOLUTION# [0.42020805179739207,0.6263582914346407,0.6569356417608874,0.6433498163060769,0.7601305630885398,0.4893603272741839,0.493351,0.39818094820260796,-0.13338129143464073,0.493351,0.16145335823911267,-0.1503728163060769,0.05836829852307963,0.058258436911460265,0.003616672725816117,0.024562613904484686,-0.01420805179739204,0.02004370856535931,0.493351,-0.25093564176088734,0.0030521836939231273,0.493351,-0.35413056308853974,0.15704167272581615,0.493351,0.24710394820260795,-0.3255602914346407,0.493351,0.010376358239112649,-0.3425518163060769,0.21016676019596664,-0.09281856308853975,-0.18856232727418387,0.21169839082189054,-0.09182205179739206,-0.19075029143464073,0.493351,-0.32854964176088736,-0.2077418163060769,0.493351,-0.43174456308853976,-0.053752327274183886,0.493351,0.28771294820260795,0.12326770856535929,0.11787164621562503,0.050985358239112655,0.10627618369392311,0.493351,-0.052209563088539745,0.26026567272581613,0.23733652983067968,-0.2367275899634953,-0.01699152487143618,0.493351,-0.3399225112911477,0.13699796416045684,0.185368253811383,-0.1031949213276524,0.15398948903189302,0.0,0.0,0.05836829852307963,0.024562613904484686,0.0,0.0,0.0,0.0,0.21016676019596664,0.21169839082189054,0.0,0.0,0.0,0.11787164621562503,0.0,0.23733652983067968,0.0,0.185368253811383,0.0,-0.0,1.0,1.0,0.0,0.0,0.0,-0.0,1.0,1.0,0.0,0.0,0.0,1.0,-0.0,1.0,0.0,1.0,1.0,1.0,0.0,0.0,1.0,1.0,1.0,1.0,0.0,0.0,1.0,1.0,1.0,0.0,1.0,0.0,1.0,0.0,0.0,-0.0,0.43498270147692036,0.4687883860955153,-0.0,-0.0,0.0,-0.0,0.28318423980403334,0.2816526091781094,-0.0,-0.0,0.0,0.37547935378437497,-0.0,0.25601447016932033,0.0,0.307982746188617]

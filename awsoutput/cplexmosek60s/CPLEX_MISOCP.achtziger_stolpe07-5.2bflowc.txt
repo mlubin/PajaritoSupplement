@@ -1,0 +1,76 @@
+WARNING: Method definition require(Symbol) in module Base at loading.jl:345 overwritten in module ConicBenchmarkUtilities at /home/ubuntu/.julia/v0.5/Requires/src/require.jl:12.
+Tried aggregator 2 times.
+MIQCP Presolve eliminated 1009 rows and 577 columns.
+Aggregator did 1012 substitutions.
+Reduced MIQCP has 1125 rows, 2440 columns, and 4649 nonzeros.
+Reduced MIQCP has 432 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Reduced MIQCP has 572 quadratic constraints.
+Presolve time = 0.01 sec. (5.24 ticks)
+Probing time = 0.00 sec. (0.51 ticks)
+Clique table members: 72.
+MIP emphasis: balance optimality and feasibility.
+MIP search method: dynamic search.
+Parallel mode: none, using 1 thread.
+Root relaxation solution time = 0.00 sec. (1.20 ticks)
+
+        Nodes                                         Cuts/
+   Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
+
+      0     0        0.0000     0                      0.0000        0         
+      0     0        0.0000     0                    Cone: 30       10         
+      0     0        0.0000     0                    Cone: 74       39         
+      0     0        0.0000     0                   Cone: 106       67         
+      0     0        0.0000     0                   Cone: 151       99         
+      0     0        0.0000     0                   Cone: 203      149         
+      0     0        0.0000     0                   Cone: 244      181         
+      0     0       28.5225     3                   Cone: 861      812         
+      0     0       28.5650    21                   Cone: 896      866         
+      0     0       28.6077    27                   Cone: 931      931         
+      0     0       28.7341    28                   Cone: 966     1019         
+      0     0       28.7845    36                  Cone: 1004     1099         
+      0     0       28.7900    34                  Cone: 1035     1138         
+      0     0       28.7906    37                  Cone: 1065     1206         
+      0     0       28.7999    36                  Cone: 1097     1268         
+      0     0       28.7999    33                  Cone: 1125     1341         
+      0     0       28.7999    38                  Cone: 1153     1389         
+      0     0       28.7999    40                  Cone: 1181     1474         
+      0     0       28.8000    39                  Cone: 1209     1554         
+      0     0       28.8000    38                  Cone: 1238     1679         
+      0     0       28.8000    40                  Cone: 1266     1711         
+      0     0       28.8000    40                  Cone: 1293     1805         
+      0     0       28.8000    41                  Cone: 1320     1833         
+      0     0       28.8000   182                     28.8000     1848         
+      0     2       28.8000   182                     28.8000     1848         
+Elapsed time = 4.71 sec. (6052.36 ticks, tree = 0.01 MB, solutions = 0)
+      4     6       28.8000   178                     28.8000     1919         
+      8    10       28.8000   174                     28.8000     1990         
+     10    12       28.8000   172                     28.8000     2029         
+     15    17       28.8000   167                     28.8000     2112         
+     18    20       28.8000   164                     28.8000     2177         
+     20    22       28.8000   162                     28.8000     2214         
+     24    26       28.8000   158                     28.8000     2285         
+     28    30       28.8000   154                     28.8000     2361         
+     30    32       28.8000   152                     28.8000     2394         
+     50    52       28.8000   132                     28.8000     2726         
+Elapsed time = 8.75 sec. (11199.39 ticks, tree = 0.03 MB, solutions = 0)
+     55    57   no solution                           28.8000     2976         
+     60    62   no solution                           28.8000     3236         
+     65    67   no solution                           28.8000     3490         
+     70    72   no solution                           28.8000     3740         
+     75    77   no solution                           28.8000     3990         
+     80    82   no solution                           28.8000     4242         
+     85    87   no solution                           28.8000     4492         
+     91    93   no solution                           28.8000     4795         
+#SOLVERNAME# CPLEX_MISOCP
+#SOLVER# CPLEX.CplexSolver(Any[(:CPX_PARAM_THREADS,1),(:CPX_PARAM_TILIM,60.0),(:CPX_PARAM_SCRIND,1),(:CPX_PARAM_EPGAP,1.0e-5)])
+#INSTANCE# achtziger_stolpe07-5.2bflowc.cbf.gz
+#TIMELIMIT# 60.0
+#ERROR# CPLEX.CplexError(3019,"CPLEX Error  3019: Failure to solve MIP subproblem.\n")
+
+Root node processing (before b&c):
+  Real time             =    4.71 sec. (6052.08 ticks)
+Sequential b&c:
+  Real time             =   10.36 sec. (13679.55 ticks)
+                          ------------
+Total (root+branch&cut) =   15.07 sec. (19731.63 ticks)
+CPLEX Error  3019: Failure to solve MIP subproblem.
