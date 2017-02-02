@@ -123,8 +123,11 @@ solvermap = Dict(
     (["AmplNLWriter"],quote ConicNLPWrapper(nlp_solver=BonminNLSolver(["bonmin.algorithm=\"B-BB\"", "bonmin.time_limit=$tlim", "halt_on_ampl_error=yes", "bonmin.allowable_fraction_gap=$rgap", "bonmin.oa_log_level=1", "bonmin.bb_log_level=1"]), disaggregate_soc=false) end),
 
     # NON-COMMERCIAL
+    "PAJ_SCIP_tols_MOSEK" =>
+    (["SCIP","Mosek"],quote PajaritoSolver(mip_solver=SCIPSolver("display/verblevel", 0, "limits/gap", 0.0, "limits/time", tlim, "numerics/feastol", 1e-8), cont_solver=MosekSolver(LOG=0, NUM_THREADS=1, OPTIMIZER_MAX_TIME=120.), log_level=logl, timeout=tlim, rel_gap=rgap) end),
     "PAJ_SCIP_MOSEK" =>
     (["SCIP","Mosek"],quote PajaritoSolver(mip_solver=SCIPSolver("display/verblevel", 0, "limits/gap", 0.0, "limits/time", tlim), cont_solver=MosekSolver(LOG=0, NUM_THREADS=1, OPTIMIZER_MAX_TIME=120.), log_level=logl, timeout=tlim, rel_gap=rgap) end),
+
     # SCIP does not support info cb
     # "PAJ_MSD_SCIP_MOSEK" =>
     # (["SCIP","Mosek"],quote PajaritoSolver(mip_solver=SCIPSolver("display/verblevel", 0, "limits/gap", rgap, "limits/time", tlim), cont_solver=MosekSolver(LOG=0, NUM_THREADS=1, OPTIMIZER_MAX_TIME=120.), log_level=logl, timeout=tlim, rel_gap=rgap, mip_solver_drives=true) end),
