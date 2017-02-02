@@ -120,10 +120,12 @@ function validate_with_conic_solver(dat, solution)
     return status, objval
 end
 
-for filename in resultfiles
-    if filename == ".DS_Store" || contains(filename,"META")
+for (cnt,filename) in enumerate(resultfiles)
+    if startswith(basename(filename), ".") || contains(filename,"META")
         continue
     end
+    println("$cnt of $(length(resultfiles)): $(basename(filename))")
+
 
     solver = " "
     instance = " "
