@@ -157,7 +157,7 @@ solvermap = Dict(
 
     # CPLEX MOSEK subopt
     "PAJ_CPLEX_MOSEK_subopt52" =>
-    (["CPLEX","Mosek"], quote PajaritoSolver(mip_solver=CplexSolver(CPX_PARAM_THREADS=1,CPX_PARAM_TILIM=tlim,CPX_PARAM_EPINT=1e-8,CPX_PARAM_EPRHS=1e-8,CPX_PARAM_SCRIND=0,CPX_PARAM_EPGAP=0.), mip_subopt_count=5, CplexSolver(CPX_PARAM_THREADS=1,CPX_PARAM_TILIM=120.,CPX_PARAM_EPINT=1e-8,CPX_PARAM_EPRHS=1e-8,CPX_PARAM_SCRIND=0,CPX_PARAM_EPGAP=0.02), cont_solver=MosekSolver(LOG=0, NUM_THREADS=1, OPTIMIZER_MAX_TIME=120.), log_level=logl, timeout=tlim, rel_gap=rgap) end),
+    (["CPLEX","Mosek"], quote PajaritoSolver(mip_solver=CplexSolver(CPX_PARAM_THREADS=1,CPX_PARAM_TILIM=tlim,CPX_PARAM_EPINT=1e-8,CPX_PARAM_EPRHS=1e-8,CPX_PARAM_SCRIND=0,CPX_PARAM_EPGAP=0.), mip_subopt_count=5, mip_subopt_solver=CplexSolver(CPX_PARAM_THREADS=1,CPX_PARAM_TILIM=120.,CPX_PARAM_EPINT=1e-8,CPX_PARAM_EPRHS=1e-8,CPX_PARAM_SCRIND=0,CPX_PARAM_EPGAP=0.02), cont_solver=MosekSolver(LOG=0, NUM_THREADS=1, OPTIMIZER_MAX_TIME=120.), log_level=logl, timeout=tlim, rel_gap=rgap) end),
 
 )
 
