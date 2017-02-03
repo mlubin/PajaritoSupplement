@@ -73,28 +73,28 @@ solvermap = Dict(
     (["Cbc","ECOS"], quote PajaritoSolver(mip_solver=CbcSolver(logLevel=0, ratioGap=0., seconds=tlim, integerTolerance=1e-8, primalTolerance=1e-8), cont_solver=ECOSSolver(verbose=false), log_level=logl, timeout=tlim, rel_gap=rgap) end),
 
     # OPTIONS CBC ECOS
+    "PAJ_NOPRIM_CBC_ECOS" =>
+    (["Cbc","ECOS"], quote PajaritoSolver(mip_solver=CbcSolver(logLevel=0, ratioGap=0., seconds=tlim), cont_solver=ECOSSolver(verbose=false), log_level=logl, timeout=tlim, rel_gap=rgap, prim_cuts_assist=false) end),
+    "PAJ_NOPASS_CBC_ECOS" =>
+    (["Cbc","ECOS"], quote PajaritoSolver(mip_solver=CbcSolver(logLevel=0, ratioGap=0., seconds=tlim), cont_solver=ECOSSolver(verbose=false), log_level=logl, timeout=tlim, rel_gap=rgap, pass_mip_sols=false) end),
+    "PAJ_ROUND_CBC_ECOS" =>
+    (["Cbc","ECOS"], quote PajaritoSolver(mip_solver=CbcSolver(logLevel=0, ratioGap=0., seconds=tlim), cont_solver=ECOSSolver(verbose=false), log_level=logl, timeout=tlim, rel_gap=rgap, round_mip_sols=true) end),
+    "PAJ_NORELAX_CBC_ECOS" =>
+    (["Cbc","ECOS"], quote PajaritoSolver(mip_solver=CbcSolver(logLevel=0, ratioGap=0., seconds=tlim), cont_solver=ECOSSolver(verbose=false), log_level=logl, timeout=tlim, rel_gap=rgap, solve_relax=false) end),
+    "PAJ_NODIS_CBC_ECOS" =>
+    (["Cbc","ECOS"], quote PajaritoSolver(mip_solver=CbcSolver(logLevel=0, ratioGap=0., seconds=tlim), cont_solver=ECOSSolver(verbose=false), log_level=logl, timeout=tlim, rel_gap=rgap, soc_disagg=false) end),
+    "PAJ_NOSOCINIT_CBC_ECOS" =>
+    (["Cbc","ECOS"], quote PajaritoSolver(mip_solver=CbcSolver(logLevel=0, ratioGap=0., seconds=tlim), cont_solver=ECOSSolver(verbose=false), log_level=logl, timeout=tlim, rel_gap=rgap, init_soc_inf=false, init_soc_one=false) end),
+    "PAJ_SUBOPT-2-1_CBC_ECOS" =>
+    (["Cbc","ECOS"], quote PajaritoSolver(mip_solver=CbcSolver(logLevel=0, ratioGap=0., seconds=tlim), cont_solver=ECOSSolver(verbose=false), log_level=logl, timeout=tlim, rel_gap=rgap, mip_subopt_count=2, mip_subopt_solver=CbcSolver(logLevel=0, ratioGap=0.01, seconds=120)) end),
+    "PAJ_SUBOPT-8-1_CBC_ECOS" =>
+    (["Cbc","ECOS"], quote PajaritoSolver(mip_solver=CbcSolver(logLevel=0, ratioGap=0., seconds=tlim), cont_solver=ECOSSolver(verbose=false), log_level=logl, timeout=tlim, rel_gap=rgap, mip_subopt_count=8, mip_subopt_solver=CbcSolver(logLevel=0, ratioGap=0.01, seconds=120)) end),
+    "PAJ_SUBOPT-2-10_CBC_ECOS" =>
+    (["Cbc","ECOS"], quote PajaritoSolver(mip_solver=CbcSolver(logLevel=0, ratioGap=0., seconds=tlim), cont_solver=ECOSSolver(verbose=false), log_level=logl, timeout=tlim, rel_gap=rgap, mip_subopt_count=2, mip_subopt_solver=CbcSolver(logLevel=0, ratioGap=0.1, seconds=120)) end),
+    "PAJ_SUBOPT-8-10_CBC_ECOS" =>
+    (["Cbc","ECOS"], quote PajaritoSolver(mip_solver=CbcSolver(logLevel=0, ratioGap=0., seconds=tlim), cont_solver=ECOSSolver(verbose=false), log_level=logl, timeout=tlim, rel_gap=rgap, mip_subopt_count=8, mip_subopt_solver=CbcSolver(logLevel=0, ratioGap=0.1, seconds=120)) end),
     "PAJ_SUBOPT52_CBC_ECOS" =>
     (["Cbc","ECOS"], quote PajaritoSolver(mip_solver=CbcSolver(logLevel=0, ratioGap=0., seconds=tlim), cont_solver=ECOSSolver(verbose=false), log_level=logl, timeout=tlim, rel_gap=rgap, mip_subopt_count=5, mip_subopt_solver=CbcSolver(logLevel=0, ratioGap=0.02, seconds=120)) end),
-
-    ###### ? TOLERANCES FOR CBC
-    # "PAJ_NOPASS_CBC_ECOS" =>
-    # (["Cbc","ECOS"], quote PajaritoSolver(mip_solver=CbcSolver(logLevel=0, ratioGap=0., seconds=tlim), cont_solver=ECOSSolver(verbose=false), log_level=logl, timeout=tlim, rel_gap=rgap, pass_mip_sols=false) end),
-    # "PAJ_ROUND_CBC_ECOS" =>
-    # (["Cbc","ECOS"], quote PajaritoSolver(mip_solver=CbcSolver(logLevel=0, ratioGap=0., seconds=tlim), cont_solver=ECOSSolver(verbose=false), log_level=logl, timeout=tlim, rel_gap=rgap, round_mip_sols=true) end),
-    # "PAJ_NORELAX_CBC_ECOS" =>
-    # (["Cbc","ECOS"], quote PajaritoSolver(mip_solver=CbcSolver(logLevel=0, ratioGap=0., seconds=tlim), cont_solver=ECOSSolver(verbose=false), log_level=logl, timeout=tlim, rel_gap=rgap, solve_relax=false) end),
-    # "PAJ_NODIS_CBC_ECOS" =>
-    # (["Cbc","ECOS"], quote PajaritoSolver(mip_solver=CbcSolver(logLevel=0, ratioGap=0., seconds=tlim), cont_solver=ECOSSolver(verbose=false), log_level=logl, timeout=tlim, rel_gap=rgap, soc_disagg=false) end),
-    # "PAJ_NOSOCINIT_CBC_ECOS" =>
-    # (["Cbc","ECOS"], quote PajaritoSolver(mip_solver=CbcSolver(logLevel=0, ratioGap=0., seconds=tlim), cont_solver=ECOSSolver(verbose=false), log_level=logl, timeout=tlim, rel_gap=rgap, init_soc_inf=false, init_soc_one=false) end),
-    # "PAJ_SUBOPT-2-1_CBC_ECOS" =>
-    # (["Cbc","ECOS"], quote PajaritoSolver(mip_solver=CbcSolver(logLevel=0, ratioGap=0., seconds=tlim), cont_solver=ECOSSolver(verbose=false), log_level=logl, timeout=tlim, rel_gap=rgap, mip_subopt_count=2, mip_subopt_solver=CbcSolver(logLevel=0, ratioGap=0.01, seconds=120)) end),
-    # "PAJ_SUBOPT-8-1_CBC_ECOS" =>
-    # (["Cbc","ECOS"], quote PajaritoSolver(mip_solver=CbcSolver(logLevel=0, ratioGap=0., seconds=tlim), cont_solver=ECOSSolver(verbose=false), log_level=logl, timeout=tlim, rel_gap=rgap, mip_subopt_count=8, mip_subopt_solver=CbcSolver(logLevel=0, ratioGap=0.01, seconds=120)) end),
-    # "PAJ_SUBOPT-2-10_CBC_ECOS" =>
-    # (["Cbc","ECOS"], quote PajaritoSolver(mip_solver=CbcSolver(logLevel=0, ratioGap=0., seconds=tlim), cont_solver=ECOSSolver(verbose=false), log_level=logl, timeout=tlim, rel_gap=rgap, mip_subopt_count=2, mip_subopt_solver=CbcSolver(logLevel=0, ratioGap=0.1, seconds=120)) end),
-    # "PAJ_SUBOPT-8-10_CBC_ECOS" =>
-    # (["Cbc","ECOS"], quote PajaritoSolver(mip_solver=CbcSolver(logLevel=0, ratioGap=0., seconds=tlim), cont_solver=ECOSSolver(verbose=false), log_level=logl, timeout=tlim, rel_gap=rgap, mip_subopt_count=8, mip_subopt_solver=CbcSolver(logLevel=0, ratioGap=0.1, seconds=120)) end),
 
     # OPEN-SOURCE
     "BONMIN_OA" =>
