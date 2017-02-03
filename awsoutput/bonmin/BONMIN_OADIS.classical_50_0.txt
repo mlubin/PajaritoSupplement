@@ -1,0 +1,68 @@
+WARNING: Method definition require(Symbol) in module Base at loading.jl:345 overwritten in module ConicBenchmarkUtilities at /home/ubuntu/.julia/v0.5/Requires/src/require.jl:12.
+Bonmin 1.8.2 using Cbc 2.9.8 and Ipopt 3.12.1
+bonmin: bonmin.algorithm="B-OA"
+bonmin.time_limit=3600.0
+halt_on_ampl_error=yes
+bonmin.allowable_fraction_gap=1.0e-5
+bonmin.oa_log_level=1
+bonmin.bb_log_level=1
+
+
+******************************************************************************
+This program contains Ipopt, a library for large-scale nonlinear optimization.
+ Ipopt is released as open source code under the Eclipse Public License (EPL).
+         For more information visit http://projects.coin-or.org/Ipopt
+******************************************************************************
+
+NLP0012I 
+              Num      Status      Obj             It       time                 Location
+NLP0014I             1         OPT -0.09668783       16 0.032     build initial OA
+NLP0014I             2         OPT -0.085968359       12 0.028     OA decomposition
+OA0003I New best feasible of -0.085968359 found after 4.184 sec and
+NLP0014I             3      INFEAS 0.036406081       34 0.08     OA decomposition
+NLP0014I             4      INFEAS 0.0080138138       31 0.08     OA decomposition
+NLP0014I             5         OPT -0.090321012       10 0.02     OA decomposition
+OA0003I New best feasible of -0.090321012 found after 72.644 sec and
+OA0012I After 125.128.1f seconds, 5 iterations upper bound -0.0903219150g, lower bound -0.092934140g
+NLP0014I             6         OPT -0.086656309       12 0.028     OA decomposition
+OA0012I After 232.888.1f seconds, 6 iterations upper bound -0.0903219150g, lower bound -0.0920554320g
+NLP0014I             7      INFEAS 0.0082981709       41 0.104     OA decomposition
+OA0012I After 344.248.1f seconds, 7 iterations upper bound -0.0903219150g, lower bound -0.0919679920g
+NLP0014I             8      INFEAS 0.0033838198       40 0.1     OA decomposition
+OA0012I After 495.468.1f seconds, 8 iterations upper bound -0.0903219150g, lower bound -0.0916949530g
+NLP0014I             9         OPT -0.08899692       11 0.02     OA decomposition
+OA0012I After 659.14.1f seconds, 9 iterations upper bound -0.0903219150g, lower bound -0.0916653810g
+NLP0014I            10      INFEAS 0.0150149       39 0.096     OA decomposition
+OA0012I After 930.856.1f seconds, 10 iterations upper bound -0.0903219150g, lower bound -0.0912227870g
+NLP0014I            11         OPT -0.089994604       11 0.02     OA decomposition
+OA0012I After 1276.372.1f seconds, 11 iterations upper bound -0.0903219150g, lower bound -0.0909381970g
+NLP0014I            12         OPT -0.081679902       10 0.02     OA decomposition
+OA0012I After 2030.56.1f seconds, 12 iterations upper bound -0.0903219150g, lower bound -0.0908302270g
+NLP0014I            13         OPT -0.083513842       14 0.032     OA decomposition
+OA0012I After 2535.908.1f seconds, 13 iterations upper bound -0.0903219150g, lower bound -0.0908186720g
+NLP0014I            14         OPT -0.090741542       12 0.024     OA decomposition
+OA0003I New best feasible of -0.090741542 found after 2535.932 sec and
+OA0009I OA  interupted after 3600.048 seconds found solution of value -0.090741542 (lower bound -0.090818672 ).
+OA0010I Performed 13 iterations, explored 220745 branch-and-bound nodes in total
+Cbc0031I 290 added rows had average density of 3
+Cbc0013I At root node, 290 cuts changed objective from -0.09668904 to -0.09668904 in 1 passes
+Cbc0014I Cut generator 0 (Outer Approximation decomposition.) - 290 row cuts average 3.0 elements, 0 column cuts (0 active)
+Cbc0014I Cut generator 1 (Outer Approximation feasibility check.) - 0 row cuts average 0.0 elements, 0 column cuts (0 active)
+Cbc0014I Cut generator 2 (Outer Approximation strong branching solution check.) - 0 row cuts average 0.0 elements, 0 column cuts (0 active)
+Cbc0020I Exiting on maximum time
+Cbc0005I Partial search - best objective 1e+50 (best possible -0.09668904), took 79 iterations and 0 nodes (3600.05 seconds)
+Cbc0035I Maximum depth 0, 0 variables fixed on reduced cost
+ Outer Approximation decomposition. was tried 1 times and created 290 cuts of which 0 were active after adding rounds of cuts
+
+ 	"Not finished"
+WARNING: Variable value not defined for component of x. Check that the model was properly solved.
+#SOLVERNAME# BONMIN_OADIS
+#SOLVER# ConicNonlinearBridge.ConicNLPWrapper(AmplNLWriter.AmplNLSolver("/home/ubuntu/.julia/v0.5/CoinOptServices/deps/usr/lib/../bin/bonmin",String["bonmin.algorithm=\"B-OA\"","bonmin.time_limit=3600.0","halt_on_ampl_error=yes","bonmin.allowable_fraction_gap=1.0e-5","bonmin.oa_log_level=1","bonmin.bb_log_level=1"],""),false,true,false)
+#INSTANCE# classical_50_0.cbf.gz
+#TIMELIMIT# 3600.0
+#STATUS# UserLimit
+#OBJVAL# NaN
+#OBJBOUND# NaN
+#TIMESOLVER# 3616.6118400096893
+#TIMEALL# 3623.459198951721
+#SOLUTION# [NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN]

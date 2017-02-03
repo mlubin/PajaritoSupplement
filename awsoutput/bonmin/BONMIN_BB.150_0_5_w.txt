@@ -1,0 +1,33 @@
+WARNING: Method definition require(Symbol) in module Base at loading.jl:345 overwritten in module ConicBenchmarkUtilities at /home/ubuntu/.julia/v0.5/Requires/src/require.jl:12.
+Bonmin 1.8.2 using Cbc 2.9.8 and Ipopt 3.12.1
+bonmin: bonmin.algorithm="B-BB"
+bonmin.time_limit=3600.0
+halt_on_ampl_error=yes
+bonmin.allowable_fraction_gap=1.0e-5
+bonmin.oa_log_level=1
+bonmin.bb_log_level=1
+
+
+******************************************************************************
+This program contains Ipopt, a library for large-scale nonlinear optimization.
+ Ipopt is released as open source code under the Eclipse Public License (EPL).
+         For more information visit http://projects.coin-or.org/Ipopt
+******************************************************************************
+
+NLP0012I 
+              Num      Status      Obj             It       time                 Location
+NLP0014I             1      INFEAS 1.1735416e-11      696 1361.716
+NLP0014I             2      INFEAS 1.1735416e-11      696 1361.868
+Cbc0006I The LP relaxation is infeasible or too expensive
+
+ 	"Finished"
+#SOLVERNAME# BONMIN_BB
+#SOLVER# ConicNonlinearBridge.ConicNLPWrapper(AmplNLWriter.AmplNLSolver("/home/ubuntu/.julia/v0.5/CoinOptServices/deps/usr/lib/../bin/bonmin",String["bonmin.algorithm=\"B-BB\"","bonmin.time_limit=3600.0","halt_on_ampl_error=yes","bonmin.allowable_fraction_gap=1.0e-5","bonmin.oa_log_level=1","bonmin.bb_log_level=1"],""),false,false,false)
+#INSTANCE# 150_0_5_w.cbf.gz
+#TIMELIMIT# 3600.0
+#STATUS# Infeasible
+#OBJVAL# 0.0
+#OBJBOUND# NaN
+#TIMESOLVER# 2759.8464930057526
+#TIMEALL# 2771.500391960144
+#SOLUTION# []

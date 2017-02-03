@@ -1,0 +1,39 @@
+WARNING: Method definition require(Symbol) in module Base at loading.jl:345 overwritten in module ConicBenchmarkUtilities at /home/ubuntu/.julia/v0.5/Requires/src/require.jl:12.
+Bonmin 1.8.2 using Cbc 2.9.8 and Ipopt 3.12.1
+bonmin: bonmin.algorithm="B-OA"
+bonmin.time_limit=3600.0
+halt_on_ampl_error=yes
+bonmin.allowable_fraction_gap=1.0e-5
+bonmin.oa_log_level=1
+bonmin.bb_log_level=1
+
+
+******************************************************************************
+This program contains Ipopt, a library for large-scale nonlinear optimization.
+ Ipopt is released as open source code under the Eclipse Public License (EPL).
+         For more information visit http://projects.coin-or.org/Ipopt
+******************************************************************************
+
+NLP0012I 
+              Num      Status      Obj             It       time                 Location
+NLP0014I             1         OPT -2.2395222e-05       50 0.292     build initial OA
+OA0008I OA  converged in 0.616 seconds found solution of value 1e+50 (lower bound 1e+50 ).
+OA0010I Performed 0 iterations, explored 36 branch-and-bound nodes in total
+Cbc0013I At root node, 0 cuts changed objective from -2.2400001e-05 to -2.2400001e-05 in 1 passes
+Cbc0014I Cut generator 0 (Outer Approximation decomposition.) - 0 row cuts average 0.0 elements, 0 column cuts (0 active)
+Cbc0014I Cut generator 1 (Outer Approximation feasibility check.) - 0 row cuts average 0.0 elements, 0 column cuts (0 active)
+Cbc0014I Cut generator 2 (Outer Approximation strong branching solution check.) - 0 row cuts average 0.0 elements, 0 column cuts (0 active)
+Cbc0001I Search completed - best objective 1e+50, took 0 iterations and 0 nodes (0.61 seconds)
+Cbc0035I Maximum depth 0, 0 variables fixed on reduced cost
+
+ 	"Finished"
+#SOLVERNAME# BONMIN_OADIS
+#SOLVER# ConicNonlinearBridge.ConicNLPWrapper(AmplNLWriter.AmplNLSolver("/home/ubuntu/.julia/v0.5/CoinOptServices/deps/usr/lib/../bin/bonmin",String["bonmin.algorithm=\"B-OA\"","bonmin.time_limit=3600.0","halt_on_ampl_error=yes","bonmin.allowable_fraction_gap=1.0e-5","bonmin.oa_log_level=1","bonmin.bb_log_level=1"],""),false,true,false)
+#INSTANCE# clay0304h.cbf.gz
+#TIMELIMIT# 3600.0
+#STATUS# Infeasible
+#OBJVAL# 0.0
+#OBJBOUND# NaN
+#TIMESOLVER# 1.0978999137878418
+#TIMEALL# 7.822942018508911
+#SOLUTION# []

@@ -1,0 +1,37 @@
+WARNING: Method definition require(Symbol) in module Base at loading.jl:345 overwritten in module ConicBenchmarkUtilities at /home/ubuntu/.julia/v0.5/Requires/src/require.jl:12.
+Bonmin 1.8.2 using Cbc 2.9.8 and Ipopt 3.12.1
+bonmin: bonmin.algorithm="B-OA"
+bonmin.time_limit=3600.0
+halt_on_ampl_error=yes
+bonmin.allowable_fraction_gap=1.0e-5
+bonmin.oa_log_level=1
+bonmin.bb_log_level=1
+
+
+******************************************************************************
+This program contains Ipopt, a library for large-scale nonlinear optimization.
+ Ipopt is released as open source code under the Eclipse Public License (EPL).
+         For more information visit http://projects.coin-or.org/Ipopt
+******************************************************************************
+
+NLP0012I 
+              Num      Status      Obj             It       time                 Location
+NLP0014I             1      INFEAS 3.3306691e-16       62 0.092     build initial OA
+NLP0014I             2         OPT 1.1880859       19 0.02     OA decomposition
+OA0003I New best feasible of 1.1880859 found after 0.04 sec and
+NLP0014I             3         OPT 1.188086       26 0.024     OA decomposition
+NLP0014I             4      FAILED 1.433332     3000 2.912     OA decomposition
+NLP0014I             1      FAILED 1.4333321     3000 2.76   resolve robustness
+
+ 	"Aborted"
+#SOLVERNAME# BONMIN_OA
+#SOLVER# ConicNonlinearBridge.ConicNLPWrapper(AmplNLWriter.AmplNLSolver("/home/ubuntu/.julia/v0.5/CoinOptServices/deps/usr/lib/../bin/bonmin",String["bonmin.algorithm=\"B-OA\"","bonmin.time_limit=3600.0","halt_on_ampl_error=yes","bonmin.allowable_fraction_gap=1.0e-5","bonmin.oa_log_level=1","bonmin.bb_log_level=1"],""),false,false,false)
+#INSTANCE# estein4_B.cbf.gz
+#TIMELIMIT# 3600.0
+#STATUS# Error
+#OBJVAL# NaN
+#OBJBOUND# NaN
+#TIMESOLVER# 10.309421062469482
+#TIMEALL# 26.76569890975952
+#SOLUTION# [NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN]
+WARNING: Variable value not defined for component of x. Check that the model was properly solved.
