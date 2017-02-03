@@ -1,0 +1,76 @@
+WARNING: Method definition require(Symbol) in module Base at loading.jl:345 overwritten in module ConicBenchmarkUtilities at /home/ubuntu/.julia/v0.5/Requires/src/require.jl:12.
+Bonmin 1.8.2 using Cbc 2.9.8 and Ipopt 3.12.1
+bonmin: bonmin.algorithm="B-OA"
+bonmin.time_limit=3600.0
+halt_on_ampl_error=yes
+bonmin.allowable_fraction_gap=1.0e-5
+bonmin.oa_log_level=1
+bonmin.bb_log_level=1
+
+
+******************************************************************************
+This program contains Ipopt, a library for large-scale nonlinear optimization.
+ Ipopt is released as open source code under the Eclipse Public License (EPL).
+         For more information visit http://projects.coin-or.org/Ipopt
+******************************************************************************
+
+NLP0012I 
+              Num      Status      Obj             It       time                 Location
+NLP0014I             1         OPT 1481.4562       21 0.012     build initial OA
+NLP0014I             2      INFEAS 6.3929684e-05       30 0.016     OA decomposition
+NLP0014I             3         OPT 113959.56       20 0.008     OA decomposition
+OA0003I New best feasible of 113959.56 found after 0.024 sec and
+NLP0014I             4         OPT 56988.424       18 0.008     OA decomposition
+OA0003I New best feasible of 56988.424 found after 0.032 sec and
+NLP0014I             5         OPT 28511.501       16 0.008     OA decomposition
+OA0003I New best feasible of 28511.501 found after 0.044 sec and
+NLP0014I             6         OPT 14290.33       15 0.004     OA decomposition
+OA0003I New best feasible of 14290.33 found after 0.052 sec and
+NLP0014I             7         OPT 7307.4089       13 0.008     OA decomposition
+OA0003I New best feasible of 7307.4089 found after 0.06 sec and
+NLP0014I             8         OPT 4082.1407       11 0.004     OA decomposition
+OA0003I New best feasible of 4082.1407 found after 0.068 sec and
+NLP0014I             9         OPT 2567.6692        8 0.004     OA decomposition
+OA0003I New best feasible of 2567.6692 found after 0.076 sec and
+NLP0014I            10         OPT 1895.2636        7 0.004     OA decomposition
+OA0003I New best feasible of 1895.2636 found after 0.084 sec and
+NLP0014I            11         OPT 1620.9075        6 0.004     OA decomposition
+OA0003I New best feasible of 1620.9075 found after 0.088 sec and
+NLP0014I            12         OPT 1522.8311        7 0.004     OA decomposition
+OA0003I New best feasible of 1522.8311 found after 0.096 sec and
+NLP0014I            13         OPT 1492.6677        7 0.004     OA decomposition
+OA0003I New best feasible of 1492.6677 found after 0.104 sec and
+NLP0014I            14         OPT 1484.1909        7 0.004     OA decomposition
+OA0003I New best feasible of 1484.1909 found after 0.112 sec and
+NLP0014I            15         OPT 1482.1272        7 0     OA decomposition
+OA0003I New best feasible of 1482.1272 found after 0.116 sec and
+NLP0014I            16         OPT 1481.5987        7 0.004     OA decomposition
+OA0003I New best feasible of 1481.5987 found after 0.128 sec and
+NLP0014I            17         OPT 1481.487        7 0.004     OA decomposition
+OA0003I New best feasible of 1481.487 found after 0.148 sec and
+NLP0014I            18         OPT 1481.4655        7 0.004     OA decomposition
+OA0003I New best feasible of 1481.4655 found after 0.188 sec and
+OA0008I OA  converged in 0.188 seconds found solution of value 1481.4655 (lower bound 1e+50 ).
+OA0010I Performed 17 iterations, explored 149 branch-and-bound nodes in total
+Cbc0012I Integer solution of 1481.4655 found by nonlinear programm after 135 iterations and 0 nodes (0.19 seconds)
+Cbc0031I 10 added rows had average density of 3
+Cbc0013I At root node, 10 cuts changed objective from 1481.4562 to 1481.4562 in 2 passes
+Cbc0014I Cut generator 0 (Outer Approximation decomposition.) - 156 row cuts average 3.0 elements, 0 column cuts (0 active)
+Cbc0014I Cut generator 1 (Outer Approximation feasibility check.) - 0 row cuts average 0.0 elements, 0 column cuts (0 active)
+Cbc0014I Cut generator 2 (Outer Approximation strong branching solution check.) - 0 row cuts average 0.0 elements, 0 column cuts (0 active)
+Cbc0011I Exiting as integer gap of 0.009341907 less than 0 or 0.001%
+Cbc0001I Search completed - best objective 1481.465518569118, took 135 iterations and 0 nodes (0.19 seconds)
+Cbc0035I Maximum depth 0, 0 variables fixed on reduced cost
+ Outer Approximation decomposition. was tried 2 times and created 156 cuts of which 0 were active after adding rounds of cuts
+
+ 	"Finished"
+#SOLVERNAME# BONMIN_OA
+#SOLVER# ConicNonlinearBridge.ConicNLPWrapper(AmplNLWriter.AmplNLSolver("/home/ubuntu/.julia/v0.5/CoinOptServices/deps/usr/lib/../bin/bonmin",String["bonmin.algorithm=\"B-OA\"","bonmin.time_limit=3600.0","halt_on_ampl_error=yes","bonmin.allowable_fraction_gap=1.0e-5","bonmin.oa_log_level=1","bonmin.bb_log_level=1"],""),false,false,false)
+#INSTANCE# pp-n10-d10000.cbf.gz
+#TIMELIMIT# 3600.0
+#STATUS# Optimal
+#OBJVAL# 1481.465518569118
+#OBJBOUND# NaN
+#TIMESOLVER# 0.40475988388061523
+#TIMEALL# 7.1215980052948
+#SOLUTION# [222.0,73.0,85.0,248.0,199.0,129.0,210.0,176.0,87.0,139.0,0.004504504489684381,0.013698630091212156,0.011764705842585573,0.004032258051189038,0.005025125611297037,0.0077519379585207675,0.0047619047459101305,0.0056818181632934265,0.011494252834590655,0.007194244581084113,222.0,0.004504504489684381,1.41421356,73.0,0.013698630091212156,1.41421356,85.0,0.011764705842585573,1.41421356,248.0,0.004032258051189038,1.41421356,199.0,0.005025125611297037,1.41421356,129.0,0.0077519379585207675,1.41421356,210.0,0.0047619047459101305,1.41421356,176.0,0.0056818181632934265,1.41421356,87.0,0.011494252834590655,1.41421356,139.0,0.007194244581084113,1.41421356]

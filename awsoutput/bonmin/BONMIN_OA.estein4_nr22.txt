@@ -1,0 +1,54 @@
+WARNING: Method definition require(Symbol) in module Base at loading.jl:345 overwritten in module ConicBenchmarkUtilities at /home/ubuntu/.julia/v0.5/Requires/src/require.jl:12.
+Bonmin 1.8.2 using Cbc 2.9.8 and Ipopt 3.12.1
+bonmin: bonmin.algorithm="B-OA"
+bonmin.time_limit=3600.0
+halt_on_ampl_error=yes
+bonmin.allowable_fraction_gap=1.0e-5
+bonmin.oa_log_level=1
+bonmin.bb_log_level=1
+
+
+******************************************************************************
+This program contains Ipopt, a library for large-scale nonlinear optimization.
+ Ipopt is released as open source code under the Eclipse Public License (EPL).
+         For more information visit http://projects.coin-or.org/Ipopt
+******************************************************************************
+
+NLP0012I 
+              Num      Status      Obj             It       time                 Location
+NLP0014I             1      INFEAS 3.3306691e-16       67 0.08     build initial OA
+NLP0014I             2         OPT 0.51264837      581 0.688     OA decomposition
+OA0003I New best feasible of 0.51264837 found after 0.7 sec and
+NLP0014I             3      INFEAS 2.220446e-16       86 0.112     OA decomposition
+NLP0014I             4      INFEAS 2.220446e-16       81 0.1     OA decomposition
+NLP0014I             5      FAILED 0.51263317     3000 2.568     OA decomposition
+NLP0014I *           1         OPT 0.51264837      101 0.096   resolve robustness
+NLP0014I             7      INFEAS 2.220446e-16      954 1.04     OA decomposition
+NLP0014I             8      FAILED 0.51264556     3000 2.604     OA decomposition
+NLP0014I *           1         OPT 0.51264837      127 0.136   resolve robustness
+NLP0014I            10      INFEAS 2.220446e-16      881 0.968     OA decomposition
+NLP0014I            11         OPT 0.51264837       86 0.088     OA decomposition
+NLP0014I            12      INFEAS 2.220446e-16      881 0.98     OA decomposition
+OA0008I OA  converged in 9.964 seconds found solution of value 0.51264837 (lower bound 1e+50 ).
+OA0010I Performed 9 iterations, explored 201 branch-and-bound nodes in total
+Cbc0012I Integer solution of 0.51264837 found by nonlinear programm after 12 iterations and 0 nodes (9.97 seconds)
+Cbc0031I 2 added rows had average density of 3
+Cbc0013I At root node, 2 cuts changed objective from 0.0093835792 to 0.015422485 in 2 passes
+Cbc0014I Cut generator 0 (Outer Approximation decomposition.) - 24 row cuts average 3.0 elements, 0 column cuts (0 active)
+Cbc0014I Cut generator 1 (Outer Approximation feasibility check.) - 0 row cuts average 0.0 elements, 0 column cuts (0 active)
+Cbc0014I Cut generator 2 (Outer Approximation strong branching solution check.) - 0 row cuts average 0.0 elements, 0 column cuts (0 active)
+Cbc0001I Search completed - best objective 0.5126483663033858, took 12 iterations and 0 nodes (9.97 seconds)
+Cbc0035I Maximum depth 0, 0 variables fixed on reduced cost
+ Outer Approximation decomposition. was tried 2 times and created 24 cuts of which 0 were active after adding rounds of cuts
+
+ 	"Finished"
+#SOLVERNAME# BONMIN_OA
+#SOLVER# ConicNonlinearBridge.ConicNLPWrapper(AmplNLWriter.AmplNLSolver("/home/ubuntu/.julia/v0.5/CoinOptServices/deps/usr/lib/../bin/bonmin",String["bonmin.algorithm=\"B-OA\"","bonmin.time_limit=3600.0","halt_on_ampl_error=yes","bonmin.allowable_fraction_gap=1.0e-5","bonmin.oa_log_level=1","bonmin.bb_log_level=1"],""),false,false,false)
+#INSTANCE# estein4_nr22.cbf.gz
+#TIMELIMIT# 3600.0
+#STATUS# Optimal
+#OBJVAL# 0.5126484162284759
+#OBJBOUND# NaN
+#TIMESOLVER# 17.335543155670166
+#TIMEALL# 31.09760093688965
+#SOLUTION# [0.7299999999903932,0.5300000000063835,0.8014764804824747,0.4877638978986649,0.133416630643338,-0.12999999999039324,-0.030000000006383514,0.36400499000999503,-0.2014764804824747,0.0122361021013351,0.12369315877000692,-0.029999999990393173,0.1199999999936165,0.36400499000999503,-0.10147648048247469,0.16223610210133507,0.0,9.606801091495142e-12,-6.383489601233973e-12,0.36400499000999503,-0.07147648048247468,0.04223610210133511,0.36400499000999503,0.22000000000960682,-0.1300000000063835,0.17251589543393475,0.1485235195175253,-0.08776389789866491,0.08302273138119622,-0.07147648049208147,0.042236102107718596,0.13341663064333797,0.0,0.1236931587700069,0.0,0.0,0.0,0.0,0.17251589543393475,0.08302273138119619,1.0,0.0,1.0,0.0,1.0,0.0,0.0,1.0,1.0,0.0,1.0,0.0,1.0,0.0,1.0,1.0,0.0,0.0,0.23058836935666205,9.990005000007968e-9,0.2403118412299931,9.990005000008006e-9,0.36400500996507,9.99000500000823e-9,9.990005000007663e-9,0.1914891045660653,0.2809822686188038]
