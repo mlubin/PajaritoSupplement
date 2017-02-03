@@ -1,0 +1,65 @@
+WARNING: Method definition require(Symbol) in module Base at loading.jl:345 overwritten in module ConicBenchmarkUtilities at /home/ubuntu/.julia/v0.5/Requires/src/require.jl:12.
+#SOLVERNAME# PAJ_SCIP_tols_MOSEK
+#SOLVER# Pajarito.PajaritoSolver(2,3600.0,1.0e-5,false,SCIP.SCIPSolver(("display/verblevel",0,"limits/gap",0.0,"limits/time",3600.0,"numerics/feastol",1.0e-8)),MathProgBase.DefaultMIPSolver(),0,false,true,Mosek.MosekMathProgSolverInterface.MosekSolver(Any[(:LOG,0),(:NUM_THREADS,1),(:OPTIMIZER_MAX_TIME,120.0)]),true,false,false,true,false,true,false,true,true,true,true,false,false,true,false,false,false,true,1.0e-10,0.0001,1.0e-6,0.01,1.0e-6)
+#INSTANCE# sssd-strong-15-4.cbf.gz
+#TIMELIMIT# 3600.0
+
+Transforming original data......Done     0.00s
+
+Creating conic model data......Done     0.00s
+
+Creating MIP model......Done     0.00s
+
+Cone types summary:
+Cone       | Count    | Min dim  | Max dim 
+       SOC |       12 |        3 |        3
+
+Solving conic relaxation......Done     0.01s
+ - Relaxation status    =        Optimal
+ - Relaxation objective =  236044.001013
+
+Creating conic subproblem model......Done     0.00s
+
+Starting iterative outer approximation algorithm
+
+Iter | Best obj       | OA obj         | Rel gap     | Time (s)   
+   1 |  +3.336728e+05 |  +3.205616e+05 |   3.929e-02 |   6.240e-01
+   2 |  +3.320522e+05 |  +3.214140e+05 |   3.204e-02 |   1.302e+01
+   3 |  +3.320522e+05 |  +3.238770e+05 |   2.462e-02 |   3.034e+01
+   4 |  +3.281936e+05 |  +3.267441e+05 |   4.417e-03 |   3.884e+01
+   5 |  +3.281007e+05 |  +3.277867e+05 |   9.570e-04 |   4.852e+01
+   6 |  +3.280887e+05 |  +3.279630e+05 |   3.831e-04 |   5.737e+01
+   7 |  +3.279979e+05 |  +3.279803e+05 |   5.363e-05 |   6.623e+01
+   8 |  +3.279979e+05 |  +3.279979e+05 |  -9.939e-08 |   7.644e+01
+
+Pajarito MICP solve summary:
+ - Total time (s)       =       7.65e+01
+ - Status               =        Optimal
+ - Best feasible obj.   =  +3.279979e+05
+ - Final OA obj. bound  =  +3.279979e+05
+ - Relative opt. gap    =     -9.939e-08
+ - MIP solve count      =              8
+ - Conic solve count    =              8
+ - Feas. solution count =              8
+ - Integer repeat count =              0
+
+Timers (s):
+ - Setup                =       1.55e-02
+ -- Transform data      =       1.52e-04
+ -- Create conic data   =       5.50e-05
+ -- Create MIP data     =       1.02e-03
+ -- Load/solve relax    =       1.32e-02
+ - Iterative algorithm  =       7.64e+01
+ -- Solve MIPs          =       7.64e+01
+ -- Solve conic model   =       1.09e-02
+ -- Process conic data  =       1.62e-03
+ -- Add conic solution  =       4.79e-05
+ -- Add dual cuts       =       3.62e-03
+ -- Use outer inf/cuts  =       1.73e-02
+
+#STATUS# Optimal
+#OBJVAL# 327997.8860943315
+#OBJBOUND# 327997.9186924242
+#TIMESOLVER# 76.45315909385681
+#TIMEALL# 76.46201801300049
+#SOLUTION# [0.0,4.163336342344337e-17,1.0,0.0,0.0,0.0,0.0,1.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,1.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,1.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,1.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,1.0,1.0,0.0,0.0,0.0,-0.0,0.0,1.0,-0.0,0.0,1.0,-0.0,0.0,1.0,-0.0,0.0,1.0,0.9871483866630856,0.8821149763150858,1.0256632275398705,1.0216396514670296,-0.0,-0.0,0.4967663453310014,-0.0,-0.0,0.468682859285879,-0.0,-0.0,0.506334549771868,-0.0,-0.0,0.5053520305118684,0.0,0.4935741933315428,0.4935741933315428,0.2451910206660421,0.4410574881575429,0.4410574881575429,0.20671605851460342,0.5128316137699352,0.5128316137699352,0.25966433888400126,0.5108198257335148,0.5108198257335148,0.2581438104775806,0.9871483866630856,0.9871483866630856,1.9871483866630855,0.8821149763150858,0.8821149763150858,1.8821149763150857,1.0256632275398705,1.0256632275398705,2.0256632275398703,1.0216396514670296,1.0216396514670296,2.0216396514670296,0.9871483866630856,0.9871483866630856,0.9871483866630856,0.8821149763150858,0.8821149763150858,0.8821149763150858,1.0256632275398705,1.0256632275398705,1.0256632275398705,1.0216396514670296,1.0216396514670296,1.0216396514670296]

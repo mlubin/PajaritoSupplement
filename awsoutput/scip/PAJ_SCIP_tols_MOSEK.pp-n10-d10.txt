@@ -1,0 +1,61 @@
+WARNING: Method definition require(Symbol) in module Base at loading.jl:345 overwritten in module ConicBenchmarkUtilities at /home/ubuntu/.julia/v0.5/Requires/src/require.jl:12.
+#SOLVERNAME# PAJ_SCIP_tols_MOSEK
+#SOLVER# Pajarito.PajaritoSolver(2,3600.0,1.0e-5,false,SCIP.SCIPSolver(("display/verblevel",0,"limits/gap",0.0,"limits/time",3600.0,"numerics/feastol",1.0e-8)),MathProgBase.DefaultMIPSolver(),0,false,true,Mosek.MosekMathProgSolverInterface.MosekSolver(Any[(:LOG,0),(:NUM_THREADS,1),(:OPTIMIZER_MAX_TIME,120.0)]),true,false,false,true,false,true,false,true,true,true,true,false,false,true,false,false,false,true,1.0e-10,0.0001,1.0e-6,0.01,1.0e-6)
+#INSTANCE# pp-n10-d10.cbf.gz
+#TIMELIMIT# 3600.0
+
+Transforming original data......Done     0.00s
+
+Creating conic model data......Done     0.00s
+
+Creating MIP model......Done     0.00s
+
+Cone types summary:
+Cone       | Count    | Min dim  | Max dim 
+       SOC |       10 |        3 |        3
+
+Solving conic relaxation......Done     0.00s
+ - Relaxation status    =        Optimal
+ - Relaxation objective =      72.292209
+
+Creating conic subproblem model......Done     0.00s
+
+Starting iterative outer approximation algorithm
+
+Iter | Best obj       | OA obj         | Rel gap     | Time (s)   
+   1 |  +7.592340e+01 |  +7.235271e+01 |   4.703e-02 |   3.251e-02
+   2 |  +7.263128e+01 |  +7.240299e+01 |   3.143e-03 |   1.210e-01
+   3 |  +7.263128e+01 |  +7.246299e+01 |   2.317e-03 |   1.740e-01
+   4 |  +7.248128e+01 |  +7.248128e+01 |   4.532e-08 |   2.480e-01
+
+Pajarito MICP solve summary:
+ - Total time (s)       =       2.51e-01
+ - Status               =        Optimal
+ - Best feasible obj.   =  +7.248128e+01
+ - Final OA obj. bound  =  +7.248128e+01
+ - Relative opt. gap    =      4.532e-08
+ - MIP solve count      =              4
+ - Conic solve count    =              4
+ - Feas. solution count =              4
+ - Integer repeat count =              0
+
+Timers (s):
+ - Setup                =       3.43e-03
+ -- Transform data      =       8.55e-05
+ -- Create conic data   =       3.44e-05
+ -- Create MIP data     =       6.55e-04
+ -- Load/solve relax    =       1.80e-03
+ - Iterative algorithm  =       2.48e-01
+ -- Solve MIPs          =       2.28e-01
+ -- Solve conic model   =       3.36e-03
+ -- Process conic data  =       9.66e-03
+ -- Add conic solution  =       1.64e-05
+ -- Add dual cuts       =       1.62e-03
+ -- Use outer inf/cuts  =       5.51e-03
+
+#STATUS# Optimal
+#OBJVAL# 72.48127970704196
+#OBJBOUND# 72.4812764223374
+#TIMESOLVER# 0.2514791488647461
+#TIMEALL# 0.251708984375
+#SOLUTION# [5.0,9.0,6.0,4.0,3.0,7.0,5.0,9.0,2.0,5.0,0.20000000618391134,0.11111113592377642,0.16666667404146907,0.25000000197002015,0.3333333390117499,0.14285716059714026,0.20000000709185084,0.11111113758515323,0.5000000291499773,0.20000001492996855,5.0,0.20000000618391134,1.41421356,9.0,0.11111113592377642,1.41421356,6.0,0.16666667404146907,1.41421356,4.0,0.25000000197002015,1.41421356,3.0,0.3333333390117499,1.41421356,7.0,0.14285716059714026,1.41421356,5.0,0.20000000709185084,1.41421356,9.0,0.11111113758515323,1.41421356,2.0,0.5000000291499773,1.41421356,5.0,0.20000001492996855,1.41421356]

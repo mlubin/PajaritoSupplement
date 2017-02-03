@@ -1,0 +1,224 @@
+WARNING: Method definition require(Symbol) in module Base at loading.jl:345 overwritten in module ConicBenchmarkUtilities at /home/ubuntu/.julia/v0.5/Requires/src/require.jl:12.
+Coin0505I Presolved problem not optimal, resolve after postsolve
+Coin0505I Presolved problem not optimal, resolve after postsolve
+#SOLVERNAME# PAJ_CBC_ECOS
+#SOLVER# Pajarito.PajaritoSolver(2,3600.0,1.0e-5,false,Cbc.CbcMathProgSolverInterface.CbcSolver(Any[(:logLevel,0),(:ratioGap,0.0),(:seconds,3600.0)]),MathProgBase.DefaultMIPSolver(),0,false,true,ECOS.ECOSSolver(Any[(:verbose,false)]),true,false,false,true,false,true,false,true,true,true,true,false,false,true,false,false,false,true,1.0e-10,0.0001,1.0e-6,0.01,1.0e-6)
+#INSTANCE# uflquad-nopsc-30-300.cbf.gz
+#TIMELIMIT# 3600.0
+
+Transforming original data......Done     0.04s
+
+Creating conic model data......Done     0.02s
+
+Creating MIP model......Done     0.78s
+
+Cone types summary:
+Cone       | Count    | Min dim  | Max dim 
+       SOC |     9000 |        3 |        3
+
+Solving conic relaxation......Done     1.94s
+ - Relaxation status    =        Optimal
+ - Relaxation objective =     270.344445
+
+Creating conic subproblem model......Done     0.00s
+
+Starting iterative outer approximation algorithm
+
+Iter | Best obj       | OA obj         | Rel gap     | Time (s)   
+   1 |  +9.266682e+02 |  +4.994924e+02 |   4.610e-01 |   5.331e+02
+Presolve 27581 (-156931) rows, 8400 (-63630) columns and 69249 (-420324) elements
+0  Obj 101 Primal inf 2505.489 (12886)
+362  Obj 101 Primal inf 2709.5026 (11809)
+724  Obj 101 Primal inf 2856.2978 (11122)
+1086  Obj 101 Primal inf 3295.4546 (11135)
+1448  Obj 101 Primal inf 3601.4598 (11528)
+1810  Obj 101 Primal inf 3648.6627 (12026)
+2172  Obj 101 Primal inf 3438.8384 (12371)
+2534  Obj 101 Primal inf 3239.875 (12776)
+2896  Obj 101 Primal inf 2997.3189 (12862)
+3258  Obj 101 Primal inf 2708.2317 (12872)
+3620  Obj 101 Primal inf 2401.0498 (11878)
+3982  Obj 101 Primal inf 2113.6173 (11091)
+4344  Obj 101 Primal inf 1819.9837 (10344)
+4706  Obj 101 Primal inf 1545.4 (9866)
+5068  Obj 101 Primal inf 1290.8723 (9939)
+5430  Obj 101 Primal inf 1026.9372 (10073)
+5792  Obj 101 Primal inf 722.31256 (10139)
+6154  Obj 101 Primal inf 491.41767 (10584)
+6516  Obj 101 Primal inf 432.38625 (11018)
+6878  Obj 101 Primal inf 449.71976 (10906)
+7240  Obj 101 Primal inf 481.55455 (10755)
+7602  Obj 101 Primal inf 509.48669 (10569)
+7964  Obj 101 Primal inf 538.54074 (10279)
+8326  Obj 101 Primal inf 582.28063 (9913)
+8688  Obj 101 Primal inf 628.25339 (9501)
+9050  Obj 122.27501 Primal inf 651.95888 (9087)
+9412  Obj 252.51294 Primal inf 617.95089 (8616)
+9774  Obj 416.88033 Primal inf 571.15473 (8131)
+10136  Obj 532.57269 Primal inf 515.7933 (7559)
+10498  Obj 605.47839 Primal inf 432.26168 (7078)
+10860  Obj 677.47199 Primal inf 343.75462 (6651)
+11222  Obj 721.70915 Primal inf 286.95841 (6306)
+11584  Obj 748.91253 Primal inf 232.54542 (5768)
+11946  Obj 782.25089 Primal inf 196.68634 (5359)
+12308  Obj 817.62985 Primal inf 157.63702 (5082)
+12670  Obj 852.465 Primal inf 112.99201 (4878)
+13032  Obj 883.73387 Primal inf 70.844134 (4808)
+13394  Obj 904.49088 Primal inf 38.212789 (4612)
+13756  Obj 912.81121 Primal inf 24.30669 (4299)
+14118  Obj 917.32096 Primal inf 14.302933 (3986)
+14480  Obj 918.68213 Primal inf 3.7888444 (3509)
+14842  Obj 921.10711 Primal inf 2.1171443 (2954)
+15204  Obj 923.22605 Primal inf 1.0389646 (2418)
+15566  Obj 925.14853 Primal inf 1.1171456 (1832)
+15928  Obj 926.07858 Primal inf 1.1960661 (1391)
+16290  Obj 926.4543 Primal inf 0.75251137 (991)
+16652  Obj 926.58022 Primal inf 0.31740791 (566)
+17014  Obj 926.66172 Primal inf 0.31468297 (199)
+17201  Obj 926.66788
+17201  Obj 926.66787 Dual inf 8.1495602e-05 (22)
+17223  Obj 926.66787
+Optimal - objective value 926.66787
+After Postsolve, objective 926.66787, infeasibilities - dual 7.6465903e-07 (17), primal 0.00011429722 (62)
+Presolved model was optimal, full model needs cleaning up
+0  Obj 926.66787 Primal inf 4.6218963e-05 (56) Dual inf 4.8510994e-06 (51)
+0  Obj 926.66787 Primal inf 4.6218963e-05 (56) Dual inf 6.8033703e+11 (311)
+81  Obj 926.66824 Dual inf 9.7953377e-05 (65)
+141  Obj 926.66824
+Optimal - objective value 926.66824
+Optimal objective 926.6682405 - 17364 iterations time 0.942, Presolve 0.18
+Cbc0045I Solution with objective value 926.668 saved
+   2 |  +8.135986e+02 |  +5.783297e+02 |   2.892e-01 |   2.389e+03
+   3 |  +8.135986e+02 |  +5.783297e+02 |   2.892e-01 |   3.465e+03
+Presolve 48719 (-159738) rows, 12000 (-60030) columns and 121417 (-439991) elements
+0  Obj 209 Primal inf 5138.6955 (23037)
+468  Obj 209 Primal inf 4255.2127 (20709)
+936  Obj 209 Primal inf 3441.6413 (18474)
+1404  Obj 209 Primal inf 2716.6282 (16208)
+1872  Obj 209 Primal inf 2026.1742 (14101)
+2340  Obj 209 Primal inf 1415.4571 (12100)
+2808  Obj 209 Primal inf 930.58823 (10325)
+3276  Obj 209 Primal inf 734.07867 (8796)
+3744  Obj 209 Primal inf 1082.176 (8785)
+4212  Obj 209 Primal inf 1619.8789 (9614)
+4680  Obj 209 Primal inf 2188.0986 (10354)
+5148  Obj 209 Primal inf 2698.2373 (11026)
+5616  Obj 209 Primal inf 2704.2861 (11660)
+6084  Obj 209 Primal inf 2513.0912 (12219)
+6552  Obj 209 Primal inf 2255.2414 (12754)
+7020  Obj 209 Primal inf 1907.1814 (13348)
+7488  Obj 209 Primal inf 1570.0072 (13900)
+7956  Obj 209 Primal inf 1286.6125 (14277)
+8424  Obj 209 Primal inf 1001.9784 (14487)
+8892  Obj 209 Primal inf 878.64151 (14559)
+9360  Obj 209 Primal inf 849.23183 (14622)
+9828  Obj 209 Primal inf 849.11756 (14666)
+10296  Obj 209 Primal inf 814.29894 (14723)
+10764  Obj 209 Primal inf 795.00123 (14839)
+11232  Obj 209 Primal inf 772.64938 (15227)
+11700  Obj 209 Primal inf 743.27681 (15546)
+12168  Obj 209 Primal inf 723.42749 (16006)
+12636  Obj 209.64538 Primal inf 698.68286 (16320)
+13104  Obj 304.88512 Primal inf 686.0584 (16321)
+13572  Obj 488.84319 Primal inf 621.54371 (15910)
+14040  Obj 585.5541 Primal inf 491.24707 (15229)
+14508  Obj 616.40382 Primal inf 422.57107 (14900)
+14976  Obj 642.48941 Primal inf 351.66187 (14402)
+15444  Obj 671.19391 Primal inf 377.75337 (13789)
+15912  Obj 696.66206 Primal inf 282.16193 (13224)
+16380  Obj 725.58485 Primal inf 191.32449 (12700)
+16848  Obj 747.49261 Primal inf 151.38235 (12141)
+17316  Obj 764.86144 Primal inf 182.75515 (11555)
+17784  Obj 778.85635 Primal inf 359.12641 (11024)
+18252  Obj 787.85683 Primal inf 159.85909 (10475)
+18720  Obj 793.50735 Primal inf 278.61073 (10059)
+19188  Obj 798.08945 Primal inf 825.74067 (9490)
+19656  Obj 801.61604 Primal inf 220.44564 (9026)
+20124  Obj 803.86387 Primal inf 590.01734 (8561)
+20592  Obj 805.45393 Primal inf 341.88644 (8009)
+21060  Obj 807.39996 Primal inf 143.04176 (7366)
+21528  Obj 808.98055 Primal inf 94.257329 (6824)
+21996  Obj 810.2327 Primal inf 62.179698 (6350)
+22464  Obj 811.16299 Primal inf 188.4192 (5839)
+22932  Obj 811.90104 Primal inf 123.07816 (5446)
+23400  Obj 812.41556 Primal inf 2.1726522 (4860)
+23868  Obj 812.788 Primal inf 1.9116637 (4203)
+24336  Obj 813.06427 Primal inf 1.0497974 (3389)
+24804  Obj 813.2643 Primal inf 0.87219755 (2577)
+25272  Obj 813.41934 Primal inf 0.37529559 (1869)
+25740  Obj 813.52397 Primal inf 0.20550069 (1205)
+26208  Obj 813.5754 Primal inf 0.19062247 (599)
+26322  Obj 813.58241 Primal inf 0.14203255 (467)
+26710  Obj 813.59489
+26710  Obj 813.59489 Dual inf 6.0632294e-07 (3)
+26713  Obj 813.59489
+Optimal - objective value 813.59489
+After Postsolve, objective 813.59489, infeasibilities - dual 3.8929389e-06 (57), primal 0.00069144705 (403)
+Presolved model was optimal, full model needs cleaning up
+0  Obj 813.59489 Primal inf 0.00021035486 (288) Dual inf 0.001279319 (386)
+0  Obj 813.59489 Primal inf 0.00021035486 (288) Dual inf 8.2948636e+12 (1039)
+200  Obj 813.59786 Primal inf 2.5373518e-05 (30) Dual inf 3.0059785e+11 (547)
+317  Obj 813.5978 Dual inf 0.0013769404 (410)
+517  Obj 813.5978 Dual inf 0.00022236355 (224)
+717  Obj 813.5978 Dual inf 8.756705e-05 (31)
+741  Obj 813.5978
+Optimal - objective value 813.5978
+Optimal objective 813.5977951 - 27454 iterations time 1.862, Presolve 0.22
+Cbc0045I Solution with objective value 813.598 saved
+
+signal (15): Terminated
+while loading /home/ubuntu/PajaritoSupplement/scripts/run.jl, in expression starting on line 197
+_ZNK17CoinFactorization21updateColumnUSparsishEP17CoinIndexedVectorPi at /home/ubuntu/.julia/v0.5/Cbc/deps/usr/lib/libCoinUtils.so.3 (unknown line)
+_ZNK17CoinFactorization13updateColumnUEP17CoinIndexedVectorPi at /home/ubuntu/.julia/v0.5/Cbc/deps/usr/lib/libCoinUtils.so.3 (unknown line)
+_ZN17CoinFactorization14updateColumnFTEP17CoinIndexedVectorS1_ at /home/ubuntu/.julia/v0.5/Cbc/deps/usr/lib/libCoinUtils.so.3 (unknown line)
+_ZN16ClpSimplexPrimal11pivotResultEi at /home/ubuntu/.julia/v0.5/Cbc/deps/usr/lib/libClp.so.1 (unknown line)
+_ZN16ClpSimplexPrimal14whileIteratingEi at /home/ubuntu/.julia/v0.5/Cbc/deps/usr/lib/libClp.so.1 (unknown line)
+_ZN16ClpSimplexPrimal6primalEii at /home/ubuntu/.julia/v0.5/Cbc/deps/usr/lib/libClp.so.1 (unknown line)
+_ZN10ClpSimplex4dualEii at /home/ubuntu/.julia/v0.5/Cbc/deps/usr/lib/libClp.so.1 (unknown line)
+_ZN21OsiClpSolverInterface12initialSolveEv at /home/ubuntu/.julia/v0.5/Cbc/deps/usr/lib/libOsiClp.so.1 (unknown line)
+_ZN13CglPreProcess8modifiedEP18OsiSolverInterfacebRiii at /home/ubuntu/.julia/v0.5/Cbc/deps/usr/lib/libCgl.so.1 (unknown line)
+_ZN13CglPreProcess20preProcessNonDefaultER18OsiSolverInterfaceiii at /home/ubuntu/.julia/v0.5/Cbc/deps/usr/lib/libCgl.so.1 (unknown line)
+_Z8CbcMain1iPPKcR8CbcModelPFiPS2_iER19CbcSolverUsefulData at /home/ubuntu/.julia/v0.5/Cbc/deps/usr/lib/libCbcSolver.so (unknown line)
+Cbc_solve at /home/ubuntu/.julia/v0.5/Cbc/deps/usr/lib/libCbcSolver.so (unknown line)
+optimize! at /home/ubuntu/.julia/v0.5/Cbc/src/CbcSolverInterface.jl:161
+unknown function (ip: 0x7fa05bddd782)
+jl_call_method_internal at /home/centos/buildbot/slave/package_tarball64/build/src/julia_internal.h:189 [inlined]
+jl_apply_generic at /home/centos/buildbot/slave/package_tarball64/build/src/gf.c:1942
+#solve#97 at /home/ubuntu/.julia/v0.5/JuMP/src/solvers.jl:142
+unknown function (ip: 0x7fa05bdc0b7f)
+solve_iterative! at /home/ubuntu/.julia/v0.5/Pajarito/src/conic_algorithm.jl:1224
+optimize! at /home/ubuntu/.julia/v0.5/Pajarito/src/conic_algorithm.jl:483
+unknown function (ip: 0x7fa05bd38f02)
+solveprint at /home/ubuntu/PajaritoSupplement/scripts/run.jl:28
+unknown function (ip: 0x7fa05bd25b46)
+jl_call_method_internal at /home/centos/buildbot/slave/package_tarball64/build/src/julia_internal.h:189 [inlined]
+jl_apply_generic at /home/centos/buildbot/slave/package_tarball64/build/src/gf.c:1942
+do_call at /home/centos/buildbot/slave/package_tarball64/build/src/interpreter.c:66
+eval at /home/centos/buildbot/slave/package_tarball64/build/src/interpreter.c:190
+eval_body at /home/centos/buildbot/slave/package_tarball64/build/src/interpreter.c:469
+eval_body at /home/centos/buildbot/slave/package_tarball64/build/src/interpreter.c:515
+jl_interpret_call at /home/centos/buildbot/slave/package_tarball64/build/src/interpreter.c:573
+jl_toplevel_eval_flex at /home/centos/buildbot/slave/package_tarball64/build/src/toplevel.c:572
+jl_parse_eval_all at /home/centos/buildbot/slave/package_tarball64/build/src/ast.c:717
+jl_load at /home/centos/buildbot/slave/package_tarball64/build/src/toplevel.c:596
+jl_load_ at /home/centos/buildbot/slave/package_tarball64/build/src/toplevel.c:605
+include_from_node1 at ./loading.jl:488
+unknown function (ip: 0x7fa26c338d0b)
+jl_call_method_internal at /home/centos/buildbot/slave/package_tarball64/build/src/julia_internal.h:189 [inlined]
+jl_apply_generic at /home/centos/buildbot/slave/package_tarball64/build/src/gf.c:1942
+process_options at ./client.jl:262
+_start at ./client.jl:318
+unknown function (ip: 0x7fa26c35e2e8)
+jl_call_method_internal at /home/centos/buildbot/slave/package_tarball64/build/src/julia_internal.h:189 [inlined]
+jl_apply_generic at /home/centos/buildbot/slave/package_tarball64/build/src/gf.c:1942
+jl_apply at /home/centos/buildbot/slave/package_tarball64/build/ui/../src/julia.h:1392 [inlined]
+true_main at /home/centos/buildbot/slave/package_tarball64/build/ui/repl.c:112
+main at /home/centos/buildbot/slave/package_tarball64/build/ui/repl.c:232
+__libc_start_main at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
+unknown function (ip: 0x4013fc)
+unknown function (ip: 0xffffffffffffffff)
+Allocations: 32197818 (Pool: 32182660; Big: 15158); GC: 204
+
+signal (11): Segmentation fault
+while loading /home/ubuntu/PajaritoSupplement/scripts/run.jl, in expression starting on line 197
+#STATUS# KilledTime

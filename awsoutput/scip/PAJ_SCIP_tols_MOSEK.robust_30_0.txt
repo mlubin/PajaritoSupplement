@@ -1,0 +1,58 @@
+WARNING: Method definition require(Symbol) in module Base at loading.jl:345 overwritten in module ConicBenchmarkUtilities at /home/ubuntu/.julia/v0.5/Requires/src/require.jl:12.
+#SOLVERNAME# PAJ_SCIP_tols_MOSEK
+#SOLVER# Pajarito.PajaritoSolver(2,3600.0,1.0e-5,false,SCIP.SCIPSolver(("display/verblevel",0,"limits/gap",0.0,"limits/time",3600.0,"numerics/feastol",1.0e-8)),MathProgBase.DefaultMIPSolver(),0,false,true,Mosek.MosekMathProgSolverInterface.MosekSolver(Any[(:LOG,0),(:NUM_THREADS,1),(:OPTIMIZER_MAX_TIME,120.0)]),true,false,false,true,false,true,false,true,true,true,true,false,false,true,false,false,false,true,1.0e-10,0.0001,1.0e-6,0.01,1.0e-6)
+#INSTANCE# robust_30_0.cbf.gz
+#TIMELIMIT# 3600.0
+
+Transforming original data......Done     0.00s
+
+Creating conic model data......Done     0.00s
+
+Creating MIP model......Done     0.00s
+
+Cone types summary:
+Cone       | Count    | Min dim  | Max dim 
+       SOC |        2 |       32 |       32
+
+Solving conic relaxation......Done     0.01s
+ - Relaxation status    =        Optimal
+ - Relaxation objective =      -0.045451
+
+Creating conic subproblem model......Done     0.00s
+
+Starting iterative outer approximation algorithm
+
+Iter | Best obj       | OA obj         | Rel gap     | Time (s)   
+   1 |  -4.545146e-02 |  -4.545146e-02 |  -1.306e-07 |   7.150e-02
+
+Pajarito MICP solve summary:
+ - Total time (s)       =       7.94e-02
+ - Status               =        Optimal
+ - Best feasible obj.   =  -4.545146e-02
+ - Final OA obj. bound  =  -4.545146e-02
+ - Relative opt. gap    =     -1.306e-07
+ - MIP solve count      =              1
+ - Conic solve count    =              1
+ - Feas. solution count =              1
+ - Integer repeat count =              0
+
+Timers (s):
+ - Setup                =       7.88e-03
+ -- Transform data      =       2.38e-04
+ -- Create conic data   =       1.31e-04
+ -- Create MIP data     =       1.21e-03
+ -- Load/solve relax    =       5.27e-03
+ - Iterative algorithm  =       7.15e-02
+ -- Solve MIPs          =       6.67e-02
+ -- Solve conic model   =       2.10e-03
+ -- Process conic data  =       7.89e-04
+ -- Add conic solution  =       0.00e+00
+ -- Add dual cuts       =       3.98e-04
+ -- Use outer inf/cuts  =       2.20e-03
+
+#STATUS# Optimal
+#OBJVAL# -0.04545146218620978
+#OBJBOUND# -0.04545145624682872
+#TIMESOLVER# 0.07941007614135742
+#TIMEALL# 0.07957100868225098
+#SOLUTION# [0.04545146218620978,0.0,0.07491667955646224,1.0,-0.0,0.0,-0.0,0.0,-0.0,0.0,-0.0,0.0,-0.0,0.0,0.1585694604189425,1.0,0.1040503475575227,1.0,-0.0,0.0,0.050503566183903094,1.0,-0.0,0.0,-0.0,0.0,-0.0,0.0,0.06749209699019867,1.0,0.11498572491467844,1.0,-0.0,0.0,-0.0,0.0,0.15835964437410582,1.0,-0.0,0.0,-0.0,0.0,-0.0,0.0,-0.0,0.0,-0.0,0.0,-0.0,0.0,0.01262406034468057,1.0,0.25241026239283526,1.0,-0.0,0.0,-0.0,0.0,-0.0,0.0,0.0060881463492243005,1.0,0.9999999999999999,0.05694200436005977,0.026050913094681705,0.020335305157005275,0.007576498649793425,0.020921657105479025,0.005503572238325766,0.08584624732205708,0.04359483456725519,0.035969059018799876,0.020816006298925566,0.03997384060507744,0.013197876031312474,0.013323475777492327,0.057567280686910444,0.05404307066998234,0.01099321514474334,0.00881502027020382,0.0724914151037352,0.014888475267064808,0.022160352784468224,0.011554082465795932,0.011643808089213276,0.01836099410587386,0.012591779826557212,0.04827830483472102,0.073734173397634,0.013683006723220604,0.02065159429022747,0.013719958814082155,0.021402558163372814,-0.0,0.2,0.01479396669546954,0.006768225759531159,0.0052832672579068134,0.0019684320907421503,0.0054356059627872055,0.0014298700109842664,0.022303509300105568,0.011326270262705137,0.009345035658165789,0.0054081570780600274,0.01038550843526388,0.0034289087757378824,0.0034615405470052973,0.01495641825049458,0.014040801629636472,0.0028561210753804997,0.002290209446664236,0.01883382211085826,0.0038681393414688172,0.005757428540452045,0.003001838679844802,0.003025150080614824,0.004770326200326742,0.0032714403625943834,0.012543071531581268,0.01915670018679005,0.0035549494267317857,0.005365441585198852,0.0035645498615581644,0.005560547722634368,-0.0,0.05196150623979931]

@@ -1,0 +1,83 @@
+WARNING: Method definition require(Symbol) in module Base at loading.jl:345 overwritten in module ConicBenchmarkUtilities at /home/ubuntu/.julia/v0.5/Requires/src/require.jl:12.
+#SOLVERNAME# PAJ_SCIP_tols_MOSEK
+#SOLVER# Pajarito.PajaritoSolver(2,3600.0,1.0e-5,false,SCIP.SCIPSolver(("display/verblevel",0,"limits/gap",0.0,"limits/time",3600.0,"numerics/feastol",1.0e-8)),MathProgBase.DefaultMIPSolver(),0,false,true,Mosek.MosekMathProgSolverInterface.MosekSolver(Any[(:LOG,0),(:NUM_THREADS,1),(:OPTIMIZER_MAX_TIME,120.0)]),true,false,false,true,false,true,false,true,true,true,true,false,false,true,false,false,false,true,1.0e-10,0.0001,1.0e-6,0.01,1.0e-6)
+#INSTANCE# 200_0_5_w.cbf.gz
+#TIMELIMIT# 3600.0
+
+Transforming original data......Done     0.09s
+
+Creating conic model data......Done     0.10s
+
+Creating MIP model......Done     0.86s
+
+Cone types summary:
+Cone       | Count    | Min dim  | Max dim 
+       SOC |     4800 |        3 |        3
+
+signal (15): Terminated
+while loading /home/ubuntu/PajaritoSupplement/scripts/run.jl, in expression starting on line 197
+unknown function (ip: 0x7f7746f1eccb)
+_ZN6soplex9CLUFactor12vSolveUrightEPdPiS1_S2_id at /home/ubuntu/.julia/v0.5/SCIP/deps/src/CSIP-0.3.5/lib/libscipopt.so (unknown line)
+_ZN6soplex9CLUFactor18vSolveRight4updateEdPdPiS1_S2_iS1_S2_S2_ at /home/ubuntu/.julia/v0.5/SCIP/deps/src/CSIP-0.3.5/lib/libscipopt.so (unknown line)
+_ZN6soplex9SLUFactor17solveRight4updateERNS_12SSVectorBaseIdEERKNS_11SVectorBaseIdEE at /home/ubuntu/.julia/v0.5/SCIP/deps/src/CSIP-0.3.5/lib/libscipopt.so (unknown line)
+_ZN6soplex9SPxSolver5enterERNS_5SPxIdE at /home/ubuntu/.julia/v0.5/SCIP/deps/src/CSIP-0.3.5/lib/libscipopt.so (unknown line)
+_ZN6soplex9SPxSolver5solveEv at /home/ubuntu/.julia/v0.5/SCIP/deps/src/CSIP-0.3.5/lib/libscipopt.so (unknown line)
+_ZN7SPxSCIP8trySolveEb at /home/ubuntu/.julia/v0.5/SCIP/deps/src/CSIP-0.3.5/lib/libscipopt.so (unknown line)
+_ZN7SPxSCIP7doSolveEb at /home/ubuntu/.julia/v0.5/SCIP/deps/src/CSIP-0.3.5/lib/libscipopt.so (unknown line)
+_ZN7SPxSCIP5solveEv at /home/ubuntu/.julia/v0.5/SCIP/deps/src/CSIP-0.3.5/lib/libscipopt.so (unknown line)
+unknown function (ip: 0x7f7746cf07f5)
+unknown function (ip: 0x7f7746a54c08)
+unknown function (ip: 0x7f7746d2577c)
+SCIPlpSolveAndEval at /home/ubuntu/.julia/v0.5/SCIP/deps/src/CSIP-0.3.5/lib/libscipopt.so (unknown line)
+unknown function (ip: 0x7f7746ecc0d3)
+unknown function (ip: 0x7f7746eceeed)
+SCIPsolveCIP at /home/ubuntu/.julia/v0.5/SCIP/deps/src/CSIP-0.3.5/lib/libscipopt.so (unknown line)
+SCIPsolve at /home/ubuntu/.julia/v0.5/SCIP/deps/src/CSIP-0.3.5/lib/libscipopt.so (unknown line)
+unknown function (ip: 0x7f7746cc4d53)
+SCIPheurExec at /home/ubuntu/.julia/v0.5/SCIP/deps/src/CSIP-0.3.5/lib/libscipopt.so (unknown line)
+SCIPprimalHeuristics at /home/ubuntu/.julia/v0.5/SCIP/deps/src/CSIP-0.3.5/lib/libscipopt.so (unknown line)
+SCIPsolveCIP at /home/ubuntu/.julia/v0.5/SCIP/deps/src/CSIP-0.3.5/lib/libscipopt.so (unknown line)
+SCIPsolve at /home/ubuntu/.julia/v0.5/SCIP/deps/src/CSIP-0.3.5/lib/libscipopt.so (unknown line)
+CSIPsolve at /home/ubuntu/.julia/v0.5/SCIP/deps/usr/lib/libcsip.so (unknown line)
+optimize! at /home/ubuntu/.julia/v0.5/SCIP/src/mpb_interface.jl:52
+unknown function (ip: 0x7f7747984882)
+jl_call_method_internal at /home/centos/buildbot/slave/package_tarball64/build/src/julia_internal.h:189 [inlined]
+jl_apply_generic at /home/centos/buildbot/slave/package_tarball64/build/src/gf.c:1942
+#solve#97 at /home/ubuntu/.julia/v0.5/JuMP/src/solvers.jl:142
+unknown function (ip: 0x7f774796882f)
+solve_iterative! at /home/ubuntu/.julia/v0.5/Pajarito/src/conic_algorithm.jl:1224
+optimize! at /home/ubuntu/.julia/v0.5/Pajarito/src/conic_algorithm.jl:483
+unknown function (ip: 0x7f77478d00d2)
+solveprint at /home/ubuntu/PajaritoSupplement/scripts/run.jl:28
+unknown function (ip: 0x7f77478bcf46)
+jl_call_method_internal at /home/centos/buildbot/slave/package_tarball64/build/src/julia_internal.h:189 [inlined]
+jl_apply_generic at /home/centos/buildbot/slave/package_tarball64/build/src/gf.c:1942
+do_call at /home/centos/buildbot/slave/package_tarball64/build/src/interpreter.c:66
+eval at /home/centos/buildbot/slave/package_tarball64/build/src/interpreter.c:190
+eval_body at /home/centos/buildbot/slave/package_tarball64/build/src/interpreter.c:469
+eval_body at /home/centos/buildbot/slave/package_tarball64/build/src/interpreter.c:515
+jl_interpret_call at /home/centos/buildbot/slave/package_tarball64/build/src/interpreter.c:573
+jl_toplevel_eval_flex at /home/centos/buildbot/slave/package_tarball64/build/src/toplevel.c:572
+jl_parse_eval_all at /home/centos/buildbot/slave/package_tarball64/build/src/ast.c:717
+jl_load at /home/centos/buildbot/slave/package_tarball64/build/src/toplevel.c:596
+jl_load_ at /home/centos/buildbot/slave/package_tarball64/build/src/toplevel.c:605
+include_from_node1 at ./loading.jl:488
+unknown function (ip: 0x7f7957ecfd0b)
+jl_call_method_internal at /home/centos/buildbot/slave/package_tarball64/build/src/julia_internal.h:189 [inlined]
+jl_apply_generic at /home/centos/buildbot/slave/package_tarball64/build/src/gf.c:1942
+process_options at ./client.jl:262
+_start at ./client.jl:318
+unknown function (ip: 0x7f7957ef52e8)
+jl_call_method_internal at /home/centos/buildbot/slave/package_tarball64/build/src/julia_internal.h:189 [inlined]
+jl_apply_generic at /home/centos/buildbot/slave/package_tarball64/build/src/gf.c:1942
+jl_apply at /home/centos/buildbot/slave/package_tarball64/build/ui/../src/julia.h:1392 [inlined]
+true_main at /home/centos/buildbot/slave/package_tarball64/build/ui/repl.c:112
+main at /home/centos/buildbot/slave/package_tarball64/build/ui/repl.c:232
+__libc_start_main at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
+unknown function (ip: 0x4013fc)
+unknown function (ip: 0xffffffffffffffff)
+Allocations: 43316897 (Pool: 43306575; Big: 10322); GC: 2810
+
+signal (11): Segmentation fault
+while loading /home/ubuntu/PajaritoSupplement/scripts/run.jl, in expression starting on line 197
+#STATUS# KilledTime

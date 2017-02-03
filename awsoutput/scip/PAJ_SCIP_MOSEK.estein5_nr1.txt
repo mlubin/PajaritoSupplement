@@ -1,0 +1,62 @@
+WARNING: Method definition require(Symbol) in module Base at loading.jl:345 overwritten in module ConicBenchmarkUtilities at /home/ubuntu/.julia/v0.5/Requires/src/require.jl:12.
+#SOLVERNAME# PAJ_SCIP_MOSEK
+#SOLVER# Pajarito.PajaritoSolver(2,3600.0,1.0e-5,false,SCIP.SCIPSolver(("display/verblevel",0,"limits/gap",0.0,"limits/time",3600.0)),MathProgBase.DefaultMIPSolver(),0,false,true,Mosek.MosekMathProgSolverInterface.MosekSolver(Any[(:LOG,0),(:NUM_THREADS,1),(:OPTIMIZER_MAX_TIME,120.0)]),true,false,false,true,false,true,false,true,true,true,true,false,false,true,false,false,false,true,1.0e-10,0.0001,1.0e-6,0.01,1.0e-6)
+#INSTANCE# estein5_nr1.cbf.gz
+#TIMELIMIT# 3600.0
+
+Transforming original data......Done     0.01s
+
+Creating conic model data......Done     0.00s
+
+Creating MIP model......Done     0.00s
+
+Cone types summary:
+Cone       | Count    | Min dim  | Max dim 
+       SOC |       18 |        3 |        3
+
+Solving conic relaxation......Done     0.00s
+ - Relaxation status    =        Optimal
+ - Relaxation objective =      -0.000000
+
+Creating conic subproblem model......Done     0.00s
+
+Starting iterative outer approximation algorithm
+
+Iter | Best obj       | OA obj         | Rel gap     | Time (s)   
+   1 |  +1.664399e+00 |  +1.605341e+00 |   3.548e-02 |   4.415e-01
+   2 |  +1.664399e+00 |  +1.605341e+00 |   3.548e-02 |   8.655e-01
+   3 |  +1.664399e+00 |  +1.638536e+00 |   1.554e-02 |   1.417e+00
+   4 |  +1.664399e+00 |  +1.641026e+00 |   1.404e-02 |   1.982e+00
+   5 |  +1.664399e+00 |  +1.664399e+00 |   4.804e-09 |   2.527e+00
+
+Pajarito MICP solve summary:
+ - Total time (s)       =       2.54e+00
+ - Status               =        Optimal
+ - Best feasible obj.   =  +1.664399e+00
+ - Final OA obj. bound  =  +1.664399e+00
+ - Relative opt. gap    =      4.804e-09
+ - MIP solve count      =              5
+ - Conic solve count    =              4
+ - Feas. solution count =              4
+ - Integer repeat count =              1
+
+Timers (s):
+ - Setup                =       1.31e-02
+ -- Transform data      =       8.08e-03
+ -- Create conic data   =       7.10e-05
+ -- Create MIP data     =       1.14e-03
+ -- Load/solve relax    =       2.63e-03
+ - Iterative algorithm  =       2.53e+00
+ -- Solve MIPs          =       2.51e+00
+ -- Solve conic model   =       6.45e-03
+ -- Process conic data  =       1.40e-03
+ -- Add conic solution  =       3.48e-05
+ -- Add dual cuts       =       9.07e-04
+ -- Use outer inf/cuts  =       1.19e-02
+
+#STATUS# Optimal
+#OBJVAL# 1.6643993294533437
+#OBJBOUND# 1.664399321457323
+#TIMESOLVER# 2.540113925933838
+#TIMEALL# 2.5403308868408203
+#SOLUTION# [0.24368498137470015,0.19030067233694808,0.7994715428195469,0.2645422984084882,0.8799999907182241,0.45999999692308086,1.034456,0.45631501742806696,0.7696993255402754,1.034456,-0.09947154400166303,0.6954576995054228,0.5314132086927515,-0.17999999183901483,0.5000000008205328,1.034456,0.6363150170108491,0.2696993266992138,1.034456,0.08052845558111933,0.19545770066436027,8.801285328759325e-9,7.682463553107662e-9,2.14977061662619e-9,1.034456,0.636315017010849,-0.03030067260542322,0.1319618308685467,0.0805284555863551,-0.10454229864707053,1.034456,7.682449918803399e-9,-0.29999999715486686,0.08797769020372254,-0.05368498140970649,0.06969932718861727,1.034456,-0.609471542819545,-0.0045422988720639785,1.034456,-0.6899999907182152,-0.1999999973866543,0.14092672805365575,-0.05368498137470016,-0.1303006723369481,1.034456,-0.6094715428195469,-0.2045422984084882,1.034456,-0.6899999907182242,-0.39999999692308086,0.5607232133655986,-0.5557865614485944,-0.07424162603737247,1.0344559999999998,-0.6363150093284043,-0.26969932454944434,0.21139664946778347,-0.08052844795943476,-0.19545769866204937,0.0,0.0,0.5314132086927515,0.0,0.0,8.801285328759325e-9,0.0,0.1319618308685467,0.0,0.08797769020372254,0.0,0.0,0.14092672805365575,0.0,0.0,0.5607232133655986,5.742384345808205e-17,0.21139664946778325,0.0,0.0,1.0,0.0,0.0,1.0,0.0,1.0,0.0,1.0,0.0,0.0,1.0,0.0,0.0,1.0,1.1102230246251565e-16,0.9999999999999999,1.0,1.0,0.0,1.0,1.0,0.0,1.0,0.0,1.0,0.0,1.0,1.0,0.0,1.0,1.0,0.0,0.9999999999999999,1.1102230246251565e-16,-0.0,-0.0,0.5030427913072485,-0.0,-0.0,1.0344559911987148,-0.0,0.9024941691314533,-0.0,0.9464783097962775,-0.0,-0.0,0.8935292719463444,-0.0,-0.0,0.47373278663440144,5.742384345808205e-17,0.8230593505322166]

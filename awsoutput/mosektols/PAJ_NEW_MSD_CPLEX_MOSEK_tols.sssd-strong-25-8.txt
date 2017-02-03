@@ -1,0 +1,53 @@
+WARNING: Method definition require(Symbol) in module Base at loading.jl:345 overwritten in module ConicBenchmarkUtilities at /home/ubuntu/.julia/v0.5/Requires/src/require.jl:12.
+#SOLVERNAME# PAJ_NEW_MSD_CPLEX_MOSEK_tols
+#SOLVER# Pajarito.PajaritoSolver(2,3600.0,1.0e-5,true,CPLEX.CplexSolver(Any[(:CPX_PARAM_THREADS,1),(:CPX_PARAM_TILIM,3600.0),(:CPX_PARAM_EPINT,1.0e-8),(:CPX_PARAM_EPRHS,1.0e-8),(:CPX_PARAM_SCRIND,0),(:CPX_PARAM_EPGAP,1.0e-5)]),CPLEX.CplexSolver(Any[]),0,false,true,Mosek.MosekMathProgSolverInterface.MosekSolver(Any[(:LOG,0),(:NUM_THREADS,1),(:OPTIMIZER_MAX_TIME,120.0),(:INTPNT_CO_TOL_REL_GAP,1.0e-9),(:INTPNT_CO_TOL_DFEAS,1.0e-10)]),true,false,false,true,false,true,false,true,true,true,true,false,false,true,false,false,false,true,1.0e-8,1.0e-6,1.0e-6,0.01,1.0e-6)
+#INSTANCE# sssd-strong-25-8.cbf.gz
+#TIMELIMIT# 3600.0
+
+Transforming original data......Done     0.00s
+
+Creating conic model data......Done     0.00s
+
+Creating MIP model......Done     0.00s
+
+Cone types summary:
+Cone       | Count    | Min dim  | Max dim 
+       SOC |       24 |        3 |        3
+
+Solving conic relaxation......Done     0.02s
+ - Relaxation status    =        Optimal
+ - Relaxation objective =  332729.815026
+
+Creating conic subproblem model......Done
+
+Starting MIP-solver-driven outer approximation algorithm
+
+Pajarito MICP solve summary:
+ - Total time (s)       =       2.67e+03
+ - Status               =        Optimal
+ - Best feasible obj.   =  +5.007533e+05
+ - Final OA obj. bound  =  +5.007483e+05
+ - Relative opt. gap    =      1.000e-05
+ - Conic solve count    =             33
+ - Feas. solution count =             27
+ - Integer repeat count =             15
+
+Timers (s):
+ - Setup                =       2.00e-02
+ -- Transform data      =       1.94e-04
+ -- Create conic data   =       1.39e-04
+ -- Create MIP data     =       1.73e-03
+ -- Load/solve relax    =       1.62e-02
+ - MIP-driven algorithm =       2.67e+03
+ -- Solve conic model   =       5.69e-02
+
+#STATUS# Optimal
+#OBJVAL# 500753.2974568722
+#OBJBOUND# 500748.28998370643
+#TIMESOLVER# 2666.605877161026
+#TIMEALL# 2666.6061239242554
+#SOLUTION# [0.0,0.0,0.0,0.0,0.0,1.0,-0.0,-0.0,0.0,-0.0,-0.0,1.0,0.0,-0.0,-0.0,-0.0,0.0,1.0,-0.0,0.0,0.0,-0.0,-0.0,-0.0,0.0,1.0,-0.0,0.0,0.0,-0.0,-0.0,-0.0,0.0,0.0,-0.0,0.0,0.0,1.0,-0.0,-0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,-0.0,-0.0,-0.0,-0.0,1.0,-0.0,-0.0,-0.0,0.0,-0.0,-0.0,-0.0,1.0,-0.0,-0.0,-0.0,0.0,0.0,1.0,0.0,0.0,-0.0,-0.0,-0.0,1.0,-0.0,-0.0,-0.0,0.0,-0.0,-0.0,-0.0,1.0,-0.0,-0.0,-0.0,0.0,-0.0,-0.0,-0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,-0.0,-0.0,-0.0,-0.0,1.0,0.0,-0.0,-0.0,-0.0,0.0,0.0,1.0,0.0,0.0,0.0,-0.0,-0.0,-0.0,-0.0,-0.0,1.0,0.0,-0.0,-0.0,-0.0,0.0,0.0,-0.0,0.0,0.0,1.0,-0.0,-0.0,0.0,0.0,1.0,0.0,0.0,0.0,-0.0,-0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,-0.0,-0.0,-0.0,0.0,-0.0,-0.0,1.0,0.0,1.0,-0.0,0.0,0.0,-0.0,-0.0,-0.0,1.0,-0.0,-0.0,-0.0,0.0,-0.0,-0.0,-0.0,0.0,0.0,-0.0,0.0,0.0,1.0,-0.0,-0.0,1.0,-0.0,-0.0,-0.0,0.0,-0.0,-0.0,-0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,-0.0,0.0,-0.0,-0.0,0.0,1.0,-0.0,-0.0,-0.0,0.0,0.0,1.0,-0.0,0.0,1.0,-0.0,0.0,1.0,0.0,0.0,1.0,0.0,0.0,1.0,0.0,0.0,1.0,-0.0,0.0,1.0,-0.0,0.0,1.0,0.73400105251728,0.6137603617103697,0.6496860960629196,0.7560509024572413,0.6631331639655376,0.7607345408846383,0.6666045420607244,0.7436907106714488,-0.0,-0.0,0.42329908251806625,-0.0,-0.0,0.3803293093274029,-0.0,-0.0,0.3938240733870004,-0.0,-0.0,0.43054042660456615,-0.0,-0.0,0.3987252376273452,-0.0,-0.0,0.43205521644212913,-0.0,-0.0,0.39997763552421756,-0.0,-0.0,0.4265037992430259,0.0,0.36700052625864,0.36700052625864,0.15535098499960687,0.30688018085518487,0.30688018085518487,0.11671552619148343,0.3248430480314598,0.3248430480314598,0.12793101133795962,0.37802545122862063,0.37802545122862063,0.16275523792633756,0.3315665819827688,0.3315665819827688,0.1322039631690962,0.38036727044231916,0.38036727044231916,0.1643396622212546,0.3333022710303622,0.3333022710303622,0.13331345326825342,0.3718453553357244,0.3718453553357244,0.15859345571421143,0.73400105251728,0.73400105251728,1.73400105251728,0.6137603617103697,0.6137603617103697,1.6137603617103697,0.6496860960629196,0.6496860960629196,1.6496860960629196,0.7560509024572413,0.7560509024572413,1.7560509024572413,0.6631331639655376,0.6631331639655376,1.6631331639655376,0.7607345408846383,0.7607345408846383,1.7607345408846382,0.6666045420607244,0.6666045420607244,1.6666045420607243,0.7436907106714488,0.7436907106714488,1.7436907106714488,0.73400105251728,0.73400105251728,0.73400105251728,0.6137603617103697,0.6137603617103697,0.6137603617103697,0.6496860960629196,0.6496860960629196,0.6496860960629196,0.7560509024572413,0.7560509024572413,0.7560509024572413,0.6631331639655376,0.6631331639655376,0.6631331639655376,0.7607345408846383,0.7607345408846383,0.7607345408846383,0.6666045420607244,0.6666045420607244,0.6666045420607244,0.7436907106714488,0.7436907106714488,0.7436907106714488]
+WARNING: For the MIP-solver-driven algorithm, optimality tolerance must be specified as MIP solver option, not Pajarito option
+WARNING: When using primal cuts, primal cut zero tolerance should be at least 1e-5 to avoid numerical issues
+WARNING: For the MIP-solver-driven algorithm, optimality tolerance must be specified as MIP solver option, not Pajarito option
+WARNING: When using primal cuts, primal cut zero tolerance should be at least 1e-5 to avoid numerical issues
