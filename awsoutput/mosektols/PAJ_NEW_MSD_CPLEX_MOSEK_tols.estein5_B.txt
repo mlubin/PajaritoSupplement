@@ -1,0 +1,53 @@
+WARNING: Method definition require(Symbol) in module Base at loading.jl:345 overwritten in module ConicBenchmarkUtilities at /home/ubuntu/.julia/v0.5/Requires/src/require.jl:12.
+#SOLVERNAME# PAJ_NEW_MSD_CPLEX_MOSEK_tols
+#SOLVER# Pajarito.PajaritoSolver(2,3600.0,1.0e-5,true,CPLEX.CplexSolver(Any[(:CPX_PARAM_THREADS,1),(:CPX_PARAM_TILIM,3600.0),(:CPX_PARAM_EPINT,1.0e-8),(:CPX_PARAM_EPRHS,1.0e-8),(:CPX_PARAM_SCRIND,0),(:CPX_PARAM_EPGAP,1.0e-5)]),CPLEX.CplexSolver(Any[]),0,false,true,Mosek.MosekMathProgSolverInterface.MosekSolver(Any[(:LOG,0),(:NUM_THREADS,1),(:OPTIMIZER_MAX_TIME,120.0),(:INTPNT_CO_TOL_REL_GAP,1.0e-9),(:INTPNT_CO_TOL_DFEAS,1.0e-10)]),true,false,false,true,false,true,false,true,true,true,true,false,false,true,false,false,false,true,1.0e-8,1.0e-6,1.0e-6,0.01,1.0e-6)
+#INSTANCE# estein5_B.cbf.gz
+#TIMELIMIT# 3600.0
+
+Transforming original data......Done     0.00s
+
+Creating conic model data......Done     0.00s
+
+Creating MIP model......Done     0.00s
+
+Cone types summary:
+Cone       | Count    | Min dim  | Max dim 
+       SOC |       18 |        3 |        3
+
+Solving conic relaxation......Done     0.00s
+ - Relaxation status    =        Optimal
+ - Relaxation objective =      -0.000000
+
+Creating conic subproblem model......Done
+
+Starting MIP-solver-driven outer approximation algorithm
+
+Pajarito MICP solve summary:
+ - Total time (s)       =       2.44e-01
+ - Status               =        Optimal
+ - Best feasible obj.   =  +1.193160e+00
+ - Final OA obj. bound  =  +1.193160e+00
+ - Relative opt. gap    =      0.000e+00
+ - Conic solve count    =             13
+ - Feas. solution count =             13
+ - Integer repeat count =             54
+
+Timers (s):
+ - Setup                =       5.23e-03
+ -- Transform data      =       1.05e-04
+ -- Create conic data   =       6.26e-05
+ -- Create MIP data     =       1.25e-03
+ -- Load/solve relax    =       2.63e-03
+ - MIP-driven algorithm =       2.39e-01
+ -- Solve conic model   =       2.11e-02
+
+WARNING: For the MIP-solver-driven algorithm, optimality tolerance must be specified as MIP solver option, not Pajarito option
+WARNING: When using primal cuts, primal cut zero tolerance should be at least 1e-5 to avoid numerical issues
+WARNING: For the MIP-solver-driven algorithm, optimality tolerance must be specified as MIP solver option, not Pajarito option
+WARNING: When using primal cuts, primal cut zero tolerance should be at least 1e-5 to avoid numerical issues
+#STATUS# Optimal
+#OBJVAL# 1.1931599026533604
+#OBJBOUND# 1.1931599026533606
+#TIMESOLVER# 0.24382901191711426
+#TIMEALL# 0.2440190315246582
+#SOLUTION# [0.26337281550258385,0.3411851728473804,0.211679,0.272131,0.7038600789041237,0.28867602382957797,0.2957976568181281,-0.11635681550258384,0.2719518271526196,0.721562,-0.064663,0.34100600000000003,0.721562,-0.5568440789041237,0.3244609761704221,0.721562,-0.13817881550258385,-0.12867917284738042,0.10504663654776057,-0.086485,-0.05962500000000001,0.721562,-0.5786660789041237,-0.07617002382957797,0.721562,0.47773118449741614,-0.13757417284738044,0.721562,0.529425,-0.06852000000000003,0.09285927112007474,0.037243921095876265,-0.08506502382957798,0.721562,0.5410591844974162,0.08404682715261957,0.721562,0.5927530000000001,0.153101,0.16959146451453316,0.10057192109587632,0.13655597617042203,0.721562,-0.05169381550258384,-0.06905417284738041,0.0,0.0,0.0,0.721562,-0.4921810789041237,-0.016545023829577954,0.0862594957910645,0.05169381550258384,0.06905417284738041,0.4436053778617993,-0.4404872634015399,0.052509149017802445,0.721562,-0.4921810789041237,-0.016545023829577954,0.2957976568181281,0.0,0.0,0.0,0.10504663654776057,0.0,0.0,0.0,0.09285927112007474,0.0,0.0,0.16959146451453316,0.0,0.0,0.0,0.0862594957910645,0.4436053778617993,0.0,1.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,1.0,0.0,0.0,1.0,0.0,1.0,0.0,1.0,1.0,0.0,0.0,1.0,1.0,1.0,0.0,1.0,1.0,1.0,0.0,1.0,1.0,0.0,1.0,0.0,1.0,0.0,0.0,1.0,0.42576434318187195,-0.0,-0.0,0.0,0.6165153634522395,-0.0,0.0,-0.0,0.6287027288799253,0.0,0.0,0.5519705354854669,0.0,0.721562,-0.0,0.6353025042089355,0.2779566221382007,-0.0]
