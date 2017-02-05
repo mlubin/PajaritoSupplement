@@ -1,0 +1,63 @@
+WARNING: Method definition require(Symbol) in module Base at loading.jl:345 overwritten in module ConicBenchmarkUtilities at /home/ubuntu/.julia/v0.5/Requires/src/require.jl:12.
+Coin0505I Presolved problem not optimal, resolve after postsolve
+Coin0505I Presolved problem not optimal, resolve after postsolve
+#SOLVERNAME# PAJ_ROUND_CBC_ECOS
+#SOLVER# Pajarito.PajaritoSolver(2,3600.0,1.0e-5,false,Cbc.CbcMathProgSolverInterface.CbcSolver(Any[(:logLevel,0),(:ratioGap,0.0),(:seconds,3600.0)]),MathProgBase.DefaultMIPSolver(),0,true,true,ECOS.ECOSSolver(Any[(:verbose,false)]),true,false,false,true,false,true,false,true,true,true,true,false,false,true,false,false,false,true,1.0e-10,0.0001,1.0e-6,0.01,1.0e-6)
+#INSTANCE# tls2.cbf.gz
+#TIMELIMIT# 3600.0
+
+Transforming original data......Done     0.00s
+
+Creating conic model data......Done     0.00s
+
+Creating MIP model......Done     0.00s
+
+Cone types summary:
+Cone       | Count    | Min dim  | Max dim 
+       SOC |        4 |        3 |        3
+
+Solving conic relaxation......Done     0.00s
+ - Relaxation status    =        Optimal
+ - Relaxation objective =       0.718306
+
+Creating conic subproblem model......Done     0.00s
+
+Starting iterative outer approximation algorithm
+
+Iter | Best obj       | OA obj         | Rel gap     | Time (s)   
+   1 |  +5.300000e+00 |  +5.300000e+00 |  -6.703e-16 |   2.191e-01
+
+Pajarito MICP solve summary:
+ - Total time (s)       =       2.21e-01
+ - Status               =        Optimal
+ - Best feasible obj.   =  +5.300000e+00
+ - Final OA obj. bound  =  +5.300000e+00
+ - Relative opt. gap    =     -6.703e-16
+ - MIP solve count      =              1
+ - Conic solve count    =              1
+ - Feas. solution count =              1
+ - Integer repeat count =              0
+
+Timers (s):
+ - Setup                =       2.04e-03
+ -- Transform data      =       1.03e-04
+ -- Create conic data   =       3.26e-05
+ -- Create MIP data     =       6.44e-04
+ -- Load/solve relax    =       1.04e-03
+ - Iterative algorithm  =       2.19e-01
+ -- Solve MIPs          =       2.18e-01
+ -- Solve conic model   =       4.30e-04
+ -- Process conic data  =       1.01e-04
+ -- Add conic solution  =       0.00e+00
+ -- Add dual cuts       =       3.99e-05
+ -- Use outer inf/cuts  =       7.87e-05
+
+WARNING: Integer solutions will be rounded: if this seems to cause numerical challenges, change round_mip_sols option
+WARNING: Solver does not appear to support adding constraints to an existing model. Hot-start is disabled.
+WARNING: Integer solutions will be rounded: if this seems to cause numerical challenges, change round_mip_sols option
+#STATUS# Optimal
+#OBJVAL# 5.299999999999996
+#OBJBOUND# 5.3
+#TIMESOLVER# 0.22119593620300293
+#TIMEALL# 0.22167706489562988
+#SOLUTION# [1.0,1.0,-0.0,1.0,-0.0,-0.0,-0.0,-0.0,-0.0,-0.0,-0.0,-0.0,1.0,-0.0,-0.0,-0.0,-0.0,5.299999999999996,-0.0,-0.0,-0.0,1.0,-0.0,-0.0,-0.0,-0.0,-0.0,-0.0,-0.0,-0.0,-0.0,1.0,9.0,16.0,24.999999999999872,0.9999999999994389,1.0000000000001616,16.0,15.000000000026484,4.000000000024702,2.284335345977767,15.272920748195192]

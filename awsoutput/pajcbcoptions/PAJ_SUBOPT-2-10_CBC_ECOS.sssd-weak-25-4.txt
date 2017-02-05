@@ -1,0 +1,112 @@
+WARNING: Method definition require(Symbol) in module Base at loading.jl:345 overwritten in module ConicBenchmarkUtilities at /home/ubuntu/.julia/v0.5/Requires/src/require.jl:12.
+Coin0505I Presolved problem not optimal, resolve after postsolve
+Coin0505I Presolved problem not optimal, resolve after postsolve
+#SOLVERNAME# PAJ_SUBOPT-2-10_CBC_ECOS
+#SOLVER# Pajarito.PajaritoSolver(2,3600.0,1.0e-5,false,Cbc.CbcMathProgSolverInterface.CbcSolver(Any[(:logLevel,0),(:ratioGap,0.0),(:seconds,3600.0)]),Cbc.CbcMathProgSolverInterface.CbcSolver(Any[(:logLevel,0),(:ratioGap,0.1),(:seconds,120)]),2,false,true,ECOS.ECOSSolver(Any[(:verbose,false)]),true,false,false,true,false,true,false,true,true,true,true,false,false,true,false,false,false,true,1.0e-10,0.0001,1.0e-6,0.01,1.0e-6)
+#INSTANCE# sssd-weak-25-4.cbf.gz
+#TIMELIMIT# 3600.0
+
+Transforming original data......Done     0.00s
+
+Creating conic model data......Done     0.00s
+
+Creating MIP model......Done     0.00s
+
+Cone types summary:
+Cone       | Count    | Min dim  | Max dim 
+       SOC |       12 |        3 |        3
+
+Solving conic relaxation......Done     0.01s
+ - Relaxation status    =        Optimal
+ - Relaxation objective =  116121.348581
+
+Creating conic subproblem model......Done     0.00s
+
+Starting iterative outer approximation algorithm
+
+Iter | Best obj       | OA obj         | Rel gap     | Time (s)   
+   1 |           +Inf |  +2.488851e+05 |         Inf |   7.141e-01
+   2 |           +Inf |  +2.788751e+05 |         Inf |   1.821e+00
+   3 |           +Inf |  +3.107984e+05 |         Inf |   3.869e+00
+   4 |  +3.117818e+05 |  +3.114973e+05 |   9.126e-04 |   5.932e+00
+   5 |  +3.117818e+05 |  +3.116911e+05 |   2.908e-04 |   1.087e+01
+Presolve 212 (-302) rows, 28 (-196) columns and 524 (-820) elements
+Perturbing problem by 0.001 % of 420457.92 - largest nonzero change 0.37753397 (% 8.9791143e-05) - largest zero change 0.37694725
+0  Obj 177359.74 Primal inf 138.3283 (202)
+65  Obj 311688.97 Primal inf 0.0007296588 (6)
+67  Obj 311787.17
+Optimal - objective value 311781.66
+After Postsolve, objective 311781.66, infeasibilities - dual 0 (0), primal 4.1253491e-07 (4)
+Presolved model was optimal, full model needs cleaning up
+0  Obj 311781.66 Primal inf 3.4674624e-07 (4)
+4  Obj 311781.79
+Optimal - objective value 311781.79
+Optimal objective 311781.7872 - 71 iterations time 0.002, Presolve 0.00
+Cbc0045I Solution with objective value 311782 saved
+   6 |  +3.117226e+05 |  +3.117175e+05 |   1.624e-05 |   2.341e+01
+Presolve 244 (-302) rows, 28 (-196) columns and 604 (-836) elements
+Perturbing problem by 0.001 % of 420457.92 - largest nonzero change 0.37753397 (% 8.9791143e-05) - largest zero change 0.37694725
+0  Obj 177359.74 Primal inf 162.77473 (234)
+68  Obj 311786.51 Primal inf 9.7451898e-06 (5)
+71  Obj 311787.27
+Optimal - objective value 311781.7
+After Postsolve, objective 311781.7, infeasibilities - dual 0 (0), primal 3.0562179e-07 (3)
+Presolved model was optimal, full model needs cleaning up
+0  Obj 311781.7 Primal inf 2.8647124e-07 (3)
+3  Obj 311781.79
+Optimal - objective value 311781.79
+Optimal objective 311781.7872 - 74 iterations time 0.002, Presolve 0.00
+Cbc0045I Solution with objective value 311782 saved
+   7 |  +3.117226e+05 |  +3.117211e+05 |   1.624e-05 |   3.361e+01
+Presolve 256 (-302) rows, 28 (-196) columns and 640 (-836) elements
+Perturbing problem by 0.001 % of 420457.92 - largest nonzero change 0.37753397 (% 8.9791143e-05) - largest zero change 0.37694725
+0  Obj 177423.78 Primal inf 173.01804 (246)
+70  Obj 311727.45 Primal inf 5.3443158e-06 (3)
+71  Obj 311728.33
+Optimal - objective value 311722.59
+After Postsolve, objective 311722.59, infeasibilities - dual 0 (0), primal 0 (0)
+Optimal objective 311722.5912 - 71 iterations time 0.002, Presolve 0.00
+Cbc0045I Solution with objective value 311723 saved
+   8 |  +3.117226e+05 |  +3.117211e+05 |   4.679e-06 |   4.380e+01
+
+Pajarito MICP solve summary:
+ - Total time (s)       =       4.38e+01
+ - Status               =        Optimal
+ - Best feasible obj.   =  +3.117226e+05
+ - Final OA obj. bound  =  +3.117211e+05
+ - Relative opt. gap    =      4.679e-06
+ - MIP solve count      =              8
+ - Conic solve count    =              6
+ - Feas. solution count =              2
+ - Integer repeat count =              2
+
+Timers (s):
+ - Setup                =       1.08e-02
+ -- Transform data      =       1.33e-04
+ -- Create conic data   =       6.31e-05
+ -- Create MIP data     =       1.05e-03
+ -- Load/solve relax    =       9.29e-03
+ - Iterative algorithm  =       4.38e+01
+ -- Solve MIPs          =       4.38e+01
+ -- Solve conic model   =       2.00e-02
+ -- Process conic data  =       1.66e-04
+ -- Add conic solution  =       3.27e-05
+ -- Add dual cuts       =       2.89e-04
+ -- Use outer inf/cuts  =       5.14e-04
+
+Presolve 256 (-302) rows, 28 (-196) columns and 640 (-836) elements
+Perturbing problem by 0.001 % of 420457.92 - largest nonzero change 0.37753397 (% 8.9791143e-05) - largest zero change 0.37694725
+0  Obj 177423.78 Primal inf 173.01804 (246)
+70  Obj 311727.45 Primal inf 5.3443158e-06 (3)
+71  Obj 311728.33
+Optimal - objective value 311722.59
+After Postsolve, objective 311722.59, infeasibilities - dual 0 (0), primal 0 (0)
+Optimal objective 311722.5912 - 71 iterations time 0.002, Presolve 0.00
+Cbc0045I Solution with objective value 311723 saved
+WARNING: Solver does not appear to support adding constraints to an existing model. Hot-start is disabled.
+#STATUS# Optimal
+#OBJVAL# 311722.5912438236
+#OBJBOUND# 311721.1328052954
+#TIMESOLVER# 43.81003713607788
+#TIMEALL# 43.81027698516846
+#SOLUTION# [0.0,1.0,0.0,0.0,0.0,0.9999999999999999,0.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,1.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,1.0,0.0,0.0,0.0,0.0,0.0,0.9999999999999999,0.0,0.0,0.9999999999999999,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,1.0,0.0,0.0,1.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,1.0,0.0,0.0,0.0,1.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.9999999999999999,0.0,0.0,0.0,1.0,1.0,0.0,0.0,0.0,0.0,0.9999999999999999,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,1.0,0.0,0.0,1.0,0.0,0.0,1.0,0.6254875906554258,0.8111534339346751,0.8456971861798547,0.86332153330382,4.3482956289464415e-10,4.348295403026459e-10,0.38480007603841754,1.5095047919246673e-11,1.509502658740643e-11,0.4478656682952513,4.785260286818031e-11,4.785258301786929e-11,0.4581993189093878,-2.9536390727398126e-10,-2.953639393147241e-10,0.4633238888412914,0.0,0.3127437951102981,0.31274379511029804,0.12034376293652305,0.40557671695979,0.40557671695979,0.18164388304833295,0.422848593066001,0.422848593066001,0.19374893438100607,0.43166076679959187,0.43166076679959187,0.19999881753678775,1.625487590655426,1.625487590655426,1.625487592790328,1.8111534339346753,1.8111534339346753,1.8111534339986148,1.8456971861798548,1.8456971861798548,1.845697186481422,1.86332153330382,1.86332153330382,1.8633215310873457,0.6254875906554258,0.6254875906554258,0.6254875829264864,0.811153433934675,0.811153433934675,0.8111534336876535,0.8456971861798546,0.8456971861798546,0.8456971851704773,0.8633215333038198,0.8633215333038198,0.8633215402917264]

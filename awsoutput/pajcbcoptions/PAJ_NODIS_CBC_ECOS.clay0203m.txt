@@ -1,0 +1,89 @@
+WARNING: Method definition require(Symbol) in module Base at loading.jl:345 overwritten in module ConicBenchmarkUtilities at /home/ubuntu/.julia/v0.5/Requires/src/require.jl:12.
+#SOLVERNAME# PAJ_NODIS_CBC_ECOS
+#SOLVER# Pajarito.PajaritoSolver(2,3600.0,1.0e-5,false,Cbc.CbcMathProgSolverInterface.CbcSolver(Any[(:logLevel,0),(:ratioGap,0.0),(:seconds,3600.0)]),MathProgBase.DefaultMIPSolver(),0,false,true,ECOS.ECOSSolver(Any[(:verbose,false)]),true,false,false,false,false,true,false,true,true,true,true,false,false,true,false,false,false,true,1.0e-10,0.0001,1.0e-6,0.01,1.0e-6)
+#INSTANCE# clay0203m.cbf.gz
+#TIMELIMIT# 3600.0
+
+Transforming original data......Done     0.00s
+
+Creating conic model data......Done     0.00s
+
+Creating MIP model......Done     0.00s
+
+Cone types summary:
+Cone       | Count    | Min dim  | Max dim 
+       SOC |       48 |        3 |        3
+Coin0505I Presolved problem not optimal, resolve after postsolve
+Coin0505I Presolved problem not optimal, resolve after postsolve
+
+Solving conic relaxation......Done     0.00s
+ - Relaxation status    =        Optimal
+ - Relaxation objective =      -0.000000
+
+Creating conic subproblem model......Done     0.00s
+
+Starting iterative outer approximation algorithm
+
+Iter | Best obj       | OA obj         | Rel gap     | Time (s)   
+   1 |           +Inf |  +3.560000e+03 |         Inf |   1.105e-01
+   2 |           +Inf |  +3.560000e+03 |         Inf |   3.649e-01
+   3 |           +Inf |  +3.560000e+03 |         Inf |   8.073e-01
+   4 |           +Inf |  +3.646901e+03 |         Inf |   1.526e+00
+   5 |           +Inf |  +4.076680e+03 |         Inf |   2.595e+00
+   6 |           +Inf |  +4.378814e+03 |         Inf |   4.105e+00
+   7 |  +4.157326e+04 |  +4.118304e+04 |   9.386e-03 |   5.654e+00
+Presolve 595 (-316) rows, 36 (-187) columns and 1202 (-1135) elements
+Perturbing problem by 0.001 % of 657.58069 - largest nonzero change 0.0018793907 (% 0.0005505533) - largest zero change 0.00072402964
+0  Obj 38366.832 Primal inf 518.99885 (58)
+46  Obj 41576.899
+Optimal - objective value 41573.262
+After Postsolve, objective 41573.262, infeasibilities - dual 0 (0), primal 0 (0)
+Optimal objective 41573.2624 - 46 iterations time 0.002, Presolve 0.00
+Cbc0045I Given objective value 41573.3, computed 41573.3
+Cbc0045I Solution with objective value 41573.3 saved
+   8 |  +4.157326e+04 |  +4.150504e+04 |   1.641e-03 |   7.949e+00
+Presolve 686 (-316) rows, 36 (-187) columns and 1384 (-1226) elements
+Perturbing problem by 0.001 % of 660.75345 - largest nonzero change 0.0018863875 (% 0.00055046304) - largest zero change 0.00072706189
+0  Obj 38365.907 Primal inf 526.29071 (58)
+49  Obj 41575.965
+49  Obj 41573.262 Dual inf 2.3379606 (1)
+50  Obj 41573.262
+Optimal - objective value 41573.262
+After Postsolve, objective 41573.262, infeasibilities - dual 0 (0), primal 0 (0)
+Optimal objective 41573.2624 - 50 iterations time 0.002, Presolve 0.00
+Cbc0045I Given objective value 41573.3, computed 41573.3
+Cbc0045I Solution with objective value 41573.3 saved
+   9 |  +4.157326e+04 |  +4.157326e+04 |  -3.221e-08 |   9.282e+00
+
+Pajarito MICP solve summary:
+ - Total time (s)       =       9.29e+00
+ - Status               =        Optimal
+ - Best feasible obj.   =  +4.157326e+04
+ - Final OA obj. bound  =  +4.157326e+04
+ - Relative opt. gap    =     -3.221e-08
+ - MIP solve count      =              9
+ - Conic solve count    =              8
+ - Feas. solution count =              2
+ - Integer repeat count =              1
+
+Timers (s):
+ - Setup                =       4.65e-03
+ -- Transform data      =       1.03e-04
+ -- Create conic data   =       8.46e-05
+ -- Create MIP data     =       1.95e-03
+ -- Load/solve relax    =       2.34e-03
+ - Iterative algorithm  =       9.28e+00
+ -- Solve MIPs          =       9.26e+00
+ -- Solve conic model   =       2.17e-02
+ -- Process conic data  =       2.01e-04
+ -- Add conic solution  =       1.52e-05
+ -- Add dual cuts       =       6.50e-04
+ -- Use outer inf/cuts  =       2.10e-03
+
+WARNING: Solver does not appear to support adding constraints to an existing model. Hot-start is disabled.
+#STATUS# Optimal
+#OBJVAL# 41573.26106206433
+#OBJBOUND# 41573.26240095902
+#TIMESOLVER# 9.286274909973145
+#TIMEALL# 9.287978172302246
+#SOLUTION# [35.65174606440248,3.999999701614771,31.65174637726099,66.88140346918283,3.7169224809790373e-6,66.88140743813989,41573.26106206433,14.31249347392801,49.964239679564045,18.312493298328604,12.083287615231983,78.9646912254831,12.083283781981955,-0.0,1.0,-0.0,-0.0,-0.0,1.0,1.0,-0.0,-0.0,-0.0,-0.0,-0.0,10.16019463418876,25.839802692030137,1.0,1141.8304435201374,5286.259840432531,-0.0,8.45915664476503,18.53823433554974,1.0,1693.537455913162,4469.8081180020745,0.0,15.250242521378961,4.359739715254758,0.9999999999999999,1524.17976486232,4842.304677789031,0.0,15.921595448764375,7.363463723683613,1133.509775672205,4585.408623102807,11.879246093362289,8.678677116106641,1709.2812864116445,5303.457671878674,12.501596511380171,12.498403376642932,1536.891223193861,5261.180346199425,5.151907743299925,27.938267381705646,1636.1366838053107,5289.4871904981455,23.160081223769847,12.839918570326786,1329.6925393572906,4464.388737352157,14.778082275657995,4.739385633940954,1320.7108888485047,4829.694620981427,11.874882407245693,8.796670286391402,1628.3681774530176,4588.510088646478,27.019819075145875,3.3273398747076874,1346.0174685969425,5297.971226982503,12.122255408954244,12.645168820626553,1333.5065073839858,5248.625949843653]

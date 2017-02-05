@@ -1,0 +1,85 @@
+WARNING: Method definition require(Symbol) in module Base at loading.jl:345 overwritten in module ConicBenchmarkUtilities at /home/ubuntu/.julia/v0.5/Requires/src/require.jl:12.
+Coin0505I Presolved problem not optimal, resolve after postsolve
+Coin0505I Presolved problem not optimal, resolve after postsolve
+#SOLVERNAME# PAJ_ROUND_CBC_ECOS
+#SOLVER# Pajarito.PajaritoSolver(2,3600.0,1.0e-5,false,Cbc.CbcMathProgSolverInterface.CbcSolver(Any[(:logLevel,0),(:ratioGap,0.0),(:seconds,3600.0)]),MathProgBase.DefaultMIPSolver(),0,true,true,ECOS.ECOSSolver(Any[(:verbose,false)]),true,false,false,true,false,true,false,true,true,true,true,false,false,true,false,false,false,true,1.0e-10,0.0001,1.0e-6,0.01,1.0e-6)
+#INSTANCE# estein4_A.cbf.gz
+#TIMELIMIT# 3600.0
+
+Transforming original data......Done     0.00s
+
+Creating conic model data......Done     0.00s
+
+Creating MIP model......Done     0.00s
+
+Cone types summary:
+Cone       | Count    | Min dim  | Max dim 
+       SOC |        9 |        3 |        3
+
+Solving conic relaxation......Done     0.00s
+ - Relaxation status    =        Optimal
+ - Relaxation objective =       0.000003
+
+Creating conic subproblem model......Done     0.00s
+
+Starting iterative outer approximation algorithm
+
+Iter | Best obj       | OA obj         | Rel gap     | Time (s)   
+   1 |  +8.013655e-01 |  +7.791892e-01 |   2.767e-02 |   2.770e-01
+Presolve 116 (-137) rows, 25 (-87) columns and 302 (-234) elements
+Perturbing problem by 0.001 % of 4.9282179 - largest nonzero change 0.00098597821 (% 0.02000679) - largest zero change 0.00096750555
+0  Obj 0.000205612 Primal inf 20.800088 (45)
+32  Obj 0.79906625 Primal inf 0.033201336 (8)
+39  Obj 0.80265711
+Optimal - objective value 0.8013655
+After Postsolve, objective 0.8013655, infeasibilities - dual 0 (0), primal 0 (0)
+Optimal objective 0.8013654953 - 39 iterations time 0.002, Presolve 0.00
+Cbc0045I Solution with objective value 0.801365 saved
+   2 |  +8.013655e-01 |  +7.793138e-01 |   2.752e-02 |   5.758e-01
+Presolve 141 (-137) rows, 25 (-87) columns and 363 (-248) elements
+Perturbing problem by 0.001 % of 15.331186 - largest nonzero change 0.00048157105 (% 0.0031411206) - largest zero change 0.00047070432
+0  Obj 2.6231883e-05 Primal inf 23.145805 (55)
+33  Obj 0.79094457 Primal inf 0.16408179 (12)
+47  Obj 0.80160329
+Optimal - objective value 0.8013655
+After Postsolve, objective 0.8013655, infeasibilities - dual 0 (0), primal 0 (0)
+Optimal objective 0.8013654953 - 47 iterations time 0.002, Presolve 0.00
+Cbc0045I Solution with objective value 0.801365 saved
+   3 |  +8.013655e-01 |  +8.013655e-01 |  -6.794e-10 |   8.845e-01
+
+Pajarito MICP solve summary:
+ - Total time (s)       =       8.87e-01
+ - Status               =        Optimal
+ - Best feasible obj.   =  +8.013655e-01
+ - Final OA obj. bound  =  +8.013655e-01
+ - Relative opt. gap    =     -6.794e-10
+ - MIP solve count      =              3
+ - Conic solve count    =              2
+ - Feas. solution count =              2
+ - Integer repeat count =              1
+
+Timers (s):
+ - Setup                =       2.17e-03
+ -- Transform data      =       6.20e-05
+ -- Create conic data   =       3.81e-05
+ -- Create MIP data     =       5.95e-04
+ -- Load/solve relax    =       1.28e-03
+ - Iterative algorithm  =       8.85e-01
+ -- Solve MIPs          =       8.82e-01
+ -- Solve conic model   =       1.87e-03
+ -- Process conic data  =       8.83e-05
+ -- Add conic solution  =       9.79e-06
+ -- Add dual cuts       =       9.16e-05
+ -- Use outer inf/cuts  =       2.57e-04
+
+Coin0505I Presolved problem not optimal, resolve after postsolve
+Coin0505I Presolved problem not optimal, resolve after postsolve
+WARNING: Integer solutions will be rounded: if this seems to cause numerical challenges, change round_mip_sols option
+WARNING: Solver does not appear to support adding constraints to an existing model. Hot-start is disabled.
+WARNING: Integer solutions will be rounded: if this seems to cause numerical challenges, change round_mip_sols option
+#STATUS# Optimal
+#OBJVAL# 0.8013654947284473
+#OBJBOUND# 0.8013654952728907
+#TIMESOLVER# 0.8867290019989014
+#TIMEALL# 0.886969804763794
+#SOLUTION# [0.6604751280718697,0.38353423887764915,0.41827163924412103,0.4979033703980668,0.192131488526385,0.15791387192965228,0.10944276112139743,0.4933509999775541,0.4001173607558799,-0.004926370398066882,0.4933509999777682,-0.25447512807187034,0.26286776112235155,0.14900481903806503,-0.012271639242536943,0.14849862960277416,0.0830182391010049,0.006836871926545466,-0.08273623887848974,0.4933509999778423,0.24904036075587943,-0.19710537039806725,0.4933509999778525,-0.3320891280718705,0.052073761122350966,0.10936243092141933,-0.08988563924564229,-0.06229537039711458,0.2678485172270093,0.2422034888276846,-0.11436913152221077,0.19213148852709386,-2.2444844883987946e-11,-2.2230617197683734e-11,0.14900481903877372,0.08301823910171265,-2.2156850940836972e-11,-2.2146457848902717e-11,0.1093624309221279,0.26784851722771796,1.0,0.0,0.0,1.0,1.0,0.0,0.0,1.0,1.0,1.1712270154928505e-12,1.0000000000000002,1.0000000000000002,1.1712270154928505e-12,1.1712270154928505e-12,1.0000000000000002,1.0000000000000002,1.1712270154928505e-12,1.1712270154928505e-12,0.3012195114729056,2.6093119404311994e-11,2.5906915763173348e-11,0.3443461809612258,0.4103327608982871,2.5804379443180148e-11,2.5813203144018962e-11,0.3839885690778717,0.22550248277228166]

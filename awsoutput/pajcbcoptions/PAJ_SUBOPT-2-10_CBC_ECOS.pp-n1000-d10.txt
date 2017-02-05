@@ -1,0 +1,90 @@
+WARNING: Method definition require(Symbol) in module Base at loading.jl:345 overwritten in module ConicBenchmarkUtilities at /home/ubuntu/.julia/v0.5/Requires/src/require.jl:12.
+Coin0505I Presolved problem not optimal, resolve after postsolve
+Coin0505I Presolved problem not optimal, resolve after postsolve
+#SOLVERNAME# PAJ_SUBOPT-2-10_CBC_ECOS
+#SOLVER# Pajarito.PajaritoSolver(2,3600.0,1.0e-5,false,Cbc.CbcMathProgSolverInterface.CbcSolver(Any[(:logLevel,0),(:ratioGap,0.0),(:seconds,3600.0)]),Cbc.CbcMathProgSolverInterface.CbcSolver(Any[(:logLevel,0),(:ratioGap,0.1),(:seconds,120)]),2,false,true,ECOS.ECOSSolver(Any[(:verbose,false)]),true,false,false,true,false,true,false,true,true,true,true,false,false,true,false,false,false,true,1.0e-10,0.0001,1.0e-6,0.01,1.0e-6)
+#INSTANCE# pp-n1000-d10.cbf.gz
+#TIMELIMIT# 3600.0
+
+Transforming original data......Done     0.00s
+
+Creating conic model data......Done     0.00s
+
+Creating MIP model......Done     0.06s
+
+Cone types summary:
+Cone       | Count    | Min dim  | Max dim 
+       SOC |     1000 |        3 |        3
+
+Solving conic relaxation......Done     0.09s
+ - Relaxation status    =        Optimal
+ - Relaxation objective =    7330.101118
+
+Creating conic subproblem model......Done     0.00s
+
+Starting iterative outer approximation algorithm
+
+Iter | Best obj       | OA obj         | Rel gap     | Time (s)   
+   1 |  +7.867358e+03 |  +7.330826e+03 |   6.820e-02 |   4.627e+01
+Presolve 11924 (-11067) rows, 3000 (-7000) columns and 24848 (-36091) elements
+0  Obj 3463.7596 Primal inf 18250.509 (9923)
+284  Obj 3463.7596 Primal inf 13330.584 (8607)
+568  Obj 3463.7596 Primal inf 10396.167 (7589)
+852  Obj 3463.7596 Primal inf 7880.269 (6550)
+1136  Obj 3463.7596 Primal inf 5342.0902 (5527)
+1420  Obj 3463.7596 Primal inf 3760.8684 (5969)
+1704  Obj 3463.7596 Primal inf 2558.1561 (6508)
+1988  Obj 3463.7596 Primal inf 1333.3664 (6338)
+2272  Obj 3786.1557 Primal inf 1481.4052 (5342)
+2556  Obj 4691.0534 Primal inf 1076.5855 (4204)
+2840  Obj 5901.0788 Primal inf 739.09758 (3214)
+3124  Obj 7193.8925 Primal inf 235.08653 (2219)
+3408  Obj 7843.7273 Primal inf 4.7411514 (1522)
+3692  Obj 7863.7962 Primal inf 0.20971174 (815)
+3976  Obj 7867.1708 Primal inf 0.01679109 (473)
+4260  Obj 7867.342 Primal inf 0.00052521594 (168)
+4421  Obj 7867.3573
+Optimal - objective value 7867.3573
+After Postsolve, objective 7867.3573, infeasibilities - dual 0 (0), primal 3.4321616e-05 (60)
+Presolved model was optimal, full model needs cleaning up
+0  Obj 7867.3573 Primal inf 3.8846589e-05 (66)
+65  Obj 7867.3576
+Optimal - objective value 7867.3576
+Optimal objective 7867.357639 - 4486 iterations time 0.122, Presolve 0.03
+Cbc0045I Solution with objective value 7867.36 saved
+   2 |  +7.867358e+03 |  +7.330826e+03 |   6.820e-02 |   4.881e+01
+Presolve 13919 (-11072) rows, 3000 (-7000) columns and 28838 (-38101) elements
+0  Obj 3463.7596 Primal inf 21569.77 (11917)
+294  Obj 3463.7596 Primal inf 15834.739 (10375)
+588  Obj 3463.7596 Primal inf 12387.428 (9124)
+882  Obj 3463.7596 Primal inf 9492.1627 (8090)
+1176  Obj 3463.7596 Primal inf 6723.0534 (7142)
+1470  Obj 3463.7596 Primal inf 4516.2652 (7334)
+1764  Obj 3463.7596 Primal inf 2867.7859 (7764)
+2058  Obj 3529.1969 Primal inf 1771.0478 (7153)
+2352  Obj 3923.1825 Primal inf 1616.6861 (5859)
+2646  Obj 5213.8971 Primal inf 1098.9998 (4519)
+2940  Obj 6739.5089 Primal inf 510.06548 (3289)
+3234  Obj 7817.3799 Primal inf 40.484842 (2289)
+3528  Obj 7863.8259 Primal inf 0.33148917 (1269)
+3822  Obj 7867.258 Primal inf 0.015553257 (620)
+4116  Obj 7867.3572 Primal inf 4.7355016e-06 (22)
+4127  Obj 7867.3574
+Optimal - objective value 7867.3574
+After Postsolve, objective 7867.3574, infeasibilities - dual 0 (0), primal 4.9599117e-05 (99)
+Presolved model was optimal, full model needs cleaning up
+0  Obj 7867.3574 Primal inf 6.2268259e-05 (113)
+56  Obj 7867.3576
+Optimal - objective value 7867.3576
+Optimal objective 7867.357639 - 4183 iterations time 0.132, Presolve 0.03
+Cbc0045I Solution with objective value 7867.36 saved
+
+signal (15): Terminated
+while loading /home/ubuntu/PajaritoSupplement/scripts/run.jl, in expression starting on line 221
+unknown function (ip: 0x7f8abfc5d21f)
+unknown function (ip: 0xffffffffffffffff)
+Allocations: 23647055 (Pool: 23639958; Big: 7097); GC: 44
+
+signal (11): Segmentation fault
+while loading /home/ubuntu/PajaritoSupplement/scripts/run.jl, in expression starting on line 221
+#STATUS# KilledTime

@@ -1,0 +1,66 @@
+WARNING: Method definition require(Symbol) in module Base at loading.jl:345 overwritten in module ConicBenchmarkUtilities at /home/ubuntu/.julia/v0.5/Requires/src/require.jl:12.
+Coin0505I Presolved problem not optimal, resolve after postsolve
+Coin0505I Presolved problem not optimal, resolve after postsolve
+#SOLVERNAME# PAJ_NOPRIM_CBC_ECOS
+#SOLVER# Pajarito.PajaritoSolver(2,3600.0,1.0e-5,false,Cbc.CbcMathProgSolverInterface.CbcSolver(Any[(:logLevel,0),(:ratioGap,0.0),(:seconds,3600.0)]),MathProgBase.DefaultMIPSolver(),0,false,true,ECOS.ECOSSolver(Any[(:verbose,false)]),true,false,false,true,false,true,false,true,true,true,true,false,false,true,false,false,false,false,1.0e-10,0.0001,1.0e-6,0.01,1.0e-6)
+#INSTANCE# sssd-weak-15-4.cbf.gz
+#TIMELIMIT# 3600.0
+
+Transforming original data......Done     0.00s
+
+Creating conic model data......Done     0.00s
+
+Creating MIP model......Done     0.00s
+
+Cone types summary:
+Cone       | Count    | Min dim  | Max dim 
+       SOC |       12 |        3 |        3
+
+Solving conic relaxation......Done     0.00s
+ - Relaxation status    =        Optimal
+ - Relaxation objective =  112819.583213
+
+Creating conic subproblem model......Done     0.00s
+
+Starting iterative outer approximation algorithm
+
+Iter | Best obj       | OA obj         | Rel gap     | Time (s)   
+   1 |           +Inf |  +2.960786e+05 |         Inf |   1.117e+01
+   2 |           +Inf |  +3.274721e+05 |         Inf |   1.204e+01
+   3 |           +Inf |  +3.277907e+05 |         Inf |   1.481e+01
+   4 |           +Inf |  +3.279906e+05 |         Inf |   2.161e+01
+   5 |           +Inf |  +3.279979e+05 |         Inf |   2.663e+01
+
+Pajarito MICP solve summary:
+ - Total time (s)       =       2.66e+01
+ - Status               = NoKnownFeasible
+ - Best feasible obj.   =           +Inf
+ - Final OA obj. bound  =  +3.279979e+05
+ - Relative opt. gap    =            NaN
+ - MIP solve count      =              5
+ - Conic solve count    =              4
+ - Feas. solution count =              0
+ - Integer repeat count =              1
+
+Timers (s):
+ - Setup                =       6.13e-03
+ -- Transform data      =       1.26e-04
+ -- Create conic data   =       5.61e-05
+ -- Create MIP data     =       9.30e-04
+ -- Load/solve relax    =       4.82e-03
+ - Iterative algorithm  =       2.66e+01
+ -- Solve MIPs          =       2.66e+01
+ -- Solve conic model   =       1.23e-02
+ -- Process conic data  =       1.17e-04
+ -- Add conic solution  =       0.00e+00
+ -- Add dual cuts       =       2.23e-04
+ -- Use outer inf/cuts  =       3.91e-04
+
+WARNING: Solver does not appear to support adding constraints to an existing model. Hot-start is disabled.
+WARNING: Non-rounded integer solutions are cycling before convergence tolerance is reached: aborting iterative algorithm
+#STATUS# NoKnownFeasible
+#OBJVAL# Inf
+#OBJBOUND# 327997.91599054355
+#TIMESOLVER# 26.637553930282593
+#TIMEALL# 26.63780188560486
+#SOLUTION# [NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN]

@@ -1,0 +1,62 @@
+WARNING: Method definition require(Symbol) in module Base at loading.jl:345 overwritten in module ConicBenchmarkUtilities at /home/ubuntu/.julia/v0.5/Requires/src/require.jl:12.
+Coin0505I Presolved problem not optimal, resolve after postsolve
+Coin0505I Presolved problem not optimal, resolve after postsolve
+#SOLVERNAME# PAJ_NORELAX_CBC_ECOS
+#SOLVER# Pajarito.PajaritoSolver(2,3600.0,1.0e-5,false,Cbc.CbcMathProgSolverInterface.CbcSolver(Any[(:logLevel,0),(:ratioGap,0.0),(:seconds,3600.0)]),MathProgBase.DefaultMIPSolver(),0,false,true,ECOS.ECOSSolver(Any[(:verbose,false)]),false,false,false,true,false,true,false,true,true,true,true,false,false,true,false,false,false,true,1.0e-10,0.0001,1.0e-6,0.01,1.0e-6)
+#INSTANCE# clay0303m.cbf.gz
+#TIMELIMIT# 3600.0
+
+Transforming original data......Done     0.00s
+
+Creating conic model data......Done     0.00s
+
+Creating MIP model......Done     0.00s
+
+Cone types summary:
+Cone       | Count    | Min dim  | Max dim 
+       SOC |       72 |        3 |        3
+
+Creating conic subproblem model......Done     0.00s
+
+Starting iterative outer approximation algorithm
+
+Iter | Best obj       | OA obj         | Rel gap     | Time (s)   
+   1 |           +Inf |  +3.560000e+03 |         Inf |   1.574e+00
+   2 |           +Inf |  +3.560000e+03 |         Inf |   4.269e+00
+   3 |  +2.666911e+04 |  +2.601390e+04 |   2.457e-02 |   1.102e+01
+   4 |  +2.666911e+04 |  +2.666911e+04 |  -1.232e-07 |   2.236e+01
+
+Pajarito MICP solve summary:
+ - Total time (s)       =       2.24e+01
+ - Status               =        Optimal
+ - Best feasible obj.   =  +2.666911e+04
+ - Final OA obj. bound  =  +2.666911e+04
+ - Relative opt. gap    =     -1.232e-07
+ - MIP solve count      =              4
+ - Conic solve count    =              4
+ - Feas. solution count =              2
+ - Integer repeat count =              0
+
+Timers (s):
+ - Setup                =       3.56e-03
+ -- Transform data      =       1.00e-04
+ -- Create conic data   =       8.07e-05
+ -- Create MIP data     =       3.24e-03
+ -- Load/solve relax    =       0.00e+00
+ - Iterative algorithm  =       2.24e+01
+ -- Solve MIPs          =       2.23e+01
+ -- Solve conic model   =       1.76e-02
+ -- Process conic data  =       1.75e-04
+ -- Add conic solution  =       1.65e-05
+ -- Add dual cuts       =       7.11e-04
+ -- Use outer inf/cuts  =       9.59e-04
+
+WARNING: Not solving the conic continuous relaxation problem; Pajarito may return status :MIPFailure if the outer approximation MIP is unbounded
+WARNING: Solver does not appear to support adding constraints to an existing model. Hot-start is disabled.
+WARNING: Not solving the conic continuous relaxation problem; Pajarito may return status :MIPFailure if the outer approximation MIP is unbounded
+#STATUS# Optimal
+#OBJVAL# 26669.10626603005
+#OBJBOUND# 26669.10955052047
+#TIMESOLVER# 22.35962200164795
+#TIMEALL# 22.36089301109314
+#SOLUTION# [19.610266896401424,19.610267768175298,1.076395066891343e-6,30.81400329667528,26.814003596612974,3.9999997291919946,26669.10626603005,30.145752369431982,49.75601948171471,49.75602032711562,50.00000083954879,80.81400435242503,76.81400462375662,1.0,1.0,-0.0,-0.0,-0.0,-0.0,-0.0,-0.0,-0.0,-0.0,-0.0,1.0,1887.9296345465648,3436.7216163068897,-0.0,1065.6945454017728,5482.492111290396,-0.0,1435.8962672924536,5021.523589216144,-0.0,2386.4476325858623,2594.0143075739934,-0.0,14.017381725186251,10.982617664194397,1.0,8.074442037082912,7.808244810369354,1.0,5.914756681512862,9.400220003086435,0.9999999999999999,461.44539295761564,1317.1465472711957,-0.0,664.8809687578336,1137.0128438278239,-0.0,1712.0044188983732,2828.2203009542027,1061.9623675057906,4768.706335691758,1424.5882173622958,4607.9646971003995,2622.693392899829,3145.122206638143,16.659032451303606,4.975525390294979,3.0414627488414734,21.958537231981346,5.919727082024001,9.40531143249366,687.4534008532117,1226.678205564051,800.0351692223305,1108.0447585964937,2127.67045595666,3528.1519545098326,1559.4404991015933,5487.927991358487,1651.323353734295,5026.876169241657,2122.4297000422766,2508.4186800972284,11.456323517693438,11.879123658331206,6.555638079641486,8.28804711059525,7.00000101578284,8.999999032449457,713.4407266130527,1289.879522891146,790.383180084576,1143.553504676048,1949.688202867112,2919.5349239452885,1555.8959581535619,4774.070797144522,1640.103041893451,4613.313311871912,2358.145539034786,3058.1029940624894,13.410115190770235,5.921702389846329,1.9529056350718037,22.362167922172997,7.000003436758403,8.999991839360314,933.8699719467655,1197.9983912978014,925.2275423343782,1115.4511671190007]
