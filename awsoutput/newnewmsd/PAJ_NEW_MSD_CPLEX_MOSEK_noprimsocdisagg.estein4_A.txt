@@ -1,0 +1,51 @@
+WARNING: Method definition require(Symbol) in module Base at loading.jl:345 overwritten in module ConicBenchmarkUtilities at /home/ubuntu/.julia/v0.5/Requires/src/require.jl:12.
+#SOLVERNAME# PAJ_NEW_MSD_CPLEX_MOSEK_noprimsocdisagg
+#SOLVER# Pajarito.PajaritoSolver(2,3600.0,1.0e-5,true,CPLEX.CplexSolver(Any[(:CPX_PARAM_THREADS,1),(:CPX_PARAM_TILIM,3600.0),(:CPX_PARAM_EPINT,1.0e-8),(:CPX_PARAM_EPRHS,1.0e-6),(:CPX_PARAM_SCRIND,0),(:CPX_PARAM_EPGAP,1.0e-5)]),CPLEX.CplexSolver(Any[]),0,false,true,Mosek.MosekMathProgSolverInterface.MosekSolver(Any[(:LOG,0),(:NUM_THREADS,1),(:OPTIMIZER_MAX_TIME,120.0)]),true,false,false,true,false,true,false,true,true,true,true,false,true,true,false,true,false,false,true,true,false,false,true,1.0e-10,1.0e-6,0.01,0.0001)
+#INSTANCE# estein4_A.cbf.gz
+#TIMELIMIT# 3600.0
+
+Transforming original data......Done     0.00s
+
+Creating conic model data......Done     0.00s
+
+Creating MIP model......Done     0.00s
+
+Cone types summary:
+Cone       | Count    | Min dim  | Max dim 
+       SOC |        9 |        3 |        3
+
+Solving conic relaxation......Done     0.00s
+ - Relaxation status    =        Optimal
+ - Relaxation objective =       0.000003
+
+Creating conic subproblem model......Done
+
+Starting MIP-solver-driven outer approximation algorithm
+
+Pajarito MICP solve summary:
+ - Total time (s)       =       4.21e-02
+ - Status               =        Optimal
+ - Best feasible obj.   =  +8.013632e-01
+ - Final OA obj. bound  =  +8.013632e-01
+ - Relative opt. gap    =      0.000e+00
+ - Conic solve count    =              3
+ - Feas. solution count =              3
+ - Integer repeat count =             22
+
+Timers (s):
+ - Setup                =       4.11e-03
+ -- Transform data      =       8.51e-05
+ -- Create conic data   =       3.85e-05
+ -- Create MIP data     =       6.54e-04
+ -- Load/solve relax    =       2.25e-03
+ - MIP-driven algorithm =       3.80e-02
+ -- Solve conic model   =       2.83e-03
+
+WARNING: For the MIP-solver-driven algorithm, optimality tolerance must be specified as MIP solver option, not Pajarito option
+WARNING: For the MIP-solver-driven algorithm, optimality tolerance must be specified as MIP solver option, not Pajarito option
+#STATUS# Optimal
+#OBJVAL# 0.8013631979663378
+#OBJBOUND# 0.8013631979663379
+#TIMESOLVER# 0.0420989990234375
+#TIMEALL# 0.04228711128234863
+#SOLUTION# [0.6602247779131475,0.3837705929203522,0.41828262624764934,0.49782532896444665,0.19220203375775585,0.15816422208685255,0.1092064070796478,0.493351,0.4001063737523507,-0.0048483289644466465,0.493351,-0.25422477791314746,0.2626314070796478,0.1490826417107915,-0.012282626247649309,0.1485766710355534,0.08327386609546836,0.007087222086852529,-0.0829725929203522,0.493351,0.24902937375235068,-0.19702732896444664,0.493351,-0.3318387779131475,0.05183740707964779,0.10932665368895639,-0.08989662624764932,-0.06221732896444665,0.2674780027133658,0.24194215166549815,-0.11405473604409448,0.19220203375775585,0.0,0.0,0.1490826417107915,0.08327386609546836,0.0,0.0,0.10932665368895639,0.2674780027133658,1.0,-0.0,0.0,1.0,1.0,-0.0,0.0,1.0,1.0,0.0,1.0,1.0,0.0,0.0,1.0,1.0,0.0,0.0,0.30114896624224413,-0.0,0.0,0.3442683582892085,0.4100771339045316,-0.0,0.0,0.3840243463110436,0.22587299728663418]

@@ -1,0 +1,52 @@
+WARNING: Method definition require(Symbol) in module Base at loading.jl:345 overwritten in module ConicBenchmarkUtilities at /home/ubuntu/.julia/v0.5/Requires/src/require.jl:12.
+#SOLVERNAME# PAJ_NEW_MSD_CPLEX_MOSEK_noscale
+#SOLVER# Pajarito.PajaritoSolver(2,3600.0,1.0e-5,true,CPLEX.CplexSolver(Any[(:CPX_PARAM_THREADS,1),(:CPX_PARAM_TILIM,3600.0),(:CPX_PARAM_EPINT,1.0e-8),(:CPX_PARAM_EPRHS,1.0e-6),(:CPX_PARAM_SCRIND,0),(:CPX_PARAM_EPGAP,1.0e-5)]),CPLEX.CplexSolver(Any[]),0,false,true,Mosek.MosekMathProgSolverInterface.MosekSolver(Any[(:LOG,0),(:NUM_THREADS,1),(:OPTIMIZER_MAX_TIME,120.0)]),true,false,false,true,false,true,false,true,true,true,true,false,true,true,false,false,false,false,true,true,false,true,true,1.0e-10,1.0e-6,0.01,0.0001)
+#INSTANCE# tls5.cbf.gz
+#TIMELIMIT# 3600.0
+
+Transforming original data......Done     0.00s
+
+Creating conic model data......Done     0.00s
+
+Creating MIP model......Done     0.00s
+
+Cone types summary:
+Cone       | Count    | Min dim  | Max dim 
+       SOC |       25 |        3 |        3
+
+Solving conic relaxation......Done     0.01s
+ - Relaxation status    =        Optimal
+ - Relaxation objective =       1.178871
+
+Creating conic subproblem model......Done
+
+Starting MIP-solver-driven outer approximation algorithm
+
+Pajarito MICP solve summary:
+ - Total time (s)       =       3.60e+03
+ - Status               =      UserLimit
+ - Best feasible obj.   =  +1.030000e+01
+ - Final OA obj. bound  =  +7.900000e+00
+ - Relative opt. gap    =      2.330e-01
+ - Conic solve count    =             17
+ - Feas. solution count =             11
+ - Integer repeat count =             21
+
+Timers (s):
+ - Setup                =       1.10e-02
+ -- Transform data      =       2.90e-04
+ -- Create conic data   =       1.22e-04
+ -- Create MIP data     =       2.41e-03
+ -- Load/solve relax    =       6.33e-03
+ - MIP-driven algorithm =       3.60e+03
+ -- Solve conic model   =       2.44e-02
+
+#STATUS# UserLimit
+#OBJVAL# 10.3
+#OBJBOUND# 7.899999999999983
+#TIMESOLVER# 3600.0018870830536
+#TIMEALL# 3600.0035059452057
+#SOLUTION# [1.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,-0.0,-0.0,0.0,0.0,0.0,1.0,-0.0,-0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,-0.0,-0.0,10.3,0.0,1.0,0.0,1.0,-0.0,0.0,-0.0,-0.0,0.0,0.0,0.0,-0.0,-0.0,1.0,0.0,-0.0,-0.0,1.0,-0.0,-0.0,0.0,-0.0,-0.0,0.0,-0.0,-0.0,-0.0,-0.0,-0.0,-0.0,-0.0,1.0,-0.0,0.0,-0.0,-0.0,-0.0,1.0,-0.0,-0.0,0.0,0.0,-0.0,0.0,-0.0,-0.0,-0.0,-0.0,-0.0,0.0,-0.0,1.0,0.0,0.0,-0.0,-0.0,-0.0,1.0,-0.0,-0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,-0.0,-0.0,-0.0,-0.0,0.0,0.0,0.0,1.0,-0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,49.0,25.0,1.0,1.0,1.0,9.0,1.0,1.0,4.0,1.0,4.0,1.0,1.0,1.0,4.0,1.0,25.0,25.0,1.0,25.0,4.0,1.0,1.0,25.0,1.0,4.0,4.0,4.0,1.0,1.0,21.000000000003876,5.000000000014971,1.0,2.000000000406477,1.0,14.000000000093983,5.000000000070517,1.0,0.9999999997973719,2.000000000038129,7.000000035169126,25.000000001,5.000000004431488,1.0,5.000000000362906,14.000000000007782,5.000000000063834,0.9999999999282396,5.000000000000144,1.0,14.000000012779092,10.000000528561278,2.0000000004139267,1.0,0.3000333921069703]
+WARNING: For the MIP-solver-driven algorithm, optimality tolerance must be specified as MIP solver option, not Pajarito option
+WARNING: For the MIP-solver-driven algorithm, optimality tolerance must be specified as MIP solver option, not Pajarito option
+WARNING: Not solved to optimality, status: UserLimit

@@ -1,0 +1,51 @@
+WARNING: Method definition require(Symbol) in module Base at loading.jl:345 overwritten in module ConicBenchmarkUtilities at /home/ubuntu/.julia/v0.5/Requires/src/require.jl:12.
+#SOLVERNAME# PAJ_NEW_MSD_CPLEX_MOSEK_noviolonly
+#SOLVER# Pajarito.PajaritoSolver(2,3600.0,1.0e-5,true,CPLEX.CplexSolver(Any[(:CPX_PARAM_THREADS,1),(:CPX_PARAM_TILIM,3600.0),(:CPX_PARAM_EPINT,1.0e-8),(:CPX_PARAM_EPRHS,1.0e-6),(:CPX_PARAM_SCRIND,0),(:CPX_PARAM_EPGAP,1.0e-5)]),CPLEX.CplexSolver(Any[]),0,false,true,Mosek.MosekMathProgSolverInterface.MosekSolver(Any[(:LOG,0),(:NUM_THREADS,1),(:OPTIMIZER_MAX_TIME,120.0)]),true,false,false,true,false,true,false,true,true,true,true,false,false,true,false,true,false,false,true,true,false,true,true,1.0e-10,1.0e-6,0.01,0.0001)
+#INSTANCE# clay0204m.cbf.gz
+#TIMELIMIT# 3600.0
+
+Transforming original data......Done     0.00s
+
+Creating conic model data......Done     0.00s
+
+Creating MIP model......Done     0.00s
+
+Cone types summary:
+Cone       | Count    | Min dim  | Max dim 
+       SOC |       64 |        3 |        3
+
+Solving conic relaxation......Done     0.00s
+ - Relaxation status    =        Optimal
+ - Relaxation objective =       0.000004
+
+Creating conic subproblem model......Done
+
+Starting MIP-solver-driven outer approximation algorithm
+
+Pajarito MICP solve summary:
+ - Total time (s)       =       2.09e+00
+ - Status               =        Optimal
+ - Best feasible obj.   =  +6.545000e+03
+ - Final OA obj. bound  =  +6.545000e+03
+ - Relative opt. gap    =      0.000e+00
+ - Conic solve count    =              7
+ - Feas. solution count =              6
+ - Integer repeat count =             54
+
+Timers (s):
+ - Setup                =       1.14e-02
+ -- Transform data      =       1.41e-04
+ -- Create conic data   =       8.63e-05
+ -- Create MIP data     =       3.36e-03
+ -- Load/solve relax    =       4.69e-03
+ - MIP-driven algorithm =       2.07e+00
+ -- Solve conic model   =       1.77e-02
+
+WARNING: For the MIP-solver-driven algorithm, optimality tolerance must be specified as MIP solver option, not Pajarito option
+WARNING: For the MIP-solver-driven algorithm, optimality tolerance must be specified as MIP solver option, not Pajarito option
+#STATUS# Optimal
+#OBJVAL# 6545.000000156536
+#OBJBOUND# 6545.000000156536
+#TIMESOLVER# 2.0854310989379883
+#TIMEALL# 2.086514949798584
+#SOLUTION# [8.664238685181779e-11,4.000000000022376,3.500000000016996,3.999999999940777,3.50000000006449,7.500000000046407,5.500000000038882,1.8531150690344238e-10,2.8877243777937537e-10,5.499999999919553,5.499999999807508,2.7016235263517823e-10,6545.000000156536,49.24887883558633,49.24887883553677,45.24887883558,52.74887883558901,79.91110902665142,74.41110902663871,79.91110902650667,79.91110902640749,0.0,0.0,1.0,-0.0,-0.0,1.0,0.0,1.0,0.0,0.0,0.0,0.0,-0.0,0.0,0.0,1.0,1.0,-0.0,1.0,0.0,0.0,-0.0,-0.0,0.0,1421.3485885757032,5628.175990814758,0.0,1543.596852668975,4933.271933508483,0.0,1389.7042142842456,5507.326350449016,0.0,1772.2586614081622,5434.142408777851,0.0,31.262803539340247,29.497168055518106,1.0,38.509436285089556,26.083784547156515,1.0,54.210162252242405,16.81554204463637,1.0,26.625579598087587,26.47716757141033,1.0,1399.4051913973553,4785.435614183764,1509.6994209182717,4270.608314274502,1375.2867809729808,5096.639181606736,1766.2426718164359,5017.778541123025,31.19185603571903,29.706143509288196,22.607753060465576,69.37724807637133,54.164325822191124,17.060943143144137,26.527576036398,26.67501173911923,1762.5503553393619,5641.916562585715,2008.9091522743972,4952.107101025594,1578.6906195010379,5516.601811407761,1917.724182757731,5438.054372672115,25.06823237280565,31.69698391789154,29.914644457770002,28.789968057550052,32.700667962263395,24.24127988864666,35.11074899188559,23.56670913644785,1751.33480685318,4809.730815116836,1989.3693012171273,4303.735729718199,1567.430850323377,5111.389314604917,1915.2363364629168,5023.183831647806,25.064219052017442,31.793449464045246,14.307879278797548,72.59613623893306,32.720488712367576,24.22124353838081,35.005647277165544,23.885081792262582]
