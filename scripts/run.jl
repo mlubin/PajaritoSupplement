@@ -65,12 +65,8 @@ solvermap = Dict(
     # CBC
     "PAJ_CBC_MOSEK" =>
     (["Cbc","Mosek"], quote PajaritoSolver(mip_solver=CbcSolver(logLevel=0, ratioGap=0., seconds=tlim), cont_solver=MosekSolver(LOG=0, NUM_THREADS=1, OPTIMIZER_MAX_TIME=120.), log_level=logl, timeout=tlim, rel_gap=rgap) end),
-    "PAJ_CBC_tols_MOSEK" =>
-    (["Cbc","Mosek"], quote PajaritoSolver(mip_solver=CbcSolver(logLevel=0, ratioGap=0., seconds=tlim, integerTolerance=1e-8, primalTolerance=1e-8), cont_solver=MosekSolver(LOG=0, NUM_THREADS=1, OPTIMIZER_MAX_TIME=120.), log_level=logl, timeout=tlim, rel_gap=rgap) end),
     "PAJ_CBC_ECOS" =>
     (["Cbc","ECOS"], quote PajaritoSolver(mip_solver=CbcSolver(logLevel=0, ratioGap=0., seconds=tlim), cont_solver=ECOSSolver(verbose=false), log_level=logl, timeout=tlim, rel_gap=rgap) end),
-    "PAJ_CBC_tols_ECOS" =>
-    (["Cbc","ECOS"], quote PajaritoSolver(mip_solver=CbcSolver(logLevel=0, ratioGap=0., seconds=tlim, integerTolerance=1e-8, primalTolerance=1e-8), cont_solver=ECOSSolver(verbose=false), log_level=logl, timeout=tlim, rel_gap=rgap) end),
 
     # OPTIONS CBC ECOS
     "PAJ_NOPRIM_CBC_ECOS" =>
@@ -122,9 +118,7 @@ solvermap = Dict(
 
     # Baseline CPLEX MOSEK
     "PAJ_CPLEX_MOSEK" =>
-    (["CPLEX","Mosek"], quote 
-PajaritoSolver(mip_solver=CplexSolver(CPX_PARAM_THREADS=1,CPX_PARAM_TILIM=tlim,CPX_PARAM_EPINT=1e-7,CPX_PARAM_EPRHS=1e-7,CPX_PARAM_SCRIND=1,CPX_PARAM_EPGAP=0.), 
-cont_solver=MosekSolver(LOG=0, NUM_THREADS=1, OPTIMIZER_MAX_TIME=120.), log_level=logl, timeout=tlim, rel_gap=rgap) end),
+    (["CPLEX","Mosek"], quote PajaritoSolver(mip_solver=CplexSolver(CPX_PARAM_THREADS=1,CPX_PARAM_TILIM=tlim,CPX_PARAM_EPINT=1e-7,CPX_PARAM_EPRHS=1e-7,CPX_PARAM_SCRIND=1,CPX_PARAM_EPGAP=0.), cont_solver=MosekSolver(LOG=0, NUM_THREADS=1, OPTIMIZER_MAX_TIME=120.), log_level=logl, timeout=tlim, rel_gap=rgap) end),
     "PAJ_MSD_CPLEX_MOSEK" =>
     (["CPLEX","Mosek"], quote PajaritoSolver(mip_solver=CplexSolver(CPX_PARAM_THREADS=1,CPX_PARAM_TILIM=tlim,CPX_PARAM_EPINT=1e-8,CPX_PARAM_EPRHS=1e-8,CPX_PARAM_SCRIND=0,CPX_PARAM_EPGAP=0.), cont_solver=MosekSolver(LOG=0, NUM_THREADS=1, OPTIMIZER_MAX_TIME=120.), log_level=logl, timeout=tlim, rel_gap=rgap, mip_solver_drives=true) end),
     "PAJ_NEW_MSD_CPLEX_MOSEK" =>
