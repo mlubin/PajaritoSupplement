@@ -164,7 +164,7 @@ def dispatch_and_run(job, tags, cmds, commands, verbose=True):
         # Make a shell script to run the command and then save the results
         runner_path = "runner_%s.sh" % tag
         with open(runner_path, "w") as f:
-            f.write("cd ~/.julia/v0.5/Pajarito; git fetch; git checkout 453cc0993d90247ad10c8156ae336ccdd8c08c7c")
+            f.write("cd ~/.julia/v0.5/Pajarito; git fetch; git checkout 8b005e040e310e85bf4be2dff28d8fab8d278c5c")
             f.write("\n")
             f.write("cd ~/.julia/v0.5/Mosek; git fetch; git checkout d396fe450334655aaaf9abf27e126e5198afad40")
             f.write("\n")
