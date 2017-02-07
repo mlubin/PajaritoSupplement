@@ -1,0 +1,181 @@
+WARNING: Method definition require(Symbol) in module Base at loading.jl:345 overwritten in module ConicBenchmarkUtilities at /home/ubuntu/.julia/v0.5/Requires/src/require.jl:12.
+#SOLVERNAME# PAJ_NEW_MSD_CPLEX_MOSEK_mosektight
+#SOLVER# Pajarito.PajaritoSolver(2,3600.0,1.0e-5,true,CPLEX.CplexSolver(Any[(:CPX_PARAM_THREADS,1),(:CPX_PARAM_TILIM,3600.0),(:CPX_PARAM_EPINT,1.0e-8),(:CPX_PARAM_EPRHS,1.0e-7),(:CPX_PARAM_SCRIND,0),(:CPX_PARAM_EPGAP,1.0e-5)]),CPLEX.CplexSolver(Any[]),0,false,true,Mosek.MosekMathProgSolverInterface.MosekSolver(Any[(:LOG,0),(:NUM_THREADS,1),(:OPTIMIZER_MAX_TIME,120.0),(:INTPNT_CO_TOL_REL_GAP,1.0e-9)]),true,false,false,true,false,true,false,true,true,true,true,false,true,true,false,true,false,false,true,true,false,false,false,1.0e-10,1.0e-6,0.01,0.0001)
+#INSTANCE# achtziger_stolpe07-5.2flowc.cbf.gz
+#TIMELIMIT# 3600.0
+
+Transforming original data......Done     0.01s
+
+Creating conic model data......Done     0.00s
+
+Creating MIP model......Done     0.00s
+
+Cone types summary:
+Cone       | Count    | Min dim  | Max dim 
+       SOC |       72 |        3 |        3
+
+Solving conic relaxation......Done     0.01s
+ - Relaxation status    =        Optimal
+ - Relaxation objective =      46.327921
+
+Creating conic subproblem model......Done
+
+Starting MIP-solver-driven outer approximation algorithm
+
+Pajarito MICP solve summary:
+ - Total time (s)       =       2.77e+02
+ - Status               =        Optimal
+ - Best feasible obj.   =  +4.914061e+01
+ - OA obj. bound        =  +4.914026e+01
+ - Relative opt. gap    =      7.112e-06
+
+Timers (s):
+ - Setup                =   2.38e-02
+ -- Transform data      =   8.87e-03
+ -- Create conic data   =   1.66e-04
+ -- Create MIP data     =   2.01e-03
+ -- Load/solve relax    =   8.35e-03
+ - MIP-driven algorithm =   2.77e+02
+ -- Solve conic model   =   1.05e+00
+
+Counters:
+ - Lazy callback        =   441
+ -- Feasible soln       =    12
+ -- Integer repeat      =   324
+ -- Conic statuses      =   105
+ --- Infeasible         =     0
+ --- Optimal            =    11
+ --- Suboptimal         =     0
+ --- UserLimit          =     0
+ --- ConicFailure       =     0
+ --- Other status       =    94
+ -- No viol. dual cut   =   418
+ -- No viol. prim. cut  =     0
+ - Heuristic callback   = 39846
+ -- Feasible added      =     5
+ - Incumbent callback   =    13
+ -- Feasible accepted   =    12
+ - Dual cuts            =   263
+ -- Relaxation          =   143
+ -- Full viol.          =     0
+ -- Full nonviol.       =     0
+ -- Disagg. viol        =   120
+ -- Disagg. nonviol     =     0
+ -- Poorly conditioned  =    65
+ - Primal cuts          =  3422
+ -- Full viol.          =  3422
+ -- Full nonviol.       =     0
+ -- Disagg. viol        =     0
+ -- Disagg. nonviol     =     0
+ -- Poorly conditioned  =     0
+
+Max absolute primal infeasibilities by cone:
+ - Constraint linear    =   7.11e-15
+ - Constraint SOC       =   0.00e+00
+ - Constraint RSOC      =   0.00e+00
+ - Variable linear      =   0.00e+00
+ - Variable SOC         =   0.00e+00
+ - Variable RSOC        =   0.00e+00
+
+#STATUS# Optimal
+#OBJVAL# 49.14061112531357
+#OBJBOUND# 49.14026163601526
+#TIMESOLVER# 277.03609704971313
+#TIMEALL# 277.1752109527588
+#SOLUTION# [49.14061112531357,1.0,1.0,1.0,1.0,0.0,1.0,0.0,0.0,0.0,1.0,0.0,1.0,1.0,1.0,0.0,1.0,0.0,1.0,-0.0,1.0,0.0,0.0,0.0,1.0,1.0,1.0,1.0,1.0,-0.0,1.0,1.0,-0.0,-0.0,1.0,1.0,1.0,1.0,0.0,-0.0,-0.0,-0.0,0.0,1.0,0.0,1.0,0.0,0.0,0.0,-0.0,1.0,0.0,1.0,0.0,1.0,-0.0,0.0,0.0,-0.0,-0.0,1.0,-0.0,0.0,1.0,-0.0,-0.0,1.0,-0.0,-0.0,-0.0,-0.0,0.0,-0.0,0.12499999997640013,4.4999999997754525,0.3535533902075389,6.124999999745992,0.0,0.12499999999363513,0.0,-0.0,-0.0,0.35355339057688806,-0.0,0.35355339058125024,0.35355339058247914,4.499999999775794,-0.0,6.1249999997461035,0.0,4.499999711993811,-0.0,0.49999999999904254,0.0,0.0,0.0,1.4142135510439093,2.000000000000014,0.18186001687672482,2.8725833121661304,0.5143778030901465,-0.0,0.22278892249711343,0.18186001450583997,-0.0,-0.0,2.0000000000000133,0.18186001671127386,0.4999999999764226,1.4142135510439093,0.0,0.0,-0.0,-0.0,0.0,2.0000000000000133,0.0,0.4999999999999583,0.0,0.0,0.0,-0.0,1.4142135510439093,0.0,2.0000000000000133,0.0,0.49999999998797995,-0.0,0.0,0.0,-0.0,0.0,1.4142135510439084,-0.0,0.0,0.49999999999899025,-0.0,-0.0,1.4142135623729204,-0.0,-0.0,-0.0,0.0,0.0,0.0,-2.12132034355965,-0.594603557501361,-2.4748737341529248,-1.1102230246251565e-16,0.0,0.0,0.0,-0.5946035575013611,0.0,0.5946035575013611,0.594603557501361,2.12132034355965,0.0,2.4748737341529248,-2.12132034355965,0.0,0.0,0.0,0.0,1.189207115002722,1.4142135623730998,-1.6948697341778243,-0.7172015774238766,0.4720055375788454,0.4264506093818256,0.0,0.0,1.4142135623730998,-0.7071067811865499,-1.189207115002722,0.0,0.0,0.0,0.0,1.4142135623730998,-0.7071067811865499,0.0,0.0,0.0,-1.189207115002722,0.0,1.4142135623730998,-0.7071067811865499,0.0,0.0,0.0,0.0,1.1892071150027217,0.0,-0.7071067811865499,0.0,1.1892071150027217,0.0,0.0,0.0,-0.0,0.35355339059327506,-0.353553390593275,-0.0,-0.70710678118655,0.42645060938182566,0.0,0.42645060938182566,0.0,-0.0,0.0,-0.0,1.1102230246251565e-16,-0.0,0.0,1.1102230246251565e-16,-0.0,1.0,0.062499999988200064,0.35355339059327506,1.0,2.2499999998877263,-2.12132034355965,1.0,0.17677669510376945,-0.594603557501361,1.0,3.062499999872996,-2.4748737341529248,0.0,0.0,-1.1102230246251565e-16,1.0,0.062499999996817567,-0.353553390593275,0.0,0.0,0.0,0.0,-0.0,0.0,0.0,-0.0,0.0,1.0,0.17677669528844403,-0.5946035575013611,0.0,-0.0,0.0,1.0,0.17677669529062512,0.5946035575013611,1.0,0.17677669529123957,0.594603557501361,1.0,2.249999999887897,2.12132034355965,0.0,-0.0,0.0,1.0,3.0624999998730518,2.4748737341529248,0.0,0.0,-0.0,1.0,2.2499998559969057,-2.12132034355965,0.0,-0.0,0.0,1.0,0.24999999999952127,-0.70710678118655,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.7071067755219547,1.189207115002722,1.0,1.000000000000007,1.4142135623730998,1.0,0.09093000843836241,0.42645060938182566,1.0,1.4362916560830652,-1.6948697341778243,1.0,0.25718890154507323,-0.7172015774238766,0.0,-0.0,0.0,1.0,0.11139446124855672,0.4720055375788454,1.0,0.09093000725291998,0.4264506093818256,0.0,-0.0,0.0,0.0,-0.0,0.0,1.0,1.0000000000000067,1.4142135623730998,1.0,0.09093000835563693,0.42645060938182566,1.0,0.2499999999882113,-0.7071067811865499,1.0,0.7071067755219547,-1.189207115002722,0.0,0.0,0.0,0.0,0.0,0.0,0.0,-0.0,0.0,0.0,-0.0,0.0,0.0,0.0,0.0,1.0,1.0000000000000067,1.4142135623730998,0.0,0.0,-0.0,1.0,0.24999999999997916,-0.7071067811865499,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,-0.0,0.0,1.0,0.7071067755219547,-1.189207115002722,0.0,0.0,0.0,1.0,1.0000000000000067,1.4142135623730998,0.0,0.0,-0.0,1.0,0.24999999999398997,-0.7071067811865499,0.0,-0.0,0.0,0.0,0.0,1.1102230246251565e-16,0.0,0.0,0.0,0.0,-0.0,0.0,0.0,0.0,0.0,1.0,0.7071067755219542,1.1892071150027217,0.0,-0.0,0.0,0.0,0.0,-0.0,1.0,0.24999999999949513,-0.7071067811865499,0.0,-0.0,0.0,0.0,-0.0,0.0,1.0,0.7071067811864602,1.1892071150027217,0.0,-0.0,0.0,0.0,-0.0,0.0,0.0,-0.0,0.0,0.0,0.0,-0.0,0.0,0.0,1.1102230246251565e-16,0.0,0.0,-0.0]
+WARNING: For the MIP-solver-driven algorithm, optimality tolerance must be specified as MIP solver option, not Pajarito option
+WARNING: For the MIP-solver-driven algorithm, optimality tolerance must be specified as MIP solver option, not Pajarito option
+WARNING: Unrecognized conic status: Stall
+WARNING: Unrecognized conic status: Stall
+WARNING: Unrecognized conic status: Stall
+WARNING: Unrecognized conic status: Stall
+WARNING: Unrecognized conic status: Stall
+WARNING: Unrecognized conic status: Stall
+WARNING: Unrecognized conic status: Stall
+WARNING: Unrecognized conic status: Stall
+WARNING: Unrecognized conic status: Stall
+WARNING: Unrecognized conic status: Stall
+WARNING: Unrecognized conic status: Stall
+WARNING: Unrecognized conic status: Stall
+WARNING: Unrecognized conic status: Stall
+WARNING: Unrecognized conic status: Stall
+WARNING: Unrecognized conic status: Stall
+WARNING: Unrecognized conic status: Stall
+WARNING: Unrecognized conic status: Stall
+WARNING: Unrecognized conic status: Stall
+WARNING: Unrecognized conic status: Stall
+WARNING: Unrecognized conic status: Stall
+WARNING: Unrecognized conic status: Stall
+WARNING: Unrecognized conic status: Stall
+WARNING: Unrecognized conic status: Stall
+WARNING: Unrecognized conic status: Stall
+WARNING: Unrecognized conic status: Stall
+WARNING: Unrecognized conic status: Stall
+WARNING: Unrecognized conic status: Stall
+WARNING: Unrecognized conic status: Stall
+WARNING: Unrecognized conic status: Stall
+WARNING: Unrecognized conic status: Stall
+WARNING: Unrecognized conic status: Stall
+WARNING: Unrecognized conic status: Stall
+WARNING: Unrecognized conic status: Stall
+WARNING: Unrecognized conic status: Stall
+WARNING: Unrecognized conic status: Stall
+WARNING: Unrecognized conic status: Stall
+WARNING: Unrecognized conic status: Stall
+WARNING: Unrecognized conic status: Stall
+WARNING: Unrecognized conic status: Stall
+WARNING: Unrecognized conic status: Stall
+WARNING: Unrecognized conic status: Stall
+WARNING: Unrecognized conic status: Stall
+WARNING: Unrecognized conic status: Stall
+WARNING: Unrecognized conic status: Stall
+WARNING: Unrecognized conic status: Stall
+WARNING: Unrecognized conic status: Stall
+WARNING: Unrecognized conic status: Stall
+WARNING: Unrecognized conic status: Stall
+WARNING: Unrecognized conic status: Stall
+WARNING: Unrecognized conic status: Stall
+WARNING: Unrecognized conic status: Stall
+WARNING: Unrecognized conic status: Stall
+WARNING: Unrecognized conic status: Stall
+WARNING: Unrecognized conic status: Stall
+WARNING: Unrecognized conic status: Stall
+WARNING: Unrecognized conic status: Stall
+WARNING: Unrecognized conic status: Stall
+WARNING: Unrecognized conic status: Stall
+WARNING: Unrecognized conic status: Stall
+WARNING: Unrecognized conic status: Stall
+WARNING: Unrecognized conic status: Stall
+WARNING: Unrecognized conic status: Stall
+WARNING: Unrecognized conic status: Stall
+WARNING: Unrecognized conic status: Stall
+WARNING: Unrecognized conic status: Stall
+WARNING: Unrecognized conic status: Stall
+WARNING: Unrecognized conic status: Stall
+WARNING: Unrecognized conic status: Stall
+WARNING: Unrecognized conic status: Stall
+WARNING: Unrecognized conic status: Stall
+WARNING: Unrecognized conic status: Stall
+WARNING: Unrecognized conic status: Stall
+WARNING: Unrecognized conic status: Stall
+WARNING: Unrecognized conic status: Stall
+WARNING: Unrecognized conic status: Stall
+WARNING: Unrecognized conic status: Stall
+WARNING: Unrecognized conic status: Stall
+WARNING: Unrecognized conic status: Stall
+WARNING: Unrecognized conic status: Stall
+WARNING: Unrecognized conic status: Stall
+WARNING: Unrecognized conic status: Stall
+WARNING: Unrecognized conic status: Stall
+WARNING: Unrecognized conic status: Stall
+WARNING: Unrecognized conic status: Stall
+WARNING: Unrecognized conic status: Stall
+WARNING: Unrecognized conic status: Stall
+WARNING: Unrecognized conic status: Stall
+WARNING: Unrecognized conic status: Stall
+WARNING: Unrecognized conic status: Stall
+WARNING: Unrecognized conic status: Stall
+WARNING: Unrecognized conic status: Stall
+WARNING: Unrecognized conic status: Stall
+WARNING: Unrecognized conic status: Stall
+WARNING: Unrecognized conic status: Stall

@@ -1,0 +1,87 @@
+WARNING: Method definition require(Symbol) in module Base at loading.jl:345 overwritten in module ConicBenchmarkUtilities at /home/ubuntu/.julia/v0.5/Requires/src/require.jl:12.
+#SOLVERNAME# PAJ_NEW_MSD_CPLEX_MOSEK_noviolonly
+#SOLVER# Pajarito.PajaritoSolver(2,3600.0,1.0e-5,true,CPLEX.CplexSolver(Any[(:CPX_PARAM_THREADS,1),(:CPX_PARAM_TILIM,3600.0),(:CPX_PARAM_EPINT,1.0e-8),(:CPX_PARAM_EPRHS,1.0e-7),(:CPX_PARAM_SCRIND,0),(:CPX_PARAM_EPGAP,1.0e-5)]),CPLEX.CplexSolver(Any[]),0,false,true,Mosek.MosekMathProgSolverInterface.MosekSolver(Any[(:LOG,0),(:NUM_THREADS,1),(:OPTIMIZER_MAX_TIME,120.0)]),true,false,false,true,false,true,false,true,true,true,true,false,false,true,false,true,false,false,true,true,false,false,false,1.0e-10,1.0e-6,0.01,0.0001)
+#INSTANCE# classical_20_0.cbf.gz
+#TIMELIMIT# 3600.0
+
+Transforming original data......Done     0.00s
+
+Creating conic model data......Done     0.00s
+
+Creating MIP model......Done     0.00s
+
+Cone types summary:
+Cone       | Count    | Min dim  | Max dim 
+       SOC |        1 |       21 |       21
+
+Solving conic relaxation......Done     0.00s
+ - Relaxation status    =        Optimal
+ - Relaxation objective =      -0.082423
+
+Creating conic subproblem model......Done
+
+Starting MIP-solver-driven outer approximation algorithm
+
+Pajarito MICP solve summary:
+ - Total time (s)       =       1.28e-01
+ - Status               =        Optimal
+ - Best feasible obj.   =  -8.229529e-02
+ - OA obj. bound        =  -8.229529e-02
+ - Relative opt. gap    =      0.000e+00
+
+Timers (s):
+ - Setup                =   3.59e-03
+ -- Transform data      =   8.72e-05
+ -- Create conic data   =   4.53e-05
+ -- Create MIP data     =   3.70e-04
+ -- Load/solve relax    =   2.26e-03
+ - MIP-driven algorithm =   1.24e-01
+ -- Solve conic model   =   1.27e-02
+
+Counters:
+ - Lazy callback        =   117
+ -- Feasible soln       =     9
+ -- Integer repeat      =    96
+ -- Conic statuses      =    12
+ --- Infeasible         =     0
+ --- Optimal            =    12
+ --- Suboptimal         =     0
+ --- UserLimit          =     0
+ --- ConicFailure       =     0
+ --- Other status       =     0
+ -- No viol. dual cut   =    97
+ -- No viol. prim. cut  =     0
+ - Heuristic callback   =    22
+ -- Feasible added      =     7
+ - Incumbent callback   =     9
+ -- Feasible accepted   =     9
+ - Dual cuts            =   260
+ -- Relaxation          =    20
+ -- Full viol.          =     0
+ -- Full nonviol.       =     0
+ -- Disagg. viol        =   155
+ -- Disagg. nonviol     =    85
+ -- Poorly conditioned  =     0
+ - Primal cuts          =    97
+ -- Full viol.          =    97
+ -- Full nonviol.       =     0
+ -- Disagg. viol        =     0
+ -- Disagg. nonviol     =     0
+ -- Poorly conditioned  =     0
+
+Max absolute primal infeasibilities by cone:
+ - Constraint linear    =   1.11e-16
+ - Constraint SOC       =   8.60e-07
+ - Constraint RSOC      =   8.60e-07
+ - Variable linear      =   0.00e+00
+ - Variable SOC         =   0.00e+00
+ - Variable RSOC        =   0.00e+00
+
+WARNING: For the MIP-solver-driven algorithm, optimality tolerance must be specified as MIP solver option, not Pajarito option
+WARNING: For the MIP-solver-driven algorithm, optimality tolerance must be specified as MIP solver option, not Pajarito option
+#STATUS# Optimal
+#OBJVAL# -0.08229528774378286
+#OBJBOUND# -0.08229528774378286
+#TIMESOLVER# 0.12763595581054688
+#TIMEALL# 0.2705690860748291
+#SOLUTION# [0.15111054470965576,0.05344975422405282,0.17393428197873861,0.0,0.05612830515032003,0.1871715633570834,0.08455988512877512,0.0,0.10882275554154741,0.0,0.022552326574842588,0.06902510769281762,0.09324547564216647,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,1.0,1.0,-0.0,1.0,1.0,1.0,-0.0,1.0,0.0,1.0,1.0,1.0,-0.0,0.0,-0.0,-0.0,0.0,-0.0,-0.0,0.06798339596571465,0.03772829395360289,0.0678812368584904,0.026178172431480722,0.09307865909391971,0.04760585818502084,0.037568395142056926,0.02667737689967625,0.03540933755342335,0.026925879861624993,0.04139539956853262,0.032362675197668576,0.07774222688978995,0.02119957801155079,0.029226591979777495,0.033736274911734115,0.02399763520090178,0.02464758580654354,0.02766398398740867,0.020855684763375064,0.2]

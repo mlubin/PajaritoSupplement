@@ -1,0 +1,76 @@
+WARNING: Method definition require(Symbol) in module Base at loading.jl:345 overwritten in module ConicBenchmarkUtilities at /home/ubuntu/.julia/v0.5/Requires/src/require.jl:12.
+#SOLVERNAME# PAJ_NEW_MSD_CPLEX_MOSEK_primmaxviolonly
+#SOLVER# Pajarito.PajaritoSolver(2,3600.0,1.0e-5,true,CPLEX.CplexSolver(Any[(:CPX_PARAM_THREADS,1),(:CPX_PARAM_TILIM,3600.0),(:CPX_PARAM_EPINT,1.0e-8),(:CPX_PARAM_EPRHS,1.0e-7),(:CPX_PARAM_SCRIND,0),(:CPX_PARAM_EPGAP,1.0e-5)]),CPLEX.CplexSolver(Any[]),0,false,true,Mosek.MosekMathProgSolverInterface.MosekSolver(Any[(:LOG,0),(:NUM_THREADS,1),(:OPTIMIZER_MAX_TIME,120.0)]),true,false,false,true,false,true,false,true,true,true,true,false,true,true,false,true,false,false,true,true,true,false,false,1.0e-10,1.0e-6,0.01,0.0001)
+#INSTANCE# 75_0_5_w.cbf.gz
+#TIMELIMIT# 3600.0
+
+Transforming original data......Done     0.03s
+
+Creating conic model data......Done     0.01s
+
+Creating MIP model......Done     0.13s
+
+Cone types summary:
+Cone       | Count    | Min dim  | Max dim 
+       SOC |     1800 |        3 |        3
+
+Solving conic relaxation......Done     1.29s
+ - Relaxation status    =        Optimal
+ - Relaxation objective = 12132468.480226
+
+Creating conic subproblem model......Done
+
+Starting MIP-solver-driven outer approximation algorithm
+
+Pajarito MICP solve summary:
+ - Total time (s)       =       3.60e+03
+ - Status               =      UserLimit
+ - Best feasible obj.   =  +1.225683e+07
+ - OA obj. bound        =  +1.224969e+07
+ - Relative opt. gap    =      5.826e-04
+
+Timers (s):
+ - Setup                =   1.65e+00
+ -- Transform data      =   2.78e-02
+ -- Create conic data   =   5.14e-03
+ -- Create MIP data     =   1.31e-01
+ -- Load/solve relax    =   1.29e+00
+ - MIP-driven algorithm =   3.60e+03
+ -- Solve conic model   =   5.36e+00
+
+Counters:
+ - Lazy callback        =  1336
+ -- Feasible soln       =     9
+ -- Integer repeat      =  1300
+ -- Conic statuses      =    27
+ --- Infeasible         =     0
+ --- Optimal            =    27
+ --- Suboptimal         =     0
+ --- UserLimit          =     0
+ --- ConicFailure       =     0
+ --- Other status       =     0
+ -- No viol. dual cut   =  1300
+ -- No viol. prim. cut  =     0
+ - Heuristic callback   = 35584
+ -- Feasible added      =    10
+ - Incumbent callback   =    19
+ -- Feasible accepted   =    19
+ - Dual cuts            =  5595
+ -- Relaxation          =  3494
+ -- Full viol.          =     0
+ -- Full nonviol.       =     0
+ -- Disagg. viol        =  2101
+ -- Disagg. nonviol     =     0
+ -- Poorly conditioned  =   257
+ - Primal cuts          =  1300
+ -- Full viol.          =  1300
+ -- Full nonviol.       =     0
+ -- Disagg. viol        =     0
+ -- Disagg. nonviol     =     0
+ -- Poorly conditioned  =     0
+
+Max absolute primal infeasibilities by cone:
+#ERROR# DomainError()
+WARNING: For the MIP-solver-driven algorithm, optimality tolerance must be specified as MIP solver option, not Pajarito option
+WARNING: For the MIP-solver-driven algorithm, optimality tolerance must be specified as MIP solver option, not Pajarito option
+WARNING: Not solved to optimality, status: UserLimit
