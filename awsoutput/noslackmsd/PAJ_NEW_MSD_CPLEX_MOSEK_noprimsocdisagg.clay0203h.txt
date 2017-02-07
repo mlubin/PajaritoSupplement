@@ -1,0 +1,191 @@
+WARNING: Method definition require(Symbol) in module Base at loading.jl:345 overwritten in module ConicBenchmarkUtilities at /home/ubuntu/.julia/v0.5/Requires/src/require.jl:12.
+#SOLVERNAME# PAJ_NEW_MSD_CPLEX_MOSEK_noprimsocdisagg
+#SOLVER# Pajarito.PajaritoSolver(2,3600.0,1.0e-5,true,CPLEX.CplexSolver(Any[(:CPX_PARAM_THREADS,1),(:CPX_PARAM_TILIM,3600.0),(:CPX_PARAM_EPINT,1.0e-8),(:CPX_PARAM_EPRHS,1.0e-6),(:CPX_PARAM_SCRIND,0),(:CPX_PARAM_EPGAP,1.0e-5)]),CPLEX.CplexSolver(Any[]),0,false,true,Mosek.MosekMathProgSolverInterface.MosekSolver(Any[(:LOG,0),(:NUM_THREADS,1),(:OPTIMIZER_MAX_TIME,120.0)]),true,false,false,true,false,true,false,true,true,true,true,false,true,true,false,true,false,false,true,true,false,false,true,1.0e-10,1.0e-6,0.01,0.0001)
+#INSTANCE# clay0203h.cbf.gz
+#TIMELIMIT# 3600.0
+
+Transforming original data......Done     0.00s
+
+Creating conic model data......Done     0.00s
+
+Creating MIP model......Done     0.00s
+
+Cone types summary:
+Cone       | Count    | Min dim  | Max dim 
+       SOC |       48 |        3 |        3
+
+Solving conic relaxation......Done     0.01s
+ - Relaxation status    =        Optimal
+ - Relaxation objective =       0.000000
+
+Creating conic subproblem model......Done
+
+Starting MIP-solver-driven outer approximation algorithm
+doing lazy cb
+new int solution in lazy
+conic status Infeasible
+viol cuts added on infeas solution in lazy
+doing lazy cb
+new int solution in lazy
+conic status Optimal
+violating dual cuts added in lazy
+doing lazy cb
+repeat int solution in lazy
+viol cuts added on infeas solution in lazy
+doing lazy cb
+repeat int solution in lazy
+viol cuts added on infeas solution in lazy
+doing lazy cb
+repeat int solution in lazy
+viol cuts added on infeas solution in lazy
+doing lazy cb
+repeat int solution in lazy
+viol cuts added on infeas solution in lazy
+doing lazy cb
+feasible solution in lazy
+doing incumbent cb
+checked feas: accepting
+adding new sol
+doing lazy cb
+new int solution in lazy
+conic status Optimal
+violating dual cuts added in lazy
+doing lazy cb
+repeat int solution in lazy
+viol cuts added on infeas solution in lazy
+doing lazy cb
+repeat int solution in lazy
+viol cuts added on infeas solution in lazy
+doing lazy cb
+repeat int solution in lazy
+viol cuts added on infeas solution in lazy
+doing lazy cb
+repeat int solution in lazy
+viol cuts added on infeas solution in lazy
+doing incumbent cb
+checked feas: rejecting
+adding new sol
+doing incumbent cb
+checked feas: accepting
+doing lazy cb
+repeat int solution in lazy
+viol cuts added on infeas solution in lazy
+doing incumbent cb
+checked feas: rejecting
+doing lazy cb
+new int solution in lazy
+conic status Optimal
+violating dual cuts added in lazy
+doing lazy cb
+repeat int solution in lazy
+viol cuts added on infeas solution in lazy
+doing incumbent cb
+checked feas: rejecting
+adding new sol
+doing incumbent cb
+checked feas: accepting
+doing lazy cb
+new int solution in lazy
+conic status Optimal
+violating dual cuts added in lazy
+adding new sol
+doing lazy cb
+new int solution in lazy
+conic status Optimal
+violating dual cuts added in lazy
+adding new sol
+doing lazy cb
+new int solution in lazy
+conic status Infeasible
+viol cuts added on infeas solution in lazy
+doing lazy cb
+feasible solution in lazy
+doing incumbent cb
+checked feas: accepting
+prim_inf = 9.464429240324534e-12
+prim_inf = 8.526512829121202e-14
+prim_inf = 0.0
+prim_inf = 0.0
+prim_inf = 2.000888343900442e-11
+prim_inf = 8.943743523559533e-10
+prim_inf = 0.0
+prim_inf = 0.0
+prim_inf = 9.516825230093673e-7
+prim_inf = 3.719314918271266e-7
+prim_inf = 0.0
+prim_inf = 0.0
+prim_inf = 1.6086687537608668e-11
+prim_inf = 3.862794528686209e-9
+prim_inf = 0.0
+prim_inf = 0.0
+prim_inf = 1.8815171642927453e-11
+prim_inf = -0.361324745267126
+prim_inf = 0.0
+prim_inf = 0.0
+prim_inf = 9.516825230093673e-7
+prim_inf = 1.0284747986588627e-7
+prim_inf = 0.0
+prim_inf = 0.0
+prim_inf = -0.06464892704329372
+prim_inf = 6.606501301575918e-8
+prim_inf = 0.0
+prim_inf = 0.0
+prim_inf = 2.2737367544323206e-13
+prim_inf = 4.007461029686965e-12
+prim_inf = 0.0
+prim_inf = 0.0
+prim_inf = 9.516820682620164e-7
+prim_inf = -0.0034962235085913562
+prim_inf = 0.0
+prim_inf = 0.0
+prim_inf = -0.2683178138029234
+prim_inf = 3.748928634195181e-8
+prim_inf = 0.0
+prim_inf = 0.0
+prim_inf = -0.07167039703887212
+prim_inf = 1.2449430641936488e-7
+prim_inf = 0.0
+prim_inf = 0.0
+prim_inf = 9.516825230093673e-7
+prim_inf = 3.719305823324248e-7
+prim_inf = 0.0
+prim_inf = 0.0
+size(m.b_orig) = (439,)
+size(m.A_orig) = (439,139)
+size(m.final_soln) = (139,)
+Constraint cones violations:
+viol_lin = 3.637978807091713e-12
+viol_soc = 0.004750117659568787
+viol_rot = 0.0
+Variable cones violations:
+viol_lin = 0.0
+viol_soc = 0.0
+viol_rot = 0.0
+
+Pajarito MICP solve summary:
+ - Total time (s)       =       3.75e-01
+ - Status               =        Optimal
+ - Best feasible obj.   =  +4.157321e+04
+ - Final OA obj. bound  =  +4.157321e+04
+ - Relative opt. gap    =      0.000e+00
+ - Conic solve count    =              7
+ - Feas. solution count =              5
+ - Integer repeat count =             10
+
+Timers (s):
+ - Setup                =       3.89e-02
+ -- Transform data      =       1.56e-04
+ -- Create conic data   =       8.99e-05
+ -- Create MIP data     =       1.24e-03
+ -- Load/solve relax    =       6.72e-03
+ - MIP-driven algorithm =       3.36e-01
+ -- Solve conic model   =       3.26e-02
+
+WARNING: For the MIP-solver-driven algorithm, optimality tolerance must be specified as MIP solver option, not Pajarito option
+WARNING: For the MIP-solver-driven algorithm, optimality tolerance must be specified as MIP solver option, not Pajarito option
+#STATUS# Optimal
+#OBJVAL# 41573.21385038742
+#OBJBOUND# 41573.21385038743
+#TIMESOLVER# 0.375
+#TIMEALL# 0.3761301040649414
+#SOLUTION# [35.63391483849311,4.0000000000000036,31.633914838493105,66.89911978747546,-0.0,66.89911978747546,41573.21385038742,14.312490928806096,49.946405767299204,18.3124909288061,12.083284953850146,78.98240474132561,12.083284953850146,14.312490928806096,0.0,0.0,0.0,14.312490928806099,-3.552713678800501e-15,0.0,0.0,49.946405767299204,0.0,-0.0,-0.0,0.0,0.0,-0.0,49.946405767299204,18.3124909288061,0.0,-0.0,-0.0,0.0,-0.0,0.0,18.3124909288061,12.083284953850146,-0.0,0.0,0.0,12.083284953850146,0.0,-0.0,0.0,78.98240474132561,0.0,0.0,-0.0,0.0,0.0,-0.0,78.98240474132561,12.083284953850146,0.0,0.0,0.0,0.0,0.0,0.0,12.083284953850146,1.0,1.0,0.0,-0.0,-0.0,-0.0,-0.0,0.0,-0.0,-0.0,0.0,1.0,14.312490928806096,0.0,0.0,49.946405767299204,18.3124909288061,0.0,12.083284953850146,0.0,0.0,78.98240474132561,12.083284953850146,0.0,1.0,0.0,1.0,0.0,1.0,0.0,204.8473965861816,146.00577527593384,0.0,0.0,335.3473240142451,146.00577521020077,0.0,0.0,2494.642261542526,6238.219098442324,0.0,0.0,204.8473965855028,146.00577499201506,0.0,0.0,335.3473240144409,178.38043057471384,0.0,0.0,2494.6422615424635,6238.219937877278,0.0,0.0,211.72249215408294,146.0057704199715,0.0,0.0,335.3473240175712,146.00577527564587,0.0,0.0,2494.6422615425595,6249.146209721735,0.0,0.0,236.72190949988607,146.00577252037016,0.0,0.0,347.84704289106867,146.00576612524938,0.0,0.0,2494.642261542424,6238.21909844391,0.0,0.0]

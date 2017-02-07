@@ -46,7 +46,7 @@ end
 
 function compute_violations(dat, solution)
     c, A, b, con_cones, var_cones, vartypes, sense, objoffset = cbftompb(dat)
-
+    
     # will be fixed soon, should really be equal
     #if length(solution) > length(c)
     #    println("Solution is too long")
