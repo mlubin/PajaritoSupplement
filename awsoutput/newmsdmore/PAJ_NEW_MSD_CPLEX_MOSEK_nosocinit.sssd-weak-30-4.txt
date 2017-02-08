@@ -1,0 +1,87 @@
+WARNING: Method definition require(Symbol) in module Base at loading.jl:345 overwritten in module ConicBenchmarkUtilities at /home/ubuntu/.julia/v0.5/Requires/src/require.jl:12.
+#SOLVERNAME# PAJ_NEW_MSD_CPLEX_MOSEK_nosocinit
+#SOLVER# Pajarito.PajaritoSolver(2,3600.0,1.0e-5,true,CPLEX.CplexSolver(Any[(:CPX_PARAM_THREADS,1),(:CPX_PARAM_TILIM,3600.0),(:CPX_PARAM_EPINT,1.0e-8),(:CPX_PARAM_EPRHS,1.0e-6),(:CPX_PARAM_SCRIND,0),(:CPX_PARAM_EPGAP,1.0e-5)]),CPLEX.CplexSolver(Any[]),0,false,true,Mosek.MosekMathProgSolverInterface.MosekSolver(Any[(:LOG,0),(:NUM_THREADS,1),(:OPTIMIZER_MAX_TIME,120.0)]),true,false,false,true,false,true,false,false,false,true,true,false,true,true,false,true,false,false,true,true,false,false,false,1.0e-10,1.0e-6,0.01,0.0001)
+#INSTANCE# sssd-weak-30-4.cbf.gz
+#TIMELIMIT# 3600.0
+
+Transforming original data......Done     0.00s
+
+Creating conic model data......Done     0.00s
+
+Creating MIP model......Done     0.00s
+
+Cone types summary:
+Cone       | Count    | Min dim  | Max dim 
+       SOC |       12 |        3 |        3
+
+Solving conic relaxation......Done     0.01s
+ - Relaxation status    =        Optimal
+ - Relaxation objective =  104042.763574
+
+Creating conic subproblem model......Done
+
+Starting MIP-solver-driven outer approximation algorithm
+
+Pajarito MICP solve summary:
+ - Total time (s)       =       3.19e+00
+ - Status               =        Optimal
+ - Best feasible obj.   =  +2.641271e+05
+ - OA obj. bound        =  +2.641244e+05
+ - Relative opt. gap    =      9.990e-06
+
+Timers (s):
+ - Setup                =   1.61e-02
+ -- Transform data      =   1.72e-04
+ -- Create conic data   =   7.14e-05
+ -- Create MIP data     =   7.11e-04
+ -- Load/solve relax    =   1.39e-02
+ - MIP-driven algorithm =   3.17e+00
+ -- Solve conic model   =   2.99e-02
+
+Counters:
+ - Lazy callback        =    61
+ -- Feasible soln       =    12
+ -- Integer repeat      =    24
+ -- Conic statuses      =    25
+ --- Infeasible         =     0
+ --- Optimal            =    25
+ --- Suboptimal         =     0
+ --- UserLimit          =     0
+ --- ConicFailure       =     0
+ --- Other status       =     0
+ -- No viol. dual cut   =    24
+ -- No viol. prim. cut  =     0
+ - Heuristic callback   = 10797
+ -- Feasible added      =    10
+ - Incumbent callback   =    32
+ -- Feasible accepted   =    16
+ - Dual cuts            =   167
+ -- Relaxation          =    24
+ -- Full viol.          =     0
+ -- Full nonviol.       =     0
+ -- Disagg. viol        =   143
+ -- Disagg. nonviol     =     0
+ -- Poorly conditioned  =     0
+ - Primal cuts          =    37
+ -- Full viol.          =    37
+ -- Full nonviol.       =     0
+ -- Disagg. viol        =     0
+ -- Disagg. nonviol     =     0
+ -- Poorly conditioned  =     0
+
+Max absolute primal infeasibilities by cone:
+ - Constraint linear    =   8.88e-16
+ - Constraint SOC       =   0.00e+00
+ - Constraint RSOC      =   0.00e+00
+ - Variable linear      =   0.00e+00
+ - Variable SOC         =   0.00e+00
+ - Variable RSOC        =   0.00e+00
+
+WARNING: For the MIP-solver-driven algorithm, optimality tolerance must be specified as MIP solver option, not Pajarito option
+WARNING: For the MIP-solver-driven algorithm, optimality tolerance must be specified as MIP solver option, not Pajarito option
+#STATUS# Optimal
+#OBJVAL# 264127.08643760404
+#OBJBOUND# 264124.447733881
+#TIMESOLVER# 3.1895689964294434
+#TIMEALL# 3.220667839050293
+#SOLUTION# [0.0,0.0,1.0,0.0,1.0,-0.0,-0.0,0.0,1.0,-0.0,-0.0,0.0,1.0,-0.0,-0.0,-0.0,1.0,-0.0,-0.0,-0.0,1.0,-0.0,-0.0,-0.0,0.0,-0.0,1.0,-0.0,0.0,-0.0,-0.0,1.0,-0.0,-0.0,-0.0,1.0,0.0,1.0,0.0,0.0,-0.0,-0.0,-0.0,1.0,1.0,-0.0,-0.0,0.0,0.0,0.0,1.0,0.0,-0.0,1.0,-0.0,-0.0,1.0,-0.0,-0.0,-0.0,-0.0,-0.0,-0.0,1.0,1.0,-0.0,-0.0,-0.0,-0.0,-0.0,-0.0,1.0,-0.0,-0.0,-0.0,1.0,-0.0,-0.0,1.0,0.0,-0.0,1.0,-0.0,0.0,-0.0,-0.0,-0.0,1.0,0.0,1.0,0.0,0.0,1.0,-0.0,-0.0,0.0,-0.0,1.0,-0.0,0.0,-0.0,-0.0,1.0,-0.0,0.0,-0.0,1.0,0.0,0.0,-0.0,-0.0,1.0,0.0,0.0,1.0,0.0,-0.0,1.0,-0.0,0.0,0.0,0.0,1.0,0.0,0.0,1.0,0.0,0.0,1.0,0.0,0.0,1.0,0.689857192995522,0.614174980705284,0.7006647679523598,0.7090020170716693,0.0,0.0,0.40823469478718044,0.0,0.0,0.3804889328064893,0.0,0.0,0.4119954713379126,0.0,0.0,0.4148631853879073,0.0,0.344928596497761,0.344928596497761,0.14081124910417075,0.307087490352642,0.307087490352642,0.11684302394939731,0.3503323839761799,0.3503323839761799,0.1443346483072236,0.35450100853583466,0.35450100853583466,0.14706941584188105,1.689857192995522,1.689857192995522,1.689857192995522,1.6141749807052839,1.6141749807052839,1.6141749807052839,1.7006647679523597,1.7006647679523597,1.7006647679523597,1.7090020170716693,1.7090020170716693,1.7090020170716693,0.689857192995522,0.689857192995522,0.689857192995522,0.614174980705284,0.614174980705284,0.614174980705284,0.7006647679523598,0.7006647679523598,0.7006647679523598,0.7090020170716693,0.7090020170716693,0.7090020170716693]
