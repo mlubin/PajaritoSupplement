@@ -1,0 +1,101 @@
+WARNING: Method definition require(Symbol) in module Base at loading.jl:345 overwritten in module ConicBenchmarkUtilities at /home/ubuntu/.julia/v0.5/Requires/src/require.jl:12.
+#SOLVERNAME# PAJ_CPLEX_MOSEK_violonly
+#SOLVER# Pajarito.PajaritoSolver(3,3600.0,1.0e-5,false,CPLEX.CplexSolver(Any[(:CPX_PARAM_THREADS,1),(:CPX_PARAM_TILIM,3600.0),(:CPX_PARAM_EPINT,1.0e-8),(:CPX_PARAM_EPRHS,1.0e-6),(:CPX_PARAM_SCRIND,0),(:CPX_PARAM_EPGAP,0.0)]),MathProgBase.DefaultMIPSolver(),0,false,true,Mosek.MosekMathProgSolverInterface.MosekSolver(Any[(:LOG,0),(:NUM_THREADS,1),(:OPTIMIZER_MAX_TIME,120.0)]),true,false,false,true,true,false,true,false,true,true,true,true,false,true,true,false,false,true,1.0e-10,1.0e-6)
+#INSTANCE# clay0304m.cbf.gz
+#TIMELIMIT# 3600.0
+
+Cone types summary:
+Cone                   | Count    | Min dim  | Max dim 
+          Second order |       96 |        3 |        3
+
+Transforming original data......Done     0.00s
+
+Creating conic model data......Done     0.00s
+
+Creating MIP model......Done     0.00s
+
+Solving conic relaxation......Done     0.01s
+ - Relaxation status    =        Optimal
+ - Relaxation objective =       0.000007
+
+Creating conic subproblem model......Done     0.00s
+
+Starting iterative outer approximation algorithm
+
+Iter | Best obj       | OA obj         | Rel gap     | Time (s)   
+   1 |           +Inf |  +6.545000e+03 |         Inf |   8.960e-01
+
+Iter | Best obj       | OA obj         | Rel gap     | Time (s)   
+   2 |           +Inf |  +6.545000e+03 |         Inf |   1.485e+00
+
+Iter | Best obj       | OA obj         | Rel gap     | Time (s)   
+   3 |           +Inf |  +3.720987e+04 |         Inf |   2.517e+00
+
+Iter | Best obj       | OA obj         | Rel gap     | Time (s)   
+   4 |           +Inf |  +3.804407e+04 |         Inf |   3.836e+00
+
+Iter | Best obj       | OA obj         | Rel gap     | Time (s)   
+   5 |           +Inf |  +3.930794e+04 |         Inf |   6.191e+00
+
+Iter | Best obj       | OA obj         | Rel gap     | Time (s)   
+   6 |  +4.026239e+04 |  +3.992297e+04 |   8.430e-03 |   7.971e+00
+
+Iter | Best obj       | OA obj         | Rel gap     | Time (s)   
+   7 |  +4.026239e+04 |  +4.025808e+04 |   1.070e-04 |   9.691e+00
+
+Iter | Best obj       | OA obj         | Rel gap     | Time (s)   
+   8 |  +4.026239e+04 |  +4.026239e+04 |   1.709e-08 |   1.103e+01
+
+Pajarito MICP solve summary:
+ - Total time (s)       =       1.10e+01
+ - Status               =        Optimal
+ - Best feasible obj.   =  +4.026239e+04
+ - OA obj. bound        =  +4.026239e+04
+ - Relative opt. gap    =      1.709e-08
+
+Timers (s):
+ - Setup                =   1.45e-02
+ -- Transform data      =   2.14e-04
+ -- Create conic data   =   1.13e-04
+ -- Create MIP data     =   4.39e-03
+ -- Load/solve relax    =   7.02e-03
+ - MIP-driven algorithm =   1.10e+01
+ -- Solve conic model   =   2.73e-02
+
+Counters:
+ - Lazy callback        =     0
+ -- Feasible soln       =     0
+ -- Integer repeat      =     0
+ -- Conic statuses      =     7
+ --- Infeasible         =     5
+ --- Optimal            =     2
+ --- Suboptimal         =     0
+ --- UserLimit          =     0
+ --- ConicFailure       =     0
+ --- Other status       =     0
+ -- No viol. subp. cut  =     0
+ -- No viol. prim. cut  =     0
+ - Heuristic callback   =     0
+ -- Feasible added      =     0
+ - Incumbent callback   =     0
+ -- Feasible accepted   =     0
+
+Max absolute primal infeasibilities
+ - Constraint cones:
+ -- Linear              =   0.00e+00
+ -- Second order        =   1.80e-07
+ -- Rot. second order   =   0.00e+00
+ -- Primal exponential  =   0.00e+00
+ -- Positive semidef.   =   0.00e+00
+ - Variable cones:
+ -- Linear              =   0.00e+00
+ -- Second order        =   0.00e+00
+ -- Rot. second order   =   0.00e+00
+ -- Primal exponential  =   0.00e+00
+ -- Positive semidef.   =   0.00e+00
+#STATUS# Optimal
+#OBJVAL# 40262.38821499255
+#OBJBOUND# 40262.38752672341
+#TIMESOLVER# 11.04743504524231
+#TIMEALL# 11.192371845245361
+#SOLUTION# [13.00581716296757,15.505816724276594,13.005816740308486,2.499999889889591,9.491777943249844e-7,2.5000004942254206,40.21923886516204,35.89904115960417,36.21923890917715,4.320198334530033,4.000000310840525,0.3201979773211281,40262.38821499255,29.854249757495463,16.848432697451372,14.348433172417822,16.84843321488004,49.99999887226326,9.780760110887774,14.100957866468221,13.780760141189727,-0.0,-0.0,0.0,-0.0,-0.0,1.0,-0.0,1.0,0.0,-0.0,0.0,-0.0,-0.0,0.0,0.0,1.0,1.0,0.0,1.0,0.0,1.0,0.0,-0.0,0.0,1357.020252486385,3118.8054368474864,0.0,9.670845544205722,12.416049973388477,1.0,4.629246043907236,31.370736802137476,1.0,2.5602178694759807,29.64917503398767,1.0,1883.737750272998,2089.763804893319,0.0,1553.011812511309,4775.8753927128955,0.0,1765.3477211073957,4495.535503019953,0.0,1596.2153136744441,4581.076314801143,-0.0,6.999996739750636,8.999996807210906,1.0,385.93322889344654,1517.3938772309746,-0.0,511.99770687247434,1383.8866633319844,0.0,447.72248583870436,1435.9651805246954,0.0,1250.380159474581,2597.8761220609886,9.179836707834207,13.36322148213302,10.645477838677902,12.576290451102443,8.176957032122855,12.439013005178955,1973.9336727621853,2526.393490374553,1546.9732209167873,5462.56134616606,1760.4631195332065,4878.579737615672,1594.4537662003522,4961.688349213046,6.9999938305712615,9.00000586810699,395.0560152075932,1926.589204734214,526.1563819247835,1610.1617685178849,460.99822976898747,1663.5135450215757,1577.7761342568026,3112.365711262773,29.13933704955756,5.764815399905263,1.6975072973068823,32.338376273751116,8.113571872985618,27.886427645668956,1625.0788127775827,2055.431662211878,1076.428823317787,4764.50980263531,1553.6074573995727,4497.384002621119,1460.362221478534,4581.051750957093,5.890720391242237,9.345400735192397,296.6666603895605,1603.1543996088399,477.70153971695174,1442.1299576767117,432.18324863647285,1473.3353271003614,1473.2192100071115,2642.056213579841,28.60573281830243,7.394265876632195,8.167471520880362,13.36001843142303,13.619282929121882,10.699669788505371,1735.7886776303264,2522.237120377653,1078.6520813560217,5466.322341416702,1553.0447556351226,4885.303366293454,1461.8805991532008,4965.177560696024,5.898876412516283,9.293907190151216,305.57794929232415,2011.132147614205,491.8792146760597,1667.8619604093067,445.5014198622936,1700.5096493702679]

@@ -1,0 +1,69 @@
+WARNING: Method definition require(Symbol) in module Base at loading.jl:345 overwritten in module ConicBenchmarkUtilities at /home/ubuntu/.julia/v0.5/Requires/src/require.jl:12.
+#SOLVERNAME# PAJ_CPLEX_MOSEK_subopt52
+#SOLVER# Pajarito.PajaritoSolver(3,3600.0,1.0e-5,false,CPLEX.CplexSolver(Any[(:CPX_PARAM_THREADS,1),(:CPX_PARAM_TILIM,3600.0),(:CPX_PARAM_EPINT,1.0e-8),(:CPX_PARAM_EPRHS,1.0e-6),(:CPX_PARAM_SCRIND,0),(:CPX_PARAM_EPGAP,0.0)]),CPLEX.CplexSolver(Any[(:CPX_PARAM_THREADS,1),(:CPX_PARAM_TILIM,120.0),(:CPX_PARAM_EPINT,1.0e-8),(:CPX_PARAM_EPRHS,1.0e-6),(:CPX_PARAM_SCRIND,0),(:CPX_PARAM_EPGAP,0.02)]),5,false,true,Mosek.MosekMathProgSolverInterface.MosekSolver(Any[(:LOG,0),(:NUM_THREADS,1),(:OPTIMIZER_MAX_TIME,120.0)]),true,false,false,true,true,false,true,false,true,true,true,true,false,true,false,false,false,true,1.0e-10,1.0e-6)
+#INSTANCE# uflquad-nopsc-30-150.cbf.gz
+#TIMELIMIT# 3600.0
+
+Cone types summary:
+Cone                   | Count    | Min dim  | Max dim 
+     Rot. second order |     4500 |        3 |        3
+
+Transforming original data......Done     0.02s
+
+Creating conic model data......Done     0.00s
+
+Creating MIP model......Done     0.15s
+
+Solving conic relaxation......Done     0.67s
+ - Relaxation status    =        Optimal
+ - Relaxation objective =     180.911818
+
+Creating conic subproblem model......Done     0.12s
+
+Starting iterative outer approximation algorithm
+
+Iter | Best obj       | OA obj         | Rel gap     | Time (s)   
+   1 |  +5.211196e+02 |  +3.183143e+02 |   3.892e-01 |   3.716e+01
+
+Iter | Best obj       | OA obj         | Rel gap     | Time (s)   
+   2 |  +4.681562e+02 |  +3.867969e+02 |   1.738e-01 |   1.044e+02
+
+Iter | Best obj       | OA obj         | Rel gap     | Time (s)   
+   3 |  +4.681562e+02 |  +4.309818e+02 |   7.941e-02 |   1.781e+02
+
+Iter | Best obj       | OA obj         | Rel gap     | Time (s)   
+   4 |  +4.681562e+02 |  +4.451157e+02 |   4.922e-02 |   2.633e+02
+WARNING: Not solved to optimality, status: UserLimit
+WARNING: Solution has NaN values, proceeding to next optimal MIP solve
+WARNING: Variable value not defined for v4501. Check that the model was properly solved.
+WARNING: Variable value not defined for v4502. Check that the model was properly solved.
+WARNING: Variable value not defined for v4503. Check that the model was properly solved.
+WARNING: Variable value not defined for v4504. Check that the model was properly solved.
+WARNING: Variable value not defined for v4505. Check that the model was properly solved.
+WARNING: Variable value not defined for v4506. Check that the model was properly solved.
+WARNING: Variable value not defined for v4507. Check that the model was properly solved.
+WARNING: Variable value not defined for v4508. Check that the model was properly solved.
+WARNING: Variable value not defined for v4509. Check that the model was properly solved.
+WARNING: Variable value not defined for v4510. Check that the model was properly solved.
+WARNING: Variable value not defined for v4511. Check that the model was properly solved.
+WARNING: Variable value not defined for v4512. Check that the model was properly solved.
+WARNING: Variable value not defined for v4513. Check that the model was properly solved.
+WARNING: Variable value not defined for v4514. Check that the model was properly solved.
+WARNING: Variable value not defined for v4515. Check that the model was properly solved.
+WARNING: Variable value not defined for v4516. Check that the model was properly solved.
+WARNING: Variable value not defined for v4517. Check that the model was properly solved.
+WARNING: Variable value not defined for v4518. Check that the model was properly solved.
+WARNING: Variable value not defined for v4519. Check that the model was properly solved.
+WARNING: Variable value not defined for v4520. Check that the model was properly solved.
+WARNING: Variable value not defined for v4521. Check that the model was properly solved.
+WARNING: Variable value not defined for v4522. Check that the model was properly solved.
+WARNING: Variable value not defined for v4523. Check that the model was properly solved.
+WARNING: Variable value not defined for v4524. Check that the model was properly solved.
+WARNING: Variable value not defined for v4525. Check that the model was properly solved.
+WARNING: Variable value not defined for v4526. Check that the model was properly solved.
+WARNING: Variable value not defined for v4527. Check that the model was properly solved.
+WARNING: Variable value not defined for v4528. Check that the model was properly solved.
+WARNING: Variable value not defined for v4529. Check that the model was properly solved.
+WARNING: Variable value not defined for v4530. Check that the model was properly solved.
+MOSEK error 1391: The upper bound specified is not a number (nan).
+#ERROR# Mosek.MosekError(1391,"The upper bound specified is not a number (nan).")

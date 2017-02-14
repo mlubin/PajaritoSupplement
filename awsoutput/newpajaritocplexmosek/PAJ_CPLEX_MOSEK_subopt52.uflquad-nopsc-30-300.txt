@@ -1,0 +1,57 @@
+WARNING: Method definition require(Symbol) in module Base at loading.jl:345 overwritten in module ConicBenchmarkUtilities at /home/ubuntu/.julia/v0.5/Requires/src/require.jl:12.
+#SOLVERNAME# PAJ_CPLEX_MOSEK_subopt52
+#SOLVER# Pajarito.PajaritoSolver(3,3600.0,1.0e-5,false,CPLEX.CplexSolver(Any[(:CPX_PARAM_THREADS,1),(:CPX_PARAM_TILIM,3600.0),(:CPX_PARAM_EPINT,1.0e-8),(:CPX_PARAM_EPRHS,1.0e-6),(:CPX_PARAM_SCRIND,0),(:CPX_PARAM_EPGAP,0.0)]),CPLEX.CplexSolver(Any[(:CPX_PARAM_THREADS,1),(:CPX_PARAM_TILIM,120.0),(:CPX_PARAM_EPINT,1.0e-8),(:CPX_PARAM_EPRHS,1.0e-6),(:CPX_PARAM_SCRIND,0),(:CPX_PARAM_EPGAP,0.02)]),5,false,true,Mosek.MosekMathProgSolverInterface.MosekSolver(Any[(:LOG,0),(:NUM_THREADS,1),(:OPTIMIZER_MAX_TIME,120.0)]),true,false,false,true,true,false,true,false,true,true,true,true,false,true,false,false,false,true,1.0e-10,1.0e-6)
+#INSTANCE# uflquad-nopsc-30-300.cbf.gz
+#TIMELIMIT# 3600.0
+
+Cone types summary:
+Cone                   | Count    | Min dim  | Max dim 
+     Rot. second order |     9000 |        3 |        3
+WARNING: Not solved to optimality, status: UserLimit
+WARNING: Solution has NaN values, proceeding to next optimal MIP solve
+WARNING: Variable value not defined for v9001. Check that the model was properly solved.
+WARNING: Variable value not defined for v9002. Check that the model was properly solved.
+WARNING: Variable value not defined for v9003. Check that the model was properly solved.
+WARNING: Variable value not defined for v9004. Check that the model was properly solved.
+WARNING: Variable value not defined for v9005. Check that the model was properly solved.
+WARNING: Variable value not defined for v9006. Check that the model was properly solved.
+WARNING: Variable value not defined for v9007. Check that the model was properly solved.
+WARNING: Variable value not defined for v9008. Check that the model was properly solved.
+WARNING: Variable value not defined for v9009. Check that the model was properly solved.
+WARNING: Variable value not defined for v9010. Check that the model was properly solved.
+WARNING: Variable value not defined for v9011. Check that the model was properly solved.
+WARNING: Variable value not defined for v9012. Check that the model was properly solved.
+WARNING: Variable value not defined for v9013. Check that the model was properly solved.
+WARNING: Variable value not defined for v9014. Check that the model was properly solved.
+WARNING: Variable value not defined for v9015. Check that the model was properly solved.
+WARNING: Variable value not defined for v9016. Check that the model was properly solved.
+WARNING: Variable value not defined for v9017. Check that the model was properly solved.
+WARNING: Variable value not defined for v9018. Check that the model was properly solved.
+WARNING: Variable value not defined for v9019. Check that the model was properly solved.
+WARNING: Variable value not defined for v9020. Check that the model was properly solved.
+WARNING: Variable value not defined for v9021. Check that the model was properly solved.
+WARNING: Variable value not defined for v9022. Check that the model was properly solved.
+WARNING: Variable value not defined for v9023. Check that the model was properly solved.
+WARNING: Variable value not defined for v9024. Check that the model was properly solved.
+WARNING: Variable value not defined for v9025. Check that the model was properly solved.
+WARNING: Variable value not defined for v9026. Check that the model was properly solved.
+WARNING: Variable value not defined for v9027. Check that the model was properly solved.
+WARNING: Variable value not defined for v9028. Check that the model was properly solved.
+WARNING: Variable value not defined for v9029. Check that the model was properly solved.
+WARNING: Variable value not defined for v9030. Check that the model was properly solved.
+
+Transforming original data......Done     0.04s
+
+Creating conic model data......Done     0.02s
+
+Creating MIP model......Done     0.48s
+
+Solving conic relaxation......Done     1.39s
+ - Relaxation status    =        Optimal
+ - Relaxation objective =     270.348522
+
+Creating conic subproblem model......Done     0.27s
+
+Starting iterative outer approximation algorithm
+MOSEK error 1391: The upper bound specified is not a number (nan).
+#ERROR# Mosek.MosekError(1391,"The upper bound specified is not a number (nan).")
