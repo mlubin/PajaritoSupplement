@@ -7,7 +7,7 @@ resultfiles = readdir(joinpath(pwd(), ARGS[1]))
 fd = open(joinpath(pwd(), ARGS[2]), "w")
 
 # process into a CSV file with columns:
-println(fd,"solver,instance,status,objval_reported,objbound,solvertime,totaltime,filename,objval_solution,max_linear_violation,max_soc_violation,max_socrot_violation,validator_status,validator_objval")
+println(fd,"solver,instance,status,objval_reported,objbound,solvertime,totaltime,filename,objval_solution,max_linear_violation,max_soc_violation,max_socrot_violation,max_int_violation,validator_status,validator_objval")
 
 # from instance name to file name
 function find_instance(name)
@@ -76,7 +76,14 @@ function compute_violations(dat, solution)
         end
     end
 
-    return objval, linear_violation, soc_violation, socrot_violation, exp_violation
+    int_violation = 0.0
+    for i in 1:length(vartypes)
+        if vartypes[i] == :Int || vartypes[i] == :Bin
+            int_violation = max(int_violation, abs(solution[i]-round(solution[i])))
+        end
+    end
+
+    return objval, linear_violation, soc_violation, socrot_violation, exp_violation, int_violation
 end
 
 function validate_with_conic_solver(dat, solution)
@@ -140,6 +147,7 @@ for (cnt,filename) in enumerate(resultfiles)
     soc_violation = " "
     socrot_violation = " "
     exp_violation = " "
+    int_violation = " "
     validator_status = " "
     validator_objval = " "
     solution = []
@@ -177,7 +185,7 @@ for (cnt,filename) in enumerate(resultfiles)
         instancefile = find_instance(instance)
         dat = readcbfdata(instancefile)
 
-        objval_sol, linear_violation, soc_violation, socrot_violation, exp_violation = compute_violations(dat,solution)
+        objval_sol, linear_violation, soc_violation, socrot_violation, exp_violation, int_violation = compute_violations(dat,solution)
         validator_status, validator_objval = validate_with_conic_solver(dat,solution)
     end
 
@@ -187,7 +195,7 @@ for (cnt,filename) in enumerate(resultfiles)
     # end
 
     println(fd,
-"$solver,$instance,$status,$objval,$objbound,$solvertime,$totaltime,$(basename(filename)),$objval_sol,$linear_violation,$soc_violation,$socrot_violation,$validator_status,$validator_objval")
+"$solver,$instance,$status,$objval,$objbound,$solvertime,$totaltime,$(basename(filename)),$objval_sol,$linear_violation,$soc_violation,$socrot_violation,$int_violation,$validator_status,$validator_objval")
 end
 
 close(fd)
