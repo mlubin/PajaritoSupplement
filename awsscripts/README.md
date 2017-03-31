@@ -116,10 +116,6 @@ python get_s3_files.py nnnnxxxx ../output/xxxx
 cd ..
 julia results_scripts/process.jl output/xxxx results/xxxx.csv
 ```
-where `nnnn` is your name (you need a unique bucket name that will not conflict with any other bucket name on Amazon S3), and `xxxx` is one of the following:
-* `pajaritooptions` - runs Pajarito under various options, with CBC and MOSEK
-* `opensource` - runs Pajarito under default options, with CBC and ECOS or CIP, and the Bonmin solvers
-* `noncommercial` - runs the non-commercial (SCIP) tests
-* `commercial` - runs the commercial (Gurobi and MOSEK MISOCP) tests
+where `nnnn` is your name (you need a unique bucket name that will not conflict with any other bucket name on Amazon S3), and `xxxx` is one of the jobs.
 
 Results folders will be downloaded to the `output` folder. Processed results csv files will be saved in the `results` folder.
