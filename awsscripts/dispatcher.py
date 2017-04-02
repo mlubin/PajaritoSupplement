@@ -8,7 +8,7 @@ import time
 import cloud_setup
 
 # Change this AMI name to whatever AMI you have set up to run the computational tests
-DEFAULT_AMI_NAME = "ami-42d42b54"
+DEFAULT_AMI_NAME = "ami-d6b336c0"
 
 
 def create_instances(job, tags, instance_types, verbose=True):
@@ -164,17 +164,15 @@ def dispatch_and_run(job, tags, cmds, commands, verbose=True):
         # Make a shell script to run the command and then save the results
         runner_path = "runner_%s.sh" % tag
         with open(runner_path, "w") as f:
-            # f.write("cd ~/.julia/v0.5/Pajarito; git fetch; git checkout 8b005e040e310e85bf4be2dff28d8fab8d278c5c")
-            f.write("cd ~/.julia/v0.5/Pajarito; git checkout master; git pull")
-            f.write("\n")
-            # f.write("cd ~/.julia/v0.5/Mosek; git fetch; git checkout d396fe450334655aaaf9abf27e126e5198afad40")
-            f.write("cd ~/.julia/v0.5/Mosek; git checkout master; git pull")
-            f.write("\n")
+            # f.write("cd ~/.julia/v0.5/Pajarito; git checkout master; git pull")
+            # f.write("\n")
+            # f.write("cd ~/.julia/v0.5/Mosek; git checkout master; git pull")
+            # f.write("\n")
             f.write("cd ~/PajaritoSupplement; git pull; mkdir output")
             f.write("\n")
             f.write("export TAG=%s" % tag)  # Inject tag as environment var
             f.write("\n")
-            f.write("~/julia-3c9d75391c/bin/julia scripts/runmeta.jl %s" % command)
+            f.write("~/julia-6445c82d00/bin/julia scripts/runmeta.jl %s" % command)
             f.write("\n")
             f.write("cd ~/PajaritoSupplement/awsscripts; python2 save_results.py %s %s" % (job, tag))
 
