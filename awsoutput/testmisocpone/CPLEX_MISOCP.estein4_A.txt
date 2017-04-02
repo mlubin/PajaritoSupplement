@@ -1,0 +1,50 @@
+Tried aggregator 2 times.
+MIQCP Presolve eliminated 78 rows and 20 columns.
+Aggregator did 8 substitutions.
+Reduced MIQCP has 22 rows, 39 columns, and 54 nonzeros.
+Reduced MIQCP has 4 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Reduced MIQCP has 9 quadratic constraints.
+Presolve time = 0.00 sec. (0.11 ticks)
+Probing time = 0.00 sec. (0.00 ticks)
+MIP emphasis: balance optimality and feasibility.
+MIP search method: dynamic search.
+Parallel mode: none, using 1 thread.
+Root relaxation solution time = 0.00 sec. (0.02 ticks)
+
+        Nodes                                         Cuts/
+   Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
+
+      0     0        0.0000     0                      0.0000        0         
+      0     0        0.0000     0                     Cone: 8        7         
+      0     0        0.0000     2                    Cone: 16       13         
+      0     0        0.0000     4                    Cone: 23       18         
+      0     0        0.0000     4                    Cone: 29       22         
+      0     0        0.0000     4                    Cone: 35       28         
+      0     0        0.0000     4                    Cone: 36       29         
+      0     0        0.0000     4                      0.0000       29         
+*     0+    0                            0.9266        0.0000           100.00%
+      0     0        0.0672     4        0.9266      Fract: 1       42   92.75%
+*     0+    0                            0.8014        0.0672            91.62%
+      0     0        0.1495     4        0.8014       Cuts: 7       48   81.35%
+      0     2        0.1531     4        0.8014        0.1560       48   80.53%
+Elapsed time = 0.01 sec. (6.69 ticks, tree = 0.01 MB, solutions = 5)
+#SOLVERNAME# CPLEX_MISOCP
+#SOLVER# CPLEX.CplexSolver(Any[(:CPX_PARAM_THREADS,1),(:CPX_PARAM_TILIM,300.0),(:CPX_PARAM_SCRIND,1),(:CPX_PARAM_EPGAP,1.0e-5)])
+#INSTANCE# estein4_A.cbf.gz
+#TIMELIMIT# 300.0
+#STATUS# Optimal
+#OBJVAL# 0.8013654898906748
+#OBJBOUND# 0.8013654898906748
+#TIMESOLVER# 0.017537832260131836
+#TIMEALL# 1.2484421730041504
+#SOLUTION# [0.6604793940572999,0.38354546769810505,0.41827548380015483,0.4978955147849001,0.19212159096349762,0.15790960594270007,0.10943153230189497,0.493351,0.4001135161998452,-0.004918514784900088,0.493351,-0.25447938832565214,0.2628565301525381,0.14901297368770905,-0.012275477738350932,0.1485064831760996,0.08302907870211479,0.00683260800241442,-0.08274746474546227,0.493351,0.24903651863622744,-0.19709751204086898,0.493351,-0.3320933872283262,0.05206253308519181,0.10936111177261656,-0.08988947680543032,-0.06228751399760442,0.2678407347647368,0.24220389652797528,-0.11435004023113612,0.19212159096349762,0.0,0.0,0.14901297368770905,0.08302907870211479,0.0,0.0,0.10936111177261656,0.2678407347647368,1.0,0.0,0.0,1.0,1.0,0.0,0.0,1.0,1.0,0.0,1.0,1.0,0.0,0.0,1.0,1.0,0.0,0.0,0.30122940903650236,0.0,0.0,0.34433802631229093,0.4103219212978852,0.0,0.0,0.38398988822738345,0.22551026523526319]
+
+Gomory fractional cuts applied:  2
+Cone linearizations applied:  47
+
+Root node processing (before b&c):
+  Real time             =    0.01 sec. (6.69 ticks)
+Sequential b&c:
+  Real time             =    0.01 sec. (3.19 ticks)
+                          ------------
+Total (root+branch&cut) =    0.02 sec. (9.88 ticks)
