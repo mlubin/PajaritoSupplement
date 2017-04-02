@@ -33,7 +33,7 @@ make SHARED=true GMP=false READLINE=false ZLIB=false OPT=opt IPOPT=true scipoptl
 # > Enter soft-link target file or directory for "lib/shared/ipopt.linux.x86_64.gnu.opt" (return if not needed):
 /home/ubuntu/.julia/v0.5/Ipopt/deps/usr
 
-# get julia packages and test
+# get julia packages
 cd
 source .bashrc
 julia
@@ -51,6 +51,10 @@ Pkg.add("GLPKMathProgInterface")
 Pkg.add("SCIP")
 Pkg.add("ConicBenchmarkUtilities")
 Pkg.add("Pajarito")
+Pkg.add("MacroTools")
+Pkg.add("Lazy")
+
+# some tests may fail on Cbc, this is expected
 Pkg.test("Pajarito")
 
 # tidy up to reduce size of AMI
