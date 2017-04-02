@@ -1,9 +1,33 @@
-ERROR: LoadError: UndefVarError: GLPKSolverMIP not defined
- in eval(::Module, ::Any) at ./boot.jl:234
- in getsolver(::String, ::Float64, ::Int64, ::Float64) at /home/ubuntu/PajaritoSupplement/scripts/run.jl:111
- in (::##3#4)(::IOStream) at /home/ubuntu/PajaritoSupplement/scripts/run.jl:141
- in open(::##3#4, ::String, ::String) at ./iostream.jl:113
- in include_from_node1(::String) at ./loading.jl:488
- in process_options(::Base.JLOptions) at ./client.jl:265
- in _start() at ./client.jl:321
-while loading /home/ubuntu/PajaritoSupplement/scripts/run.jl, in expression starting on line 138
+WARNING: MIP solver returned status Error, which Pajarito does not handle
+#SOLVERNAME# PAJ_GLPK_ECOS
+#SOLVER# Pajarito.PajaritoSolver(3,300.0,1.0e-5,false,GLPKMathProgInterface.GLPKInterfaceMIP.GLPKSolverMIP(false,Any[(:msg_lev,0),(:tol_int,1.0e-8),(:tol_bnd,1.0e-7),(:tol_obj,0.0)]),Pajarito.UnsetSolver(),0,false,true,ECOS.ECOSSolver(Any[(:verbose,false)]),true,true,false,false,true,false,false,true,false,true,true,true,true,false,true,10.0,false,false,false,true,1.0e-10,1.0e-6)
+#INSTANCE# achtziger_stolpe06-6.1flowc.cbf.gz
+#TIMELIMIT# 300.0
+
+Problem dimensions:
+       variables |       157
+     constraints |       118
+   nonzeros in A |       296
+
+Cones summary:
+Cone             | Count     | Min dim.  | Max dim. 
+    Rotated S.O. |        26 |         3 |         3
+
+Variable types:
+      continuous |       131
+         integer |        26
+
+Transforming data...               0.01s
+
+Creating conic subproblem...       0.00s
+
+Building MIP model...              0.00s
+
+Solving conic relaxation...        0.00s
+ - Relaxation status    =        Optimal
+ - Relaxation objective =       1.671660
+glp_intopt: tol_obj = 0; invalid parameter
+Error detected in file /home/ubuntu/.julia/v0.5/GLPK/deps/src/glpk-4.61/src/glpapi09.c at line 483
+
+Starting iterative algorithm
+#ERROR# GLPK.GLPKError("invalid GLPK.Prob")
