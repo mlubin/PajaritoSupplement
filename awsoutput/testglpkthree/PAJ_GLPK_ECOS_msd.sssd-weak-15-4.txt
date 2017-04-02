@@ -1,0 +1,140 @@
+WARNING: MIP solver returned status Error, which Pajarito does not handle
+#SOLVERNAME# PAJ_GLPK_ECOS_msd
+#SOLVER# Pajarito.PajaritoSolver(3,300.0,1.0e-5,true,GLPKMathProgInterface.GLPKInterfaceMIP.GLPKSolverMIP(false,Any[(:msg_lev,2),(:tol_int,1.0e-8),(:tol_bnd,1.0e-7),(:mip_gap,1.0e-5)]),Pajarito.UnsetSolver(),0,false,true,ECOS.ECOSSolver(Any[(:verbose,false)]),true,true,false,false,true,false,false,true,false,true,true,true,true,false,true,10.0,true,false,false,true,1.0e-10,1.0e-6)
+#INSTANCE# sssd-weak-15-4.cbf.gz
+#TIMELIMIT# 300.0
+
+Problem dimensions:
+       variables |       125
+     constraints |       180
+   nonzeros in A |       360
+
+Cones summary:
+Cone             | Count     | Min dim.  | Max dim. 
+    Rotated S.O. |        12 |         3 |         3
+
+Variable types:
+      continuous |        53
+         integer |        72
+
+Transforming data...               0.01s
+
+Creating conic subproblem...       0.00s
+
+Building MIP model...              0.00s
+
+Solving conic relaxation...        0.01s
+ - Relaxation status    =        Optimal
+ - Relaxation objective =  112819.584169
+      0: obj =   0.000000000e+00 inf =   2.700e+01 (27)
+    124: obj =   1.604765643e+05 inf =   1.443e-14 (0)
+*   162: obj =   1.128195842e+05 inf =   2.665e-15 (0) 1
++   162: mip =     not found yet >=              -inf        (1; 0)
+Error: basis matrix is singular to working precision (cond = 1.58e+17)
+Error: basis matrix is singular to working precision (cond = 7.44e+17)
+Constructing initial basis...
+Size of triangular part is 314
+Error: basis matrix is singular to working precision (cond = 5.97e+17)
+Error: basis matrix is singular to working precision (cond = 2.62e+16)
+Error: basis matrix is singular to working precision (cond = 5.04e+16)
+Constructing initial basis...
+Size of triangular part is 307
+Warning: basis matrix is ill-conditioned (cond = 1.39e+15)
+Warning: basis matrix is ill-conditioned (cond = 1.19e+13)
+Warning: numerical instability (dual simplex, phase I)
+Warning: basis matrix is ill-conditioned (cond = 1.19e+13)
+Warning: numerical instability (dual simplex, phase II)
+Warning: numerical instability (dual simplex, phase I)
+Warning: basis matrix is ill-conditioned (cond = 1.19e+13)
+Warning: numerical instability (dual simplex, phase II)
+Warning: numerical instability (dual simplex, phase I)
+Warning: basis matrix is ill-conditioned (cond = 1.19e+13)
+Warning: numerical instability (dual simplex, phase II)
+Warning: numerical instability (dual simplex, phase I)
+Warning: basis matrix is ill-conditioned (cond = 1.19e+13)
+Warning: numerical instability (dual simplex, phase II)
+Warning: numerical instability (dual simplex, phase I)
+Warning: basis matrix is ill-conditioned (cond = 1.19e+13)
+Warning: numerical instability (dual simplex, phase II)
+Warning: dual simplex failed due to excessive numerical instability
+Warning: basis matrix is ill-conditioned (cond = 4.62e+13)
+Error: primal simplex failed
+Constructing initial basis...
+Size of triangular part is 338
+Warning: basis matrix is ill-conditioned (cond = 2.77e+15)
+Warning: basis matrix is ill-conditioned (cond = 1.19e+13)
+Warning: numerical instability (dual simplex, phase I)
+Warning: basis matrix is ill-conditioned (cond = 1.19e+13)
+Warning: numerical instability (dual simplex, phase II)
+Warning: numerical instability (dual simplex, phase I)
+Warning: basis matrix is ill-conditioned (cond = 1.19e+13)
+Warning: numerical instability (dual simplex, phase II)
+Warning: numerical instability (dual simplex, phase I)
+Warning: basis matrix is ill-conditioned (cond = 1.19e+13)
+Warning: numerical instability (dual simplex, phase II)
+Warning: numerical instability (dual simplex, phase I)
+Warning: basis matrix is ill-conditioned (cond = 1.19e+13)
+Warning: numerical instability (dual simplex, phase II)
+Warning: numerical instability (dual simplex, phase I)
+Warning: basis matrix is ill-conditioned (cond = 1.19e+13)
+Warning: numerical instability (dual simplex, phase II)
+Warning: dual simplex failed due to excessive numerical instability
+Warning: basis matrix is ill-conditioned (cond = 4.63e+13)
+Error: primal simplex failed
+ios_driver: unable to solve current LP relaxation; glp_simplex returned 5
++   696: mip =     not found yet >=   1.247905277e+05        (84; 1)
+glp_intopt: cannot solve current LP relaxation
+
+Starting MIP-solver-driven algorithm
+WARNING: MIP solver returned status Error, which Pajarito does not handle
+
+MIP-solver-driven algorithm summary:
+ - Status               =     MIPFailure
+ - Best feasible        =           +Inf
+ - Best bound           =           -Inf
+ - Relative opt. gap    =            NaN
+ - Total time (s)       =       5.62e-01
+
+Timers (s):
+ - Setup                =   7.82e-03
+ -- Transform data      =   7.18e-03
+ -- Create conic data   =   1.61e-04
+ -- Create MIP data     =   4.86e-04
+ - Algorithm            =   5.54e-01
+ -- Solve relaxation    =   5.26e-03
+ -- Get relaxation cuts =   4.30e-05
+ -- MIP solver driving  =   5.48e-01
+ -- Solve subproblems   =   1.64e-02
+ -- Get subproblem cuts =   1.94e-01
+ -- Get primal cuts     =   7.85e-05
+
+Counters:
+ - Lazy callbacks       =     4
+ -- Integer repeats     =     1
+ -- Conic subproblems   =     3
+ --- Infeasible         =     0
+ --- Optimal            =     0
+ --- Suboptimal         =     1
+ --- UserLimit          =     2
+ --- ConicFailure       =     0
+ --- Other status       =     0
+ -- Feasible solutions  =     0
+ --- From subproblems   =     0
+ --- In lazy callback   =     0
+ - Heuristic callbacks  =    84
+ -- Solutions passed    =     0
+
+Solution returned by MIP solver
+
+Outer-approximation cuts added:
+Cone             | Relax.    | Violated  | Nonviol. 
+    Second order |        24 |        40 |         0
+
+0 numerically unstable cone duals encountered
+
+#STATUS# MIPFailure
+#OBJVAL# Inf
+#OBJBOUND# -Inf
+#TIMESOLVER# 0.5615339279174805
+#TIMEALL# 0.5618000030517578
+#SOLUTION# [NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN]

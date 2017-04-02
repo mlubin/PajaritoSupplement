@@ -1,0 +1,102 @@
+WARNING: MIP solver returned status Error, which Pajarito does not handle
+#SOLVERNAME# PAJ_GLPK_ECOS_msd
+#SOLVER# Pajarito.PajaritoSolver(3,300.0,1.0e-5,true,GLPKMathProgInterface.GLPKInterfaceMIP.GLPKSolverMIP(false,Any[(:msg_lev,2),(:tol_int,1.0e-8),(:tol_bnd,1.0e-7),(:mip_gap,1.0e-5)]),Pajarito.UnsetSolver(),0,false,true,ECOS.ECOSSolver(Any[(:verbose,false)]),true,true,false,false,true,false,false,true,false,true,true,true,true,false,true,10.0,true,false,false,true,1.0e-10,1.0e-6)
+#INSTANCE# tls2.cbf.gz
+#TIMELIMIT# 300.0
+
+Problem dimensions:
+       variables |        42
+     constraints |       115
+   nonzeros in A |       304
+
+Cones summary:
+Cone             | Count     | Min dim.  | Max dim. 
+    Second order |         4 |         3 |         3
+
+Variable types:
+      continuous |         9
+         integer |        33
+
+Transforming data...               0.00s
+
+Creating conic subproblem...       0.00s
+
+Building MIP model...              0.00s
+
+Solving conic relaxation...        0.00s
+ - Relaxation status    =        Optimal
+ - Relaxation objective =       0.718306
+      0: obj =   0.000000000e+00 inf =   3.431e+03 (16)
+     80: obj =   1.484420310e+00 inf =   2.220e-16 (0)
+*    95: obj =   7.183064763e-01 inf =   0.000e+00 (0)
++    95: mip =     not found yet >=              -inf        (1; 0)
++   271: >>>>>   1.130000000e+01 >=   1.079188440e+00  90.4% (28; 1)
++   501: >>>>>   7.300000000e+00 >=   1.636572132e+00  77.6% (39; 11)
++   593: >>>>>   6.300000000e+00 >=   1.839869595e+00  70.8% (35; 30)
++   735: >>>>>   5.300000000e+00 >=   2.318850033e+00  56.2% (29; 59)
++  1025: mip =   5.300000000e+00 >=     tree is empty   0.0% (0; 179)
+
+Starting MIP-solver-driven algorithm
+WARNING: Ignoring infeasible solution from heuristic callback
+WARNING: Ignoring infeasible solution from heuristic callback
+WARNING: Ignoring infeasible solution from heuristic callback
+WARNING: Ignoring infeasible solution from heuristic callback
+
+MIP-solver-driven algorithm summary:
+ - Status               =        Optimal
+ - Best feasible        =  +5.300000e+00
+ - Best bound           =  +5.300000e+00
+ - Relative opt. gap    =     -6.703e-16
+ - Total time (s)       =       5.62e-01
+
+Timers (s):
+ - Setup                =   6.62e-04
+ -- Transform data      =   1.61e-04
+ -- Create conic data   =   1.37e-04
+ -- Create MIP data     =   3.64e-04
+ - Algorithm            =   5.61e-01
+ -- Solve relaxation    =   1.11e-03
+ -- Get relaxation cuts =   2.54e-05
+ -- MIP solver driving  =   5.45e-01
+ -- Solve subproblems   =   2.93e-03
+ -- Get subproblem cuts =   2.59e-03
+ -- Get primal cuts     =   1.94e-01
+
+Counters:
+ - Lazy callbacks       =    20
+ -- Integer repeats     =    10
+ -- Conic subproblems   =    10
+ --- Infeasible         =     3
+ --- Optimal            =     7
+ --- Suboptimal         =     0
+ --- UserLimit          =     0
+ --- ConicFailure       =     0
+ --- Other status       =     0
+ -- Feasible solutions  =    11
+ --- From subproblems   =     7
+ --- In lazy callback   =     4
+ - Heuristic callbacks  =   114
+ -- Solutions passed    =     4
+
+Solution returned by conic solver
+
+Outer-approximation cuts added:
+Cone             | Relax.    | Violated  | Nonviol. 
+    Second order |         8 |        56 |         0
+
+0 numerically unstable cone duals encountered
+
+Distance to feasibility (negative indicates strict feasibility):
+Cone             | Variable  | Constraint
+          Linear |        NA | -5.61e-13
+    Second order |        NA | -4.68e-11
+
+Distance to integrality of integer/binary variables:
+         integer |  0.00e+00
+
+#STATUS# Optimal
+#OBJVAL# 5.299999999999996
+#OBJBOUND# 5.3
+#TIMESOLVER# 0.5616950988769531
+#TIMEALL# 0.8484921455383301
+#SOLUTION# [1.0,1.0,-0.0,1.0,0.0,-0.0,-0.0,-0.0,-0.0,-0.0,-0.0,-0.0,1.0,-0.0,-0.0,-0.0,-0.0,5.299999999999996,-0.0,-0.0,-0.0,1.0,-0.0,0.0,-0.0,-0.0,-0.0,-0.0,0.0,-0.0,-0.0,1.0,9.0,16.0,24.999999999999872,0.9999999999994389,1.0000000000001616,16.0,15.000000000026484,4.000000000024702,2.284335345977767,15.272920748195192]

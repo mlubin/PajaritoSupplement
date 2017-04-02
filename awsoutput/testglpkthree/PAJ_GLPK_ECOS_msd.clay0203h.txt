@@ -1,0 +1,92 @@
+WARNING: MIP solver returned status Error, which Pajarito does not handle
+#SOLVERNAME# PAJ_GLPK_ECOS_msd
+#SOLVER# Pajarito.PajaritoSolver(3,300.0,1.0e-5,true,GLPKMathProgInterface.GLPKInterfaceMIP.GLPKSolverMIP(false,Any[(:msg_lev,2),(:tol_int,1.0e-8),(:tol_bnd,1.0e-7),(:mip_gap,1.0e-5)]),Pajarito.UnsetSolver(),0,false,true,ECOS.ECOSSolver(Any[(:verbose,false)]),true,true,false,false,true,false,false,true,false,true,true,true,true,false,true,10.0,true,false,false,true,1.0e-10,1.0e-6)
+#INSTANCE# clay0203h.cbf.gz
+#TIMELIMIT# 300.0
+
+Problem dimensions:
+       variables |       139
+     constraints |       439
+   nonzeros in A |       817
+
+Cones summary:
+Cone             | Count     | Min dim.  | Max dim. 
+    Second order |        48 |         3 |         3
+
+Variable types:
+      continuous |       121
+         integer |        18
+
+Transforming data...               0.00s
+
+Creating conic subproblem...       0.00s
+
+Building MIP model...              0.00s
+
+Solving conic relaxation...        0.00s
+ - Relaxation status    =        Optimal
+ - Relaxation objective =      -0.000000
+      0: obj =   0.000000000e+00 inf =   5.950e+01 (12)
+Warning: basis matrix is ill-conditioned (cond = 5.42e+12)
+Warning: basis matrix is ill-conditioned (cond = 4.97e+13)
+Warning: basis matrix is ill-conditioned (cond = 2.45e+13)
+Warning: basis matrix is ill-conditioned (cond = 1.04e+13)
+    500: obj =   0.000000000e+00 inf =   5.950e+01 (12) 6
+Warning: basis matrix is ill-conditioned (cond = 1.15e+13)
+Warning: basis matrix is ill-conditioned (cond = 4.56e+12)
+Warning: basis matrix is ill-conditioned (cond = 1.64e+15)
+Error: basis matrix is singular to working precision (cond = 1.68e+17)
+
+Starting MIP-solver-driven algorithm
+WARNING: MIP solver returned status Error, which Pajarito does not handle
+
+MIP-solver-driven algorithm summary:
+ - Status               =     MIPFailure
+ - Best feasible        =           +Inf
+ - Best bound           =           -Inf
+ - Relative opt. gap    =            NaN
+ - Total time (s)       =       4.65e-02
+
+Timers (s):
+ - Setup                =   1.76e-03
+ -- Transform data      =   3.29e-04
+ -- Create conic data   =   1.83e-04
+ -- Create MIP data     =   1.25e-03
+ - Algorithm            =   4.47e-02
+ -- Solve relaxation    =   3.28e-03
+ -- Get relaxation cuts =   1.28e-04
+ -- MIP solver driving  =   4.12e-02
+ -- Solve subproblems   =   0.00e+00
+ -- Get subproblem cuts =   0.00e+00
+ -- Get primal cuts     =   0.00e+00
+
+Counters:
+ - Lazy callbacks       =     0
+ -- Integer repeats     =     0
+ -- Conic subproblems   =     0
+ --- Infeasible         =     0
+ --- Optimal            =     0
+ --- Suboptimal         =     0
+ --- UserLimit          =     0
+ --- ConicFailure       =     0
+ --- Other status       =     0
+ -- Feasible solutions  =     0
+ --- From subproblems   =     0
+ --- In lazy callback   =     0
+ - Heuristic callbacks  =     0
+ -- Solutions passed    =     0
+
+Solution returned by MIP solver
+
+Outer-approximation cuts added:
+Cone             | Relax.    | Violated  | Nonviol. 
+    Second order |        96 |         0 |         0
+
+0 numerically unstable cone duals encountered
+
+#STATUS# MIPFailure
+#OBJVAL# Inf
+#OBJBOUND# -Inf
+#TIMESOLVER# 0.0464780330657959
+#TIMEALL# 0.047749996185302734
+#SOLUTION# [NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN]
