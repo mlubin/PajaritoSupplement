@@ -1,6 +1,5 @@
 
-
-# usage: runmeta.jl SOLVERNAME TIMELIMIT MEMORYLIMIT DATAFOLDER INSTANCESET
+# Usage: runmeta.jl SOLVERNAME TIMELIMIT MEMORYLIMIT DATAFOLDER INSTANCESET
 
 solvername = ARGS[1]
 tlim = parse(Float64, ARGS[2])
@@ -8,18 +7,6 @@ mlim = parse(Int, ARGS[3])
 datafolder = ARGS[4]
 instfile = ARGS[5]
 
-# Check out special new MSD branch of Pajarito if that is the solver specified
-if startswith(solvername, "PAJ_NEW_")
-    Pkg.checkout("Pajarito", "cplexincumbent")
-elseif startswith(solvername, "PAJ_")
-    d = pwd()
-    cd(Pkg.dir("Pajarito"))
-    s = readstring(`git status`)
-    if contains(s, "cplexincumbent")
-        error("Currently on cplexincumbent branch of Pajarito - switch to correct version before running a standard Pajarito solver")
-    end
-    cd(d)
-end
 
 # Print info and all instances in the set to a META file for the solver
 fdmeta = open("output/META.$solvername.$(split(basename(instfile),'.')[1]).txt", "w")
@@ -34,6 +21,7 @@ for instancename in instancelist
 end
 println(fdmeta)
 flush(fdmeta)
+
 
 # Run each instance one by one
 # This only works on Linux because we check the memory use with Linux commands

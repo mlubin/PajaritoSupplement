@@ -1,8 +1,12 @@
+
+# Usage: run.jl SOLVERNAME TIMELIMIT DATAFOLDER INSTANCENAME
+
 using ConicBenchmarkUtilities
 using Pajarito
 using ConicNonlinearBridge
 
-# print with full precision
+
+# Print with full precision
 function vec_to_string(v)
     terms = String[]
     for x in v
@@ -12,6 +16,7 @@ function vec_to_string(v)
     end
     return string("[",join(terms,","),"]")
 end
+
 
 function solveprint(instance, solver)
     # Convert from cbf to our conic format
@@ -62,175 +67,39 @@ end
 
 
 solvermap = Dict(
-    # Baseline CBC ECOS
+    # Bonmin
+    "BONMIN_OA" =>
+    (["AmplNLWriter"], quote ConicNLPWrapper(nlp_solver=BonminNLSolver(["bonmin.algorithm=\"B-OA\"", "bonmin.time_limit=$tlim", "halt_on_ampl_error=yes", "bonmin.allowable_fraction_gap=$rgap", "bonmin.oa_log_level=1", "bonmin.bb_log_level=1"]), disaggregate_soc=false) end),
+    "BONMIN_OADIS" =>
+    (["AmplNLWriter"], quote ConicNLPWrapper(nlp_solver=BonminNLSolver(["bonmin.algorithm=\"B-OA\"", "bonmin.time_limit=$tlim", "halt_on_ampl_error=yes", "bonmin.allowable_fraction_gap=$rgap", "bonmin.oa_log_level=1", "bonmin.bb_log_level=1"]), disaggregate_soc=true) end),
+    "BONMIN_BB" =>
+    (["AmplNLWriter"], quote ConicNLPWrapper(nlp_solver=BonminNLSolver(["bonmin.algorithm=\"B-BB\"", "bonmin.time_limit=$tlim", "halt_on_ampl_error=yes", "bonmin.allowable_fraction_gap=$rgap", "bonmin.oa_log_level=1", "bonmin.bb_log_level=1"]), disaggregate_soc=false) end),
+
+    # CBC
     "PAJ_CBC_ECOS" =>
-    (["Cbc","ECOS"], quote PajaritoSolver(mip_solver=CbcSolver(logLevel=0, ratioGap=0., seconds=tlim), cont_solver=ECOSSolver(verbose=false), log_level=logl, timeout=tlim, rel_gap=rgap) end),
-    "PAJ_CBC_ECOS_subopt52" =>
-    (["Cbc","ECOS"], quote PajaritoSolver(mip_solver=CbcSolver(logLevel=0, ratioGap=0., seconds=tlim), cont_solver=ECOSSolver(verbose=false), log_level=logl, timeout=tlim, rel_gap=rgap, mip_subopt_count=5, mip_subopt_solver=CbcSolver(logLevel=0, ratioGap=0.02, seconds=120)) end),
+    (["Cbc","ECOS"], quote PajaritoSolver(mip_solver=CbcSolver(logLevel=0, integerTolerance=tol_int, primalTolerance=tol_feas, ratioGap=tol_gap, check_warmstart=false), cont_solver=ECOSSolver(verbose=false), log_level=logl, timeout=tlim, rel_gap=rgap) end),
+    "PAJ_CBC_ECOS_subopt" =>
+    (["Cbc","ECOS"], quote PajaritoSolver(mip_solver=CbcSolver(logLevel=0, integerTolerance=tol_int, primalTolerance=tol_feas, ratioGap=tol_gap, check_warmstart=false), cont_solver=ECOSSolver(verbose=false), log_level=logl, timeout=tlim, rel_gap=rgap, mip_subopt_count=5, mip_subopt_solver=CbcSolver(logLevel=0, integerTolerance=tol_int, primalTolerance=tol_feas, ratioGap=0.01, check_warmstart=false, seconds=120.)) end),
 
-    # "PAJ_CBC_MOSEK" =>
-    # (["Cbc","Mosek"], quote PajaritoSolver(mip_solver=CbcSolver(logLevel=0, ratioGap=0., seconds=tlim), cont_solver=MosekSolver(LOG=0, NUM_THREADS=1, OPTIMIZER_MAX_TIME=120.), log_level=logl, timeout=tlim, rel_gap=rgap) end),
+    # GLPK
+    "PAJ_GLPK_ECOS" =>
+    (["GLPK","ECOS"], quote PajaritoSolver(mip_solver=GLPKSolverMIP(msg_lev=GLPK.MSG_OFF, tol_int=tol_int, tol_bnd=tol_feas, tol_obj=tol_gap), cont_solver=ECOSSolver(verbose=false), log_level=logl, timeout=tlim, rel_gap=rgap) end),
+    "PAJ_GLPK_ECOS_msd" =>
+    (["GLPK","ECOS"], quote PajaritoSolver(mip_solver=GLPKSolverMIP(msg_lev=GLPK.MSG_ON, tol_int=tol_int, tol_bnd=tol_feas, tol_obj=rgap), cont_solver=ECOSSolver(verbose=false), log_level=logl, timeout=tlim, rel_gap=rgap, mip_solver_drives=true) end),
 
-    # # OPTIONS CBC ECOS
-    # "PAJ_NOPRIM_CBC_ECOS" =>
-    # (["Cbc","ECOS"], quote PajaritoSolver(mip_solver=CbcSolver(logLevel=0, ratioGap=0., seconds=tlim), cont_solver=ECOSSolver(verbose=false), log_level=logl, timeout=tlim, rel_gap=rgap, prim_cuts_assist=false) end),
-    # "PAJ_NOPASS_CBC_ECOS" =>
-    # (["Cbc","ECOS"], quote PajaritoSolver(mip_solver=CbcSolver(logLevel=0, ratioGap=0., seconds=tlim), cont_solver=ECOSSolver(verbose=false), log_level=logl, timeout=tlim, rel_gap=rgap, pass_mip_sols=false) end),
-    # "PAJ_ROUND_CBC_ECOS" =>
-    # (["Cbc","ECOS"], quote PajaritoSolver(mip_solver=CbcSolver(logLevel=0, ratioGap=0., seconds=tlim), cont_solver=ECOSSolver(verbose=false), log_level=logl, timeout=tlim, rel_gap=rgap, round_mip_sols=true) end),
-    # "PAJ_NORELAX_CBC_ECOS" =>
-    # (["Cbc","ECOS"], quote PajaritoSolver(mip_solver=CbcSolver(logLevel=0, ratioGap=0., seconds=tlim), cont_solver=ECOSSolver(verbose=false), log_level=logl, timeout=tlim, rel_gap=rgap, solve_relax=false) end),
-    # "PAJ_NODIS_CBC_ECOS" =>
-    # (["Cbc","ECOS"], quote PajaritoSolver(mip_solver=CbcSolver(logLevel=0, ratioGap=0., seconds=tlim), cont_solver=ECOSSolver(verbose=false), log_level=logl, timeout=tlim, rel_gap=rgap, soc_disagg=false) end),
-    # "PAJ_NOSOCINIT_CBC_ECOS" =>
-    # (["Cbc","ECOS"], quote PajaritoSolver(mip_solver=CbcSolver(logLevel=0, ratioGap=0., seconds=tlim), cont_solver=ECOSSolver(verbose=false), log_level=logl, timeout=tlim, rel_gap=rgap, init_soc_inf=false, init_soc_one=false) end),
-    # "PAJ_SUBOPT-2-1_CBC_ECOS" =>
-    # (["Cbc","ECOS"], quote PajaritoSolver(mip_solver=CbcSolver(logLevel=0, ratioGap=0., seconds=tlim), cont_solver=ECOSSolver(verbose=false), log_level=logl, timeout=tlim, rel_gap=rgap, mip_subopt_count=2, mip_subopt_solver=CbcSolver(logLevel=0, ratioGap=0.01, seconds=120)) end),
-    # "PAJ_SUBOPT-8-1_CBC_ECOS" =>
-    # (["Cbc","ECOS"], quote PajaritoSolver(mip_solver=CbcSolver(logLevel=0, ratioGap=0., seconds=tlim), cont_solver=ECOSSolver(verbose=false), log_level=logl, timeout=tlim, rel_gap=rgap, mip_subopt_count=8, mip_subopt_solver=CbcSolver(logLevel=0, ratioGap=0.01, seconds=120)) end),
-    # "PAJ_SUBOPT-2-10_CBC_ECOS" =>
-    # (["Cbc","ECOS"], quote PajaritoSolver(mip_solver=CbcSolver(logLevel=0, ratioGap=0., seconds=tlim), cont_solver=ECOSSolver(verbose=false), log_level=logl, timeout=tlim, rel_gap=rgap, mip_subopt_count=2, mip_subopt_solver=CbcSolver(logLevel=0, ratioGap=0.1, seconds=120)) end),
-    # "PAJ_SUBOPT-8-10_CBC_ECOS" =>
-    # (["Cbc","ECOS"], quote PajaritoSolver(mip_solver=CbcSolver(logLevel=0, ratioGap=0., seconds=tlim), cont_solver=ECOSSolver(verbose=false), log_level=logl, timeout=tlim, rel_gap=rgap, mip_subopt_count=8, mip_subopt_solver=CbcSolver(logLevel=0, ratioGap=0.1, seconds=120)) end),
-    #
-    # # OPEN-SOURCE
-    # "BONMIN_OA" =>
-    # (["AmplNLWriter"], quote ConicNLPWrapper(nlp_solver=BonminNLSolver(["bonmin.algorithm=\"B-OA\"", "bonmin.time_limit=$tlim", "halt_on_ampl_error=yes", "bonmin.allowable_fraction_gap=$rgap", "bonmin.oa_log_level=1", "bonmin.bb_log_level=1"]), disaggregate_soc=false) end),
-    # "BONMIN_OADIS" =>
-    # (["AmplNLWriter"], quote ConicNLPWrapper(nlp_solver=BonminNLSolver(["bonmin.algorithm=\"B-OA\"", "bonmin.time_limit=$tlim", "halt_on_ampl_error=yes", "bonmin.allowable_fraction_gap=$rgap", "bonmin.oa_log_level=1", "bonmin.bb_log_level=1"]), disaggregate_soc=true) end),
-    # "BONMIN_BB" =>
-    # (["AmplNLWriter"], quote ConicNLPWrapper(nlp_solver=BonminNLSolver(["bonmin.algorithm=\"B-BB\"", "bonmin.time_limit=$tlim", "halt_on_ampl_error=yes", "bonmin.allowable_fraction_gap=$rgap", "bonmin.oa_log_level=1", "bonmin.bb_log_level=1"]), disaggregate_soc=false) end),
-    #
-    # # SCIP
-    # "PAJ_SCIP_MOSEK" =>
-    # (["SCIP","Mosek"], quote PajaritoSolver(mip_solver=SCIPSolver("display/verblevel", 0, "limits/gap", 0.0, "limits/time", tlim), cont_solver=MosekSolver(LOG=0, NUM_THREADS=1, OPTIMIZER_MAX_TIME=120.), log_level=logl, timeout=tlim, rel_gap=rgap) end),
-    # "PAJ_SCIP_tols_MOSEK" =>
-    # (["SCIP","Mosek"], quote PajaritoSolver(mip_solver=SCIPSolver("display/verblevel", 0, "limits/gap", 0.0, "limits/time", tlim, "numerics/feastol", 1e-8), cont_solver=MosekSolver(LOG=0, NUM_THREADS=1, OPTIMIZER_MAX_TIME=120.), log_level=logl, timeout=tlim, rel_gap=rgap) end),
-    # "SCIP_MISOCP" =>
-    # (["SCIP"], quote ConicNLPWrapper(nlp_solver=SCIPSolver("display/verblevel", 1, "limits/gap", rgap, "limits/time", tlim), soc_as_quadratic=true, disaggregate_soc=false) end),
-    # "SCIP_MISOCPDIS" =>
-    # (["SCIP"], quote ConicNLPWrapper(nlp_solver=SCIPSolver("display/verblevel", 1, "limits/gap", rgap, "limits/time", tlim), soc_as_quadratic=true, disaggregate_soc=true) end),
+    # SCIP
+    "SCIP_MISOCP" =>
+    (["SCIP"], quote SCIPSolver("limits/gap", rgap, "limits/time", tlim) end),
+    "PAJ_SCIP_ECOS" =>
+    (["SCIP","ECOS"], quote PajaritoSolver(mip_solver=SCIPSolver("display/verblevel", 0, "limits/gap", tol_gap, "numerics/feastol", tol_feas), cont_solver=ECOSSolver(verbose=false), log_level=logl, timeout=tlim, rel_gap=rgap) end),
 
-    # Commercial MISOCP
-    # "GUROBI_MISOCP" =>
-    # (["Gurobi"], quote GurobiSolver(OutputFlag=1, Threads=1, TimeLimit=tlim, MIPGap=rgap) end),
+    # CPLEX
     "CPLEX_MISOCP" =>
-    (["CPLEX"], quote CplexSolver(CPX_PARAM_THREADS=1,CPX_PARAM_TILIM=tlim,CPX_PARAM_SCRIND=1,CPX_PARAM_EPGAP=rgap) end),
-
-    # Baseline CPLEX MOSEK
+    (["CPLEX"], quote CplexSolver(CPX_PARAM_THREADS=1, CPX_PARAM_TILIM=tlim, CPX_PARAM_SCRIND=1, CPX_PARAM_EPGAP=rgap) end),
     "PAJ_CPLEX_MOSEK" =>
-    (["CPLEX","Mosek"], quote PajaritoSolver(mip_solver=CplexSolver(CPX_PARAM_THREADS=1, CPX_PARAM_TILIM=tlim, CPX_PARAM_EPINT=1e-8, CPX_PARAM_EPRHS=1e-6, CPX_PARAM_SCRIND=0, CPX_PARAM_EPGAP=0.), cont_solver=MosekSolver(LOG=0, NUM_THREADS=1, OPTIMIZER_MAX_TIME=120.), log_level=logl, timeout=tlim, rel_gap=rgap) end),
-    "PAJ_CPLEX_MOSEK_subopt52" =>
-    (["CPLEX","Mosek"], quote PajaritoSolver(mip_solver=CplexSolver(CPX_PARAM_THREADS=1, CPX_PARAM_TILIM=tlim, CPX_PARAM_EPINT=1e-8, CPX_PARAM_EPRHS=1e-6, CPX_PARAM_SCRIND=0, CPX_PARAM_EPGAP=0.), mip_subopt_count=5, mip_subopt_solver=CplexSolver(CPX_PARAM_THREADS=1, CPX_PARAM_TILIM=120., CPX_PARAM_EPINT=1e-8, CPX_PARAM_EPRHS=1e-6, CPX_PARAM_SCRIND=0, CPX_PARAM_EPGAP=0.02), cont_solver=MosekSolver(LOG=0, NUM_THREADS=1, OPTIMIZER_MAX_TIME=120.), log_level=logl, timeout=tlim, rel_gap=rgap) end),
-    "PAJ_MSD_CPLEX_MOSEK" =>
-    (["CPLEX","Mosek"], quote PajaritoSolver(mip_solver=CplexSolver(CPX_PARAM_THREADS=1, CPX_PARAM_TILIM=tlim, CPX_PARAM_EPINT=1e-8, CPX_PARAM_EPRHS=1e-6, CPX_PARAM_SCRIND=0, CPX_PARAM_EPGAP=rgap), cont_solver=MosekSolver(LOG=0, NUM_THREADS=1, OPTIMIZER_MAX_TIME=120.), log_level=logl, timeout=tlim, rel_gap=rgap, mip_solver_drives=true) end),
-
-    # SOC abslift
-    "PAJ_CPLEX_MOSEK_noabslift" =>
-    (["CPLEX","Mosek"], quote PajaritoSolver(mip_solver=CplexSolver(CPX_PARAM_THREADS=1, CPX_PARAM_TILIM=tlim, CPX_PARAM_EPINT=1e-8, CPX_PARAM_EPRHS=1e-6, CPX_PARAM_SCRIND=0, CPX_PARAM_EPGAP=0.), cont_solver=MosekSolver(LOG=0, NUM_THREADS=1, OPTIMIZER_MAX_TIME=120.), log_level=logl, timeout=tlim, rel_gap=rgap, soc_abslift=false) end),
-    "PAJ_MSD_CPLEX_MOSEK_noabslift" =>
-    (["CPLEX","Mosek"], quote PajaritoSolver(mip_solver=CplexSolver(CPX_PARAM_THREADS=1, CPX_PARAM_TILIM=tlim, CPX_PARAM_EPINT=1e-8, CPX_PARAM_EPRHS=1e-6, CPX_PARAM_SCRIND=0, CPX_PARAM_EPGAP=rgap), cont_solver=MosekSolver(LOG=0, NUM_THREADS=1, OPTIMIZER_MAX_TIME=120.), log_level=logl, timeout=tlim, rel_gap=rgap, mip_solver_drives=true, soc_abslift=false) end),
-
-    # No scaling
-    "PAJ_CPLEX_MOSEK_noscale" =>
-    (["CPLEX","Mosek"], quote PajaritoSolver(mip_solver=CplexSolver(CPX_PARAM_THREADS=1, CPX_PARAM_TILIM=tlim, CPX_PARAM_EPINT=1e-8, CPX_PARAM_EPRHS=1e-6, CPX_PARAM_SCRIND=0, CPX_PARAM_EPGAP=0.), cont_solver=MosekSolver(LOG=0, NUM_THREADS=1, OPTIMIZER_MAX_TIME=120.), log_level=logl, timeout=tlim, rel_gap=rgap, scale_subp_cuts=false) end),
-    "PAJ_MSD_CPLEX_MOSEK_noscale" =>
-    (["CPLEX","Mosek"], quote PajaritoSolver(mip_solver=CplexSolver(CPX_PARAM_THREADS=1, CPX_PARAM_TILIM=tlim, CPX_PARAM_EPINT=1e-8, CPX_PARAM_EPRHS=1e-6, CPX_PARAM_SCRIND=0, CPX_PARAM_EPGAP=rgap), cont_solver=MosekSolver(LOG=0, NUM_THREADS=1, OPTIMIZER_MAX_TIME=120.), log_level=logl, timeout=tlim, rel_gap=rgap, mip_solver_drives=true, scale_subp_cuts=false) end),
-
-    # viol only
-    "PAJ_CPLEX_MOSEK_violonly" =>
-    (["CPLEX","Mosek"], quote PajaritoSolver(mip_solver=CplexSolver(CPX_PARAM_THREADS=1, CPX_PARAM_TILIM=tlim, CPX_PARAM_EPINT=1e-8, CPX_PARAM_EPRHS=1e-6, CPX_PARAM_SCRIND=0, CPX_PARAM_EPGAP=0.), cont_solver=MosekSolver(LOG=0, NUM_THREADS=1, OPTIMIZER_MAX_TIME=120.), log_level=logl, timeout=tlim, rel_gap=rgap, viol_cuts_only=true) end),
-    "PAJ_MSD_CPLEX_MOSEK_violonly" =>
-    (["CPLEX","Mosek"], quote PajaritoSolver(mip_solver=CplexSolver(CPX_PARAM_THREADS=1, CPX_PARAM_TILIM=tlim, CPX_PARAM_EPINT=1e-8, CPX_PARAM_EPRHS=1e-6, CPX_PARAM_SCRIND=0, CPX_PARAM_EPGAP=rgap), cont_solver=MosekSolver(LOG=0, NUM_THREADS=1, OPTIMIZER_MAX_TIME=120.), log_level=logl, timeout=tlim, rel_gap=rgap, mip_solver_drives=true, viol_cuts_only=true) end),
-
-    # Primal cuts
-    "PAJ_CPLEX_PRON" =>
-    (["CPLEX","Mosek"], quote PajaritoSolver(mip_solver=CplexSolver(CPX_PARAM_THREADS=1, CPX_PARAM_TILIM=tlim, CPX_PARAM_EPINT=1e-8, CPX_PARAM_EPRHS=1e-6, CPX_PARAM_SCRIND=0, CPX_PARAM_EPGAP=0.), cont_solver=MosekSolver(LOG=0, NUM_THREADS=1, OPTIMIZER_MAX_TIME=120.), log_level=logl, timeout=tlim, rel_gap=rgap, prim_cuts_only=true, prim_cuts_always=true, prim_cuts_assist=true) end),
-    "PAJ_MSD_CPLEX_PRON" =>
-    (["CPLEX","Mosek"], quote PajaritoSolver(mip_solver=CplexSolver(CPX_PARAM_THREADS=1, CPX_PARAM_TILIM=tlim, CPX_PARAM_EPINT=1e-8, CPX_PARAM_EPRHS=1e-6, CPX_PARAM_SCRIND=0, CPX_PARAM_EPGAP=rgap), cont_solver=MosekSolver(LOG=0, NUM_THREADS=1, OPTIMIZER_MAX_TIME=120.), log_level=logl, timeout=tlim, rel_gap=rgap, mip_solver_drives=true, prim_cuts_only=true, prim_cuts_always=true, prim_cuts_assist=true) end),
-    "PAJ_MSD_CPLEX_MOSEK_PRAL" =>
-    (["CPLEX","Mosek"], quote PajaritoSolver(mip_solver=CplexSolver(CPX_PARAM_THREADS=1, CPX_PARAM_TILIM=tlim, CPX_PARAM_EPINT=1e-8, CPX_PARAM_EPRHS=1e-6, CPX_PARAM_SCRIND=0, CPX_PARAM_EPGAP=rgap), cont_solver=MosekSolver(LOG=0, NUM_THREADS=1, OPTIMIZER_MAX_TIME=120.), log_level=logl, timeout=tlim, rel_gap=rgap, mip_solver_drives=true, prim_cuts_always=true, prim_cuts_assist=true) end),
-
-
-    # # New MSD (cplexincumbent branch)
-    # "PAJ_NEW_MSD_CPLEX_MOSEK" =>
-    # (["CPLEX","Mosek"], quote PajaritoSolver(
-    #     mip_solver=CplexSolver(CPX_PARAM_THREADS=1, CPX_PARAM_TILIM=tlim, CPX_PARAM_EPINT=1e-8, CPX_PARAM_EPRHS=1e-6, CPX_PARAM_SCRIND=0, CPX_PARAM_EPGAP=rgap),
-    #     cont_solver=MosekSolver(LOG=0, NUM_THREADS=1, OPTIMIZER_MAX_TIME=120.),
-    #     log_level=logl, timeout=tlim, rel_gap=rgap, mip_solver_drives=true
-    #     ) end),
-    # "PAJ_NEW_MSD_CPLEX_MOSEK_eprhs7" =>
-    # (["CPLEX","Mosek"], quote PajaritoSolver(
-    #     mip_solver=CplexSolver(CPX_PARAM_THREADS=1, CPX_PARAM_TILIM=tlim, CPX_PARAM_EPINT=1e-8, CPX_PARAM_EPRHS=1e-7, CPX_PARAM_SCRIND=0, CPX_PARAM_EPGAP=rgap),
-    #     cont_solver=MosekSolver(LOG=0, NUM_THREADS=1, OPTIMIZER_MAX_TIME=120.),
-    #     log_level=logl, timeout=tlim, rel_gap=rgap, mip_solver_drives=true
-    #     ) end),
-    # "PAJ_NEW_MSD_CPLEX_MOSEK_eprhs8" =>
-    # (["CPLEX","Mosek"], quote PajaritoSolver(
-    #     mip_solver=CplexSolver(CPX_PARAM_THREADS=1, CPX_PARAM_TILIM=tlim, CPX_PARAM_EPINT=1e-8, CPX_PARAM_EPRHS=1e-8, CPX_PARAM_SCRIND=0, CPX_PARAM_EPGAP=rgap),
-    #     cont_solver=MosekSolver(LOG=0, NUM_THREADS=1, OPTIMIZER_MAX_TIME=120.),
-    #     log_level=logl, timeout=tlim, rel_gap=rgap, mip_solver_drives=true
-    #     ) end),
-    # "PAJ_NEW_MSD_CPLEX_MOSEK_mosektight" =>
-    # (["CPLEX","Mosek"], quote PajaritoSolver(
-    #     mip_solver=CplexSolver(CPX_PARAM_THREADS=1, CPX_PARAM_TILIM=tlim, CPX_PARAM_EPINT=1e-8, CPX_PARAM_EPRHS=1e-6, CPX_PARAM_SCRIND=0, CPX_PARAM_EPGAP=rgap),
-    #     cont_solver=MosekSolver(LOG=0, NUM_THREADS=1, OPTIMIZER_MAX_TIME=120., INTPNT_CO_TOL_REL_GAP=1e-9),
-    #     log_level=logl, timeout=tlim, rel_gap=rgap, mip_solver_drives=true
-    #     ) end),
-    # "PAJ_NEW_MSD_CPLEX_MOSEK_noviolonly" =>
-    # (["CPLEX","Mosek"], quote PajaritoSolver(
-    #     mip_solver=CplexSolver(CPX_PARAM_THREADS=1, CPX_PARAM_TILIM=tlim, CPX_PARAM_EPINT=1e-8, CPX_PARAM_EPRHS=1e-6, CPX_PARAM_SCRIND=0, CPX_PARAM_EPGAP=rgap),
-    #     cont_solver=MosekSolver(LOG=0, NUM_THREADS=1, OPTIMIZER_MAX_TIME=120.),
-    #     log_level=logl, timeout=tlim, rel_gap=rgap, mip_solver_drives=true, viol_cuts_only=false
-    #     ) end),
-    # "PAJ_NEW_MSD_CPLEX_MOSEK_noscale" =>
-    # (["CPLEX","Mosek"], quote PajaritoSolver(
-    #     mip_solver=CplexSolver(CPX_PARAM_THREADS=1, CPX_PARAM_TILIM=tlim, CPX_PARAM_EPINT=1e-8, CPX_PARAM_EPRHS=1e-6, CPX_PARAM_SCRIND=0, CPX_PARAM_EPGAP=rgap),
-    #     cont_solver=MosekSolver(LOG=0, NUM_THREADS=1, OPTIMIZER_MAX_TIME=120.),
-    #     log_level=logl, timeout=tlim, rel_gap=rgap, mip_solver_drives=true, scale_dual_cuts=false
-    #     ) end),
-    # "PAJ_NEW_MSD_CPLEX_MOSEK_primmaxviolonly" =>
-    # (["CPLEX","Mosek"], quote PajaritoSolver(
-    #     mip_solver=CplexSolver(CPX_PARAM_THREADS=1, CPX_PARAM_TILIM=tlim, CPX_PARAM_EPINT=1e-8, CPX_PARAM_EPRHS=1e-6, CPX_PARAM_SCRIND=0, CPX_PARAM_EPGAP=rgap),
-    #     cont_solver=MosekSolver(LOG=0, NUM_THREADS=1, OPTIMIZER_MAX_TIME=120.),
-    #     log_level=logl, timeout=tlim, rel_gap=rgap, mip_solver_drives=true, prim_max_viol_only=true
-    #     ) end),
-    # "PAJ_NEW_MSD_CPLEX_MOSEK_primsocdisagg" =>
-    # (["CPLEX","Mosek"], quote PajaritoSolver(
-    #     mip_solver=CplexSolver(CPX_PARAM_THREADS=1, CPX_PARAM_TILIM=tlim, CPX_PARAM_EPINT=1e-8, CPX_PARAM_EPRHS=1e-6, CPX_PARAM_SCRIND=0, CPX_PARAM_EPGAP=rgap),
-    #     cont_solver=MosekSolver(LOG=0, NUM_THREADS=1, OPTIMIZER_MAX_TIME=120.),
-    #     log_level=logl, timeout=tlim, rel_gap=rgap, mip_solver_drives=true, prim_soc_disagg=true
-    #     ) end),
-    # "PAJ_NEW_MSD_CPLEX_MOSEK_nopass" =>
-    # (["CPLEX","Mosek"], quote PajaritoSolver(
-    #     mip_solver=CplexSolver(CPX_PARAM_THREADS=1, CPX_PARAM_TILIM=tlim, CPX_PARAM_EPINT=1e-8, CPX_PARAM_EPRHS=1e-6, CPX_PARAM_SCRIND=0, CPX_PARAM_EPGAP=rgap),
-    #     cont_solver=MosekSolver(LOG=0, NUM_THREADS=1, OPTIMIZER_MAX_TIME=120.),
-    #     log_level=logl, timeout=tlim, rel_gap=rgap, mip_solver_drives=true, pass_mip_sols=false
-    #     ) end),
-    # "PAJ_NEW_MSD_CPLEX_MOSEK_nosocinit" =>
-    # (["CPLEX","Mosek"], quote PajaritoSolver(
-    #     mip_solver=CplexSolver(CPX_PARAM_THREADS=1, CPX_PARAM_TILIM=tlim, CPX_PARAM_EPINT=1e-8, CPX_PARAM_EPRHS=1e-6, CPX_PARAM_SCRIND=0, CPX_PARAM_EPGAP=rgap),
-    #     cont_solver=MosekSolver(LOG=0, NUM_THREADS=1, OPTIMIZER_MAX_TIME=120.),
-    #     log_level=logl, timeout=tlim, rel_gap=rgap, mip_solver_drives=true, init_soc_inf=false, init_soc_one=false
-    #     ) end),
-
-
-    # # MSD options
-    # "PAJ_MSD_CPLEX_MOSEK_nosocinit" =>
-    # (["CPLEX","Mosek"], quote PajaritoSolver(mip_solver=CplexSolver(CPX_PARAM_THREADS=1,CPX_PARAM_TILIM=tlim,CPX_PARAM_EPINT=1e-8,CPX_PARAM_EPRHS=1e-6,CPX_PARAM_SCRIND=0,CPX_PARAM_EPGAP=0.), cont_solver=MosekSolver(LOG=0, NUM_THREADS=1, OPTIMIZER_MAX_TIME=120.), log_level=logl, timeout=tlim, rel_gap=rgap, mip_solver_drives=true, init_soc_inf=false, init_soc_one=false) end),
-    # "PAJ_MSD_CPLEX_MOSEK_round" =>
-    # (["CPLEX","Mosek"], quote PajaritoSolver(mip_solver=CplexSolver(CPX_PARAM_THREADS=1,CPX_PARAM_TILIM=tlim,CPX_PARAM_EPINT=1e-8,CPX_PARAM_EPRHS=1e-6,CPX_PARAM_SCRIND=0,CPX_PARAM_EPGAP=0.), cont_solver=MosekSolver(LOG=0, NUM_THREADS=1, OPTIMIZER_MAX_TIME=120.), log_level=logl, timeout=tlim, rel_gap=rgap, mip_solver_drives=true, round_mip_sols=true) end),
-    # "PAJ_MSD_CPLEX_MOSEK_violonly" =>
-    # (["CPLEX","Mosek"], quote PajaritoSolver(mip_solver=CplexSolver(CPX_PARAM_THREADS=1,CPX_PARAM_TILIM=tlim,CPX_PARAM_EPINT=1e-8,CPX_PARAM_EPRHS=1e-6,CPX_PARAM_SCRIND=0,CPX_PARAM_EPGAP=0.), cont_solver=MosekSolver(LOG=0, NUM_THREADS=1, OPTIMIZER_MAX_TIME=120.), log_level=logl, timeout=tlim, rel_gap=rgap, mip_solver_drives=true, viol_cuts_only=true) end),
-    # "PAJ_MSD_CPLEX_MOSEK_nosocinit_violonly" =>
-    # (["CPLEX","Mosek"], quote PajaritoSolver(mip_solver=CplexSolver(CPX_PARAM_THREADS=1,CPX_PARAM_TILIM=tlim,CPX_PARAM_EPINT=1e-8,CPX_PARAM_EPRHS=1e-6,CPX_PARAM_SCRIND=0,CPX_PARAM_EPGAP=0.), cont_solver=MosekSolver(LOG=0, NUM_THREADS=1, OPTIMIZER_MAX_TIME=120.), log_level=logl, timeout=tlim, rel_gap=rgap, mip_solver_drives=true, viol_cuts_only=true, init_soc_inf=false, init_soc_one=false) end),
-    #
-    # # MOSEK tols
-    # # INTPNT_CO_TOL_REL_GAP=1e-9, INTPNT_CO_TOL_DFEAS=1e-10
-    # "PAJ_CPLEX_MOSEK_tols" =>
-    # (["CPLEX","Mosek"], quote PajaritoSolver(mip_solver=CplexSolver(CPX_PARAM_THREADS=1,CPX_PARAM_TILIM=tlim,CPX_PARAM_EPINT=1e-8,CPX_PARAM_EPRHS=1e-6,CPX_PARAM_SCRIND=0,CPX_PARAM_EPGAP=0.), cont_solver=MosekSolver(LOG=0, NUM_THREADS=1, OPTIMIZER_MAX_TIME=120., INTPNT_CO_TOL_REL_GAP=1e-9), log_level=logl, timeout=tlim, rel_gap=rgap) end),
-    # "PAJ_MSD_CPLEX_MOSEK_tols" =>
-    # (["CPLEX","Mosek"], quote PajaritoSolver(mip_solver=CplexSolver(CPX_PARAM_THREADS=1,CPX_PARAM_TILIM=tlim,CPX_PARAM_EPINT=1e-8,CPX_PARAM_EPRHS=1e-6,CPX_PARAM_SCRIND=0,CPX_PARAM_EPGAP=0.), cont_solver=MosekSolver(LOG=0, NUM_THREADS=1, OPTIMIZER_MAX_TIME=120., INTPNT_CO_TOL_REL_GAP=1e-9), log_level=logl, timeout=tlim, rel_gap=rgap, mip_solver_drives=true) end),
+    (["CPLEX","Mosek"], quote PajaritoSolver(mip_solver=CplexSolver(CPX_PARAM_THREADS=1, CPX_PARAM_SCRIND=0, CPX_PARAM_EPINT=tol_int, CPX_PARAM_EPRHS=tol_feas, CPX_PARAM_EPGAP=tol_gap), cont_solver=MosekSolver(LOG=0, NUM_THREADS=1), log_level=logl, timeout=tlim, rel_gap=rgap) end),
+    "PAJ_CPLEX_MOSEK_msd" =>
+    (["CPLEX","Mosek"], quote PajaritoSolver(mip_solver=CplexSolver(CPX_PARAM_THREADS=1, CPX_PARAM_SCRIND=1, CPX_PARAM_EPINT=tol_int, CPX_PARAM_EPRHS=tol_feas, CPX_PARAM_EPGAP=rgap), cont_solver=MosekSolver(LOG=0, NUM_THREADS=1), log_level=logl, timeout=tlim, rel_gap=rgap, mip_solver_drives=true) end),
 )
 
 
@@ -243,10 +112,6 @@ function getsolver(solvername, tlim, logl, rgap)
 end
 
 
-
-# main script
-# usage: run.jl SOLVERNAME TIMELIMIT DATAFOLDER INSTANCENAME
-
 @assert length(ARGS) >= 3
 
 # Save process ID for runmeta.jl
@@ -254,8 +119,14 @@ open("mypid", "w") do fd
     print(fd, getpid())
 end
 
+# General options
 logl = 3
 rgap = 1e-5
+
+# Pajarito MIP solver options
+tol_int = 1e-8
+tol_feas = 1e-7
+tol_gap = 0.
 
 solvername = ARGS[1]
 tlim = parse(Float64, ARGS[2])
