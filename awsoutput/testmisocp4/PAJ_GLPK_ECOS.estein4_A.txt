@@ -1,0 +1,80 @@
+WARNING: MIP solver returned status Error, which Pajarito does not handle
+#SOLVERNAME# PAJ_GLPK_ECOS
+#SOLVER# Pajarito.PajaritoSolver(3,300.0,1.0e-5,false,GLPKMathProgInterface.GLPKInterfaceMIP.GLPKSolverMIP(false,Any[(:msg_lev,0),(:tol_int,1.0e-8),(:tol_bnd,1.0e-7),(:mip_gap,0.0)]),Pajarito.UnsetSolver(),0,false,true,ECOS.ECOSSolver(Any[(:verbose,false)]),true,true,false,false,true,false,false,true,false,true,true,true,true,false,true,10.0,false,false,false,true,1.0e-10,1.0e-6)
+#INSTANCE# estein4_A.cbf.gz
+#TIMELIMIT# 300.0
+
+Problem dimensions:
+       variables |        67
+     constraints |       108
+   nonzeros in A |       128
+
+Cones summary:
+Cone             | Count     | Min dim.  | Max dim. 
+    Second order |         9 |         3 |         3
+
+Variable types:
+      continuous |        58
+         integer |         9
+
+Transforming data...               0.00s
+
+Creating conic subproblem...       0.00s
+
+Building MIP model...              0.00s
+
+Solving conic relaxation...        0.00s
+ - Relaxation status    =        Optimal
+ - Relaxation objective =       0.000003
+
+Starting iterative algorithm
+WARNING: MIP solver returned status Error, which Pajarito does not handle
+
+Iterative algorithm summary:
+ - Status               =     MIPFailure
+ - Best feasible        =           +Inf
+ - Best bound           =           -Inf
+ - Relative opt. gap    =            NaN
+ - Total time (s)       =       4.24e-03
+
+Timers (s):
+ - Setup                =   4.55e-04
+ -- Transform data      =   7.48e-05
+ -- Create conic data   =   1.06e-04
+ -- Create MIP data     =   2.74e-04
+ - Algorithm            =   3.78e-03
+ -- Solve relaxation    =   1.41e-03
+ -- Get relaxation cuts =   3.65e-05
+ -- Solve MIP models    =   2.20e-03
+ -- Solve subproblems   =   0.00e+00
+ -- Get subproblem cuts =   0.00e+00
+ -- Get primal cuts     =   0.00e+00
+
+Counters:
+ - Iterations           =     1
+ -- Integer repeats     =     0
+ -- Conic subproblems   =     0
+ --- Infeasible         =     0
+ --- Optimal            =     0
+ --- Suboptimal         =     0
+ --- UserLimit          =     0
+ --- ConicFailure       =     0
+ --- Other status       =     0
+ -- Feasible solutions  =     0
+ --- From subproblems   =     0
+ --- From MIP solve     =     0
+
+Solution returned by MIP solver
+
+Outer-approximation cuts added:
+Cone             | Relax.    | Violated  | Nonviol. 
+    Second order |        18 |         0 |         0
+
+0 numerically unstable cone duals encountered
+
+#STATUS# MIPFailure
+#OBJVAL# Inf
+#OBJBOUND# -Inf
+#TIMESOLVER# 0.004238128662109375
+#TIMEALL# 0.004507780075073242
+#SOLUTION# [NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN]
