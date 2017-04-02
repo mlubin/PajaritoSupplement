@@ -10,6 +10,10 @@ instfile = ARGS[5]
 
 # Print info and all instances in the set to a META file for the solver
 fdmeta = open("output/META.$solvername.$(split(basename(instfile),'.')[1]).txt", "w")
+
+println(fdmeta, "#PKG STATUS#")
+Pkg.status(fdmeta)
+
 println(fdmeta, "#SOLVER# $solvername")
 println(fdmeta, "#TIMELIMIT# $tlim")
 println(fdmeta, "#MEMLIMIT# $mlim")
