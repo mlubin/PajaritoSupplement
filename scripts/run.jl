@@ -83,9 +83,9 @@ solvermap = Dict(
 
     # GLPK
     "PAJ_GLPK_ECOS" =>
-    (["GLPKMathProgInterface","ECOS"], quote PajaritoSolver(mip_solver=GLPKSolverMIP(msg_lev=GLPK.MSG_OFF, tol_int=tol_int, tol_bnd=tol_feas, tol_obj=tol_gap), cont_solver=ECOSSolver(verbose=false), log_level=logl, timeout=tlim, rel_gap=rgap) end),
+    (["GLPKMathProgInterface","ECOS"], quote PajaritoSolver(mip_solver=GLPKSolverMIP(msg_lev=GLPK.MSG_OFF, tol_int=tol_int, tol_bnd=tol_feas, mip_gap=tol_gap), cont_solver=ECOSSolver(verbose=false), log_level=logl, timeout=tlim, rel_gap=rgap) end),
     "PAJ_GLPK_ECOS_msd" =>
-    (["GLPKMathProgInterface","ECOS"], quote PajaritoSolver(mip_solver=GLPKSolverMIP(msg_lev=GLPK.MSG_ON, tol_int=tol_int, tol_bnd=tol_feas, tol_obj=rgap), cont_solver=ECOSSolver(verbose=false), log_level=logl, timeout=tlim, rel_gap=rgap, mip_solver_drives=true) end),
+    (["GLPKMathProgInterface","ECOS"], quote PajaritoSolver(mip_solver=GLPKSolverMIP(msg_lev=GLPK.MSG_ON, tol_int=tol_int, tol_bnd=tol_feas, mip_gap=rgap), cont_solver=ECOSSolver(verbose=false), log_level=logl, timeout=tlim, rel_gap=rgap, mip_solver_drives=true) end),
 
     # SCIP
     "SCIP_MISOCP" =>
