@@ -7,8 +7,8 @@ scp -i ~/xxx.pem cplex_studio127.linux-x86-64.bin ubuntu@ec2-xxx-xxx-xxx-xxx.com
 
 # on instance
 sudo apt-get update --yes
-sudo apt-get -y --force-yes install git python-pip python-paramiko
-sudo apt-get -y install build-essential gfortran pkg-config unzip libgmp-dev libz-dev libreadline-dev libncurses-dev
+sudo apt-get -y install build-essential libssl-dev libffi-dev python-dev gfortran pkg-config unzip libgmp-dev libz-dev libreadline-dev libncurses-dev
+sudo apt-get -y --force-yes install git python-pip python-paramiko python-boto
 
 # install julia
 wget https://julialang.s3.amazonaws.com/bin/linux/x64/0.5/julia-0.5.1-linux-x86_64.tar.gz
