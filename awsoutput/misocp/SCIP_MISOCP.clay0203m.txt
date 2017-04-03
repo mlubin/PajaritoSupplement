@@ -1,0 +1,71 @@
+presolving:
+(round 1, fast)       147 del vars, 249 del conss, 0 add conss, 240 chg bounds, 0 chg sides, 0 chg coeffs, 48 upgd conss, 0 impls, 0 clqs
+(round 2, fast)       148 del vars, 250 del conss, 0 add conss, 289 chg bounds, 0 chg sides, 0 chg coeffs, 48 upgd conss, 0 impls, 3 clqs
+(round 3, fast)       148 del vars, 250 del conss, 0 add conss, 295 chg bounds, 0 chg sides, 0 chg coeffs, 48 upgd conss, 0 impls, 3 clqs
+(round 4, exhaustive) 148 del vars, 250 del conss, 0 add conss, 295 chg bounds, 0 chg sides, 0 chg coeffs, 51 upgd conss, 0 impls, 3 clqs
+   (0.0s) probing cycle finished: starting next cycle
+presolving (5 rounds: 5 fast, 2 medium, 2 exhaustive):
+ 148 deleted vars, 250 deleted constraints, 0 added constraints, 295 tightened bounds, 0 added holes, 0 changed sides, 0 changed coefficients
+ 82 implications, 3 cliques
+presolved problem has 75 variables (15 bin, 0 int, 0 impl, 60 cont) and 99 constraints
+     48 constraints of type <soc>
+      3 constraints of type <setppc>
+     48 constraints of type <linear>
+Presolving Time: 0.01
+
+  node  | left  |LP iter|LP it/n| mem |  dualbound   | primalbound  |  gap   
+      1 |     0 |    28 |     - |1908k| 0.000000e+00 |      --      |    Inf 
+      1 |     0 |    48 |     - |2029k| 0.000000e+00 |      --      |    Inf 
+      1 |     0 |    61 |     - |2029k| 0.000000e+00 |      --      |    Inf 
+      1 |     0 |    77 |     - |2030k| 0.000000e+00 |      --      |    Inf 
+      1 |     0 |    84 |     - |2034k| 0.000000e+00 |      --      |    Inf 
+      1 |     0 |    98 |     - |2034k| 0.000000e+00 |      --      |    Inf 
+      1 |     0 |   109 |     - |2034k| 0.000000e+00 |      --      |    Inf 
+      1 |     0 |   600 |     - |2047k| 0.000000e+00 |      --      |    Inf 
+      1 |     0 |   621 |     - |2047k| 0.000000e+00 |      --      |    Inf 
+      1 |     0 |   637 |     - |2080k| 6.111111e+01 |      --      |    Inf 
+      1 |     0 |   645 |     - |2138k| 6.111111e+01 |      --      |    Inf 
+      1 |     0 |   654 |     - |2139k| 8.250000e+02 |      --      |    Inf 
+      1 |     0 |   660 |     - |2139k| 8.250000e+02 |      --      |    Inf 
+      1 |     0 |   667 |     - |2139k| 8.250000e+02 |      --      |    Inf 
+      1 |     0 |   675 |     - |2139k| 8.250000e+02 |      --      |    Inf 
+  node  | left  |LP iter|LP it/n| mem |  dualbound   | primalbound  |  gap   
+      1 |     0 |   681 |     - |2139k| 8.250000e+02 |      --      |    Inf 
+      1 |     0 |   687 |     - |2139k| 8.250000e+02 |      --      |    Inf 
+      1 |     2 |   703 |     - |2141k| 9.000000e+02 |      --      |    Inf 
+
+******************************************************************************
+This program contains Ipopt, a library for large-scale nonlinear optimization.
+ Ipopt is released as open source code under the Eclipse Public License (EPL).
+         For more information visit http://projects.coin-or.org/Ipopt
+******************************************************************************
+
+*    23 |    20 |  2418 | 101.8 |3168k| 2.200000e+03 | 5.542305e+04 |2419.23%
+*    30 |    23 |  3096 | 100.6 |3173k| 2.200000e+03 | 5.458175e+04 |2380.99%
+*    40 |    24 |  4042 |  99.1 |3248k| 2.200000e+03 | 4.173746e+04 |1797.16%
+*    62 |    32 |  6118 |  97.4 |3410k| 3.560000e+03 | 4.173746e+04 |1072.40%
+*    69 |    32 |  6857 |  98.2 |3434k| 3.760000e+03 | 4.173746e+04 |1010.04%
+*    81 |    25 |  8391 | 102.7 |3507k| 2.729869e+04 | 4.157326e+04 |  52.29%
+*    87 |    19 |  9280 | 105.8 |3516k| 3.288367e+04 | 4.157326e+04 |  26.43%
+*    90 |    16 |  9492 | 104.6 |3516k| 3.288367e+04 | 4.157326e+04 |  26.43%
+    100 |     6 | 10369 | 102.9 |3524k| 3.690152e+04 | 4.157326e+04 |  12.66%
+
+SCIP Status        : problem is solved [optimal solution found]
+Solving Time (sec) : 0.68
+Solving Nodes      : 108
+Primal Bound       : +4.15732619545543e+04 (8 solutions)
+Dual Bound         : +4.15732619545543e+04
+Gap                : 0.00 %
+  [quadratic] <quadcons>:  -<_var85_>[C]^2 +<_var86_>[C]^2 +<_var87_>[C]^2 <= 0;
+violation: right hand side is violated by 5.25720042787725e-05 (scaled: 5.25720042787725e-05)
+best solution is not feasible in original problem
+#SOLVERNAME# SCIP_MISOCP
+#SOLVER# SCIP.SCIPSolver(("limits/gap",1.0e-5,"limits/time",3600.0))
+#INSTANCE# clay0203m.cbf.gz
+#TIMELIMIT# 3600.0
+#STATUS# Optimal
+#OBJVAL# 41573.26195455435
+#OBJBOUND# 41573.26195455435
+#TIMESOLVER# 0.68
+#TIMEALL# 1.831050157546997
+#SOLUTION# [35.65105812701705,4.0,31.65105812701705,66.88209675936882,0.0,66.88209675936882,41573.26195455435,14.312491536872162,49.96354966388921,18.312491536872162,12.083285343636243,78.96538210300507,12.083285343636245,0.0,1.0,0.0,0.0,0.0,1.0,1.0,0.0,0.0,0.0,0.0,0.0,10.16021020249984,25.83978979750013,1.0,989.95494430902,5724.04505569098,0.0,3.2851255712285905,32.71487442877141,1.0,1458.2858022814307,4214.179831729679,0.0,22.852656199361846,2.1473438006381524,1.0,1101.4107176890795,4411.179961283471,0.0,10.16021020249984,0.8403657610269057,989.9549285989192,4417.645438711065,3.2851255711922533,0.3402217920968731,1458.2858023176998,5029.18040799098,12.506478644049821,12.493521355950179,1101.4107177761964,4818.680263989845,3.2851255710334755,32.714874428966525,2117.6991642839785,5107.3008357160215,23.16006893672116,12.839931063278868,1101.410717757117,4214.179831629723,11.996173965487628,2.1473438006381524,911.2856668547129,4411.17995869552,35.15963423902977,0.8403657609702329,1479.444640916001,4417.647013975799,35.65977820999029,0.34022179000970887,1101.4107177684127,5029.180407987482,11.996173965487628,13.003826034512372,911.2856668583288,4818.680263980308]

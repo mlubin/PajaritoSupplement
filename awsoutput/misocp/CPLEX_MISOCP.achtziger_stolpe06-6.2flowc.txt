@@ -1,0 +1,55 @@
+Tried aggregator 2 times.
+MIQCP Presolve eliminated 1261 rows and 631 columns.
+Aggregator did 1410 substitutions.
+Reduced MIQCP has 1825 rows, 4110 columns, and 7585 nonzeros.
+Reduced MIQCP has 630 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Reduced MIQCP has 1110 quadratic constraints.
+Presolve time = 0.02 sec. (7.23 ticks)
+Probing time = 0.00 sec. (0.22 ticks)
+MIP emphasis: balance optimality and feasibility.
+MIP search method: dynamic search.
+Parallel mode: none, using 1 thread.
+Root relaxation solution time = 0.00 sec. (1.95 ticks)
+
+        Nodes                                         Cuts/
+   Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
+
+      0     0        0.0000     0                      0.0000        0         
+      0     0        0.0000     0                     Cone: 9        1         
+      0     0        0.0000     0                    Cone: 19        3         
+      0     0        0.0000     0                    Cone: 29       17         
+      0     0        0.0000     0                    Cone: 57       37         
+      0     0        0.0000     3                   Cone: 118       63         
+      0     0        0.0000     3                   Cone: 197      146         
+      0     0       43.9737    46                     43.9737     1373         
+      0     2       43.9737    46                     43.9737     1373         
+Elapsed time = 5.06 sec. (6621.80 ticks, tree = 0.01 MB, solutions = 0)
+      3     5       44.2343    38                     44.0334     1425         
+      6     8       44.7114    36                     44.0485     1483         
+      8    10       45.3261    27                     44.0485     1526         
+     10    12       45.7477    37                     44.0485     1566         
+     13    15       46.0318    27                     44.0485     1631         
+     16    18       47.0827    34                     44.0485     1691         
+     19    21       47.3594    39                     44.0485     1753         
+     20    22       47.5249    34                     44.0485     1773         
+     22    24       47.6257    29                     44.0485     1817         
+     31    33       49.0426    23                     44.0485     2001         
+Elapsed time = 9.37 sec. (12070.90 ticks, tree = 0.01 MB, solutions = 0)
+     39    41       50.8951    15                     44.0485     2173         
+     40    42       51.2136    14                     44.0485     2192         
+     48    50       54.7205    19                     44.0485     2376         
+     52    54       55.8512    17                     44.0485     2477         
+     60    62       68.4328    13                     44.0485     2672         
+#SOLVERNAME# CPLEX_MISOCP
+#SOLVER# CPLEX.CplexSolver(Any[(:CPX_PARAM_THREADS,1),(:CPX_PARAM_TILIM,3600.0),(:CPX_PARAM_SCRIND,1),(:CPX_PARAM_EPGAP,1.0e-5)])
+#INSTANCE# achtziger_stolpe06-6.2flowc.cbf.gz
+#TIMELIMIT# 3600.0
+#ERROR# CPLEX.CplexError(3019,"CPLEX Error  3019: Failure to solve MIP subproblem.\n")
+
+Root node processing (before b&c):
+  Real time             =    5.06 sec. (6621.58 ticks)
+Sequential b&c:
+  Real time             =    9.38 sec. (11773.08 ticks)
+                          ------------
+Total (root+branch&cut) =   14.44 sec. (18394.66 ticks)
+CPLEX Error  3019: Failure to solve MIP subproblem.

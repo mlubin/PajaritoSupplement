@@ -1,0 +1,106 @@
+#SOLVERNAME# PAJ_SCIP_ECOS_subopt
+#SOLVER# Pajarito.PajaritoSolver(3,3600.0,1.0e-5,false,SCIP.SCIPSolver(("display/verblevel",0,"limits/gap",0.0,"numerics/feastol",1.0e-7)),SCIP.SCIPSolver(("display/verblevel",0,"limits/gap",0.01,"numerics/feastol",1.0e-7,"limits/time",120.0)),5,false,true,ECOS.ECOSSolver(Any[(:verbose,false)]),true,true,false,false,true,false,false,true,false,true,true,true,true,false,true,10.0,false,false,false,true,1.0e-10,1.0e-7)
+#INSTANCE# sssd-weak-15-8.cbf.gz
+#TIMELIMIT# 3600.0
+
+Problem dimensions:
+       variables |       249
+     constraints |       344
+   nonzeros in A |       720
+
+Cones summary:
+Cone             | Count     | Min dim.  | Max dim. 
+    Rotated S.O. |        24 |         3 |         3
+
+Variable types:
+      continuous |       105
+         integer |       144
+
+Transforming data...               0.01s
+
+Creating conic subproblem...       0.00s
+
+Building MIP model...              0.00s
+
+Solving conic relaxation...        0.01s
+ - Relaxation status    =        Optimal
+ - Relaxation objective =  218466.062546
+
+Starting iterative algorithm
+
+Iter. | Best feasible  | Best bound     | Rel. gap    | Time (s)   
+    1 |           +Inf |  +5.431866e+05 |         Inf |   2.611e+01
+
+Iter. | Best feasible  | Best bound     | Rel. gap    | Time (s)   
+    2 |           +Inf |  +6.110172e+05 |         Inf |   4.563e+01
+
+Iter. | Best feasible  | Best bound     | Rel. gap    | Time (s)   
+    3 |           +Inf |  +6.184634e+05 |         Inf |   6.907e+01
+
+Iter. | Best feasible  | Best bound     | Rel. gap    | Time (s)   
+    4 |           +Inf |  +6.184634e+05 |         Inf |   9.154e+01
+
+Iter. | Best feasible  | Best bound     | Rel. gap    | Time (s)   
+    5 |           +Inf |  +6.185552e+05 |         Inf |   1.332e+02
+
+signal (15): Terminated
+while loading /home/ubuntu/PajaritoSupplement/scripts/run.jl, in expression starting on line 164
+unknown function (ip: 0x7feaabe44403)
+SCIPvarChgUbLocal at /home/ubuntu/.julia/v0.5/SCIP/deps/src/CSIP-0.4.0/lib/libscipopt.so (unknown line)
+SCIPboundchgApply at /home/ubuntu/.julia/v0.5/SCIP/deps/src/CSIP-0.4.0/lib/libscipopt.so (unknown line)
+SCIPnodeAddBoundinfer at /home/ubuntu/.julia/v0.5/SCIP/deps/src/CSIP-0.4.0/lib/libscipopt.so (unknown line)
+SCIPinferVarUbCons at /home/ubuntu/.julia/v0.5/SCIP/deps/src/CSIP-0.4.0/lib/libscipopt.so (unknown line)
+unknown function (ip: 0x7feaabaa002d)
+unknown function (ip: 0x7feaabaaaa66)
+unknown function (ip: 0x7feaabab645c)
+SCIPconshdlrPropagate at /home/ubuntu/.julia/v0.5/SCIP/deps/src/CSIP-0.4.0/lib/libscipopt.so (unknown line)
+unknown function (ip: 0x7feaabe27630)
+unknown function (ip: 0x7feaabe2de98)
+SCIPsolveCIP at /home/ubuntu/.julia/v0.5/SCIP/deps/src/CSIP-0.4.0/lib/libscipopt.so (unknown line)
+SCIPsolve at /home/ubuntu/.julia/v0.5/SCIP/deps/src/CSIP-0.4.0/lib/libscipopt.so (unknown line)
+CSIPsolve at /home/ubuntu/.julia/v0.5/SCIP/deps/usr/lib/libcsip.so (unknown line)
+optimize! at /home/ubuntu/.julia/v0.5/SCIP/src/mpb_interface.jl:59
+unknown function (ip: 0x7feaac91c442)
+jl_call_method_internal at /home/centos/buildbot/slave/package_tarball64/build/src/julia_internal.h:210 [inlined]
+jl_apply_generic at /home/centos/buildbot/slave/package_tarball64/build/src/gf.c:1950
+#solve#109 at /home/ubuntu/.julia/v0.5/JuMP/src/solvers.jl:173
+unknown function (ip: 0x7feaac8fc90f)
+jl_call_method_internal at /home/centos/buildbot/slave/package_tarball64/build/src/julia_internal.h:210 [inlined]
+jl_apply_generic at /home/centos/buildbot/slave/package_tarball64/build/src/gf.c:1950
+#solve at ./<missing>:0
+solve_iterative! at /home/ubuntu/.julia/v0.5/Pajarito/src/conic_algorithm.jl:1256
+optimize! at /home/ubuntu/.julia/v0.5/Pajarito/src/conic_algorithm.jl:598
+unknown function (ip: 0x7feaac894f12)
+solveprint at /home/ubuntu/PajaritoSupplement/scripts/run.jl:33
+unknown function (ip: 0x7feaac87b426)
+jl_call_method_internal at /home/centos/buildbot/slave/package_tarball64/build/src/julia_internal.h:210 [inlined]
+jl_apply_generic at /home/centos/buildbot/slave/package_tarball64/build/src/gf.c:1950
+do_call at /home/centos/buildbot/slave/package_tarball64/build/src/interpreter.c:66
+eval at /home/centos/buildbot/slave/package_tarball64/build/src/interpreter.c:190
+eval_body at /home/centos/buildbot/slave/package_tarball64/build/src/interpreter.c:469
+eval_body at /home/centos/buildbot/slave/package_tarball64/build/src/interpreter.c:515
+jl_interpret_call at /home/centos/buildbot/slave/package_tarball64/build/src/interpreter.c:573
+jl_toplevel_eval_flex at /home/centos/buildbot/slave/package_tarball64/build/src/toplevel.c:572
+jl_parse_eval_all at /home/centos/buildbot/slave/package_tarball64/build/src/ast.c:717
+jl_load at /home/centos/buildbot/slave/package_tarball64/build/src/toplevel.c:596
+jl_load_ at /home/centos/buildbot/slave/package_tarball64/build/src/toplevel.c:605
+include_from_node1 at ./loading.jl:488
+unknown function (ip: 0x7fecbcdf5a2b)
+jl_call_method_internal at /home/centos/buildbot/slave/package_tarball64/build/src/julia_internal.h:210 [inlined]
+jl_apply_generic at /home/centos/buildbot/slave/package_tarball64/build/src/gf.c:1950
+process_options at ./client.jl:265
+_start at ./client.jl:321
+unknown function (ip: 0x7fecbce1abd8)
+jl_call_method_internal at /home/centos/buildbot/slave/package_tarball64/build/src/julia_internal.h:210 [inlined]
+jl_apply_generic at /home/centos/buildbot/slave/package_tarball64/build/src/gf.c:1950
+jl_apply at /home/centos/buildbot/slave/package_tarball64/build/ui/../src/julia.h:1392 [inlined]
+true_main at /home/centos/buildbot/slave/package_tarball64/build/ui/repl.c:123
+main at /home/centos/buildbot/slave/package_tarball64/build/ui/repl.c:243
+__libc_start_main at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
+unknown function (ip: 0x40148c)
+unknown function (ip: 0xffffffffffffffff)
+Allocations: 25524298 (Pool: 25517786; Big: 6512); GC: 42
+
+signal (11): Segmentation fault
+while loading /home/ubuntu/PajaritoSupplement/scripts/run.jl, in expression starting on line 164
+#STATUS# KilledTime

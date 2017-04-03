@@ -1,0 +1,467 @@
+#SOLVERNAME# PAJ_CPLEX_MOSEK_msd
+#SOLVER# Pajarito.PajaritoSolver(3,3600.0,1.0e-5,true,CPLEX.CplexSolver(Any[(:CPX_PARAM_THREADS,1),(:CPX_PARAM_SCRIND,1),(:CPX_PARAM_EPINT,1.0e-8),(:CPX_PARAM_EPRHS,1.0e-7),(:CPX_PARAM_EPGAP,1.0e-5)]),Pajarito.UnsetSolver(),0,false,true,Mosek.MosekMathProgSolverInterface.MosekSolver(Any[(:LOG,0),(:NUM_THREADS,1)]),true,true,false,false,true,false,false,true,false,true,true,true,true,false,true,10.0,true,false,false,true,1.0e-10,1.0e-7)
+#INSTANCE# achtziger_stolpe06-6.2flowc.cbf.gz
+#TIMELIMIT# 3600.0
+
+Problem dimensions:
+       variables |      3781
+     constraints |      2606
+   nonzeros in A |      7886
+
+Cones summary:
+Cone             | Count     | Min dim.  | Max dim. 
+    Rotated S.O. |       630 |         3 |         3
+
+Variable types:
+      continuous |      3151
+         integer |       630
+
+Transforming data...               0.01s
+
+Creating conic subproblem...       0.02s
+
+Building MIP model...              0.02s
+
+Solving conic relaxation...        0.06s
+ - Relaxation status    =        Optimal
+ - Relaxation objective =      43.973732
+
+Mixed integer rounding cuts applied:  4
+Gomory fractional cuts applied:  3
+User cuts applied:  141
+
+Root node processing (before b&c):
+  Real time             =    0.34 sec. (16.84 ticks)
+Sequential b&c:
+  Real time             =    0.01 sec. (6.88 ticks)
+                          ------------
+Total (root+branch&cut) =    0.35 sec. (23.72 ticks)
+Warning: Control callbacks may disable some MIP features.
+Tried aggregator 2 times.
+MIP Presolve eliminated 1268 rows and 0 columns.
+Aggregator did 1890 substitutions.
+Reduced MIP has 7000 rows, 3151 columns, and 27990 nonzeros.
+Reduced MIP has 630 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.01 sec. (13.36 ticks)
+Probing time = 0.00 sec. (0.53 ticks)
+MIP emphasis: balance optimality and feasibility.
+MIP search method: traditional branch-and-cut.
+Parallel mode: none, using 1 thread.
+Root relaxation solution time = 1.08 sec. (844.54 ticks)
+
+        Nodes                                         Cuts/
+   Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
+
+      0     0       43.9737    36                     43.9737     4693         
+      0     0       44.0019    35                     Cuts: 3     4805         
+      0     2       44.0019    35                     44.0019     4805         
+Elapsed time = 12.24 sec. (10075.83 ticks, tree = 0.01 MB, solutions = 0)
+      1     3       44.1162    42                     44.1225     4897         
+      4     6       44.6412    29                     44.4087     5460         
+      8    10       44.6927    39                     44.4200     5936         
+     11    13       44.7801    24                     44.4200     6346         
+     15    17       45.2410    20                     44.4200     7018         
+     21    23       45.4653    22                     44.4200     8008         
+     23    25       46.3133    22                     44.4200     8709         
+     30    32       45.7569    31                     44.4200     9138         
+     33    35       45.8713    20                     44.4200     9804         
+     54    56       47.0273    32                     44.4200    12108         
+Elapsed time = 16.40 sec. (13697.45 ticks, tree = 1.92 MB, solutions = 0)
+     80    82       48.2021    28                     44.4200    13847         
+    102   104       51.2936    19                     44.4200    17055         
+    131   133       49.5294    19                     44.4200    18669         
+    148   150       49.6728    11                     44.4200    20916         
+    170   172       51.0473     6                     44.4200    24064         
+    178   180       57.6856    21                     44.4200    28504         
+    187   189       52.5160    20                     44.4200    32558         
+    213   215       52.8769    14                     44.4200    35188         
+    222   224       54.1544     4                     44.4200    39582         
+    229   229    infeasible                           44.4200    40892         
+Elapsed time = 71.34 sec. (55599.21 ticks, tree = 11.82 MB, solutions = 0)
+    232   232       76.8896     9                     44.4200    45108         
+    234   234      107.7780    10                     44.4200    49694         
+    243   243       85.8705    15                     44.4200    53162         
+    244   242    infeasible                           44.4200    61650         
+    249   247      138.9994    11                     44.4200    67522         
+    255   251    infeasible                           44.4200   118773         
+    260   254    infeasible                           44.4200   139368         
+    280   274       82.6842    21                     44.4200   141845         
+    281   275      180.2862    12                     44.4200   148205         
+    283   277      161.1708    11                     44.4200   155717         
+Elapsed time = 184.65 sec. (130461.20 ticks, tree = 12.58 MB, solutions = 0)
+    289   283       90.8148    18                     44.4200   161768         
+    290   284       91.3565    27                     44.4200   161857         
+    296   290      111.6294    27                     44.4200   166546         
+    299   291    infeasible                           44.4200   178423         
+    300   292      107.2407    22                     44.4200   178870         
+    301   291    infeasible                           44.4200   200810         
+    306   296      111.7048    23                     44.4200   207597         
+    313   303      344.8103    10                     44.4200   215363         
+    316   306      163.8152    19                     44.4200   218400         
+    319   309      166.2467    13                     44.4200   221414         
+Elapsed time = 277.09 sec. (190420.45 ticks, tree = 14.29 MB, solutions = 0)
+    320   308    infeasible                           44.4200   235902         
+    324   312      358.9529    11                     44.4200   242416         
+    336   324      433.6677     9                     44.4200   251418         
+    344   332      218.4027    21                     44.4200   257905         
+    348   334    infeasible                           44.4200   274257         
+    354   340      989.4103    15                     44.4200   279275         
+    360   346      237.7772    15                     44.4200   283418         
+    373   357      180.2164    21                     44.4200   287971         
+    374   356    infeasible                           44.4200   292450         
+    381   363      329.2740    15                     44.4200   296302         
+Elapsed time = 418.09 sec. (282929.09 ticks, tree = 16.16 MB, solutions = 0)
+    387   367    infeasible                           44.4200   305898         
+    393   373      423.6990    15                     44.4200   312353         
+    397   377      206.7681    23                     44.4200   322941         
+    398   376    infeasible                           44.4200   339630         
+    402   380  2716939.7300     6                     44.4200   355058         
+    404   380    infeasible                           44.4200   365586         
+    408   384   134386.1843     3                     44.4200   399489         
+    410   384    infeasible                           44.4200   407855         
+    416   390   151607.6971     2                     44.4200   456495         
+    419   393    97721.1404     4                     44.4200   463005         
+Elapsed time = 518.63 sec. (345075.75 ticks, tree = 17.00 MB, solutions = 0)
+    420   394      234.5321    16                     44.4200   463018         
+    423   397  2717165.3767     4                     44.4200   476946         
+    425   399      584.9796     9                     44.4200   480786         
+    428   400    infeasible                           44.4200   487296         
+    429   401     5325.5788     3                     44.4200   491598         
+    431   401    infeasible                           44.4200   493692         
+    440   406       45.6878    23                     44.4707   494935         
+    472   438       51.3699    29                     44.4707   499661         
+    492   458       57.4671    28                     44.4707   504857         
+    512   478       63.3665    26                     44.4707   510163         
+Elapsed time = 554.66 sec. (367502.61 ticks, tree = 17.08 MB, solutions = 0)
+    520   486       62.2904    24                     44.4707   512393         
+    533   499       79.7626    26                     44.4707   517083         
+    552   518       85.7578    11                     44.4707   521146         
+    560   526      117.7168    20                     44.4707   528045         
+    566   532      108.4243    15                     44.4707   534014         
+    573   539      122.1435    22                     44.4707   538915         
+    576   540    infeasible                           44.4707   545410         
+    583   545      196.1422    25                     44.4707   551172         
+    584   544    infeasible                           44.4707   555533         
+    585   545      228.1095    36                     44.4707   564790         
+Elapsed time = 586.82 sec. (385788.19 ticks, tree = 17.24 MB, solutions = 0)
+    597   551      286.6031    21                     44.4707   569002         
+    602   554      319.5859    18                     44.4707   570670         
+    610   556      976.7052    18                     44.4707   575555         
+    619   557    infeasible                           44.4707   578207         
+    637   571       46.0107    26                     44.5194   582024         
+    640   574       47.8725    27                     44.5194   583430         
+    665   599       49.5515    30                     44.5194   588221         
+    682   616       52.3888    23                     44.5194   593087         
+    696   630       62.1221    13                     44.5194   597914         
+    705   639       72.3386     3                     44.5194   603688         
+Elapsed time = 610.01 sec. (399857.32 ticks, tree = 17.43 MB, solutions = 0)
+    706   638    infeasible                           44.5194   607951         
+    709   641      101.2713    17                     44.5194   613721         
+    713   643    infeasible                           44.5194   625454         
+    720   648    infeasible                           44.5194   634660         
+    729   655    infeasible                           44.5194   639049         
+    731   655    infeasible                           44.5194   645252         
+    736   658    infeasible                           44.5194   652403         
+    743   663    infeasible                           44.5194   664148         
+    745   663    infeasible                           44.5194   672326         
+    753   669      143.7319     9                     44.5194   681586         
+Elapsed time = 673.40 sec. (440914.95 ticks, tree = 17.48 MB, solutions = 0)
+    754   668    infeasible                           44.5194   691399         
+    757   669    infeasible                           44.5194   697217         
+    761   671    infeasible                           44.5194   716096         
+    768   674      359.3992    20                     44.5194   725557         
+    774   674    infeasible                           44.5194   745911         
+    776   674    infeasible                           44.5194   780874         
+    778   674    infeasible                           44.5194   796969         
+    782   674    infeasible                           44.5194   806333         
+    784   674    infeasible                           44.5194   823056         
+    788   674    infeasible                           44.5194   831853         
+Elapsed time = 885.78 sec. (584244.73 ticks, tree = 17.50 MB, solutions = 0)
+    790   674    infeasible                           44.5194   838147         
+    795   675    infeasible                           44.5194   850453         
+    798   676    infeasible                           44.5194   860925         
+    800   678      981.0892     6                     44.5194   860991         
+    801   677    infeasible                           44.5194   869832         
+    810   686       45.1538    29                     44.5823   871099         
+    880   756       61.2165    12                     44.5823   888203         
+    917   793       91.8400    30                     44.5823   907131         
+    935   811      359.1527    30                     44.5823   931235         
+    962   836    infeasible                           44.5823   941711         
+Elapsed time = 1033.56 sec. (679335.08 ticks, tree = 18.14 MB, solutions = 0)
+    965   837    infeasible                           44.5823   967228         
+    971   839    infeasible                           44.5823   978060         
+    978   844     1548.3555    20                     44.5823   986515         
+    981   843    infeasible                           44.5823   993762         
+    986   844    17426.7941    11                     44.5823  1025696         
+    989   843    infeasible                           44.5823  1031988         
+   1040   886       47.6853    28                     44.5973  1037871         
+   1094   940       96.7593    24                     44.5973  1058598         
+   1108   952    infeasible                           44.5973  1079458         
+   1120   964      154.9528    30                     44.5973  1093093         
+Elapsed time = 1196.04 sec. (796220.79 ticks, tree = 18.40 MB, solutions = 0)
+   1141   985      386.7561    18                     44.5973  1111928         
+   1155   991    infeasible                           44.5973  1149919         
+   1259  1079       63.1858    29                     44.6299  1165956         
+   1356  1176      125.9588    23                     44.6299  1183303         
+   1365  1185      106.7960     5                     44.6299  1205254         
+   1432  1248       69.2452    24                     44.6331  1223448         
+   1461  1275      184.7378    20                     44.6331  1244271         
+   1504  1314    infeasible                           44.6331  1261743         
+   1512  1318    infeasible                           44.6331  1280034         
+   1537  1335    infeasible                           44.6331  1291920         
+Elapsed time = 1289.68 sec. (851514.12 ticks, tree = 19.21 MB, solutions = 0)
+   1546  1336    infeasible                           44.6331  1301646         
+   1600  1390       53.0218    21                     44.6345  1306954         
+   1654  1444       94.0353    25                     44.6345  1323963         
+   1675  1465     7771.4436    15                     44.6345  1388734         
+   1677  1463    infeasible                           44.6345  1404096         
+   1759  1545       83.4902    14                     44.6347  1422211         
+   1784  1570      345.4892    20                     44.6347  1443521         
+   1802  1586    infeasible                           44.6347  1475174         
+   1821  1601    infeasible                           44.6347  1503385         
+   1829  1605    infeasible                           44.6347  1518365         
+Elapsed time = 1466.33 sec. (961483.55 ticks, tree = 19.77 MB, solutions = 0)
+   1883  1639      270.7140    22                     44.6347  1531669         
+   1914  1652      355.7272    20                     44.6347  1545226         
+   1920  1654      668.8680    18                     44.6347  1555734         
+   2000  1720       60.9536    21                     44.6347  1567448         
+   2044  1764      154.5325    29                     44.6347  1583594         
+   2088  1806      238.5161    35                     44.6347  1598162         
+   2133  1849      764.8423    23                     44.6347  1613417         
+   2150  1862    infeasible                           44.6347  1622181         
+   2159  1871       88.4282     6                     44.6347  1638353         
+   2160  1872    10333.0230    11                     44.6347  1668093         
+Elapsed time = 1586.05 sec. (1035773.39 ticks, tree = 20.32 MB, solutions = 0)
+   2161  1873    39365.5070     9                     44.6347  1686640         
+   2164  1872    infeasible                           44.6347  1696449         
+   2249  1957       65.5574    19                     44.6412  1715559         
+   2293  2001      130.9333    26                     44.6412  1733768         
+   2310  2018       99.4301    28                     44.6412  1751837         
+   2325  2027      102.3186    33                     44.6412  1769691         
+   2338  2040     1167.6793    24                     44.6412  1791797         
+   2351  2049  3303529.1573     5                     44.6412  1808883         
+   2352  2050  3321522.4699     3                     44.6412  1813868         
+   2353  2049    infeasible                           44.6412  1818209         
+Elapsed time = 1742.65 sec. (1137002.11 ticks, tree = 20.68 MB, solutions = 0)
+   2355  2047    infeasible                           44.6412  1830076         
+   2360  2052       44.8133    29                     44.6412  1830621         
+   2437  2129      107.2019    26                     44.6412  1851228         
+   2488  2174      161.4180    25                     44.6412  1867072         
+   2542  2222      271.6526    18                     44.6412  1880680         
+   2569  2247    infeasible                           44.6412  1913015         
+   2641  2315       69.6569    27                     44.6417  1926025         
+   2661  2335       92.1796    20                     44.6417  1944148         
+   2673  2347      189.3867    37                     44.6417  1961336         
+   2742  2410      278.9888    37                     44.6417  1976363         
+Elapsed time = 1832.67 sec. (1191755.12 ticks, tree = 21.34 MB, solutions = 0)
+   2764  2426    34665.0252     2                     44.6417  2004694         
+   2765  2425    infeasible                           44.6417  2019130         
+   2766  2426   682524.7014     4                     44.6417  2026783         
+   2767  2427  1368750.3371     4                     44.6417  2037126         
+   2769  2427  1370349.2278     4                     44.6417  2041321         
+   2770  2426    infeasible                           44.6417  2053290         
+   2771  2425    infeasible                           44.6417  2059747         
+   2772  2426  1713193.8600    11                     44.6417  2076550         
+   2782  2428  1717586.0865     4                     44.6417  2084068         
+   2790  2430       46.2632    38                     44.6557  2093898         
+Elapsed time = 2189.71 sec. (1426275.95 ticks, tree = 21.39 MB, solutions = 0)
+   2800  2440       47.2313    27                     44.6557  2095023         
+   2830  2470       51.1381    23                     44.6557  2099034         
+   2859  2499       79.4610    18                     44.6557  2112802         
+   2889  2529      172.8508    33                     44.6557  2126901         
+   2901  2539     5706.8457     9                     44.6557  2139784         
+   2934  2568       48.9964    23                     44.6606  2146417         
+   2986  2620       91.9901    11                     44.6606  2164990         
+   3007  2639      627.3510    24                     44.6606  2182107         
+   3019  2647    infeasible                           44.6606  2202729         
+   3030  2658       45.8450    28                     44.6644  2204082         
+Elapsed time = 2313.95 sec. (1503697.40 ticks, tree = 21.86 MB, solutions = 0)
+   3109  2737       88.0358    22                     44.6644  2222329         
+   3133  2761     6455.9879    15                     44.6644  2247766         
+   3195  2819       51.7561    31                     44.6673  2258453         
+   3233  2857      102.4603    12                     44.6673  2275727         
+   3256  2878      133.2271    23                     44.6673  2293708         
+   3290  2906     4644.5932    12                     44.6673  2312217         
+   3324  2932    infeasible                           44.6673  2328584         
+   3367  2959    infeasible                           44.6673  2344947         
+   3418  2990    infeasible                           44.6673  2363185         
+   3468  3016    infeasible                           44.6673  2400360         
+Elapsed time = 2404.67 sec. (1557643.22 ticks, tree = 22.60 MB, solutions = 0)
+   3511  3039      479.6014    22                     44.6673  2415970         
+   3540  3053       45.0675    15                     44.6676  2423850         
+   3624  3137       92.2806    25                     44.6676  2441079         
+   3677  3190      289.0572    36                     44.6676  2459323         
+   3719  3230      937.5533    34                     44.6676  2475823         
+   3730  3241     2407.1631    24                     44.6676  2486879         
+   3756  3263     5053.4305    24                     44.6676  2498895         
+   3758  3265    13373.0125    21                     44.6676  2505727         
+   3814  3317       53.3625    32                     44.6703  2517134         
+   3876  3379      118.4046    18                     44.6703  2535155         
+Elapsed time = 2472.95 sec. (1598476.92 ticks, tree = 23.36 MB, solutions = 0)
+   3907  3408      240.3858    35                     44.6703  2553954         
+   3938  3439    59521.4527    16                     44.6703  2575003         
+   3939  3440    84770.4477    15                     44.6703  2581511         
+   3940  3441      123.3566     6                     44.6703  2594551         
+   3977  3474       53.8723    29                     44.6713  2601425         
+   4000  3497       61.1493    38                     44.6713  2605805         
+   4071  3568      141.4916    15                     44.6713  2626653         
+   4089  3584    infeasible                           44.6713  2647747         
+   4100  3593      285.4612    27                     44.6713  2659427         
+   4112  3603    infeasible                           44.6713  2671079         
+Elapsed time = 2574.30 sec. (1661731.85 ticks, tree = 23.83 MB, solutions = 0)
+   4134  3623    infeasible                           44.6713  2685972         
+   4161  3650      939.9893    14                     44.6713  2698631         
+   4172  3657    infeasible                           44.6713  2706949         
+   4221  3704       65.7728    33                     44.6717  2723508         
+   4251  3734      149.1714    27                     44.6717  2741955         
+   4315  3796      274.1077    30                     44.6717  2757746         
+   4372  3841  5113421.4206    17                     44.6717  2785202         
+   4380  3845  5113694.4973    19                     44.6717  2794846         
+   4400  3861       48.7990    39                     44.6719  2805324         
+   4496  3957      106.1273    31                     44.6719  2822603         
+Elapsed time = 2652.61 sec. (1709122.37 ticks, tree = 24.56 MB, solutions = 0)
+   4548  4009   191179.9915     8                     44.6719  2857988         
+   4549  4010      158.6832     7                     44.6719  2872214         
+   4560  4017       47.5353    30                     44.6781  2888968         
+   4641  4098       96.3571    24                     44.6781  2907640         
+   4675  4132      166.1639    39                     44.6781  2924089         
+   4691  4146    infeasible                           44.6781  2944191         
+   4697  4146    infeasible                           44.6781  2953981         
+   4717  4162    infeasible                           44.6781  2968453         
+   4725  4166    infeasible                           44.6781  2991792         
+   4728  4169    15036.2299     9                     44.6781  3015978         
+Elapsed time = 2834.03 sec. (1826967.21 ticks, tree = 25.15 MB, solutions = 0)
+   4730  4171     9349.1400     6                     44.6781  3024890         
+   4798  4235       59.9189    25                     44.6817  3036590         
+   4813  4250       83.0078    20                     44.6817  3043334         
+   4843  4280     4493.3191    18                     44.6817  3064268         
+   4845  4282  5742301.5580    17                     44.6817  3068525         
+   4850  4281    infeasible                           44.6817  3086407         
+   4879  4310       50.6267    22                     44.6864  3091303         
+   4924  4355       99.9409    27                     44.6864  3110928         
+   4937  4362    infeasible                           44.6864  3130569         
+   4975  4394      504.1611    18                     44.6864  3145123         
+Elapsed time = 2913.79 sec. (1875687.82 ticks, tree = 25.62 MB, solutions = 0)
+   4986  4399     1229.1457    19                     44.6864  3155418         
+   5007  4418  2399545.5044     8                     44.6864  3166976         
+   5010  4415    infeasible                           44.6864  3176957         
+   5079  4484      100.4541    30                     44.6864  3194716         
+   5112  4517      473.7942    39                     44.6864  3214313         
+   5137  4538    infeasible                           44.6864  3227191         
+   5200  4599       66.3153    16                     44.6870  3241776         
+   5216  4613    infeasible                           44.6870  3266510         
+   5223  4620     1752.9530    22                     44.6870  3281229         
+   5233  4628    infeasible                           44.6870  3289166         
+Elapsed time = 3050.61 sec. (1962748.41 ticks, tree = 26.11 MB, solutions = 0)
+   5279  4672       57.2143    21                     44.6870  3298274         
+   5336  4729      141.7572    15                     44.6870  3316054         
+   5355  4748    11787.5989    16                     44.6870  3346744         
+   5356  4749        0.0000     3                     44.6870  3354801         
+   5357  4750   471701.3047    11                     44.6870  3370137         
+   5359  4752  1145962.0759     6                     44.6870  3374663         
+   5360  4753   161949.0811     8                     44.6870  3377032         
+   5361  4752    infeasible                           44.6870  3383465         
+   5362  4751    infeasible                           44.6870  3389880         
+   5443  4832       83.8524    18                     44.6883  3408912         
+Elapsed time = 3163.51 sec. (2034587.34 ticks, tree = 26.53 MB, solutions = 0)
+   5462  4847    infeasible                           44.6883  3425241         
+   5467  4852  1341891.9285     6                     44.6883  3431358         
+   5519  4898       70.2768    24                     44.6885  3442172         
+   5549  4928      199.6589    39                     44.6885  3459071         
+   5572  4951      758.9021    29                     44.6885  3469954         
+   5600  4979     4520.3833    12                     44.6885  3477768         
+   5603  4982    12202.5696     4                     44.6885  3491718         
+   5604  4983      153.3809     8                     44.6885  3506000         
+   5605  4984      153.5265     6                     44.6885  3550256         
+   5606  4985      153.7074     6                     44.6885  3575500         
+Elapsed time = 3273.12 sec. (2102751.31 ticks, tree = 26.85 MB, solutions = 0)
+   5607  4984    infeasible                           44.6885  3593655         
+   5613  4988       46.2881    27                     44.6927  3596796         
+   5679  5054       94.9686    19                     44.6927  3615289         
+   5702  5077     1766.9115    16                     44.6927  3632937         
+   5726  5097       49.5627    35                     44.6929  3642577         
+   5798  5169      115.1828    23                     44.6929  3659783         
+   5825  5196      979.7680    35                     44.6929  3678017         
+   5830  5199    infeasible                           44.6929  3685961         
+   5834  5199    infeasible                           44.6929  3691940         
+   5851  5212    infeasible                           44.6929  3707380         
+Elapsed time = 3358.86 sec. (2155532.24 ticks, tree = 27.33 MB, solutions = 0)
+   5852  5211    infeasible                           44.6929  3736184         
+   5924  5283       87.1739    28                     44.6958  3754642         
+   5939  5298      208.0206    36                     44.6958  3776647         
+   5946  5305      257.9324    36                     44.6958  3787192         
+   5949  5306    infeasible                           44.6958  3802206         
+   5952  5307    infeasible                           44.6958  3809522         
+   5959  5308    infeasible                           44.6958  3825346         
+   5963  5308    infeasible                           44.6958  3838780         
+   5971  5310    infeasible                           44.6958  3850626         
+   5986  5321      526.1402    33                     44.6958  3858589         
+Elapsed time = 3557.14 sec. (2289009.67 ticks, tree = 27.55 MB, solutions = 0)
+   6000  5333     4999.5873    12                     44.6958  3868093         
+
+Starting MIP-solver-driven algorithm
+WARNING: Encountering numerically unstable cone dual vectors
+WARNING: Conic solver failure: returned status Unknown
+WARNING: Conic solver failure: returned status Unknown
+
+MIP-solver-driven algorithm summary:
+ - Status               =      UserLimit
+ - Best feasible        =           +Inf
+ - Best bound           =  +4.469576e+01
+ - Relative opt. gap    =            NaN
+ - Total time (s)       =       3.60e+03
+
+Timers (s):
+ - Setup                =   4.97e-02
+ -- Transform data      =   1.09e-02
+ -- Create conic data   =   1.94e-02
+ -- Create MIP data     =   1.94e-02
+ - Algorithm            =   3.60e+03
+ -- Solve relaxation    =   6.11e-02
+ -- Get relaxation cuts =   1.83e-03
+ -- MIP solver driving  =   3.60e+03
+ -- Solve subproblems   =   6.27e+00
+ -- Get subproblem cuts =   2.51e-01
+ -- Get primal cuts     =   1.54e-03
+
+Counters:
+ - Lazy callbacks       =   111
+ -- Integer repeats     =    15
+ -- Conic subproblems   =    96
+ --- Infeasible         =     0
+ --- Optimal            =     0
+ --- Suboptimal         =     0
+ --- UserLimit          =     0
+ --- ConicFailure       =     0
+ --- Other status       =    96
+ -- Feasible solutions  =     0
+ --- From subproblems   =     0
+ --- In lazy callback   =     0
+ - Heuristic callbacks  =  5671
+ -- Solutions passed    =     0
+
+Solution returned by MIP solver
+
+Outer-approximation cuts added:
+Cone             | Relax.    | Violated  | Nonviol. 
+    Second order |      1252 |      2637 |         0
+
+3145 numerically unstable cone duals encountered
+
+#STATUS# UserLimit
+#OBJVAL# Inf
+#OBJBOUND# 44.695758842278046
+#TIMESOLVER# 3600.018931865692
+#TIMEALL# 3600.021358013153
+#SOLUTION# [NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN]
+
+Gomory fractional cuts applied:  2
+User cuts applied:  2554
+
+Root node processing (before b&c):
+  Real time             =   12.24 sec. (10075.02 ticks)
+Sequential b&c:
+  Real time             = 3587.65 sec. (2306319.72 ticks)
+                          ------------
+Total (root+branch&cut) = 3599.89 sec. (2316394.73 ticks)
+CPLEX Error  1217: No solution exists.

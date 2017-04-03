@@ -1,0 +1,75 @@
+#SOLVERNAME# PAJ_SCIP_ECOS_subopt
+#SOLVER# Pajarito.PajaritoSolver(3,3600.0,1.0e-5,false,SCIP.SCIPSolver(("display/verblevel",0,"limits/gap",0.0,"numerics/feastol",1.0e-7)),SCIP.SCIPSolver(("display/verblevel",0,"limits/gap",0.01,"numerics/feastol",1.0e-7,"limits/time",120.0)),5,false,true,ECOS.ECOSSolver(Any[(:verbose,false)]),true,true,false,false,true,false,false,true,false,true,true,true,true,false,true,10.0,false,false,false,true,1.0e-10,1.0e-7)
+#INSTANCE# clay0304m.cbf.gz
+#TIMELIMIT# 3600.0
+
+Problem dimensions:
+       variables |       153
+     constraints |       591
+   nonzeros in A |       725
+
+Cones summary:
+Cone             | Count     | Min dim.  | Max dim. 
+    Second order |        96 |         3 |         3
+
+Variable types:
+      continuous |       117
+         integer |        36
+
+Transforming data...               0.00s
+
+Creating conic subproblem...       0.00s
+
+Building MIP model...              0.01s
+
+Solving conic relaxation...        0.00s
+ - Relaxation status    =        Optimal
+ - Relaxation objective =      -0.000000
+
+Starting iterative algorithm
+
+Iter. | Best feasible  | Best bound     | Rel. gap    | Time (s)   
+    1 |           +Inf |  +6.545000e+03 |         Inf |   3.249e+00
+
+Iter. | Best feasible  | Best bound     | Rel. gap    | Time (s)   
+    2 |           +Inf |  +6.545000e+03 |         Inf |   8.172e+00
+
+Iter. | Best feasible  | Best bound     | Rel. gap    | Time (s)   
+    3 |           +Inf |  +6.598664e+03 |         Inf |   1.117e+01
+
+Iter. | Best feasible  | Best bound     | Rel. gap    | Time (s)   
+    4 |           +Inf |  +7.264073e+03 |         Inf |   1.413e+01
+
+Iter. | Best feasible  | Best bound     | Rel. gap    | Time (s)   
+    5 |           +Inf |  +3.721087e+04 |         Inf |   1.743e+01
+
+Iter. | Best feasible  | Best bound     | Rel. gap    | Time (s)   
+    6 |           +Inf |  +3.721087e+04 |         Inf |   2.104e+01
+
+Iter. | Best feasible  | Best bound     | Rel. gap    | Time (s)   
+    7 |           +Inf |  +3.735194e+04 |         Inf |   2.451e+01
+
+Iter. | Best feasible  | Best bound     | Rel. gap    | Time (s)   
+    8 |           +Inf |  +3.756424e+04 |         Inf |   2.861e+01
+
+Iter. | Best feasible  | Best bound     | Rel. gap    | Time (s)   
+    9 |           +Inf |  +3.813337e+04 |         Inf |   3.368e+01
+
+Iter. | Best feasible  | Best bound     | Rel. gap    | Time (s)   
+   10 |           +Inf |  +3.951653e+04 |         Inf |   3.853e+01
+
+Iter. | Best feasible  | Best bound     | Rel. gap    | Time (s)   
+   11 |  +4.026239e+04 |  +3.969915e+04 |   1.399e-02 |   5.139e+01
+[src/scip/lp.c:9539] ERROR: Error <-6> in function call
+[src/scip/scip.c:29326] ERROR: Error <-6> in function call
+[src/scip/sepa_gomory.c:403] ERROR: Error <-6> in function call
+[src/scip/sepa.c:385] ERROR: Error <-6> in function call
+[src/scip/solve.c:1647] ERROR: Error <-6> in function call
+[src/scip/solve.c:2481] ERROR: Error <-6> in function call
+[src/scip/solve.c:2977] ERROR: Error <-6> in function call
+[src/scip/solve.c:3796] ERROR: Error <-6> in function call
+[src/scip/solve.c:4102] ERROR: Error <-6> in function call
+[src/scip/solve.c:4881] ERROR: Error <-6> in function call
+[src/scip/scip.c:15889] ERROR: Error <-6> in function call
+Caught exception <Cannot factorize singular matrix> while computing basis inverse row.
+CSIP: failing with retcode 1 at /home/ubuntu/.julia/v0.5/SCIP/deps/src/CSIP-0.4.0/src/csip.c:944

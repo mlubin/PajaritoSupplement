@@ -1,0 +1,92 @@
+#SOLVERNAME# PAJ_SCIP_ECOS
+#SOLVER# Pajarito.PajaritoSolver(3,3600.0,1.0e-5,false,SCIP.SCIPSolver(("display/verblevel",0,"limits/gap",0.0,"numerics/feastol",1.0e-7)),Pajarito.UnsetSolver(),0,false,true,ECOS.ECOSSolver(Any[(:verbose,false)]),true,true,false,false,true,false,false,true,false,true,true,true,true,false,true,10.0,false,false,false,true,1.0e-10,1.0e-7)
+#INSTANCE# estein5_B.cbf.gz
+#TIMELIMIT# 3600.0
+
+Problem dimensions:
+       variables |       132
+     constraints |       211
+   nonzeros in A |       258
+
+Cones summary:
+Cone             | Count     | Min dim.  | Max dim. 
+    Second order |        18 |         3 |         3
+
+Variable types:
+      continuous |       114
+         integer |        18
+
+Transforming data...               0.00s
+
+Creating conic subproblem...       0.00s
+
+Building MIP model...              0.00s
+
+Solving conic relaxation...        0.00s
+ - Relaxation status    =        Optimal
+ - Relaxation objective =      -0.000000
+
+Starting iterative algorithm
+
+Iter. | Best feasible  | Best bound     | Rel. gap    | Time (s)   
+    1 |  +1.193160e+00 |  +1.160492e+00 |   2.738e-02 |   4.348e-01
+
+Iter. | Best feasible  | Best bound     | Rel. gap    | Time (s)   
+    2 |  +1.193160e+00 |  +1.193160e+00 |  -1.336e-10 |   5.100e-01
+
+Iterative algorithm summary:
+ - Status               =        Optimal
+ - Best feasible        =  +1.193160e+00
+ - Best bound           =  +1.193160e+00
+ - Relative opt. gap    =     -1.336e-10
+ - Total time (s)       =       5.10e-01
+
+Timers (s):
+ - Setup                =   7.71e-04
+ -- Transform data      =   1.24e-04
+ -- Create conic data   =   1.38e-04
+ -- Create MIP data     =   5.09e-04
+ - Algorithm            =   5.09e-01
+ -- Solve relaxation    =   1.46e-03
+ -- Get relaxation cuts =   5.30e-05
+ -- Solve MIP models    =   5.04e-01
+ -- Solve subproblems   =   2.00e-03
+ -- Get subproblem cuts =   1.05e-03
+ -- Get primal cuts     =   0.00e+00
+
+Counters:
+ - Iterations           =     2
+ -- Integer repeats     =     0
+ -- Conic subproblems   =     1
+ --- Infeasible         =     0
+ --- Optimal            =     1
+ --- Suboptimal         =     0
+ --- UserLimit          =     0
+ --- ConicFailure       =     0
+ --- Other status       =     0
+ -- Feasible solutions  =     1
+ --- From subproblems   =     1
+ --- From MIP solve     =     0
+
+Solution returned by conic solver
+
+Outer-approximation cuts added:
+Cone             | Relax.    | Violated  | Nonviol. 
+    Second order |        30 |         7 |        16
+
+0 numerically unstable cone duals encountered
+
+Distance to feasibility (negative indicates strict feasibility):
+Cone             | Variable  | Constraint
+          Linear |  1.82e-11 |  3.26e-12
+    Second order |  9.91e-11 |        NA
+
+Distance to integrality of integer/binary variables:
+         integer |  0.00e+00
+
+#STATUS# Optimal
+#OBJVAL# 1.193159901993014
+#OBJBOUND# 1.1931599021524695
+#TIMESOLVER# 0.5099961757659912
+#TIMEALL# 0.5105729103088379
+#SOLUTION# [0.7038005338459209,0.29025195318162555,0.2637596742424845,0.3419883662177376,0.2116789999359707,0.272131000069116,0.7215619999817793,-0.5567845338459215,0.3228850468183749,0.2952129181252412,-0.11674367424302493,0.2711486337834797,0.7215619999818158,-0.0646629999359707,0.34100599993088415,0.7215619999818152,-0.5786065338459213,-0.07774595318162562,0.7215619999818326,-0.13856567424248448,-0.12948236621773768,0.10504663643646986,-0.08648499993672808,-0.059625000070362186,0.09433028855901968,0.0373034661546172,-0.0866409531828424,0.7215619999818057,0.47734432575751584,-0.13837736621773775,0.7215619999817959,0.5294250000640296,-0.06852000006911603,0.16836360946660808,0.1006314661548671,0.1349800468194473,0.7215619999817924,0.5406723257575159,0.0832436337822624,0.7215619999817735,0.5927530000640299,0.15310099993088416,0.7215619999818061,-0.49212153384592117,-0.0181209531816256,0.7215619999818165,-0.05208067424248446,-0.06985736621773768,4.0218880642044955e-11,6.400046287322485e-11,-6.894434871205054e-11,0.44307179383615075,0.4400408596047609,-0.051736413036255396,0.7215619999817643,0.4921215339099504,0.01812095311250961,0.08713465572099038,0.05208067430729857,0.06985736614969575,-1.8219924223924604e-11,0.29521291812657335,-1.8183906005043952e-11,-1.8184309377815703e-11,-1.8167353081883808e-11,0.10504663643780124,0.09433028856035082,-1.819405557752332e-11,-1.8203724882749553e-11,0.1683636094679398,-1.8207273356605508e-11,-1.8225997770006484e-11,-1.8193541164521713e-11,-1.81834370811251e-11,4.0743431593380607e-11,0.443071793837483,-1.8235415408883758e-11,0.0871346557223213,0.0,1.0,0.0,0.0,0.0,1.0,1.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,1.0,1.0,0.0,1.0,1.0,1.4018021500853135e-12,1.0,1.0,1.0,1.4018021500853135e-12,1.4018021500853135e-12,1.0,1.0,1.4018021500853135e-12,1.0,1.0,1.0,1.0,1.4018021500853135e-12,1.4018021500853135e-12,1.0,1.4018021500853135e-12,2.143708822404374e-11,0.42634908187342657,2.1376631170012527e-11,2.1375415440772606e-11,2.134167430448568e-11,0.6165153635621988,0.6272317114396493,2.1407003157083843e-11,2.1420163625664545e-11,0.5531983905320602,2.143304227258334e-11,2.1462436889559644e-11,2.139957216908882e-11,2.1377480794720143e-11,0.7215619999592566,0.27849020616251685,2.1494757366309678e-11,0.6344273442776788]
