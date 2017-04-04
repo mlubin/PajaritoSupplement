@@ -83,7 +83,7 @@ solvermap = Dict(
 
     # GLPK
     "PAJ_GLPK_ECOS" =>
-    (["GLPKMathProgInterface","ECOS"], quote PajaritoSolver(mip_solver=GLPKSolverMIP(msg_lev=GLPK.MSG_OFF, tol_int=tol_int, tol_bnd=tol_feas, mip_gap=tol_gap), cont_solver=ECOSSolver(verbose=false), log_level=logl, timeout=tlim, rel_gap=rgap, prim_cut_feas_tol=tol_feas) end),
+    (["GLPKMathProgInterface","ECOS"], quote PajaritoSolver(mip_solver=GLPKSolverMIP(msg_lev=GLPK.MSG_OFF, tol_int=tol_int, tol_bnd=tol_feas, mip_gap=tol_gap, presolve=true), cont_solver=ECOSSolver(verbose=false), log_level=logl, timeout=tlim, rel_gap=rgap, prim_cut_feas_tol=tol_feas) end),
 
     # SCIP
     "SCIP_MISOCP" =>
