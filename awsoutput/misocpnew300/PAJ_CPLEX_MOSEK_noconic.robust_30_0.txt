@@ -1,0 +1,116 @@
+#SOLVERNAME# PAJ_CPLEX_MOSEK_noconic
+#SOLVER# Pajarito.PajaritoSolver(3,300.0,1.0e-5,false,CPLEX.CplexSolver(Any[(:CPX_PARAM_THREADS,1),(:CPX_PARAM_SCRIND,0),(:CPX_PARAM_EPINT,1.0e-8),(:CPX_PARAM_EPRHS,1.0e-7),(:CPX_PARAM_EPGAP,0.0)]),Pajarito.UnsetSolver(),0,false,true,Pajarito.UnsetSolver(),false,false,false,false,true,false,false,true,false,true,true,true,true,false,true,10.0,false,true,false,true,1.0e-10,1.0e-7)
+#INSTANCE# robust_30_0.cbf.gz
+#TIMELIMIT# 300.0
+
+Problem dimensions:
+       variables |       127
+     constraints |       225
+   nonzeros in A |      2144
+
+Cones summary:
+Cone             | Count     | Min dim.  | Max dim. 
+    Second order |         2 |        32 |        32
+
+Variable types:
+      continuous |        96
+         integer |        31
+
+Transforming data...               0.00s
+
+Building MIP model...              0.00s
+
+Starting iterative algorithm
+
+Iter. | Best feasible  | Best bound     | Rel. gap    | Time (s)   
+    0 |           +Inf |           -Inf |         Inf |   1.089e-03
+
+Iter. | Best feasible  | Best bound     | Rel. gap    | Time (s)   
+    1 |           +Inf |  -6.591114e-02 |         Inf |   1.437e-02
+
+Iter. | Best feasible  | Best bound     | Rel. gap    | Time (s)   
+    2 |           +Inf |  -5.171338e-02 |         Inf |   2.940e-02
+
+Iter. | Best feasible  | Best bound     | Rel. gap    | Time (s)   
+    3 |           +Inf |  -4.753575e-02 |         Inf |   4.591e-02
+
+Iter. | Best feasible  | Best bound     | Rel. gap    | Time (s)   
+    4 |           +Inf |  -4.638785e-02 |         Inf |   6.398e-02
+
+Iter. | Best feasible  | Best bound     | Rel. gap    | Time (s)   
+    5 |           +Inf |  -4.579887e-02 |         Inf |   8.431e-02
+
+Iter. | Best feasible  | Best bound     | Rel. gap    | Time (s)   
+    6 |           +Inf |  -4.557972e-02 |         Inf |   1.068e-01
+
+Iter. | Best feasible  | Best bound     | Rel. gap    | Time (s)   
+    7 |           +Inf |  -4.548393e-02 |         Inf |   1.315e-01
+
+Iter. | Best feasible  | Best bound     | Rel. gap    | Time (s)   
+    8 |           +Inf |  -4.546194e-02 |         Inf |   1.568e-01
+
+Iter. | Best feasible  | Best bound     | Rel. gap    | Time (s)   
+    9 |           +Inf |  -4.545403e-02 |         Inf |   1.848e-01
+
+Iter. | Best feasible  | Best bound     | Rel. gap    | Time (s)   
+   10 |           +Inf |  -4.545224e-02 |         Inf |   2.143e-01
+
+Iter. | Best feasible  | Best bound     | Rel. gap    | Time (s)   
+   11 |           +Inf |  -4.545161e-02 |         Inf |   2.459e-01
+
+Iter. | Best feasible  | Best bound     | Rel. gap    | Time (s)   
+   12 |           +Inf |  -4.545148e-02 |         Inf |   2.783e-01
+
+Iter. | Best feasible  | Best bound     | Rel. gap    | Time (s)   
+   13 |  -4.545146e-02 |  -4.545146e-02 |   0.000e+00 |   3.114e-01
+
+Iterative algorithm summary:
+ - Status               =        Optimal
+ - Best feasible        =  -4.545146e-02
+ - Best bound           =  -4.545146e-02
+ - Relative opt. gap    =      0.000e+00
+ - Total time (s)       =       3.11e-01
+
+Timers (s):
+ - Setup                =   1.04e-03
+ -- Transform data      =   2.21e-04
+ -- Create conic data   =   0.00e+00
+ -- Create MIP data     =   8.20e-04
+ - Algorithm            =   3.10e-01
+ -- Solve relaxation    =   0.00e+00
+ -- Get relaxation cuts =   0.00e+00
+ -- Solve MIP models    =   3.06e-01
+ -- Solve subproblems   =   0.00e+00
+ -- Get subproblem cuts =   0.00e+00
+ -- Get primal cuts     =   4.07e-03
+
+Counters:
+ - Iterations           =    13
+ -- Integer repeats     =     0
+ -- Conic subproblems   =     0
+ -- Feasible solutions  =     1
+ --- From subproblems   =     0
+ --- From MIP solve     =     1
+
+Solution returned by MIP solver
+
+Outer-approximation cuts added:
+Cone             | Relax.    | Violated  | Nonviol. 
+    Second order |         0 |       560 |       130
+
+0 numerically unstable cone duals encountered
+
+Distance to feasibility (negative indicates strict feasibility):
+Cone             | Variable  | Constraint
+          Linear |  0.00e+00 |  1.11e-16
+    Second order |        NA |  2.42e-08
+
+Distance to integrality of integer/binary variables:
+         integer |  0.00e+00
+
+#STATUS# Optimal
+#OBJVAL# -0.04545146285818857
+#OBJBOUND# -0.04545146285818857
+#TIMESOLVER# 0.31145691871643066
+#TIMEALL# 0.3119659423828125
+#SOLUTION# [0.04545146285818857,0.0,0.0749114044890622,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.158527940883027,1.0,0.10389401842724941,1.0,0.0,0.0,0.05066724733358155,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.06746052826550067,1.0,0.11516111142049051,1.0,0.0,0.0,0.0,0.0,0.15841868756895777,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.012627393860881197,1.0,0.2522989255820481,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.006032742169201605,1.0,1.0,0.05694500490471353,0.026049150645567783,0.020333319304989845,0.007571944931120388,0.020929398810455965,0.005508087005990702,0.08582834168328056,0.04354555810545747,0.035971074383989894,0.020853551818459895,0.03997221978111406,0.013207962921452947,0.013327776016237462,0.057561545777634775,0.05408602765174566,0.01098775748099608,0.00881105279227866,0.0725107471226354,0.01488824243853532,0.02216511361398043,0.011563644836233797,0.01164488317443478,0.018363307696487263,0.01259660974849459,0.04830028707901577,0.07370842235141412,0.013686322770862227,0.020651854751031623,0.013721488917206953,0.021384243545854584,0.0,0.2,0.014794746259838142,0.0067677678618195,0.005282751318418759,0.0019672489999263895,0.005437617316740789,0.0014310429820312712,0.02229885727869014,0.01131346786238751,0.009345559265401522,0.005417911690174523,0.01038508733284566,0.003431529426669933,0.003462657781803987,0.014954928277358245,0.014051962180879578,0.002854703132745372,0.0022891786656625904,0.01883884471670047,0.003868078850842435,0.0057586654402422425,0.0030043230565606777,0.0030254293959487426,0.00477092728880029,0.0032726952131231987,0.012548782686178709,0.019150009868729927,0.00355581096118113,0.005365509254900776,0.0035649473940111112,0.0055557894454249445,0.0,0.0519615048211703]

@@ -1,0 +1,66 @@
+WARNING: Solver does not appear to support adding constraints to an existing model. JuMP's internal model will be discarded.
+Coin0505I Presolved problem not optimal, resolve after postsolve
+Coin0505I Presolved problem not optimal, resolve after postsolve
+#SOLVERNAME# PAJ_CBC_ECOS
+#SOLVER# Pajarito.PajaritoSolver(3,300.0,1.0e-5,false,Cbc.CbcMathProgSolverInterface.CbcSolver(Any[(:logLevel,0),(:integerTolerance,1.0e-8),(:primalTolerance,1.0e-7),(:ratioGap,0.0),(:check_warmstart,false)]),Pajarito.UnsetSolver(),0,false,true,ECOS.ECOSSolver(Any[(:verbose,false)]),true,true,false,false,true,false,false,true,false,true,true,true,true,false,true,10.0,false,false,false,true,1.0e-10,1.0e-7)
+#INSTANCE# uflquad-nopsc-30-300.cbf.gz
+#TIMELIMIT# 300.0
+
+Problem dimensions:
+       variables |     27031
+     constraints |     45331
+   nonzeros in A |     63030
+
+Cones summary:
+Cone             | Count     | Min dim.  | Max dim. 
+    Rotated S.O. |      9000 |         3 |         3
+
+Variable types:
+      continuous |     27001
+         integer |        30
+
+Transforming data...               0.03s
+
+Creating conic subproblem...       0.01s
+
+Building MIP model...              0.32s
+
+signal (11): Segmentation fault
+while loading /home/ubuntu/PajaritoSupplement/scripts/run.jl, in expression starting on line 170
+restore at /home/ubuntu/.julia/v0.5/ECOS/deps/usr/lib/libecos.so (unknown line)
+unset_equilibration at /home/ubuntu/.julia/v0.5/ECOS/deps/usr/lib/libecos.so (unknown line)
+ECOS_cleanup at /home/ubuntu/.julia/v0.5/ECOS/deps/usr/lib/libecos.so (unknown line)
+optimize! at /home/ubuntu/.julia/v0.5/ECOS/src/ECOSSolverInterface.jl:110
+unknown function (ip: 0x7fa9ad715e32)
+jl_call_method_internal at /home/centos/buildbot/slave/package_tarball64/build/src/julia_internal.h:210 [inlined]
+jl_apply_generic at /home/centos/buildbot/slave/package_tarball64/build/src/gf.c:1950
+optimize! at /home/ubuntu/.julia/v0.5/Pajarito/src/conic_algorithm.jl:526
+unknown function (ip: 0x7fa9ad6c0b82)
+solveprint at /home/ubuntu/PajaritoSupplement/scripts/run.jl:33
+unknown function (ip: 0x7fa9ad6a6c36)
+jl_call_method_internal at /home/centos/buildbot/slave/package_tarball64/build/src/julia_internal.h:210 [inlined]
+jl_apply_generic at /home/centos/buildbot/slave/package_tarball64/build/src/gf.c:1950
+do_call at /home/centos/buildbot/slave/package_tarball64/build/src/interpreter.c:66
+eval at /home/centos/buildbot/slave/package_tarball64/build/src/interpreter.c:190
+eval_body at /home/centos/buildbot/slave/package_tarball64/build/src/interpreter.c:469
+eval_body at /home/centos/buildbot/slave/package_tarball64/build/src/interpreter.c:515
+jl_interpret_call at /home/centos/buildbot/slave/package_tarball64/build/src/interpreter.c:573
+jl_toplevel_eval_flex at /home/centos/buildbot/slave/package_tarball64/build/src/toplevel.c:572
+jl_parse_eval_all at /home/centos/buildbot/slave/package_tarball64/build/src/ast.c:717
+jl_load at /home/centos/buildbot/slave/package_tarball64/build/src/toplevel.c:596
+jl_load_ at /home/centos/buildbot/slave/package_tarball64/build/src/toplevel.c:605
+include_from_node1 at ./loading.jl:488
+unknown function (ip: 0x7fabbdc21a2b)
+jl_call_method_internal at /home/centos/buildbot/slave/package_tarball64/build/src/julia_internal.h:210 [inlined]
+jl_apply_generic at /home/centos/buildbot/slave/package_tarball64/build/src/gf.c:1950
+process_options at ./client.jl:265
+_start at ./client.jl:321
+unknown function (ip: 0x7fabbdc46bd8)
+jl_call_method_internal at /home/centos/buildbot/slave/package_tarball64/build/src/julia_internal.h:210 [inlined]
+jl_apply_generic at /home/centos/buildbot/slave/package_tarball64/build/src/gf.c:1950
+jl_apply at /home/centos/buildbot/slave/package_tarball64/build/ui/../src/julia.h:1392 [inlined]
+true_main at /home/centos/buildbot/slave/package_tarball64/build/ui/repl.c:123
+main at /home/centos/buildbot/slave/package_tarball64/build/ui/repl.c:243
+__libc_start_main at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
+unknown function (ip: 0x40148c)
+Allocations: 30173693 (Pool: 30157684; Big: 16009); GC: 101

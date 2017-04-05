@@ -1,0 +1,46 @@
+#SOLVERNAME# PAJ_SCIP_ECOS
+#SOLVER# Pajarito.PajaritoSolver(3,300.0,1.0e-5,false,SCIP.SCIPSolver(("display/verblevel",0,"limits/gap",0.0,"numerics/feastol",1.0e-7)),Pajarito.UnsetSolver(),0,false,true,ECOS.ECOSSolver(Any[(:verbose,false)]),true,true,false,false,true,false,false,true,false,true,true,true,true,false,true,10.0,false,false,false,true,1.0e-10,1.0e-7)
+#INSTANCE# clay0203h.cbf.gz
+#TIMELIMIT# 300.0
+
+Problem dimensions:
+       variables |       139
+     constraints |       439
+   nonzeros in A |       817
+
+Cones summary:
+Cone             | Count     | Min dim.  | Max dim. 
+    Second order |        48 |         3 |         3
+
+Variable types:
+      continuous |       121
+         integer |        18
+
+Transforming data...               0.00s
+
+Creating conic subproblem...       0.00s
+
+Building MIP model...              0.00s
+
+Solving conic relaxation...        0.00s
+ - Relaxation status    =        Optimal
+ - Relaxation objective =      -0.000000
+
+Starting iterative algorithm
+
+Iter. | Best feasible  | Best bound     | Rel. gap    | Time (s)   
+    0 |           +Inf |  -8.085174e-10 |         Inf |   5.281e-03
+
+Iter. | Best feasible  | Best bound     | Rel. gap    | Time (s)   
+    1 |           +Inf |  +3.560000e+03 |         Inf |   1.158e+00
+
+Iter. | Best feasible  | Best bound     | Rel. gap    | Time (s)   
+    2 |           +Inf |  +3.560000e+03 |         Inf |   2.007e+00
+
+Iter. | Best feasible  | Best bound     | Rel. gap    | Time (s)   
+    3 |           +Inf |  +4.067007e+04 |         Inf |   3.464e+00
+[src/scip/solve.c:3813] ERROR: (node 24) unresolved numerical troubles in LP 59 cannot be dealt with
+[src/scip/solve.c:4102] ERROR: Error <-6> in function call
+[src/scip/solve.c:4881] ERROR: Error <-6> in function call
+[src/scip/scip.c:15889] ERROR: Error <-6> in function call
+CSIP: failing with retcode 1 at /home/ubuntu/.julia/v0.5/SCIP/deps/src/CSIP-0.4.0/src/csip.c:944
