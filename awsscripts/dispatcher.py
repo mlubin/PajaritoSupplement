@@ -8,7 +8,7 @@ import time
 import cloud_setup
 
 # Change this AMI name to whatever AMI you have set up to run the computational tests
-DEFAULT_AMI_NAME = "ami-b42aaea2"
+DEFAULT_AMI_NAME = "ami-e1ba39f7"
 
 
 def create_instances(job, tags, instance_types, verbose=True):
