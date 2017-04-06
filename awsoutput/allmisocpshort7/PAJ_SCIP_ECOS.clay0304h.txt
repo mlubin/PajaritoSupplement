@@ -1,0 +1,49 @@
+#SOLVERNAME# PAJ_SCIP_ECOS
+#SOLVER# Pajarito.PajaritoSolver(3,120.0,1.0e-5,false,SCIP.SCIPSolver(("display/verblevel",0,"limits/gap",0.0,"numerics/feastol",1.0e-7)),Pajarito.UnsetSolver(),0,false,true,ECOS.ECOSSolver(Any[(:verbose,false)]),true,true,false,false,true,false,false,true,false,true,true,true,true,false,true,2.0,false,false,false,true,1.0e-10,1.0e-6)
+#INSTANCE# clay0304h.cbf.gz
+#TIMELIMIT# 120.0
+
+Problem dimensions:
+       variables |       273
+     constraints |       863
+   nonzeros in A |      1621
+
+Cones summary:
+Cone             | Count     | Min dim.  | Max dim. 
+    Second order |        96 |         3 |         3
+
+Variable types:
+      continuous |       237
+         integer |        36
+
+Transforming data...               0.00s
+
+Creating conic subproblem...       0.00s
+
+Building MIP model...              0.00s
+
+Solving conic relaxation...        0.01s
+ - Relaxation status    =        Optimal
+ - Relaxation objective =      -0.000000
+
+Starting iterative algorithm
+
+Iter. | Best feasible  | Best bound     | Rel. gap    | Time (s)   
+    0 |           +Inf |  -3.472174e-10 |         Inf |   1.165e-02
+
+Iter. | Best feasible  | Best bound     | Rel. gap    | Time (s)   
+    1 |           +Inf |  +6.545000e+03 |         Inf |   1.037e+01
+
+Iter. | Best feasible  | Best bound     | Rel. gap    | Time (s)   
+    2 |           +Inf |  +6.715043e+03 |         Inf |   1.801e+01
+
+Iter. | Best feasible  | Best bound     | Rel. gap    | Time (s)   
+    3 |           +Inf |  +3.578677e+04 |         Inf |   2.605e+01
+
+Iter. | Best feasible  | Best bound     | Rel. gap    | Time (s)   
+    4 |           +Inf |  +3.612838e+04 |         Inf |   3.694e+01
+[src/scip/solve.c:3813] ERROR: (node 75) unresolved numerical troubles in LP 200 cannot be dealt with
+[src/scip/solve.c:4102] ERROR: Error <-6> in function call
+[src/scip/solve.c:4881] ERROR: Error <-6> in function call
+[src/scip/scip.c:15889] ERROR: Error <-6> in function call
+CSIP: failing with retcode 1 at /home/ubuntu/.julia/v0.5/SCIP/deps/src/CSIP-0.4.0/src/csip.c:944
