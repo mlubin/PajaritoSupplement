@@ -87,7 +87,7 @@ solvermap = Dict(
 
     # SCIP
     "SCIP_MISOCP" =>
-    (["SCIP"], quote SCIPSolver("limits/gap", rgap, "limits/time", tlim) end),
+    (["SCIP"], quote SCIPSolver("limits/gap", rgap, "numerics/feastol", tol_feas, "limits/time", tlim) end),
     "PAJ_SCIP_ECOS" =>
     (["SCIP","ECOS"], quote PajaritoSolver(mip_solver=SCIPSolver("display/verblevel", 0, "limits/gap", tol_gap, "numerics/feastol", tol_feas), cont_solver=ECOSSolver(verbose=false), log_level=logl, timeout=tlim, rel_gap=rgap, prim_cut_feas_tol=tol_conic) end),
     "PAJ_SCIP_ECOS_subopt" =>
@@ -95,7 +95,7 @@ solvermap = Dict(
 
     # CPLEX
     "CPLEX_MISOCP" =>
-    (["CPLEX"], quote CplexSolver(CPX_PARAM_THREADS=1, CPX_PARAM_TILIM=tlim, CPX_PARAM_SCRIND=1, CPX_PARAM_EPGAP=rgap) end),
+    (["CPLEX"], quote CplexSolver(CPX_PARAM_THREADS=1, CPX_PARAM_TILIM=tlim, CPX_PARAM_SCRIND=1, CPX_PARAM_EPINT=tol_int, CPX_PARAM_EPRHS=tol_feas, CPX_PARAM_EPGAP=rgap) end),
     "PAJ_CPLEX_MOSEK_msd" =>
     (["CPLEX","Mosek"], quote PajaritoSolver(mip_solver=CplexSolver(CPX_PARAM_THREADS=1, CPX_PARAM_SCRIND=1, CPX_PARAM_EPINT=tol_int, CPX_PARAM_EPRHS=tol_feas, CPX_PARAM_EPGAP=rgap), cont_solver=MosekSolver(LOG=0, NUM_THREADS=1), log_level=logl, timeout=tlim, rel_gap=rgap, prim_cut_feas_tol=tol_conic, mip_solver_drives=true, use_mip_starts=true) end),
     "PAJ_CPLEX_MOSEK_msdnostarts" =>
