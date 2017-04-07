@@ -7,7 +7,7 @@ resultfiles = readdir(joinpath(pwd(), ARGS[1]))
 fd = open(joinpath(pwd(), ARGS[2]), "w")
 
 # process into a CSV file with columns:
-println(fd,"solver,instance,sense,status,objval_reported,objbound,solvertime,totaltime,filename,objval_solution,max_linear_violation,max_soc_violation,max_socrot_violation,max_int_violation,validator_status,validator_relobjdiff,conic_subproblems")
+println(fd,"solver,instance,sense,status,objval_reported,objbound,solvertime,totaltime,filename,rel_objval_error,max_linear_violation,max_soc_violation,max_socrot_violation,max_exp_violation,max_int_violation,validator_status,validator_relobjdiff,conic_subproblems")
 
 # from instance name to file name
 function find_instance(name)
@@ -56,10 +56,10 @@ function compute_violations(dat, solution)
     objval = dot(c,solution)
 
     y = b - A*solution
-    linear_violation = 0.0
-    soc_violation = 0.0
-    socrot_violation = 0.0
-    exp_violation = 0.0
+    linear_violation = -Inf
+    soc_violation = -Inf
+    socrot_violation = -Inf
+    exp_violation = -Inf
     for (cones,x) in [(var_cones,solution),(con_cones,y)]
         for (cone, idx) in cones
             t, viol = violation_cone(x[idx],cone)
@@ -146,7 +146,7 @@ for (cnt,filename) in enumerate(resultfiles)
     objbound = " "
     solvertime = " "
     totaltime = " "
-    objval_sol = " "
+    rel_objval_error = " "
     linear_violation = " "
     soc_violation = " "
     socrot_violation = " "
@@ -156,7 +156,6 @@ for (cnt,filename) in enumerate(resultfiles)
     validator_relobjdiff = " "
     conic_subproblems = " "
     solution = []
-    # gaplimit = false
 
     for line in eachline(joinpath(pwd(), ARGS[1], filename))
         if startswith(line, "#SOLVERNAME#")
@@ -186,9 +185,6 @@ for (cnt,filename) in enumerate(resultfiles)
         elseif startswith(line, " -- Conic subproblems   =")
             conic_subproblems = split(line)[5]
         end
-        # elseif contains(line, "gap limit reached") # SCIP does this when it means optimal
-        #     gaplimit=true
-        #end
     end
 
     instancefile = find_instance(instance)
@@ -198,15 +194,11 @@ for (cnt,filename) in enumerate(resultfiles)
         objval_sol, linear_violation, soc_violation, socrot_violation, exp_violation, int_violation = compute_violations(dat,solution)
         validator_status, validator_objval = validate_with_conic_solver(dat,solution)
         validator_relobjdiff = abs(objval_sol - validator_objval)/abs(objval_sol+1e-5)
+        rel_objval_error = abs(objval_sol - parse(Float64,objval))/abs(parse(Float64,objval))
     end
 
-    # if gaplimit
-    #     @assert contains(solver, "SCIP")
-    #     status = "Optimal"
-    # end
-
     println(fd,
-"$solver,$instance,$sense,$status,$objval,$objbound,$solvertime,$totaltime,$(basename(filename)),$objval_sol,$linear_violation,$soc_violation,$socrot_violation,$int_violation,$validator_status,$validator_relobjdiff,$conic_subproblems")
+"$solver,$instance,$sense,$status,$objval,$objbound,$solvertime,$totaltime,$(basename(filename)),$rel_objval_error,$linear_violation,$soc_violation,$socrot_violation,$exp_violation,$int_violation,$validator_status,$validator_relobjdiff,$conic_subproblems")
 end
 
 close(fd)
