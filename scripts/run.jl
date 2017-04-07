@@ -96,20 +96,35 @@ solvermap = Dict(
     # CPLEX
     "CPLEX_MISOCP" =>
     (["CPLEX"], quote CplexSolver(CPX_PARAM_THREADS=1, CPX_PARAM_TILIM=tlim, CPX_PARAM_SCRIND=1, CPX_PARAM_EPINT=tol_int, CPX_PARAM_EPRHS=tol_feas, CPX_PARAM_EPGAP=rgap) end),
-    "PAJ_CPLEX_MOSEK_msd" =>
-    (["CPLEX","Mosek"], quote PajaritoSolver(mip_solver=CplexSolver(CPX_PARAM_THREADS=1, CPX_PARAM_SCRIND=1, CPX_PARAM_EPINT=tol_int, CPX_PARAM_EPRHS=tol_feas, CPX_PARAM_EPGAP=rgap), cont_solver=MosekSolver(LOG=0, NUM_THREADS=1), log_level=logl, timeout=tlim, rel_gap=rgap, prim_cut_feas_tol=tol_conic, mip_solver_drives=true, use_mip_starts=true) end),
-    "PAJ_CPLEX_MOSEK_msdnostarts" =>
-    (["CPLEX","Mosek"], quote PajaritoSolver(mip_solver=CplexSolver(CPX_PARAM_THREADS=1, CPX_PARAM_SCRIND=1, CPX_PARAM_EPINT=tol_int, CPX_PARAM_EPRHS=tol_feas, CPX_PARAM_EPGAP=rgap), cont_solver=MosekSolver(LOG=0, NUM_THREADS=1), log_level=logl, timeout=tlim, rel_gap=rgap, prim_cut_feas_tol=tol_conic, mip_solver_drives=true, use_mip_starts=false) end),
-    "PAJ_CPLEX_MOSEK" =>
-    (["CPLEX","Mosek"], quote PajaritoSolver(mip_solver=CplexSolver(CPX_PARAM_THREADS=1, CPX_PARAM_SCRIND=0, CPX_PARAM_EPINT=tol_int, CPX_PARAM_EPRHS=tol_feas, CPX_PARAM_EPGAP=tol_gap), cont_solver=MosekSolver(LOG=0, NUM_THREADS=1), log_level=logl, timeout=tlim, rel_gap=rgap, prim_cut_feas_tol=tol_conic) end),
-    "PAJ_CPLEX_MOSEK_subopt" =>
-    (["CPLEX","Mosek"], quote PajaritoSolver(mip_solver=CplexSolver(CPX_PARAM_THREADS=1, CPX_PARAM_SCRIND=0, CPX_PARAM_EPINT=tol_int, CPX_PARAM_EPRHS=tol_feas, CPX_PARAM_EPGAP=tol_gap), cont_solver=MosekSolver(LOG=0, NUM_THREADS=1), log_level=logl, timeout=tlim, rel_gap=rgap, prim_cut_feas_tol=tol_conic, mip_subopt_count=5, mip_subopt_solver=CplexSolver(CPX_PARAM_THREADS=1, CPX_PARAM_SCRIND=0, CPX_PARAM_EPINT=tol_int, CPX_PARAM_EPRHS=tol_feas, CPX_PARAM_EPGAP=0.01, CPX_PARAM_TILIM=120.)) end),
-    "PAJ_CPLEX_MOSEK_noconic" =>
-    (["CPLEX","Mosek"], quote PajaritoSolver(mip_solver=CplexSolver(CPX_PARAM_THREADS=1, CPX_PARAM_SCRIND=0, CPX_PARAM_EPINT=tol_int, CPX_PARAM_EPRHS=tol_feas, CPX_PARAM_EPGAP=tol_gap), log_level=logl, timeout=tlim, rel_gap=rgap, prim_cut_feas_tol=tol_conic, prim_cuts_only=true, solve_relax=false, solve_subp=false) end),
+
+    # Iter
     "PAJ_CPLEX_MOSEK_dualonly" =>
     (["CPLEX","Mosek"], quote PajaritoSolver(mip_solver=CplexSolver(CPX_PARAM_THREADS=1, CPX_PARAM_SCRIND=0, CPX_PARAM_EPINT=tol_int, CPX_PARAM_EPRHS=tol_feas, CPX_PARAM_EPGAP=tol_gap), cont_solver=MosekSolver(LOG=0, NUM_THREADS=1), log_level=logl, timeout=tlim, rel_gap=rgap, prim_cut_feas_tol=tol_conic, prim_cuts_assist=false) end),
     "PAJ_CPLEX_MOSEK_dualonlynoscale" =>
     (["CPLEX","Mosek"], quote PajaritoSolver(mip_solver=CplexSolver(CPX_PARAM_THREADS=1, CPX_PARAM_SCRIND=0, CPX_PARAM_EPINT=tol_int, CPX_PARAM_EPRHS=tol_feas, CPX_PARAM_EPGAP=tol_gap), cont_solver=MosekSolver(LOG=0, NUM_THREADS=1), log_level=logl, timeout=tlim, rel_gap=rgap, prim_cut_feas_tol=tol_conic, prim_cuts_assist=false, scale_subp_cuts=false) end),
+    "PAJ_CPLEX_MOSEK" =>
+    (["CPLEX","Mosek"], quote PajaritoSolver(mip_solver=CplexSolver(CPX_PARAM_THREADS=1, CPX_PARAM_SCRIND=0, CPX_PARAM_EPINT=tol_int, CPX_PARAM_EPRHS=tol_feas, CPX_PARAM_EPGAP=tol_gap), cont_solver=MosekSolver(LOG=0, NUM_THREADS=1), log_level=logl, timeout=tlim, rel_gap=rgap, prim_cut_feas_tol=tol_conic) end),
+
+    # "PAJ_CPLEX_MOSEK_noconic" =>
+    # (["CPLEX","Mosek"], quote PajaritoSolver(mip_solver=CplexSolver(CPX_PARAM_THREADS=1, CPX_PARAM_SCRIND=0, CPX_PARAM_EPINT=tol_int, CPX_PARAM_EPRHS=tol_feas, CPX_PARAM_EPGAP=tol_gap), log_level=logl, timeout=tlim, rel_gap=rgap, prim_cut_feas_tol=tol_conic, prim_cuts_only=true, solve_relax=false, solve_subp=false) end),
+
+    # MSD
+    "PAJ_CPLEX_MOSEK_msddualonly" =>
+    (["CPLEX","Mosek"], quote PajaritoSolver(mip_solver=CplexSolver(CPX_PARAM_THREADS=1, CPX_PARAM_SCRIND=1, CPX_PARAM_EPINT=tol_int, CPX_PARAM_EPRHS=tol_feas, CPX_PARAM_EPGAP=rgap), cont_solver=MosekSolver(LOG=0, NUM_THREADS=1), log_level=logl, timeout=tlim, rel_gap=rgap, prim_cut_feas_tol=tol_conic, mip_solver_drives=true, use_mip_starts=true, prim_cuts_assist=false) end),
+    "PAJ_CPLEX_MOSEK_msddualonlynoscale" =>
+    (["CPLEX","Mosek"], quote PajaritoSolver(mip_solver=CplexSolver(CPX_PARAM_THREADS=1, CPX_PARAM_SCRIND=1, CPX_PARAM_EPINT=tol_int, CPX_PARAM_EPRHS=tol_feas, CPX_PARAM_EPGAP=rgap), cont_solver=MosekSolver(LOG=0, NUM_THREADS=1), log_level=logl, timeout=tlim, rel_gap=rgap, prim_cut_feas_tol=tol_conic, mip_solver_drives=true, use_mip_starts=true, prim_cuts_assist=false, scale_subp_cuts=false) end),
+    "PAJ_CPLEX_MOSEK_msd" =>
+    (["CPLEX","Mosek"], quote PajaritoSolver(mip_solver=CplexSolver(CPX_PARAM_THREADS=1, CPX_PARAM_SCRIND=1, CPX_PARAM_EPINT=tol_int, CPX_PARAM_EPRHS=tol_feas, CPX_PARAM_EPGAP=rgap), cont_solver=MosekSolver(LOG=0, NUM_THREADS=1), log_level=logl, timeout=tlim, rel_gap=rgap, prim_cut_feas_tol=tol_conic, mip_solver_drives=true, use_mip_starts=true) end),
+
+    # "PAJ_CPLEX_MOSEK_msdnoconic" =>
+    # (["CPLEX","Mosek"], quote PajaritoSolver(mip_solver=CplexSolver(CPX_PARAM_THREADS=1, CPX_PARAM_SCRIND=1, CPX_PARAM_EPINT=tol_int, CPX_PARAM_EPRHS=tol_feas, CPX_PARAM_EPGAP=rgap), log_level=logl, timeout=tlim, rel_gap=rgap, prim_cut_feas_tol=tol_conic, mip_solver_drives=true, use_mip_starts=true, prim_cuts_only=true, solve_relax=false, solve_subp=false) end),
+    #should maybe not use mip starts on msdnoconic! but then this helps that solver in comparisons because heur cb wastes time! could turn off on msd?
+
+    # Other
+    "PAJ_CPLEX_MOSEK_subopt" =>
+    (["CPLEX","Mosek"], quote PajaritoSolver(mip_solver=CplexSolver(CPX_PARAM_THREADS=1, CPX_PARAM_SCRIND=0, CPX_PARAM_EPINT=tol_int, CPX_PARAM_EPRHS=tol_feas, CPX_PARAM_EPGAP=tol_gap), cont_solver=MosekSolver(LOG=0, NUM_THREADS=1), log_level=logl, timeout=tlim, rel_gap=rgap, prim_cut_feas_tol=tol_conic, mip_subopt_count=5, mip_subopt_solver=CplexSolver(CPX_PARAM_THREADS=1, CPX_PARAM_SCRIND=0, CPX_PARAM_EPINT=tol_int, CPX_PARAM_EPRHS=tol_feas, CPX_PARAM_EPGAP=0.01, CPX_PARAM_TILIM=120.)) end),
+    "PAJ_CPLEX_MOSEK_msdnostarts" =>
+    (["CPLEX","Mosek"], quote PajaritoSolver(mip_solver=CplexSolver(CPX_PARAM_THREADS=1, CPX_PARAM_SCRIND=1, CPX_PARAM_EPINT=tol_int, CPX_PARAM_EPRHS=tol_feas, CPX_PARAM_EPGAP=rgap), cont_solver=MosekSolver(LOG=0, NUM_THREADS=1), log_level=logl, timeout=tlim, rel_gap=rgap, prim_cut_feas_tol=tol_conic, mip_solver_drives=true, use_mip_starts=false) end),
 )
 
 
