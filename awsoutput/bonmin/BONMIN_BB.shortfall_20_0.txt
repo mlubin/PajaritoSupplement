@@ -1,0 +1,40 @@
+WARNING: Method definition require(Symbol) in module Base at loading.jl:345 overwritten in module ConicBenchmarkUtilities at /home/ubuntu/.julia/v0.5/Requires/src/require.jl:12.
+Bonmin 1.8.2 using Cbc 2.9.8 and Ipopt 3.12.1
+bonmin: bonmin.algorithm="B-BB"
+bonmin.time_limit=3600.0
+halt_on_ampl_error=yes
+bonmin.allowable_fraction_gap=1.0e-5
+bonmin.oa_log_level=1
+bonmin.bb_log_level=1
+
+
+******************************************************************************
+This program contains Ipopt, a library for large-scale nonlinear optimization.
+ Ipopt is released as open source code under the Eclipse Public License (EPL).
+         For more information visit http://projects.coin-or.org/Ipopt
+******************************************************************************
+
+NLP0012I 
+              Num      Status      Obj             It       time                 Location
+NLP0014I             1         OPT -1.0904895       12 0.012
+NLP0012I 
+              Num      Status      Obj             It       time                 Location
+NLP0014I             1         OPT -1.0904895        6 0.008
+NLP0012I 
+              Num      Status      Obj             It       time                 Location
+NLP0014I             1         OPT -1.0904895        6 0.008
+Cbc0012I Integer solution of -1.0904895 found by DiveMIPFractional after 0 iterations and 0 nodes (0.04 seconds)
+Cbc0001I Search completed - best objective -1.090489465924243, took 0 iterations and 0 nodes (0.04 seconds)
+Cbc0035I Maximum depth 0, 0 variables fixed on reduced cost
+
+ 	"Finished"
+#SOLVERNAME# BONMIN_BB
+#SOLVER# ConicNonlinearBridge.ConicNLPWrapper(AmplNLWriter.AmplNLSolver("/home/ubuntu/.julia/v0.5/CoinOptServices/deps/usr/lib/../bin/bonmin",String["bonmin.algorithm=\"B-BB\"","bonmin.time_limit=3600.0","halt_on_ampl_error=yes","bonmin.allowable_fraction_gap=1.0e-5","bonmin.oa_log_level=1","bonmin.bb_log_level=1"],""),false,false,false)
+#INSTANCE# shortfall_20_0.cbf.gz
+#TIMELIMIT# 3600.0
+#STATUS# Optimal
+#OBJVAL# -1.0904894938051362
+#OBJBOUND# NaN
+#TIMESOLVER# 3.137902021408081
+#TIMEALL# 9.70358395576477
+#SOLUTION# [0.1450842734585749,0.016245294453567774,0.15749410513902284,0.0,0.08222830764477139,0.06284660885850019,0.02074103971037043,0.0,0.0,0.0,0.041987964915986595,0.0,0.16088900867453154,0.0,0.03462635080411252,0.0,0.0,0.0,1.593292390532391e-10,2.5912236120138223e-10,0.277857072613562,0.0,1.0,1.0,1.0,0.0,1.0,1.0,1.0,0.0,0.0,0.0,1.0,0.0,1.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,1.0,0.05357369504239434,0.021416014092140587,0.052520860298503266,0.014407653865960018,0.10343976225636778,0.019970051412947797,0.014369332750898882,0.022333006477781126,0.012720552417123695,0.016811698854676954,0.0400079066935623,0.012140789657016546,0.08593114479629342,0.011640337084185815,0.027652287374504432,0.029714539388824172,0.017400662598968407,0.015638165806401566,0.018851085351346338,0.013116626810969168,0.1904894659242431,0.11972238085644822,0.04785886419701645,0.11736958659636818,0.03219711879166391,0.23115923967457383,0.04462753780734809,0.03211148170561705,0.049908088383424316,0.02842691399169231,0.03756949397518342,0.08940659849289051,0.027131304683485985,0.19203232550212115,0.026012931693203758,0.06179520897303437,0.06640377145663737,0.03888566493649018,0.034946972410410344,0.04212695835531514,0.02931203064063598,0.39048946592424305]
