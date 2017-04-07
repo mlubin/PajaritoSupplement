@@ -7,7 +7,7 @@ resultfiles = readdir(joinpath(pwd(), ARGS[1]))
 fd = open(joinpath(pwd(), ARGS[2]), "w")
 
 # process into a CSV file with columns:
-println(fd,"solver,instance,status,objval_reported,objbound,solvertime,totaltime,filename,objval_solution,max_linear_violation,max_soc_violation,max_socrot_violation,max_int_violation,validator_status,validator_objval")
+println(fd,"solver,instance,sense,status,objval_reported,objbound,solvertime,totaltime,filename,objval_solution,max_linear_violation,max_soc_violation,max_socrot_violation,max_int_violation,validator_status,validator_relobjdiff,conic_subproblems")
 
 # from instance name to file name
 function find_instance(name)
@@ -48,10 +48,9 @@ end
 function compute_violations(dat, solution)
     c, A, b, con_cones, var_cones, vartypes, sense, objoffset = cbftompb(dat)
 
-    # will be fixed soon, should really be equal
-    #if length(solution) > length(c)
-    #    println("Solution is too long")
-    #end
+    if length(solution) > length(c)
+        println("Solution is too long")
+    end
     @assert length(solution) >= length(c)
     solution = solution[1:length(c)]
     objval = dot(c,solution)
@@ -134,9 +133,14 @@ for (cnt,filename) in enumerate(resultfiles)
     end
     println("$cnt of $(length(resultfiles)): $(basename(filename))")
 
+    solver = split(basename(filename),".")[1]
+    # instance name may have '.' in it
+    instance = join(split(basename(filename),".")[2:end-1],".")
+    instance = string(instance,".cbf")
 
-    solver = " "
-    instance = " "
+    #solver = " "
+    #instance = " "
+    #sense = " "
     status = " "
     objval = " "
     objbound = " "
@@ -149,17 +153,20 @@ for (cnt,filename) in enumerate(resultfiles)
     exp_violation = " "
     int_violation = " "
     validator_status = " "
-    validator_objval = " "
+    validator_relobjdiff = " "
+    conic_subproblems = " "
     solution = []
     # gaplimit = false
 
     for line in eachline(joinpath(pwd(), ARGS[1], filename))
         if startswith(line, "#SOLVERNAME#")
-            solver = split(line)[2]
+            @assert solver == split(line)[2]
         elseif startswith(line, "#INSTANCE#")
-            instance = split(line)[2]
-            if endswith(instance, ".gz")
-                instance = instance[1:end-3]
+            inst = split(line)[2]
+            if endswith(inst, ".gz")
+                @assert instance == inst[1:end-3]
+            else
+                @assert instance == inst
             end
         elseif startswith(line, "#STATUS#")
             status = split(line)[2]
@@ -176,17 +183,21 @@ for (cnt,filename) in enumerate(resultfiles)
             if startswith(solutionvec,'[') && endswith(solutionvec,']') && !startswith(solutionvec, "[]")
                 solution = [parse(Float64,x) for x in split(solutionvec[2:end-1],',')]
             end
+        elseif startswith(line, " -- Conic subproblems   =")
+            conic_subproblems = split(line)[5]
         end
         # elseif contains(line, "gap limit reached") # SCIP does this when it means optimal
         #     gaplimit=true
         #end
     end
-    if length(solution) > 0 && all(isfinite,solution)
-        instancefile = find_instance(instance)
-        dat = readcbfdata(instancefile)
 
+    instancefile = find_instance(instance)
+    dat = readcbfdata(instancefile)
+    sense = string(dat.sense)
+    if length(solution) > 0 && all(isfinite,solution)
         objval_sol, linear_violation, soc_violation, socrot_violation, exp_violation, int_violation = compute_violations(dat,solution)
         validator_status, validator_objval = validate_with_conic_solver(dat,solution)
+        validator_relobjdiff = abs(objval_sol - validator_objval)/abs(objval_sol+1e-5)
     end
 
     # if gaplimit
@@ -195,7 +206,7 @@ for (cnt,filename) in enumerate(resultfiles)
     # end
 
     println(fd,
-"$solver,$instance,$status,$objval,$objbound,$solvertime,$totaltime,$(basename(filename)),$objval_sol,$linear_violation,$soc_violation,$socrot_violation,$int_violation,$validator_status,$validator_objval")
+"$solver,$instance,$sense,$status,$objval,$objbound,$solvertime,$totaltime,$(basename(filename)),$objval_sol,$linear_violation,$soc_violation,$socrot_violation,$int_violation,$validator_status,$validator_relobjdiff,$conic_subproblems")
 end
 
 close(fd)
