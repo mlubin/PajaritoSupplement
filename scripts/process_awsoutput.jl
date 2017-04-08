@@ -6,8 +6,10 @@ resultfiles = readdir(joinpath(pwd(), ARGS[1]))
 
 fd = open(joinpath(pwd(), ARGS[2]), "w")
 
+# conic failures, subproblem time
+
 # process into a CSV file with columns:
-println(fd,"solver,instance,sense,status,objval_reported,objbound,solvertime,totaltime,filename,rel_objval_error,max_linear_violation,max_soc_violation,max_socrot_violation,max_exp_violation,max_int_violation,validator_status,validator_relobjdiff,conic_subproblems")
+println(fd,"solver,instance,sense,status,objval_reported,objbound,solvertime,totaltime,filename,rel_objval_error,max_linear_violation,max_soc_violation,max_socrot_violation,max_exp_violation,max_int_violation,validator_status,validator_relobjdiff,conic_subproblem_count,conic_optimal_count,conic_infeasible_count,conic_subproblem_time")
 
 # from instance name to file name
 function find_instance(name)
@@ -154,7 +156,10 @@ for (cnt,filename) in enumerate(resultfiles)
     int_violation = " "
     validator_status = " "
     validator_relobjdiff = " "
-    conic_subproblems = " "
+    conic_subproblem_count = " "
+    conic_optimal_count = " "
+    conic_infeasible_count = " "
+    conic_subproblem_time = " "
     solution = []
 
     for line in eachline(joinpath(pwd(), ARGS[1], filename))
@@ -183,7 +188,13 @@ for (cnt,filename) in enumerate(resultfiles)
                 solution = [parse(Float64,x) for x in split(solutionvec[2:end-1],',')]
             end
         elseif startswith(line, " -- Conic subproblems   =")
-            conic_subproblems = split(line)[5]
+            conic_subproblem_count = split(line)[5]
+        elseif startswith(line, " --- Optimal            =")
+            conic_optimal_count = split(line)[4]
+        elseif startswith(line, " --- Infeasible         =")
+            conic_infeasible_count = split(line)[4]
+        elseif startswith(line, " -- Solve subproblems   =")
+            conic_subproblem_time = split(line)[5]
         end
     end
 
@@ -198,7 +209,7 @@ for (cnt,filename) in enumerate(resultfiles)
     end
 
     println(fd,
-"$solver,$instance,$sense,$status,$objval,$objbound,$solvertime,$totaltime,$(basename(filename)),$rel_objval_error,$linear_violation,$soc_violation,$socrot_violation,$exp_violation,$int_violation,$validator_status,$validator_relobjdiff,$conic_subproblems")
+"$solver,$instance,$sense,$status,$objval,$objbound,$solvertime,$totaltime,$(basename(filename)),$rel_objval_error,$linear_violation,$soc_violation,$socrot_violation,$exp_violation,$int_violation,$validator_status,$validator_relobjdiff,$conic_subproblem_count,$conic_optimal_count,$conic_infeasible_count,$conic_subproblem_time")
 end
 
 close(fd)

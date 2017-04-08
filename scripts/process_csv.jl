@@ -6,7 +6,11 @@ results = readtable(ARGS[1])
 # file listing manually excluded results
 # format by line: solver instance ignored comment
 # example: PAJ_CPLEX_MOSEK clay0304h.cbf # CPLEX gave wrong answer
-excluded = [split(strip(l))[1:2] for l in split(readstring(ARGS[2]),'\n') if strip(l) != ""]
+if length(ARGS) > 1
+    excluded = [split(strip(l))[1:2] for l in split(readstring(ARGS[2]),'\n') if strip(l) != ""]
+else
+    excluded = []
+end
 function isexcluded(solver,inst)
     for k in 1:length(excluded)
         if excluded[k][1] == solver && excluded[k][2] == inst
@@ -112,5 +116,5 @@ shifted_geomean(optimal_runs, :solvertime, time_shift, :solver)
 println()
 
 println("Shifted geomean of conic subproblem count on optimal instances")
-shifted_geomean(optimal_runs, :conic_subproblems, subproblem_shift, :solver)
+shifted_geomean(optimal_runs, :conic_subproblem_count, subproblem_shift, :solver)
 
