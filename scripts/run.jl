@@ -42,6 +42,7 @@ function solveprint(instance, solver)
 
     objval = NaN
     objbound = NaN
+    nodecount = NaN
     try
         objval = MathProgBase.getobjval(m)
         if sense == :Max
@@ -56,10 +57,14 @@ function solveprint(instance, solver)
         end
         objbound += objoffset
     end
+    try
+        nodecount = MathProgBase.getnodecount(m)
+    end
 
     println("#STATUS# $status")
     println("#OBJVAL# $objval")
     println("#OBJBOUND# $objbound")
+    println("#NODECOUNT# $nodecount")
     println("#TIMESOLVER# $timesolver")
     println("#TIMEALL# $timeall")
     println("#SOLUTION# $(vec_to_string(x))")
