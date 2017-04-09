@@ -105,6 +105,9 @@ elseif arguments["geomeans"]
         # compute prod(x_i+s)^(1/n) as
         # exp(sum(log(x_i+s))/n)
         for i in 1:size(table,1)
+            if isna(table[i,field])
+                continue
+            end
             sum_by[table[i,groupby]] += log(table[i,field] + shift)
             counter_by[table[i,groupby]] += 1
         end
@@ -118,12 +121,23 @@ elseif arguments["geomeans"]
     time_shift = 10.0
     subproblem_shift = 1.0
 
+    # tidy data (needed for KilledX cases)
+    for i in 1:size(results,1)
+        if isna(results[i,:solvertime])
+            results[i,:solvertime] = results[i,:timelimit]
+        end
+    end
+
     println("Shifted geomean of solve time on all instances")
     shifted_geomean(results, :solvertime, time_shift, :solver)
     println()
 
     println("Shifted geomean of solve time on optimal instances")
     shifted_geomean(optimal_runs, :solvertime, time_shift, :solver)
+    println()
+
+    println("Shifted geomean of conic subproblem count on all instances")
+    shifted_geomean(results, :conic_subproblem_count, subproblem_shift, :solver)
     println()
 
     println("Shifted geomean of conic subproblem count on optimal instances")

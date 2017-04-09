@@ -16,8 +16,6 @@ julia scripts/process_csv.jl check results/misocp3q.csv
 julia scripts/process_csv.jl statuscounts results/misocp3q.csv --exclude=postprocessing/misocp3q_exclude > postprocessing/misocp3q_statuscounts
 
 julia scripts/process_csv.jl geomeans results/misocp3q.csv --exclude=postprocessing/misocp3q_exclude > postprocessing/misocp3q_geomeans 
-
-
 ```
 
 # Generating performance profiles
@@ -27,4 +25,7 @@ julia scripts/process_csv.jl perfprofile results/misocp3q.csv postprocessing/14_
 
 julia postprocessing/14_4_1_perf.jl
 
+julia scripts/process_csv.jl perfprofile results/misocp3q.csv postprocessing/14_4_2_perf.jld PAJ_CPLEX_MOSEK_dualonly PAJ_CPLEX_MOSEK_primonlynorelax PAJ_CPLEX_MOSEK_msddualonly PAJ_CPLEX_MOSEK_msdprimonlynorelax  --exclude=postprocessing/misocp3q_exclude
+
+julia postprocessing/14_4_2_perf.jl
 ```

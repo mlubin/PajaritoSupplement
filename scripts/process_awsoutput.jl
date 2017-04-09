@@ -9,7 +9,7 @@ fd = open(joinpath(pwd(), ARGS[2]), "w")
 # conic failures, subproblem time
 
 # process into a CSV file with columns:
-println(fd,"solver,instance,sense,status,objval_reported,objbound,solvertime,totaltime,filename,rel_objval_error,max_linear_violation,max_soc_violation,max_socrot_violation,max_exp_violation,max_int_violation,validator_status,validator_relobjdiff,conic_subproblem_count,conic_optimal_count,conic_infeasible_count,conic_subproblem_time")
+println(fd,"solver,instance,sense,timelimit,status,objval_reported,objbound,solvertime,totaltime,filename,rel_objval_error,max_linear_violation,max_soc_violation,max_socrot_violation,max_exp_violation,max_int_violation,validator_status,validator_relobjdiff,conic_subproblem_count,conic_optimal_count,conic_infeasible_count,conic_subproblem_time")
 
 # from instance name to file name
 function find_instance(name)
@@ -143,6 +143,7 @@ for (cnt,filename) in enumerate(resultfiles)
     #solver = " "
     #instance = " "
     #sense = " "
+    timelimit = " "
     status = " "
     objval = " "
     objbound = " "
@@ -172,6 +173,8 @@ for (cnt,filename) in enumerate(resultfiles)
             else
                 @assert instance == inst
             end
+        elseif startswith(line, "#TIMELIMIT#")
+            timelimit = split(line)[2]
         elseif startswith(line, "#STATUS#")
             status = split(line)[2]
         elseif startswith(line, "#OBJVAL#")
@@ -209,7 +212,7 @@ for (cnt,filename) in enumerate(resultfiles)
     end
 
     println(fd,
-"$solver,$instance,$sense,$status,$objval,$objbound,$solvertime,$totaltime,$(basename(filename)),$rel_objval_error,$linear_violation,$soc_violation,$socrot_violation,$exp_violation,$int_violation,$validator_status,$validator_relobjdiff,$conic_subproblem_count,$conic_optimal_count,$conic_infeasible_count,$conic_subproblem_time")
+"$solver,$instance,$sense,$timelimit,$status,$objval,$objbound,$solvertime,$totaltime,$(basename(filename)),$rel_objval_error,$linear_violation,$soc_violation,$socrot_violation,$exp_violation,$int_violation,$validator_status,$validator_relobjdiff,$conic_subproblem_count,$conic_optimal_count,$conic_infeasible_count,$conic_subproblem_time")
 end
 
 close(fd)
