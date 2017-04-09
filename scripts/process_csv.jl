@@ -90,8 +90,8 @@ elseif arguments["statuscounts"]
     end
 
     println("Status counts by solver")
-    for k in 1:3:length(statuses)+1
-        println(status_table[:,k:min(length(statuses)+1,k+2)])
+    for k in 1:2:length(statuses)+1
+        println(status_table[:,k:min(length(statuses)+1,k+1)])
     end
     println()
 
