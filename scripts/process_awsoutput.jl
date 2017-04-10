@@ -2,9 +2,15 @@ using ConicBenchmarkUtilities
 using Mosek
 using MathProgBase
 
-resultfiles = readdir(joinpath(pwd(), ARGS[1]))
+# usage: process_awsoutput.jl <result directories>... <output csv>
 
-fd = open(joinpath(pwd(), ARGS[2]), "w")
+@assert length(ARGS) >= 2
+resultfiles = []
+for i in 1:length(ARGS)-1
+    append!(resultfiles,[joinpath(pwd(),ARGS[i],f) for f in readdir(joinpath(pwd(), ARGS[i]))])
+end
+
+fd = open(joinpath(pwd(), ARGS[end]), "w")
 
 # conic failures, subproblem time
 
@@ -163,7 +169,7 @@ for (cnt,filename) in enumerate(resultfiles)
     conic_subproblem_time = " "
     solution = []
 
-    for line in eachline(joinpath(pwd(), ARGS[1], filename))
+    for line in eachline(filename)
         if startswith(line, "#SOLVERNAME#")
             @assert solver == split(line)[2]
         elseif startswith(line, "#INSTANCE#")
