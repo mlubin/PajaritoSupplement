@@ -166,6 +166,8 @@ def dispatch_and_run(job, tags, cmds, commands, verbose=True):
         with open(runner_path, "w") as f:
             f.write("cd ~/.julia/v0.5/CPLEX; git checkout ml/heurspeedup; git pull")
             f.write("\n")
+            f.write("cd ~/.julia/v0.5/JuMP; git checkout ml/nolpsol; git pull")
+            f.write("\n")
             f.write("cd ~/.julia/v0.5/GLPKMathProgInterface; git checkout master; git pull")
             f.write("\n")
             f.write("cd ~/.julia/v0.5/Pajarito; git checkout master; git pull")
