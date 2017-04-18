@@ -68,6 +68,8 @@ function solveprint(instance, solver)
     println("#TIMESOLVER# $timesolver")
     println("#TIMEALL# $timeall")
     println("#SOLUTION# $(vec_to_string(x))")
+
+    @show CPLEX.HEURTIME[1]
 end
 
 
