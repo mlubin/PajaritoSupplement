@@ -49,7 +49,7 @@ for instancename in instancelist
                 # Kill if time limit exceeded (some solvers don't respect time limits)
                 kill(process)
                 sleep(1.0)
-                println(fdmeta, "killed by time limit\n")
+                println(fdmeta, "killed by time limit")
                 open(filename, "a") do fd
                     println(fd, "#STATUS# KilledTime")
                 end
@@ -61,7 +61,7 @@ for instancename in instancelist
                     if memuse > mlim
                         kill(process)
                         sleep(1.0)
-                        println(fdmeta, "killed by memory limit\n")
+                        println(fdmeta, "killed by memory limit")
                         open(filename, "a") do fd
                             println(fd, "#STATUS# KilledMemory")
                         end
