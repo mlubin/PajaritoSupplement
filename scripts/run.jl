@@ -186,7 +186,7 @@ if startswith(solvername, "PAJ")
     TT = STDOUT
     open("/dev/null", "w") do fd
         redirect_stdout(fd)
-        instance = readcbfdata(joinpath(datafolder, "compile.cbf"))
+        instance = readcbfdata(joinpath(datafolder, "compile.cbf.gz"))
         solver = getsolver(solvername, 20., 0, rgap)
         solveprint(instance, solver)
     end
