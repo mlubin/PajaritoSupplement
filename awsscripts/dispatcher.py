@@ -164,12 +164,12 @@ def dispatch_and_run(job, tags, cmds, commands, verbose=True):
         # Make a shell script to run the command and then save the results
         runner_path = "runner_%s.sh" % tag
         with open(runner_path, "w") as f:
-            f.write("cd ~/.julia/v0.5/CPLEX; git fetch; git checkout ml/profiling; git pull")
-            f.write("\n")
-            f.write("cd ~/.julia/v0.5/JuMP; git fetch; git checkout ml/nolpsol; git pull")
-            f.write("\n")
-            f.write("cd ~/.julia/v0.5/GLPKMathProgInterface; git checkout master; git pull")
-            f.write("\n")
+            # f.write("cd ~/.julia/v0.5/CPLEX; git fetch; git checkout ml/profiling; git pull")
+            # f.write("\n")
+            # f.write("cd ~/.julia/v0.5/JuMP; git fetch; git checkout ml/nolpsol; git pull")
+            # f.write("\n")
+            # f.write("cd ~/.julia/v0.5/GLPKMathProgInterface; git checkout master; git pull")
+            # f.write("\n")
             f.write("cd ~/.julia/v0.5/Pajarito; git checkout master; git pull")
             f.write("\n")
             f.write("cd ~/PajaritoSupplement; git pull; mkdir output")
