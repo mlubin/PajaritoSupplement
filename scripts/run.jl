@@ -141,16 +141,23 @@ solvermap = Dict(
 
     # Portfolio tests solvers
     "Port_noconic" =>
-    (["CPLEX"], quote PajaritoSolver(mip_solver=CplexSolver(CPX_PARAM_THREADS=1, CPX_PARAM_SCRIND=1, CPX_PARAM_EPINT=tol_int, CPX_PARAM_EPRHS=tol_feas, CPX_PARAM_EPGAP=rgap), log_level=logl, timeout=tlim, rel_gap=rgap, prim_cut_feas_tol=tol_conic, mip_solver_drives=true, use_mip_starts=false, prim_cuts_only=true, solve_relax=false, solve_subp=false,
-    dump_subproblems=true, dump_basename=(pwd()*"mosek")) end),
+    (["CPLEX"], quote PajaritoSolver(mip_solver=CplexSolver(CPX_PARAM_THREADS=1, CPX_PARAM_SCRIND=1, CPX_PARAM_EPINT=tol_int, CPX_PARAM_EPRHS=tol_feas, CPX_PARAM_EPGAP=rgap), log_level=logl, timeout=tlim, rel_gap=rgap, prim_cut_feas_tol=tol_conic, mip_solver_drives=true, use_mip_starts=false, prim_cuts_only=true, solve_relax=false, solve_subp=false
+    ) end),
     "Port_MOSEK" =>
-    (["CPLEX","Mosek"], quote PajaritoSolver(mip_solver=CplexSolver(CPX_PARAM_THREADS=1, CPX_PARAM_SCRIND=1, CPX_PARAM_EPINT=tol_int, CPX_PARAM_EPRHS=tol_feas, CPX_PARAM_EPGAP=rgap), cont_solver=MosekSolver(LOG=0, NUM_THREADS=1), log_level=logl, timeout=tlim, rel_gap=rgap, prim_cut_feas_tol=tol_conic, mip_solver_drives=true, use_mip_starts=true) end),
+    (["CPLEX","Mosek"], quote PajaritoSolver(mip_solver=CplexSolver(CPX_PARAM_THREADS=1, CPX_PARAM_SCRIND=1, CPX_PARAM_EPINT=tol_int, CPX_PARAM_EPRHS=tol_feas, CPX_PARAM_EPGAP=rgap), cont_solver=MosekSolver(LOG=0, NUM_THREADS=1), log_level=logl, timeout=tlim, rel_gap=rgap, prim_cut_feas_tol=tol_conic, mip_solver_drives=true, use_mip_starts=true,
+    # dump_subproblems=true, dump_basename=(pwd()*"/output/socpsd/")
+    ) end),
     "Port_ECOS" =>
-    (["CPLEX","ECOS"], quote PajaritoSolver(mip_solver=CplexSolver(CPX_PARAM_THREADS=1, CPX_PARAM_SCRIND=1, CPX_PARAM_EPINT=tol_int, CPX_PARAM_EPRHS=tol_feas, CPX_PARAM_EPGAP=rgap), cont_solver=ECOSSolver(verbose=false), log_level=logl, timeout=tlim, rel_gap=rgap, prim_cut_feas_tol=tol_conic, mip_solver_drives=true, use_mip_starts=true) end),
+    (["CPLEX","ECOS"], quote PajaritoSolver(mip_solver=CplexSolver(CPX_PARAM_THREADS=1, CPX_PARAM_SCRIND=1, CPX_PARAM_EPINT=tol_int, CPX_PARAM_EPRHS=tol_feas, CPX_PARAM_EPGAP=rgap), cont_solver=ECOSSolver(verbose=false), log_level=logl, timeout=tlim, rel_gap=rgap, prim_cut_feas_tol=tol_conic, mip_solver_drives=true, use_mip_starts=true,
+    # dump_subproblems=true, dump_basename=(pwd()*"/output/socexp/")
+    ) end),
     "Port_SCS_nowarm" =>
-    (["CPLEX","SCS"], quote PajaritoSolver(mip_solver=CplexSolver(CPX_PARAM_THREADS=1, CPX_PARAM_SCRIND=1, CPX_PARAM_EPINT=tol_int, CPX_PARAM_EPRHS=tol_feas, CPX_PARAM_EPGAP=rgap), cont_solver=SCSSolver(verbose=0, warm_start=false, eps=1e-4, max_iters=50000), log_level=logl, timeout=tlim, rel_gap=rgap, prim_cut_feas_tol=tol_conic, mip_solver_drives=true, use_mip_starts=true) end),
+    (["CPLEX","SCS"], quote PajaritoSolver(mip_solver=CplexSolver(CPX_PARAM_THREADS=1, CPX_PARAM_SCRIND=1, CPX_PARAM_EPINT=tol_int, CPX_PARAM_EPRHS=tol_feas, CPX_PARAM_EPGAP=rgap), cont_solver=SCSSolver(verbose=0, warm_start=false, eps=1e-4, max_iters=50000), log_level=logl, timeout=tlim, rel_gap=rgap, prim_cut_feas_tol=tol_conic, mip_solver_drives=true, use_mip_starts=true
+    ) end),
     "Port_SCS_warm" =>
-    (["CPLEX","SCS"], quote PajaritoSolver(mip_solver=CplexSolver(CPX_PARAM_THREADS=1, CPX_PARAM_SCRIND=1, CPX_PARAM_EPINT=tol_int, CPX_PARAM_EPRHS=tol_feas, CPX_PARAM_EPGAP=rgap), cont_solver=SCSSolver(verbose=0, warm_start=true, eps=1e-4, max_iters=50000), log_level=logl, timeout=tlim, rel_gap=rgap, prim_cut_feas_tol=tol_conic, mip_solver_drives=true, use_mip_starts=true) end),
+    (["CPLEX","SCS"], quote PajaritoSolver(mip_solver=CplexSolver(CPX_PARAM_THREADS=1, CPX_PARAM_SCRIND=1, CPX_PARAM_EPINT=tol_int, CPX_PARAM_EPRHS=tol_feas, CPX_PARAM_EPGAP=rgap), cont_solver=SCSSolver(verbose=0, warm_start=true, eps=1e-4, max_iters=50000), log_level=logl, timeout=tlim, rel_gap=rgap, prim_cut_feas_tol=tol_conic, mip_solver_drives=true, use_mip_starts=true,
+    # dump_subproblems=true, dump_basename=(pwd()*"/output/socexppsd/")
+    ) end),
 )
 
 
