@@ -1,4 +1,4 @@
-# Setting Amazon Web Services
+# Setting up Amazon Web Services (AWS)
 
 This is a collection of scripts to help you easily perform distributed computation on Amazon Web Services (AWS). These were adapted from the *aws-runner* code by [Jack Dunn](https://github.com/JackDunnNZ/aws-runner).
 
@@ -6,7 +6,7 @@ This is a collection of scripts to help you easily perform distributed computati
 
 Install several Python 2.7 packages on your own system to enable interfacing with AWS:
  * If you do not already have the Python package manager `pip` installed, install it by following the instructions [on the pip website](https://pip.pypa.io/en/latest/installing.html)
- * Install Paramiko and Boto python packages with `sudo pip install paramiko` and `sudo pip install boto`. The `paramiko` package dependencies `ecdsa` and `pycrypto` should be automatically installed; if they are not follow the additional [paramiko installation instructions](http://www.paramiko.org/installing.html)
+ * Install Paramiko and Boto python packages with `sudo pip install paramiko` and `sudo pip install boto` (may need to install `build-essential libssl-dev libffi-dev python3-dev` first). The `paramiko` package dependencies `ecdsa` and `pycrypto` should be automatically installed; if they are not follow the additional [paramiko installation instructions](http://www.paramiko.org/installing.html)
 
 ## Configuring an AWS account
 
@@ -101,7 +101,7 @@ Install [Julia v0.5.1](http://julialang.org/downloads/).
 
 # Specific commands to run for computational testing
 
-Clone or download the PajaritoSupplement repository. 
+Clone or download the PajaritoSupplement repository.
 
 Go to the [MOSEK academic license page](https://www.mosek.com/resources/academic-license) to request a license if you don't already have one. Place the license file `mosek.lic` into the folder `ec2_scripts`.
 
