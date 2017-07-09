@@ -88,8 +88,7 @@ def connect_instances(job, tags, verbose=True):
         all_done = True
         for tag in tags:
             if cmds[tag] is None:
-                if verbose:
-                    print "  %s" % tag
+                print "  %s" % tag
                 # Test if connected
                 try:
                     insts[tag], cmds[tag] = cloud_setup.connect_instance(
