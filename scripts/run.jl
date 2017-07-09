@@ -29,7 +29,7 @@ function solveprint(instance, solver)
     m = MathProgBase.ConicModel(solver)
     timeall = time()
     MathProgBase.loadproblem!(m, c, A, b, con_cones, var_cones)
-    MathProgBase.setvartype!(m, vartypes)
+    # MathProgBase.setvartype!(m, vartypes)
     MathProgBase.optimize!(m)
     timeall = time() - timeall
     timesolver = MathProgBase.getsolvetime(m)
