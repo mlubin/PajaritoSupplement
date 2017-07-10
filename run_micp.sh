@@ -3,7 +3,7 @@
 # run from PajaritoSupplement directory
 
 # set julia binary location
-JULIA = /home/coey/julia-903644385b/bin/julia
+JULIA=/home/coey/julia-903644385b/bin/julia
 
 ## SOC
 for SOLVER in MICP_noconic MICP_MOSEK MICP_MOSEK_nosep
