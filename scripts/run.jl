@@ -29,7 +29,9 @@ function solveprint(instance, solver)
     m = MathProgBase.ConicModel(solver)
     timeall = time()
     MathProgBase.loadproblem!(m, c, A, b, con_cones, var_cones)
-    MathProgBase.setvartype!(m, vartypes)
+    if !all(t->t==:Cont, vartypes)
+        MathProgBase.setvartype!(m, vartypes)
+    end
     MathProgBase.optimize!(m)
     timeall = time() - timeall
     timesolver = MathProgBase.getsolvetime(m)
@@ -185,13 +187,13 @@ solvermap = Dict(
     "Port_SCS_warm_nosep" =>
     (["GLPKMathProgInterface","SCS"], quote PajaritoSolver(mip_solver=GLPKSolverMIP(msg_lev=GLPK.MSG_OFF, tol_int=tol_int, tol_bnd=tol_feas, mip_gap=tol_gap, presolve=true), cont_solver=SCSSolver(verbose=0, warm_start=true, eps=1e-4, max_iters=50000), log_level=logl, timeout=tlim, rel_gap=rgap, prim_cut_feas_tol=tol_conic, prim_cuts_assist=false) end),
 
-    # # Continuous conic solvers
-    # "MOSEK" =>
-    # (["Mosek"], quote MosekSolver(LOG=1, NUM_THREADS=1) end),
-    # "ECOS" =>
-    # (["ECOS"], quote ECOSSolver(verbose=true) end),
-    # "SCS" =>
-    # (["SCS"], quote SCSSolver(verbose=1, eps=1e-4, max_iters=50000) end),
+    # Continuous conic solvers
+    "MOSEK" =>
+    (["Mosek"], quote MosekSolver(LOG=1, NUM_THREADS=1) end),
+    "ECOS" =>
+    (["ECOS"], quote ECOSSolver(verbose=true) end),
+    "SCS" =>
+    (["SCS"], quote SCSSolver(verbose=1, eps=1e-4, max_iters=50000) end),
 )
 
 

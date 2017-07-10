@@ -1,6 +1,8 @@
 
 # Usage: runmeta.jl SOLVERNAME TIMELIMIT MEMORYLIMIT DATAFOLDER INSTANCESET
 
+# Output goes into directory "output". You must create this directory before running the script.
+
 solvername = ARGS[1]
 tlim = parse(Float64, ARGS[2])
 mlim = parse(Int, ARGS[3])
