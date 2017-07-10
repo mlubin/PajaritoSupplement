@@ -34,7 +34,7 @@ flush(fdmeta)
 for instancename in instancelist
     println(fdmeta, "\nstarting instance $instancename...")
 
-    filename = "output/$solvername.$(split(basename(instfile),'.')[1]).$instancename.txt"
+    filename = "output/$solvername.$instancename.txt"
 
     # Try to start a process to run the current instance on
     # If this fails, it won't affect running future instances
