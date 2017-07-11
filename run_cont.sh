@@ -18,7 +18,7 @@ mv output/* out_cont_soc
 ## SOC, PSD
 for SOLVER in MOSEK SCS
 do
-    $JULIA scripts/runmeta.jl $SOLVER 3600 50000000 instancedata/conttests/socpsd/ instancesets/cont_socpsd.txt
+    $JULIA scripts/runmeta.jl $SOLVER 300 50000000 instancedata/conttests/socpsd/ instancesets/cont_socpsd.txt
 done
 mkdir -p out_cont_socpsd
 mv output/* out_cont_socpsd
@@ -26,7 +26,7 @@ mv output/* out_cont_socpsd
 ## SOC, EXP
 for SOLVER in ECOS SCS
 do
-    $JULIA scripts/runmeta.jl $SOLVER 3600 50000000 instancedata/conttests/socexp/ instancesets/cont_socexp.txt
+    $JULIA scripts/runmeta.jl $SOLVER 300 50000000 instancedata/conttests/socexp/ instancesets/cont_socexp.txt
 done
 mkdir -p out_cont_socexp
 mv output/* out_cont_socexp
@@ -34,7 +34,7 @@ mv output/* out_cont_socexp
 ## SOC, EXP, PSD
 for SOLVER in SCS
 do
-    $JULIA scripts/runmeta.jl $SOLVER 3600 50000000 instancedata/conttests/socexppsd/ instancesets/cont_socexppsd.txt
+    $JULIA scripts/runmeta.jl $SOLVER 300 50000000 instancedata/conttests/socexppsd/ instancesets/cont_socexppsd.txt
 done
 mkdir -p out_cont_socexppsd
 mv output/* out_cont_socexppsd
