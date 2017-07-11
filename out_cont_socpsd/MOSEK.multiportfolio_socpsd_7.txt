@@ -1,0 +1,74 @@
+#SOLVERNAME# MOSEK
+#SOLVER# Mosek.MosekMathProgSolverInterface.MosekSolver(Any[(:LOG, 1), (:NUM_THREADS, 1)])
+#INSTANCE# multiportfolio_socpsd_7.cbf.gz
+#TIMELIMIT# 300.0
+Problem
+  Name                   :                 
+  Objective sense        : min             
+  Type                   : CONIC (conic optimization problem)
+  Constraints            : 151             
+  Cones                  : 3               
+  Scalar variables       : 69              
+  Matrix variables       : 3               
+  Integer variables      : 0               
+
+Optimizer started.
+Conic interior-point optimizer started.
+Presolve started.
+Linear dependency checker started.
+Linear dependency checker terminated.
+Eliminator started.
+Freed constraints in eliminator : 11
+Eliminator terminated.
+Eliminator - tries                  : 1                 time                   : 0.00            
+Lin. dep.  - tries                  : 1                 time                   : 0.00            
+Lin. dep.  - number                 : 0               
+Presolve terminated. Time: 0.00    
+Optimizer  - threads                : 1               
+Optimizer  - solved problem         : the primal      
+Optimizer  - Constraints            : 98
+Optimizer  - Cones                  : 3
+Optimizer  - Scalar variables       : 27                conic                  : 18              
+Optimizer  - Semi-definite variables: 3                 scalarized             : 84              
+Factor     - setup time             : 0.00              dense det. time        : 0.00            
+Factor     - ML order time          : 0.00              GP order time          : 0.00            
+Factor     - nonzeros before factor : 1279              after factor           : 1327            
+Factor     - dense dim.             : 0                 flops                  : 3.48e+04        
+ITE PFEAS    DFEAS    GFEAS    PRSTATUS   POBJ              DOBJ              MU       TIME  
+0   1.0e+00  7.2e+00  1.0e+00  0.00e+00   0.000000000e+00   0.000000000e+00   1.0e+00  0.01  
+1   2.8e-01  2.0e+00  1.5e+00  1.42e+00   -1.074137885e-01  -7.597316980e-01  2.8e-01  0.01  
+2   1.9e-01  1.4e+00  1.3e+00  7.11e+00   -6.299205161e-02  -9.932668841e-02  1.9e-01  0.01  
+3   2.3e-02  1.7e-01  7.6e-01  1.73e+00   -4.998754497e-02  -5.632499886e-02  2.3e-02  0.01  
+4   7.4e-03  5.3e-02  3.4e-01  7.68e-01   -5.372066539e-02  -5.579789293e-02  7.4e-03  0.01  
+5   3.6e-03  2.6e-02  2.0e-01  4.78e-01   -5.585997287e-02  -5.705695010e-02  3.6e-03  0.01  
+6   1.4e-03  1.0e-02  1.2e-01  7.06e-01   -5.678389793e-02  -5.734926221e-02  1.4e-03  0.01  
+7   7.7e-04  5.5e-03  6.7e-02  3.26e-01   -5.841825003e-02  -5.876819141e-02  7.7e-04  0.01  
+8   2.0e-04  1.4e-03  3.3e-02  6.78e-01   -5.900445441e-02  -5.912320079e-02  2.0e-04  0.01  
+9   7.2e-05  5.2e-04  1.3e-02  3.27e-01   -6.011811624e-02  -6.014913539e-02  7.2e-05  0.02  
+10  1.9e-05  1.4e-04  5.4e-03  6.20e-01   -6.049539012e-02  -6.049563738e-02  1.9e-05  0.02  
+11  8.4e-06  6.0e-05  2.7e-03  4.31e-01   -6.081573480e-02  -6.080788422e-02  8.4e-06  0.02  
+12  2.6e-06  1.8e-05  1.3e-03  6.47e-01   -6.097097345e-02  -6.096600281e-02  2.6e-06  0.02  
+13  1.3e-06  9.6e-06  7.4e-04  5.42e-01   -6.106464081e-02  -6.105929864e-02  1.3e-06  0.02  
+14  4.2e-07  3.1e-06  3.8e-04  7.67e-01   -6.110946688e-02  -6.110729731e-02  4.2e-07  0.02  
+15  2.3e-07  1.6e-06  2.2e-04  5.34e-01   -6.114979649e-02  -6.114739279e-02  2.3e-07  0.02  
+16  7.2e-08  5.2e-07  1.1e-04  8.01e-01   -6.116599350e-02  -6.116502965e-02  7.2e-08  0.02  
+17  3.6e-08  2.6e-07  5.8e-05  4.65e-01   -6.118562460e-02  -6.118452113e-02  3.6e-08  0.02  
+18  1.1e-08  8.1e-08  2.8e-05  7.75e-01   -6.119255318e-02  -6.119210145e-02  1.1e-08  0.02  
+19  5.1e-09  3.7e-08  1.3e-05  4.07e-01   -6.120219903e-02  -6.120168926e-02  5.1e-09  0.03  
+20  1.6e-09  1.1e-08  6.3e-06  7.40e-01   -6.120531458e-02  -6.120509989e-02  1.6e-09  0.03  
+Interior-point optimizer terminated. Time: 0.03. 
+
+Optimizer terminated. Time: 0.04    
+
+Interior-point solution summary
+  Problem status  : PRIMAL_AND_DUAL_FEASIBLE
+  Solution status : OPTIMAL
+  Primal.  obj: -6.1205314583e-02   nrm: 1e+02    Viol.  con: 2e-08    var: 0e+00    barvar: 0e+00    cones: 0e+00  
+  Dual.    obj: -6.1205099890e-02   nrm: 3e-01    Viol.  con: 1e-21    var: 1e-07    barvar: 2e-08    cones: 0e+00  
+#STATUS# Optimal
+#OBJVAL# -0.06120531458252737
+#OBJBOUND# 0.0
+#NODECOUNT# NaN
+#TIMESOLVER# 0.03774404525756836
+#TIMEALL# 1.5389258861541748
+#SOLUTION# [0.010541245391108523,0.0,0.0,0.0,0.09388555711386,0.08307054233494458,0.0,0.0,0.0,0.0,0.11616223613106051,0.0,0.0,0.0,0.0,0.045926899151336374,0.0,0.0,0.0,0.0,0.2025884781621909,0.0,0.0,0.12924145265080836,1.5893673591502273,13.784524158781965,101.38697505163444,0.021987182465049188,0.0003943587473853108,4.079250219591058e-5,0.0009696086220645388,0.04489347843844196,0.04992020338537686,0.0015046368513006848,0.0021965970384919286,-0.00014919099124720118,0.000904784770583604,0.04979247648642149,0.0008560479414244783,0.0038274625706671193,-0.0018644853566986462,0.0013366932125761556,0.04878650218900105,0.0010575569339611448,0.00225813419487953,0.008296308423177242,-0.0003542827688302782,0.04628428296088649,-0.0007746939470504557,0.0023062311267581016,0.0498521186096003]
