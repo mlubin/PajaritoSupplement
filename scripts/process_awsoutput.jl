@@ -20,7 +20,7 @@ fd = open(joinpath(pwd(), ARGS[end]), "w")
 # conic failures, subproblem time
 
 # process into a CSV file with columns:
-println(fd,"solver,instance,sense,timelimit,status,objval_reported,objbound,solvertime,totaltime,filename,rel_objval_error,max_linear_violation,max_soc_violation,max_socrot_violation,max_exp_violation,max_psd_violation,max_int_violation,validator_status,validator_relobjdiff,conic_subproblem_count,conic_optimal_count,conic_infeasible_count,conic_subproblem_time,conic_relaxation_time,iteration_count")
+println(fd,"solver,instance,sense,timelimit,status,objval_reported,objbound,solvertime,totaltime,filename,rel_objval_error,max_linear_violation,max_soc_violation,max_socrot_violation,max_exp_violation,max_psd_violation,max_int_violation,validator_status,validator_relobjdiff,conic_subproblem_count,conic_optimal_count,conic_infeasible_count,conic_subproblem_time,conic_relaxation_time,mip_subproblem_time,iteration_count")
 
 # from instance name to file name
 function find_instance(name)
@@ -196,6 +196,7 @@ for (cnt,filename) in enumerate(resultfiles)
     conic_infeasible_count = " "
     conic_subproblem_time = " "
     conic_relaxation_time = " "
+    mip_subproblem_time = " "
     iteration_count = " "
     solution = []
 
@@ -238,6 +239,8 @@ for (cnt,filename) in enumerate(resultfiles)
             conic_subproblem_time = split(line)[5]
         elseif startswith(line, " -- Solve relaxation    =")
             conic_relaxation_time = split(line)[5]
+        elseif startswith(line, " -- Solve MIP models    =")
+            mip_subproblem_time = split(line)[6]
         end
     end
 
@@ -254,7 +257,7 @@ for (cnt,filename) in enumerate(resultfiles)
     end
 
     println(fd,
-"$solver,$instance,$sense,$timelimit,$status,$objval,$objbound,$solvertime,$totaltime,$(basename(filename)),$rel_objval_error,$linear_violation,$soc_violation,$socrot_violation,$exp_violation,$psd_violation,$int_violation,$validator_status,$validator_relobjdiff,$conic_subproblem_count,$conic_optimal_count,$conic_infeasible_count,$conic_subproblem_time,$conic_relaxation_time,$iteration_count")
+"$solver,$instance,$sense,$timelimit,$status,$objval,$objbound,$solvertime,$totaltime,$(basename(filename)),$rel_objval_error,$linear_violation,$soc_violation,$socrot_violation,$exp_violation,$psd_violation,$int_violation,$validator_status,$validator_relobjdiff,$conic_subproblem_count,$conic_optimal_count,$conic_infeasible_count,$conic_subproblem_time,$conic_relaxation_time,$mip_subproblem_time,$iteration_count")
 end
 
 close(fd)
