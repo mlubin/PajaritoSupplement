@@ -97,7 +97,7 @@ if arguments["check"]
 
 
     # problematic violations
-    viol = optimal_runs[(optimal_runs[:max_linear_violation] .> 1e-3) .| (optimal_runs[:max_soc_violation] .> 1e-3) .| (optimal_runs[:max_socrot_violation] .> 1e-3) .| (optimal_runs[:max_exp_violation] .> 1e-3) .| (optimal_runs[:max_int_violation] .> 1e-3), :]
+    viol = optimal_runs[(optimal_runs[:max_linear_violation] .> 1e-3) .| (optimal_runs[:max_soc_violation] .> 1e-3) .| (optimal_runs[:max_socrot_violation] .> 1e-3) .| (optimal_runs[:max_exp_violation] .> 1e-3) .| (optimal_runs[:max_psd_violation] .> 1e-3) .| (optimal_runs[:max_int_violation] .> 1e-3), :]
 
     if size(viol,1) == 0
         println("No problematic violations")
