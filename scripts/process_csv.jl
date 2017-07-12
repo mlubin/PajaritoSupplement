@@ -97,7 +97,7 @@ if arguments["check"]
 
 
     # problematic violations
-    viol = optimal_runs[(optimal_runs[:max_linear_violation] .> 1e-3) | (optimal_runs[:max_soc_violation] .> 1e-3) | (optimal_runs[:max_socrot_violation] .> 1e-3) | (optimal_runs[:max_exp_violation] .> 1e-3) | (optimal_runs[:max_int_violation] .> 1e-3), :]
+    viol = optimal_runs[(optimal_runs[:max_linear_violation] .> 1e-3) .| (optimal_runs[:max_soc_violation] .> 1e-3) .| (optimal_runs[:max_socrot_violation] .> 1e-3) .| (optimal_runs[:max_exp_violation] .> 1e-3) .| (optimal_runs[:max_int_violation] .> 1e-3), :]
 
     if size(viol,1) == 0
         println("No problematic violations")
@@ -201,6 +201,15 @@ elseif arguments["geomeans"]
 
     println("Shifted geomean of conic subproblem count on optimal instances")
     shifted_geomean(optimal_runs, :conic_subproblem_count, subproblem_shift, :solver)
+    println()
+
+    println("Shifted geomean of iteration count on all instances")
+    shifted_geomean(results, :iteration_count, subproblem_shift, :solver)
+    println()
+
+    println("Shifted geomean of proportion of time spent in conic solver on all instances")
+    shifted_geomean(results, :prop_conic_total, 0.0, :solver)
+
 
 elseif arguments["perfprofile"]
     solvers = arguments["<solver>"]

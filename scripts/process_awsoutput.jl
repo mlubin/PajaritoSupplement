@@ -2,9 +2,14 @@ using ConicBenchmarkUtilities
 using Mosek
 using MathProgBase
 
-# usage: process_awsoutput.jl <result directories>... <output csv>
+# usage: process_awsoutput.jl [--noconicsolve] <result directories>... <output csv>
 
 @assert length(ARGS) >= 2
+NOCONIC = false
+if ARGS[1] == "--noconicsolve"
+    NOCONIC = true
+    shift!(ARGS)
+end
 resultfiles = []
 for i in 1:length(ARGS)-1
     append!(resultfiles,[joinpath(pwd(),ARGS[i],f) for f in readdir(joinpath(pwd(), ARGS[i]))])
@@ -15,7 +20,7 @@ fd = open(joinpath(pwd(), ARGS[end]), "w")
 # conic failures, subproblem time
 
 # process into a CSV file with columns:
-println(fd,"solver,instance,sense,timelimit,status,objval_reported,objbound,solvertime,totaltime,filename,rel_objval_error,max_linear_violation,max_soc_violation,max_socrot_violation,max_exp_violation,max_int_violation,validator_status,validator_relobjdiff,conic_subproblem_count,conic_optimal_count,conic_infeasible_count,conic_subproblem_time")
+println(fd,"solver,instance,sense,timelimit,status,objval_reported,objbound,solvertime,totaltime,filename,rel_objval_error,max_linear_violation,max_soc_violation,max_socrot_violation,max_exp_violation,max_psd_violation,max_int_violation,validator_status,validator_relobjdiff,conic_subproblem_count,conic_optimal_count,conic_infeasible_count,conic_subproblem_time,iteration_count,prop_conic_total")
 
 # from instance name to file name
 function find_instance(name)
@@ -24,15 +29,32 @@ function find_instance(name)
         match = "$name.*"
         f = readstring(`find $instances -name $match`)
         if length(split(f,"\n")) == 2
-            return chomp(f)
+            return convert(String,chomp(f))
         end
     end
     return ""
 end
 
+function make_smat(svec::Vector{Float64})
+    dim = Int(sqrt(1/4+2length(svec)) - 1/2)
+    smat = Array{Float64}(dim,dim)
+    k = 1
+
+    for i in 1:dim, j in i:dim
+        if i == j
+            smat[i,j] = svec[k]
+        else
+            smat[i,j] = (1/sqrt(2))*svec[k]
+        end
+        k += 1
+    end
+
+    return smat
+end
+
 function violation_cone(subvec,cone)
     if cone == :Zero
-        return :Linear, maxabs(subvec)
+        return :Linear, maximum(abs,subvec)
     elseif cone == :NonNeg
         return :Linear, -minimum(min.(subvec, 0.))
     elseif cone == :NonPos
@@ -43,10 +65,12 @@ function violation_cone(subvec,cone)
         # (y,z,x) in RSOC <=> (sqrt2inv*(y+z),sqrt2inv*(-y+z),x) in SOC
         return :SOCRotated, max(0., sqrt(1/2*(subvec[1] - subvec[2])^2 + sumabs2(subvec[3:end])) - 1/sqrt(2)*(subvec[1] + subvec[2]))
     elseif cone == :ExpPrimal
-        error("Unexpected expcone")
         return :Exp, max(subvec[2]*exp(subvec[1]/subvec[2]) - subvec[3],0)
     elseif cone == :Free
         return :Linear, 0.0
+    elseif cone == :SDP
+        smat = make_smat(subvec)
+        return :PSD, -min(eigmin(Symmetric(smat)),0.0)
     else
         error("Unrecognized cone $cone")
     end
@@ -68,6 +92,7 @@ function compute_violations(dat, solution)
     soc_violation = -Inf
     socrot_violation = -Inf
     exp_violation = -Inf
+    psd_violation = -Inf
     for (cones,x) in [(var_cones,solution),(con_cones,y)]
         for (cone, idx) in cones
             t, viol = violation_cone(x[idx],cone)
@@ -79,6 +104,8 @@ function compute_violations(dat, solution)
                 socrot_violation = max(socrot_violation,viol)
             elseif t == :Exp
                 exp_violation = max(exp_violation,viol)
+            elseif t == :PSD
+                psd_violation = max(psd_violation,viol)
             end
         end
     end
@@ -90,7 +117,7 @@ function compute_violations(dat, solution)
         end
     end
 
-    return objval, linear_violation, soc_violation, socrot_violation, exp_violation, int_violation
+    return objval, linear_violation, soc_violation, socrot_violation, exp_violation, psd_violation, int_violation
 end
 
 function validate_with_conic_solver(dat, solution)
@@ -160,6 +187,7 @@ for (cnt,filename) in enumerate(resultfiles)
     soc_violation = " "
     socrot_violation = " "
     exp_violation = " "
+    psd_violation = " "
     int_violation = " "
     validator_status = " "
     validator_relobjdiff = " "
@@ -167,6 +195,8 @@ for (cnt,filename) in enumerate(resultfiles)
     conic_optimal_count = " "
     conic_infeasible_count = " "
     conic_subproblem_time = " "
+    iteration_count = " "
+    prop_conic_total = " "
     solution = []
 
     for line in eachline(filename)
@@ -196,6 +226,8 @@ for (cnt,filename) in enumerate(resultfiles)
             if startswith(solutionvec,'[') && endswith(solutionvec,']') && !startswith(solutionvec, "[]")
                 solution = [parse(Float64,x) for x in split(solutionvec[2:end-1],',')]
             end
+        elseif startswith(line, " - Iterations           =")
+            iteration_count = split(line)[4]
         elseif startswith(line, " -- Conic subproblems   =")
             conic_subproblem_count = split(line)[5]
         elseif startswith(line, " --- Optimal            =")
@@ -211,14 +243,20 @@ for (cnt,filename) in enumerate(resultfiles)
     dat = readcbfdata(instancefile)
     sense = string(dat.sense)
     if length(solution) > 0 && all(isfinite,solution)
-        objval_sol, linear_violation, soc_violation, socrot_violation, exp_violation, int_violation = compute_violations(dat,solution)
-        validator_status, validator_objval = validate_with_conic_solver(dat,solution)
-        validator_relobjdiff = abs(objval_sol - validator_objval)/abs(objval_sol+1e-5)
-        rel_objval_error = abs(objval_sol - parse(Float64,objval))/abs(parse(Float64,objval))
+        objval_sol, linear_violation, soc_violation, socrot_violation, exp_violation, psd_violation, int_violation = compute_violations(dat,solution)
+        if !NOCONIC
+            validator_status, validator_objval = validate_with_conic_solver(dat,solution)
+            validator_relobjdiff = abs(objval_sol - validator_objval)/abs(objval_sol+1e-5)
+            rel_objval_error = abs(objval_sol - parse(Float64,objval))/abs(parse(Float64,objval))
+        end
+    end
+
+    if conic_subproblem_time != " "
+        prop_conic_total = float(conic_subproblem_time)/float(solvertime)
     end
 
     println(fd,
-"$solver,$instance,$sense,$timelimit,$status,$objval,$objbound,$solvertime,$totaltime,$(basename(filename)),$rel_objval_error,$linear_violation,$soc_violation,$socrot_violation,$exp_violation,$int_violation,$validator_status,$validator_relobjdiff,$conic_subproblem_count,$conic_optimal_count,$conic_infeasible_count,$conic_subproblem_time")
+"$solver,$instance,$sense,$timelimit,$status,$objval,$objbound,$solvertime,$totaltime,$(basename(filename)),$rel_objval_error,$linear_violation,$soc_violation,$socrot_violation,$exp_violation,$psd_violation,$int_violation,$validator_status,$validator_relobjdiff,$conic_subproblem_count,$conic_optimal_count,$conic_infeasible_count,$conic_subproblem_time,$iteration_count,$prop_conic_total")
 end
 
 close(fd)

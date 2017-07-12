@@ -5,6 +5,11 @@
 # From top directory of supplement
 julia scripts/process_awsoutput.jl awsoutput/misocp3q/ results/misocp3q.csv
 julia scripts/process_awsoutput.jl awsoutput/bonmin awsoutput/misocp3q awsoutput/misocpApr6 results/solvercomparison.csv
+julia scripts/process_awsoutput.jl --noconicsolve out_cont_soc out_cont_socexp out_cont_socexppsd out_cont_socpsd results/multiportfolio_cont.csv
+julia scripts/process_awsoutput.jl --noconicsolve out_micp_soc results/multiportfolio_micp_soc.csv
+julia scripts/process_awsoutput.jl --noconicsolve out_micp_socexp results/multiportfolio_micp_socexp.csv
+julia scripts/process_awsoutput.jl --noconicsolve out_micp_socpsd results/multiportfolio_micp_socpsd.csv
+julia scripts/process_awsoutput.jl --noconicsolve out_micp_socexppsd results/multiportfolio_micp_socexppsd.csv
 ```
 
 # Processing CSV output
@@ -25,6 +30,24 @@ julia scripts/process_csv.jl statuscounts results/solvercomparison.csv postproce
 julia scripts/process_csv.jl geomeans results/solvercomparison.csv --exclude=postprocessing/solvercomparison_exclude > postprocessing/solvercomparison_geomeans
 
 julia scripts/process_csv.jl geomeans results/solvercomparison.csv --exclude=postprocessing/solvercomparison_exclude --bestof="BONMIN BONMIN_BB BONMIN_OA BONMIN_OADIS" --bestof="PAJ_CPLEX_MOSEK_msd_bestof2 PAJ_CPLEX_MOSEK_msd PAJ_CPLEX_MOSEK_msdnostarts"
+
+
+julia scripts/process_csv.jl check results/multiportfolio_micp_soc.csv
+julia scripts/process_csv.jl check results/multiportfolio_micp_socexp.csv
+julia scripts/process_csv.jl check results/multiportfolio_micp_socpsd.csv
+julia scripts/process_csv.jl check results/multiportfolio_micp_socexppsd.csv
+
+
+julia scripts/process_csv.jl statuscounts results/multiportfolio_micp_soc.csv postprocessing/multiportfolio_micp_soc_statuscounts.csv
+julia scripts/process_csv.jl statuscounts results/multiportfolio_micp_socexp.csv postprocessing/multiportfolio_micp_socexp_statuscounts.csv
+julia scripts/process_csv.jl statuscounts results/multiportfolio_micp_socpsd.csv postprocessing/multiportfolio_micp_socpsd_statuscounts.csv
+julia scripts/process_csv.jl statuscounts results/multiportfolio_micp_socexppsd.csv postprocessing/multiportfolio_micp_socexppsd_statuscounts.csv
+
+
+julia scripts/process_csv.jl geomeans results/multiportfolio_micp_soc.csv > postprocessing/multiportfolio_micp_soc_geomeans
+julia scripts/process_csv.jl geomeans results/multiportfolio_micp_socexp.csv > postprocessing/multiportfolio_micp_socexp_geomeans
+julia scripts/process_csv.jl geomeans results/multiportfolio_micp_socpsd.csv > postprocessing/multiportfolio_micp_socpsd_geomeans
+julia scripts/process_csv.jl geomeans results/multiportfolio_micp_socexppsd.csv > postprocessing/multiportfolio_micp_socexppsd_geomeans
 
 ```
 
