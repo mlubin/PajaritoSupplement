@@ -144,36 +144,44 @@ solvermap = Dict(
     # Portfolio tests solvers
 
     # CPLEX iter - no conic
-    "MICP_noconic" =>
+    "PAJ_CPLEX_noconic" =>
     (["CPLEX"], quote PajaritoSolver(mip_solver=CplexSolver(CPX_PARAM_THREADS=1, CPX_PARAM_SCRIND=0, CPX_PARAM_EPINT=tol_int, CPX_PARAM_EPRHS=tol_feas, CPX_PARAM_EPGAP=tol_gap), log_level=logl, timeout=tlim, rel_gap=rgap, prim_cut_feas_tol=tol_conic, prim_cuts_only=true, solve_relax=false, solve_subp=false) end),
 
     # CPLEX iter - primal assist
-    "MICP_MOSEK" =>
+    "PAJ_CPLEX_MOSEK" =>
     (["CPLEX","Mosek"], quote PajaritoSolver(mip_solver=CplexSolver(CPX_PARAM_THREADS=1, CPX_PARAM_SCRIND=0, CPX_PARAM_EPINT=tol_int, CPX_PARAM_EPRHS=tol_feas, CPX_PARAM_EPGAP=tol_gap), cont_solver=MosekSolver(LOG=0, NUM_THREADS=1), log_level=logl, timeout=tlim, rel_gap=rgap, prim_cut_feas_tol=tol_conic) end),
-    "MICP_ECOS" =>
+    "PAJ_CPLEX_ECOS" =>
     (["CPLEX","ECOS"], quote PajaritoSolver(mip_solver=CplexSolver(CPX_PARAM_THREADS=1, CPX_PARAM_SCRIND=0, CPX_PARAM_EPINT=tol_int, CPX_PARAM_EPRHS=tol_feas, CPX_PARAM_EPGAP=tol_gap), cont_solver=ECOSSolver(verbose=false), log_level=logl, timeout=tlim, rel_gap=rgap, prim_cut_feas_tol=tol_conic) end),
-    "MICP_SCS_nowarm" =>
-    (["CPLEX","SCS"], quote PajaritoSolver(mip_solver=CplexSolver(CPX_PARAM_THREADS=1, CPX_PARAM_SCRIND=0, CPX_PARAM_EPINT=tol_int, CPX_PARAM_EPRHS=tol_feas, CPX_PARAM_EPGAP=tol_gap), cont_solver=SCSSolver(verbose=0, warm_start=false, eps=1e-4, max_iters=50000), log_level=logl, timeout=tlim, rel_gap=rgap, prim_cut_feas_tol=tol_conic) end),
-    "MICP_SCS_warm" =>
+    "PAJ_CPLEX_SCS" =>
     (["CPLEX","SCS"], quote PajaritoSolver(mip_solver=CplexSolver(CPX_PARAM_THREADS=1, CPX_PARAM_SCRIND=0, CPX_PARAM_EPINT=tol_int, CPX_PARAM_EPRHS=tol_feas, CPX_PARAM_EPGAP=tol_gap), cont_solver=SCSSolver(verbose=0, warm_start=true, eps=1e-4, max_iters=50000), log_level=logl, timeout=tlim, rel_gap=rgap, prim_cut_feas_tol=tol_conic) end),
 
-    # CPLEX iter - subp only
-    "MICP_MOSEK_nosep" =>
-    (["CPLEX","Mosek"], quote PajaritoSolver(mip_solver=CplexSolver(CPX_PARAM_THREADS=1, CPX_PARAM_SCRIND=0, CPX_PARAM_EPINT=tol_int, CPX_PARAM_EPRHS=tol_feas, CPX_PARAM_EPGAP=tol_gap), cont_solver=MosekSolver(LOG=0, NUM_THREADS=1), log_level=logl, timeout=tlim, rel_gap=rgap, prim_cut_feas_tol=tol_conic, prim_cuts_assist=false) end),
-    "MICP_ECOS_nosep" =>
-    (["CPLEX","ECOS"], quote PajaritoSolver(mip_solver=CplexSolver(CPX_PARAM_THREADS=1, CPX_PARAM_SCRIND=0, CPX_PARAM_EPINT=tol_int, CPX_PARAM_EPRHS=tol_feas, CPX_PARAM_EPGAP=tol_gap), cont_solver=ECOSSolver(verbose=false), log_level=logl, timeout=tlim, rel_gap=rgap, prim_cut_feas_tol=tol_conic, prim_cuts_assist=false) end),
-    "MICP_SCS_nowarm_nosep" =>
-    (["CPLEX","SCS"], quote PajaritoSolver(mip_solver=CplexSolver(CPX_PARAM_THREADS=1, CPX_PARAM_SCRIND=0, CPX_PARAM_EPINT=tol_int, CPX_PARAM_EPRHS=tol_feas, CPX_PARAM_EPGAP=tol_gap), cont_solver=SCSSolver(verbose=0, warm_start=false, eps=1e-4, max_iters=50000), log_level=logl, timeout=tlim, rel_gap=rgap, prim_cut_feas_tol=tol_conic, prim_cuts_assist=false) end),
-    "MICP_SCS_warm_nosep" =>
-    (["CPLEX","SCS"], quote PajaritoSolver(mip_solver=CplexSolver(CPX_PARAM_THREADS=1, CPX_PARAM_SCRIND=0, CPX_PARAM_EPINT=tol_int, CPX_PARAM_EPRHS=tol_feas, CPX_PARAM_EPGAP=tol_gap), cont_solver=SCSSolver(verbose=0, warm_start=true, eps=1e-4, max_iters=50000), log_level=logl, timeout=tlim, rel_gap=rgap, prim_cut_feas_tol=tol_conic, prim_cuts_assist=false) end),
+    # CPLEX MSD - no conic
+    "PAJ_CPLEX_noconic_msd" =>
+    (["CPLEX"], quote PajaritoSolver(mip_solver=CplexSolver(CPX_PARAM_THREADS=1, CPX_PARAM_SCRIND=1, CPX_PARAM_EPINT=tol_int, CPX_PARAM_EPRHS=tol_feas, CPX_PARAM_EPGAP=rgap), log_level=logl, timeout=tlim, rel_gap=rgap, prim_cut_feas_tol=tol_conic, prim_cuts_only=true, solve_relax=false, solve_subp=false, mip_solver_drives=true, use_mip_starts=false) end),
 
-    # Continuous conic solvers
-    "MOSEK" =>
-    (["Mosek"], quote MosekSolver(LOG=1, NUM_THREADS=1) end),
-    "ECOS" =>
-    (["ECOS"], quote ECOSSolver(verbose=true) end),
-    "SCS" =>
-    (["SCS"], quote SCSSolver(verbose=1, eps=1e-4, max_iters=50000) end),
+    # CPLEX MSD - primal assist
+    "PAJ_CPLEX_MOSEK_msd" =>
+    (["CPLEX","Mosek"], quote PajaritoSolver(mip_solver=CplexSolver(CPX_PARAM_THREADS=1, CPX_PARAM_SCRIND=1, CPX_PARAM_EPINT=tol_int, CPX_PARAM_EPRHS=tol_feas, CPX_PARAM_EPGAP=rgap), cont_solver=MosekSolver(LOG=0, NUM_THREADS=1), log_level=logl, timeout=tlim, rel_gap=rgap, prim_cut_feas_tol=tol_conic, mip_solver_drives=true, use_mip_starts=true) end),
+    "PAJ_CPLEX_ECOS_msd" =>
+    (["CPLEX","ECOS"], quote PajaritoSolver(mip_solver=CplexSolver(CPX_PARAM_THREADS=1, CPX_PARAM_SCRIND=1, CPX_PARAM_EPINT=tol_int, CPX_PARAM_EPRHS=tol_feas, CPX_PARAM_EPGAP=rgap), cont_solver=ECOSSolver(verbose=false), log_level=logl, timeout=tlim, rel_gap=rgap, prim_cut_feas_tol=tol_conic, mip_solver_drives=true, use_mip_starts=true) end),
+    "PAJ_CPLEX_SCS_msd" =>
+    (["CPLEX","SCS"], quote PajaritoSolver(mip_solver=CplexSolver(CPX_PARAM_THREADS=1, CPX_PARAM_SCRIND=1, CPX_PARAM_EPINT=tol_int, CPX_PARAM_EPRHS=tol_feas, CPX_PARAM_EPGAP=rgap), cont_solver=SCSSolver(verbose=0, warm_start=true, eps=1e-4, max_iters=50000), log_level=logl, timeout=tlim, rel_gap=rgap, prim_cut_feas_tol=tol_conic, mip_solver_drives=true, use_mip_starts=true) end),
+
+    # # CPLEX iter - subp only
+    # "PAJ_CPLEX_MOSEK_nosep" =>
+    # (["CPLEX","Mosek"], quote PajaritoSolver(mip_solver=CplexSolver(CPX_PARAM_THREADS=1, CPX_PARAM_SCRIND=0, CPX_PARAM_EPINT=tol_int, CPX_PARAM_EPRHS=tol_feas, CPX_PARAM_EPGAP=tol_gap), cont_solver=MosekSolver(LOG=0, NUM_THREADS=1), log_level=logl, timeout=tlim, rel_gap=rgap, prim_cut_feas_tol=tol_conic, prim_cuts_assist=false) end),
+    # "PAJ_CPLEX_ECOS_nosep" =>
+    # (["CPLEX","ECOS"], quote PajaritoSolver(mip_solver=CplexSolver(CPX_PARAM_THREADS=1, CPX_PARAM_SCRIND=0, CPX_PARAM_EPINT=tol_int, CPX_PARAM_EPRHS=tol_feas, CPX_PARAM_EPGAP=tol_gap), cont_solver=ECOSSolver(verbose=false), log_level=logl, timeout=tlim, rel_gap=rgap, prim_cut_feas_tol=tol_conic, prim_cuts_assist=false) end),
+    # "PAJ_CPLEX_SCS_warm_nosep" =>
+    # (["CPLEX","SCS"], quote PajaritoSolver(mip_solver=CplexSolver(CPX_PARAM_THREADS=1, CPX_PARAM_SCRIND=0, CPX_PARAM_EPINT=tol_int, CPX_PARAM_EPRHS=tol_feas, CPX_PARAM_EPGAP=tol_gap), cont_solver=SCSSolver(verbose=0, warm_start=true, eps=1e-4, max_iters=50000), log_level=logl, timeout=tlim, rel_gap=rgap, prim_cut_feas_tol=tol_conic, prim_cuts_assist=false) end),
+
+    # # Continuous conic solvers
+    # "MOSEK" =>
+    # (["Mosek"], quote MosekSolver(LOG=1, NUM_THREADS=1) end),
+    # "ECOS" =>
+    # (["ECOS"], quote ECOSSolver(verbose=true) end),
+    # "SCS" =>
+    # (["SCS"], quote SCSSolver(verbose=1, eps=1e-4, max_iters=50000) end),
 )
 
 

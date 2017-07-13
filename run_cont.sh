@@ -38,19 +38,3 @@ do
 done
 mkdir -p out_cont_socexppsd
 mv output/* out_cont_socexppsd
-
-
-
-
-
-# $JULIA scripts/runmeta.jl MOSEK 300 50000000 instancedata/conttests/soc/ instancesets/contport_soc.txt
-# $JULIA scripts/runmeta.jl ECOS 300 50000000 instancedata/conttests/soc/ instancesets/contport_soc.txt
-# $JULIA scripts/runmeta.jl SCS 300 50000000 instancedata/conttests/soc/ instancesets/contport_soc.txt
-#
-# $JULIA scripts/runmeta.jl MOSEK 300 50000000 instancedata/conttests/socpsd/ instancesets/contport_socpsd.txt
-# $JULIA scripts/runmeta.jl SCS 300 50000000 instancedata/conttests/socpsd/ instancesets/contport_socpsd.txt
-#
-# $JULIA scripts/runmeta.jl ECOS 300 50000000 instancedata/conttests/socexp/ instancesets/contport_socexp.txt
-# $JULIA scripts/runmeta.jl SCS 300 50000000 instancedata/conttests/socexp/ instancesets/contport_socexp.txt
-#
-# $JULIA scripts/runmeta.jl SCS 300 50000000 instancedata/conttests/socexppsd/ instancesets/contport_socexppsd.txt
