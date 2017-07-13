@@ -218,10 +218,10 @@ datafolder = ARGS[3]
 # Force Pajarito to compile on a small instance for the solver to avoid measuring compilation time, keep quiet
 if startswith(solvername, "PAJ")
     TT = STDOUT
+    solver = getsolver(solvername, 60., 3, rgap)
     open("/dev/null", "w") do fd
         redirect_stdout(fd)
         instance = readcbfdata(joinpath(datafolder, "compile.cbf.gz"))
-        solver = getsolver(solvername, 60., 3, rgap)
         solveprint(instance, solver)
     end
     redirect_stdout(TT)
