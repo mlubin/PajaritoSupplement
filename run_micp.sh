@@ -7,7 +7,7 @@ JULIA=/home/coey/julia-903644385b/bin/julia
 
 mkdir -p output
 
-## SOC
+# ## SOC
 # for SOLVER in PAJ_CPLEX_noconic_msd PAJ_CPLEX_ECOS PAJ_CPLEX_SCS #PAJ_CPLEX_noconic PAJ_CPLEX_MOSEK PAJ_CPLEX_MOSEK_msd
 # do
 #     $JULIA scripts/runmeta.jl $SOLVER 3600 50000000 instancedata/micptests/soc/ instancesets/micp_soc.txt
@@ -15,21 +15,21 @@ mkdir -p output
 # mkdir -p out_micp_soc
 # mv output/* out_micp_soc
 
-# ## SOC, PSD
-# for SOLVER in PAJ_CPLEX_noconic_msd PAJ_CPLEX_SCS #PAJ_CPLEX_noconic PAJ_CPLEX_MOSEK PAJ_CPLEX_MOSEK_msd
-# do
-#     $JULIA scripts/runmeta.jl $SOLVER 3600 50000000 instancedata/micptests/socpsd/ instancesets/micp_socpsd.txt
-# done
-# mkdir -p out_micp_socpsd
-# mv output/* out_micp_socpsd
-
-## SOC, EXP
-for SOLVER in PAJ_CPLEX_SCS #PAJ_CPLEX_noconic_msd #PAJ_CPLEX_noconic PAJ_CPLEX_ECOS PAJ_CPLEX_ECOS_msd
+## SOC, PSD
+for SOLVER in PAJ_CPLEX_MOSEK_nosep PAJ_CPLEX_MOSEK_nosep_noscale PAJ_CPLEX_MOSEK_nosep_nopresolve PAJ_CPLEX_MOSEK_nosep_noscale_nopresolve #PAJ_CPLEX_noconic_msd PAJ_CPLEX_SCS #PAJ_CPLEX_noconic PAJ_CPLEX_MOSEK PAJ_CPLEX_MOSEK_msd
 do
-    $JULIA scripts/runmeta.jl $SOLVER 3600 50000000 instancedata/micptests/socexp/ instancesets/micp_socexp.txt
+    $JULIA scripts/runmeta.jl $SOLVER 3600 50000000 instancedata/micptests/socpsd/ instancesets/micp_socpsd.txt
 done
-mkdir -p out_micp_socexp
-mv output/* out_micp_socexp
+mkdir -p out_micp_socpsd
+mv output/* out_micp_socpsd
+
+# ## SOC, EXP
+# for SOLVER in PAJ_CPLEX_SCS #PAJ_CPLEX_noconic_msd #PAJ_CPLEX_noconic PAJ_CPLEX_ECOS PAJ_CPLEX_ECOS_msd
+# do
+#     $JULIA scripts/runmeta.jl $SOLVER 3600 50000000 instancedata/micptests/socexp/ instancesets/micp_socexp.txt
+# done
+# mkdir -p out_micp_socexp
+# mv output/* out_micp_socexp
 
 # ## SOC, EXP, PSD
 # for SOLVER in PAJ_CPLEX_noconic_msd #PAJ_CPLEX_noconic PAJ_CPLEX_SCS PAJ_CPLEX_SCS_msd
