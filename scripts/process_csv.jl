@@ -207,9 +207,6 @@ elseif arguments["geomeans"]
     shifted_geomean(results, :iteration_count, subproblem_shift, :solver)
     println()
 
-    println("Shifted geomean of proportion of time spent in conic solver on all instances")
-    shifted_geomean(results, :prop_conic_total, 0.0, :solver)
-
 
 elseif arguments["perfprofile"]
     solvers = arguments["<solver>"]
