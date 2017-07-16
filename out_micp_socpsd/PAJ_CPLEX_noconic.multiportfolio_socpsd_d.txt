@@ -1,0 +1,129 @@
+#SOLVERNAME# PAJ_CPLEX_noconic
+#SOLVER# Pajarito.PajaritoSolver(3, 3600.0, 1.0e-5, false, CPLEX.CplexSolver(Any[(:CPX_PARAM_THREADS, 1), (:CPX_PARAM_SCRIND, 0), (:CPX_PARAM_EPINT, 1.0e-8), (:CPX_PARAM_EPRHS, 1.0e-7), (:CPX_PARAM_EPGAP, 0.0)]), Pajarito.UnsetSolver(), 0, false, true, Pajarito.UnsetSolver(), false, false, false, false, true, false, false, true, false, true, true, true, true, false, true, 2.0, false, true, false, true, 1.0e-12, 1.0e-6, false, "")
+#INSTANCE# multiportfolio_socpsd_d.cbf.gz
+#TIMELIMIT# 3600.0
+
+Problem dimensions:
+       variables |     351
+     constraints |     908
+   nonzeros in A |    4219
+
+Cones summary:
+Cone             | Count   | Min dim.  | Max dim. 
+    Second order |       3 |        33 |        33
+   Pos. semidef. |       3 |      17^2 |      17^2
+
+Variable types:
+      continuous |     243
+         integer |     108
+
+Transforming data...               0.00s
+
+Building MIP model...              0.00s
+
+Starting iterative algorithm
+
+Iter. | Best feasible  | Best bound     | Rel. gap    | Time (s)   
+    1 |           +Inf |  -1.357932e-01 |         Inf |   2.983e-02
+
+Iter. | Best feasible  | Best bound     | Rel. gap    | Time (s)   
+    2 |           +Inf |  -1.250396e-01 |         Inf |   6.293e-02
+
+Iter. | Best feasible  | Best bound     | Rel. gap    | Time (s)   
+    3 |           +Inf |  -1.232440e-01 |         Inf |   1.721e-01
+
+Iter. | Best feasible  | Best bound     | Rel. gap    | Time (s)   
+    4 |           +Inf |  -1.226389e-01 |         Inf |   3.714e-01
+
+Iter. | Best feasible  | Best bound     | Rel. gap    | Time (s)   
+    5 |           +Inf |  -1.202675e-01 |         Inf |   4.333e+00
+
+Iter. | Best feasible  | Best bound     | Rel. gap    | Time (s)   
+    6 |           +Inf |  -1.196806e-01 |         Inf |   9.738e+00
+
+Iter. | Best feasible  | Best bound     | Rel. gap    | Time (s)   
+    7 |           +Inf |  -1.191767e-01 |         Inf |   2.071e+01
+
+Iter. | Best feasible  | Best bound     | Rel. gap    | Time (s)   
+    8 |           +Inf |  -1.188162e-01 |         Inf |   5.453e+01
+
+Iter. | Best feasible  | Best bound     | Rel. gap    | Time (s)   
+    9 |           +Inf |  -1.181956e-01 |         Inf |   1.077e+02
+
+Iter. | Best feasible  | Best bound     | Rel. gap    | Time (s)   
+   10 |           +Inf |  -1.181492e-01 |         Inf |   1.841e+02
+
+Iter. | Best feasible  | Best bound     | Rel. gap    | Time (s)   
+   11 |           +Inf |  -1.180833e-01 |         Inf |   2.725e+02
+
+Iter. | Best feasible  | Best bound     | Rel. gap    | Time (s)   
+   12 |           +Inf |  -1.179347e-01 |         Inf |   3.709e+02
+
+Iter. | Best feasible  | Best bound     | Rel. gap    | Time (s)   
+   13 |           +Inf |  -1.176625e-01 |         Inf |   4.894e+02
+
+Iter. | Best feasible  | Best bound     | Rel. gap    | Time (s)   
+   14 |           +Inf |  -1.175282e-01 |         Inf |   6.195e+02
+
+Iter. | Best feasible  | Best bound     | Rel. gap    | Time (s)   
+   15 |           +Inf |  -1.174920e-01 |         Inf |   7.959e+02
+
+Iter. | Best feasible  | Best bound     | Rel. gap    | Time (s)   
+   16 |           +Inf |  -1.174480e-01 |         Inf |   1.089e+03
+
+Iter. | Best feasible  | Best bound     | Rel. gap    | Time (s)   
+   17 |           +Inf |  -1.173776e-01 |         Inf |   1.615e+03
+
+Iter. | Best feasible  | Best bound     | Rel. gap    | Time (s)   
+   18 |           +Inf |  -1.173164e-01 |         Inf |   2.231e+03
+
+Iter. | Best feasible  | Best bound     | Rel. gap    | Time (s)   
+   19 |           +Inf |  -1.172562e-01 |         Inf |   2.913e+03
+
+Iter. | Best feasible  | Best bound     | Rel. gap    | Time (s)   
+   20 |           +Inf |  -1.172562e-01 |         Inf |   3.600e+03
+
+Iterative algorithm summary:
+ - Status               =      UserLimit
+ - Best feasible        =           +Inf
+ - Best bound           =  -1.172562e-01
+ - Relative opt. gap    =            NaN
+ - Total time (s)       =       3.60e+03
+
+Timers (s):
+ - Setup                =   3.06e-03
+ -- Transform data      =   4.19e-04
+ -- Create conic data   =   0.00e+00
+ -- Create MIP data     =   2.64e-03
+ - Algorithm            =   3.60e+03
+ -- Solve relaxation    =   0.00e+00
+ -- Get relaxation cuts =   0.00e+00
+ -- Solve MIP models    =   3.60e+03
+ -- Solve subproblems   =   0.00e+00
+ -- Get subproblem cuts =   0.00e+00
+ -- Get separation cuts =   5.43e-02
+
+Counters:
+ - Iterations           =    20
+ -- Integer repeats     =     0
+ -- Conic subproblems   =     0
+ -- Feasible solutions  =     0
+ --- From subproblems   =     0
+ --- From MIP solve     =     0
+
+Solution returned by MIP solver
+
+Rounds of full separation/subproblem cuts, and count of cuts added:
+Cone             | Subp.  | Sep.   | Total  | Relax. | Viol. 
+    Second order |      0 |     56 |   1792 |      0 |    968
+   Pos. semidef. |      0 |     51 |     53 |      0 |     53
+
+0 numerically unstable disaggregated SOC cuts
+
+#STATUS# UserLimit
+#OBJVAL# Inf
+#OBJBOUND# -0.11725622682167201
+#NODECOUNT# NaN
+#TIMESOLVER# 3600.0273621082306
+#TIMEALL# 3600.027740955353
+#SOLUTION# [NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN]
