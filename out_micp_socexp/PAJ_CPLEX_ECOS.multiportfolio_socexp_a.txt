@@ -1,0 +1,99 @@
+#SOLVERNAME# PAJ_CPLEX_ECOS
+#SOLVER# Pajarito.PajaritoSolver(3, 3600.0, 1.0e-5, false, CPLEX.CplexSolver(Any[(:CPX_PARAM_THREADS, 1), (:CPX_PARAM_SCRIND, 0), (:CPX_PARAM_EPINT, 1.0e-8), (:CPX_PARAM_EPRHS, 1.0e-7), (:CPX_PARAM_EPGAP, 0.0)]), Pajarito.UnsetSolver(), 0, false, true, ECOS.ECOSSolver(Any[(:verbose, false)]), true, true, false, false, true, false, false, true, false, true, true, true, true, false, true, 2.0, false, false, false, true, 1.0e-12, 1.0e-6, false, "")
+#INSTANCE# multiportfolio_socexp_a.cbf.gz
+#TIMELIMIT# 3600.0
+
+Problem dimensions:
+       variables |      66
+     constraints |     110
+   nonzeros in A |     216
+
+Cones summary:
+Cone             | Count   | Min dim.  | Max dim. 
+    Second order |       3 |         5 |         5
+   Primal expon. |      12 |         3 |         3
+
+Variable types:
+      continuous |      48
+         integer |      18
+
+Transforming data...               0.00s
+
+Creating conic subproblem...       0.00s
+
+Building MIP model...              0.00s
+
+Solving conic relaxation...        0.01s
+ - Relaxation status    =        Optimal
+ - Relaxation objective =      -0.084432
+
+Starting iterative algorithm
+
+Iter. | Best feasible  | Best bound     | Rel. gap    | Time (s)   
+    1 |  -7.912771e-02 |  -8.443221e-02 |   6.703e-02 |   1.154e-02
+
+Iter. | Best feasible  | Best bound     | Rel. gap    | Time (s)   
+    2 |  -8.313647e-02 |  -8.443221e-02 |   1.558e-02 |   1.872e-02
+
+Iter. | Best feasible  | Best bound     | Rel. gap    | Time (s)   
+    3 |  -8.443225e-02 |  -8.443221e-02 |  -4.576e-07 |   2.651e-02
+
+Iterative algorithm summary:
+ - Status               =        Optimal
+ - Best feasible        =  -8.443225e-02
+ - Best bound           =  -8.443221e-02
+ - Relative opt. gap    =     -4.576e-07
+ - Total time (s)       =       2.65e-02
+
+Timers (s):
+ - Setup                =   4.93e-04
+ -- Transform data      =   8.03e-05
+ -- Create conic data   =   1.00e-04
+ -- Create MIP data     =   3.13e-04
+ - Algorithm            =   2.60e-02
+ -- Solve relaxation    =   5.05e-03
+ -- Get relaxation cuts =   6.37e-05
+ -- Solve MIP models    =   1.30e-02
+ -- Solve subproblems   =   6.85e-03
+ -- Get subproblem cuts =   7.34e-04
+ -- Get separation cuts =   1.45e-05
+
+Counters:
+ - Iterations           =     3
+ -- Integer repeats     =     0
+ -- Conic subproblems   =     3
+ --- Infeasible         =     0
+ --- Optimal            =     3
+ --- Suboptimal         =     0
+ --- UserLimit          =     0
+ --- ConicFailure       =     0
+ --- Other status       =     0
+ -- Feasible solutions  =     3
+ --- From subproblems   =     3
+ --- From MIP solve     =     0
+
+Solution returned by conic solver
+
+Rounds of full separation/subproblem cuts, and count of cuts added:
+Cone             | Subp.  | Sep.   | Total  | Relax. | Viol. 
+    Second order |     12 |      0 |     36 |     12 |      4
+   Primal expon. |     48 |      0 |     36 |     12 |     22
+
+0 numerically unstable disaggregated SOC cuts
+
+Distance to feasibility (negative indicates strict feasibility):
+Cone             | Variable  | Constraint
+          Linear |  1.07e-12 |  1.66e-10
+    Second order |        NA | -4.34e-10
+   Primal expon. |        NA |  1.16e-09
+
+Distance to integrality of integer/binary variables:
+         integer |  0.00e+00
+
+#STATUS# Optimal
+#OBJVAL# -0.08443224977867841
+#OBJBOUND# -0.08443221114144976
+#NODECOUNT# NaN
+#TIMESOLVER# 0.0265350341796875
+#TIMEALL# 0.026866912841796875
+#SOLUTION# [-4.699397330625181e-13,-3.4339363263476935e-13,-1.0691326731415546e-12,0.20361621526186208,-4.3311902641092094e-13,0.06951885676394334,0.056517761793827045,-7.996284701535226e-13,-3.7646847426228155e-13,0.06906817703605313,-4.760165807121382e-14,0.18277747351951126,0.18216752128836633,0.055136711237817146,0.023840217324856427,0.0989479961722894,0.03108358116899917,0.02732545281070901,0.0,0.0,0.0,0.0,1.0,1.0,0.0,1.0,0.0,1.0,1.0,0.0,1.0,1.0,1.0,1.0,1.0,1.0,0.001411702279037706,0.0016900884832633412,0.0024590149119775645,0.04989091920800209,0.0001985663861276133,0.041731329636321854,0.02752526911681194,0.0009034460810252661,0.003572052345049701,0.029108239346085477,0.0017415876254861845,0.0404588382299869,0.02926560960825283,0.019193124312192736,0.01039427554601965,0.03341784524861903,0.0102781067215219,0.0334537559067913,0.029689730731186702,0.019376145783651155,-0.028833131213102374,-0.01900774579995206,0.010448109063358475,0.03397010263246648,-0.010340067674085901,-0.03285314385878643,0.01033074554666775,0.03400719420344822,-0.010225105953007145,-0.032887833631320994]
