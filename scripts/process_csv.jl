@@ -187,24 +187,50 @@ elseif arguments["geomeans"]
         end
     end
 
+
+    all_solvers = unique(results[:solver])
+    all_optimal_instances = []
+    for g1 in groupby(optimal_runs, :instance)
+        hassolver = falses(length(all_solvers))
+        for i in 1:size(g1,1)
+            solver = g1[i,:solver]
+            idx = findnext(all_solvers, solver, 1)
+            hassolver[idx] = true
+        end
+        if sum(hassolver) == length(all_solvers)
+            push!(all_optimal_instances, g1[1,:instance])
+        end
+    end
+    println("$(length(all_optimal_instances)) instances solved optimally by all solvers\n")
+    # subset of instances where all solvers got optimal
+    subset_of_all_optimal = optimal_runs[find(t-> t in all_optimal_instances, optimal_runs[:instance]),:]
+
     println("Shifted geomean of solve time on all instances")
     shifted_geomean(results, :solvertime, time_shift, :solver)
     println()
 
-    println("Shifted geomean of solve time on optimal instances")
+    println("Shifted geomean of solve time on instances solved by this solver")
     shifted_geomean(optimal_runs, :solvertime, time_shift, :solver)
+    println()
+
+    println("Shifted geomean of solve time on instances solved by all solvers")
+    shifted_geomean(subset_of_all_optimal, :solvertime, time_shift, :solver)
     println()
 
     println("Shifted geomean of conic subproblem count on all instances")
     shifted_geomean(results, :conic_subproblem_count, subproblem_shift, :solver)
     println()
 
-    println("Shifted geomean of conic subproblem count on optimal instances")
+    println("Shifted geomean of conic subproblem count on instances solved by this solver")
     shifted_geomean(optimal_runs, :conic_subproblem_count, subproblem_shift, :solver)
     println()
 
     println("Shifted geomean of iteration count on all instances")
     shifted_geomean(results, :iteration_count, subproblem_shift, :solver)
+    println()
+
+    println("Shifted geomean of iteration count on instances solved by all solvers")
+    shifted_geomean(subset_of_all_optimal, :iteration_count, subproblem_shift, :solver)
     println()
 
 
