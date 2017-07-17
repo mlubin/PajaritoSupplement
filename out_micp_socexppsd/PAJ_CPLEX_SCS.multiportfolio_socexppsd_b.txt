@@ -1,0 +1,115 @@
+WARNING: Repeated integer solution without converging
+WARNING: Repeated integer solution without converging
+WARNING: Repeated integer solution without converging
+WARNING: Repeated integer solution without converging
+WARNING: Repeated integer solution without converging
+WARNING: Repeated integer solution without converging
+WARNING: Repeated integer solution without converging
+WARNING: Repeated integer solution without converging
+WARNING: Repeated integer solution without converging
+WARNING: Repeated integer solution without converging
+WARNING: Solution value (-0.07160446457996758) is smaller than best bound (-0.07023814417135583): check solution feasibility (tightening primal feasibility tolerance of conic solver may help)
+#SOLVERNAME# PAJ_CPLEX_SCS
+#SOLVER# Pajarito.PajaritoSolver(3, 7200.0, 1.0e-5, false, CPLEX.CplexSolver(Any[(:CPX_PARAM_THREADS, 1), (:CPX_PARAM_SCRIND, 0), (:CPX_PARAM_EPINT, 1.0e-8), (:CPX_PARAM_EPRHS, 1.0e-7), (:CPX_PARAM_EPGAP, 0.0)]), Pajarito.UnsetSolver(), 0, false, true, SCS.SCSSolver(Any[(:verbose, 0), (:warm_start, true), (:eps, 0.0001)]), true, true, false, false, true, false, false, true, false, true, true, true, true, false, true, 2.0, false, false, false, true, 1.0e-12, 1.0e-6, false, "")
+#INSTANCE# multiportfolio_socexppsd_b.cbf.gz
+#TIMELIMIT# 7200.0
+
+Problem dimensions:
+       variables |     102
+     constraints |     184
+   nonzeros in A |     413
+
+Cones summary:
+Cone             | Count   | Min dim.  | Max dim. 
+    Second order |       2 |         9 |         9
+   Primal expon. |      16 |         3 |         3
+   Pos. semidef. |       2 |       5^2 |       5^2
+
+Variable types:
+      continuous |      74
+         integer |      28
+
+Transforming data...               0.00s
+
+Creating conic subproblem...       0.00s
+
+Building MIP model...              0.00s
+
+Solving conic relaxation...        3.42s
+ - Relaxation status    =        Optimal
+ - Relaxation objective =      -0.097778
+
+Starting iterative algorithm
+
+Iter. | Best feasible  | Best bound     | Rel. gap    | Time (s)   
+    1 |  -9.087916e-02 |  -9.777770e-02 |   7.590e-02 |   5.489e+00
+
+Iter. | Best feasible  | Best bound     | Rel. gap    | Time (s)   
+    2 |  -9.607036e-02 |  -9.777770e-02 |   1.777e-02 |   6.581e+00
+
+Iter. | Best feasible  | Best bound     | Rel. gap    | Time (s)   
+    3 |  -9.826501e-02 |  -9.777770e-02 |  -4.959e-03 |   7.148e+00
+Pajarito will print diagnostic information
+
+Iterative algorithm summary:
+ - Status               =        Optimal
+ - Best feasible        =  -9.826501e-02
+ - Best bound           =  -9.777770e-02
+ - Relative opt. gap    =*    -4.959e-03*
+ - Total time (s)       =       7.15e+00
+
+Timers (s):
+ - Setup                =   1.13e-03
+ -- Transform data      =   1.01e-04
+ -- Create conic data   =   5.54e-04
+ -- Create MIP data     =   4.74e-04
+ - Algorithm            =   7.15e+00
+ -- Solve relaxation    =   3.42e+00
+ -- Get relaxation cuts =   2.22e-04
+ -- Solve MIP models    =   2.25e-02
+ -- Solve subproblems   =   3.70e+00
+ -- Get subproblem cuts =   1.66e-03
+ -- Get separation cuts =   1.55e-04
+
+Counters:
+ - Iterations           =     3
+ -- Integer repeats     =     0
+ -- Conic subproblems   =     3
+ --- Infeasible         =     0
+ --- Optimal            =     3
+ --- Suboptimal         =     0
+ --- UserLimit          =     0
+ --- ConicFailure       =     0
+ --- Other status       =     0
+ -- Feasible solutions  =     3
+ --- From subproblems   =     3
+ --- From MIP solve     =     0
+
+Solution returned by conic solver
+
+Rounds of full separation/subproblem cuts, and count of cuts added:
+Cone             | Subp.  | Sep.   | Total  | Relax. | Viol. 
+    Second order |      8 |      0 |     48 |     16 |     18
+   Primal expon. |     64 |      0 |     48 |     16 |     33
+   Pos. semidef. |      8 |      0 |      6 |      2 |      5
+
+0 numerically unstable disaggregated SOC cuts
+
+Distance to feasibility (negative indicates strict feasibility):
+Cone             | Variable  | Constraint
+          Linear | -0.00e+00 |  1.98e-05
+    Second order |        NA | -4.03e-06
+   Primal expon. |        NA |  2.94e-06
+   Pos. semidef. |        NA |  7.72e-08
+
+Distance to integrality of integer/binary variables:
+         integer |  3.66e-15
+
+WARNING: Solution value (-0.09826501403456275) is smaller than best bound (-0.09777769917898961): check solution feasibility (tightening primal feasibility tolerance of conic solver may help)
+#STATUS# Optimal
+#OBJVAL# -0.09826501403456275
+#OBJBOUND# -0.09777769917898961
+#NODECOUNT# NaN
+#TIMESOLVER# 7.147641897201538
+#TIMEALL# 7.148251056671143
+#SOLUTION# [6.348930261881346e-8,9.337796897743433e-8,0.038275831533052786,0.06025564238790606,1.5862618404481168e-7,0.02323566569784083,0.06708492930180457,8.810442640601658e-8,0.11782209345316212,7.835418905413747e-8,0.04654795137547861,7.845950733079828e-8,1.6824978829194387e-7,0.0009336812331807562,1.3538379849725448e-7,0.027255338574212952,5.3157490175750285e-8,0.0007556512702391842,0.0835889505871813,0.05488711131450123,1.0736992996230122e-7,0.052834144670551586,0.038939639087551915,0.07595093072731791,0.1540242613538536,6.27307276436877e-8,1.4854009694657884e-7,0.1575985582226358,0.0,1.0,0.0,0.0,0.0,1.0,1.0,1.0,1.0,1.0,1.0,0.0,0.0,1.0,0.0,1.0,1.0,0.9999999999999963,0.0,1.0,0.0,0.0,1.0,0.9999999999999964,0.0,1.0,1.0,0.0,4.553582774811967,6.182043621728461,0.004287861269817138,0.0005903765843602455,0.01587088527429281,0.03628437780959727,0.0019178216259046533,0.024682611364806657,0.017271750083621144,0.0010688143003208515,0.04754719965145767,0.000975754103873992,0.011303017060046577,0.0011428626241997294,0.002038736227815656,0.0015614614408441061,0.0010128288555853624,0.01006100698134317,0.00174397434340986,0.00976635387783866,0.030517249979048373,0.014935361758976225,0.002392679035125842,0.010990705219761475,0.02032022084560848,0.023151368925789034,0.04727183057045211,0.002210905549147535,0.001320307448113432,0.04793088739300923,0.0017435550269634592,0.00981220410218038,0.03097710477554692,0.015044632231156232,-0.0017445079355918845,-0.009720800357240583,-0.03004964049485261,-0.014825532696961031,0.0024062913938009333,0.011061701644115816,0.02053654280334805,0.023428590753126786,-0.002379186414208658,-0.010919544442252994,-0.020102227587515224,-0.022871177680274333]

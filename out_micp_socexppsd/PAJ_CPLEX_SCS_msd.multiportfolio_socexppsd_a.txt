@@ -1,0 +1,136 @@
+WARNING: Solution value (-0.07160444403138301) is smaller than best bound (-0.07023814417135583): check solution feasibility (tightening primal feasibility tolerance of conic solver may help)
+#SOLVERNAME# PAJ_CPLEX_SCS_msd
+#SOLVER# Pajarito.PajaritoSolver(3, 7200.0, 1.0e-5, true, CPLEX.CplexSolver(Any[(:CPX_PARAM_THREADS, 1), (:CPX_PARAM_SCRIND, 1), (:CPX_PARAM_EPINT, 1.0e-8), (:CPX_PARAM_EPRHS, 1.0e-7), (:CPX_PARAM_EPGAP, 1.0e-5)]), Pajarito.UnsetSolver(), 0, false, true, SCS.SCSSolver(Any[(:verbose, 0), (:warm_start, true), (:eps, 0.0001)]), true, true, false, false, true, false, false, true, false, true, true, true, true, false, true, 2.0, true, false, false, true, 1.0e-12, 1.0e-6, false, "")
+#INSTANCE# multiportfolio_socexppsd_a.cbf.gz
+#TIMELIMIT# 7200.0
+
+Problem dimensions:
+       variables |      52
+     constraints |      92
+   nonzeros in A |     164
+
+Cones summary:
+Cone             | Count   | Min dim.  | Max dim. 
+    Second order |       2 |         5 |         5
+   Primal expon. |       8 |         3 |         3
+   Pos. semidef. |       2 |       3^2 |       3^2
+
+Variable types:
+      continuous |      38
+         integer |      14
+
+Transforming data...               0.01s
+
+Creating conic subproblem...       0.00s
+
+Building MIP model...              0.00s
+
+Solving conic relaxation...        1.81s
+ - Relaxation status    =        Optimal
+ - Relaxation objective =      -0.070238
+
+User cuts applied:  60
+
+Root node processing (before b&c):
+  Real time             =    2.12 sec. (1.88 ticks)
+Sequential b&c:
+  Real time             =    0.00 sec. (0.00 ticks)
+                          ------------
+Total (root+branch&cut) =    2.12 sec. (1.88 ticks)
+CPLEX Error  1217: No solution exists.
+Warning: Control callbacks may disable some MIP features.
+Tried aggregator 2 times.
+MIP Presolve eliminated 87 rows and 1 columns.
+MIP Presolve modified 10 coefficients.
+Aggregator did 1 substitutions.
+Reduced MIP has 69 rows, 58 columns, and 198 nonzeros.
+Reduced MIP has 14 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.00 sec. (0.13 ticks)
+Probing time = 0.00 sec. (0.17 ticks)
+MIP emphasis: balance optimality and feasibility.
+MIP search method: traditional branch-and-cut.
+Parallel mode: none, using 1 thread.
+Root relaxation solution time = 0.00 sec. (0.28 ticks)
+
+        Nodes                                         Cuts/
+   Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
+
+      0     0       -0.0716     0                     -0.0718       51         
+
+Starting MIP-solver-driven algorithm
+Pajarito will print diagnostic information
+
+MIP-solver-driven algorithm summary:
+ - Status               =        Optimal
+ - Best feasible        =  -7.160444e-02
+ - Best bound           =  -7.023814e-02
+ - Relative opt. gap    =*    -1.908e-02*
+ - Total time (s)       =       2.78e+00
+
+Timers (s):
+ - Setup                =   1.05e-02
+ -- Transform data      =   9.68e-03
+ -- Create conic data   =   4.34e-04
+ -- Create MIP data     =   3.38e-04
+ - Algorithm            =   2.77e+00
+ -- Solve relaxation    =   1.81e+00
+ -- Get relaxation cuts =   1.58e-04
+ -- MIP solver driving  =   9.64e-01
+ -- Solve subproblems   =   9.57e-01
+ -- Get subproblem cuts =   1.16e-03
+ -- Get separation cuts =   5.86e-04
+
+Counters:
+ - Lazy callbacks       =    13
+ -- Integer repeats     =    11
+ -- Conic subproblems   =     2
+ --- Infeasible         =     0
+ --- Optimal            =     2
+ --- Suboptimal         =     0
+ --- UserLimit          =     0
+ --- ConicFailure       =     0
+ --- Other status       =     0
+ -- Feasible solutions  =     3
+ --- From subproblems   =     2
+ --- In lazy callback   =     1
+ - Heuristic callbacks  =     0
+ -- Solutions passed    =     0
+
+Solution returned by MIP solver
+
+Rounds of full separation/subproblem cuts, and count of cuts added:
+Cone             | Subp.  | Sep.   | Total  | Relax. | Viol. 
+    Second order |     28 |      8 |     27 |      8 |     27
+   Primal expon. |    112 |     11 |     21 |      8 |     21
+   Pos. semidef. |     14 |     10 |     12 |      1 |     12
+
+0 numerically unstable disaggregated SOC cuts
+
+Distance to feasibility (negative indicates strict feasibility):
+Cone             | Variable  | Constraint
+          Linear |  0.00e+00 |  6.94e-18
+    Second order |        NA |  4.58e-07
+   Primal expon. |        NA |  9.61e-07
+   Pos. semidef. |        NA |  8.17e-06
+
+Distance to integrality of integer/binary variables:
+         integer |  1.55e-15
+
+WARNING: Solution value (-0.07160444403138301) is smaller than best bound (-0.07023814417135583): check solution feasibility (tightening primal feasibility tolerance of conic solver may help)
+
+User cuts applied:  60
+
+Root node processing (before b&c):
+  Real time             =    0.96 sec. (1.88 ticks)
+Sequential b&c:
+  Real time             =    0.00 sec. (0.00 ticks)
+                          ------------
+Total (root+branch&cut) =    0.96 sec. (1.88 ticks)
+CPLEX Error  1217: No solution exists.
+#STATUS# Optimal
+#OBJVAL# -0.07160444403138301
+#OBJBOUND# -0.07023814417135583
+#NODECOUNT# 0
+#TIMESOLVER# 2.7845587730407715
+#TIMEALL# 2.7850217819213867
+#SOLUTION# [0.0689939835720033,0.015717097377887526,0.0,0.0461948748258747,0.14495132895430732,0.037838330026778146,0.04944401977070431,0.005474743871868894,0.0,0.21370250726860315,0.02982290162868362,0.0345754019177207,0.3532848107855683,0.0,1.0,1.0,1.0,1.0,1.0,-0.0,1.0,1.0,-0.0,1.0,1.0,0.9999999999999984,1.0,-0.0,7643.1310311573425,0.0,0.04154272632588719,0.019719545667246173,-0.000401939909917089,0.019626991557309136,0.03870047083533651,0.024131714564557562,0.02049259930997455,0.0001819602703985188,0.0002581996794734397,0.03499865581652458,0.014483524621913428,0.031900998362949004,0.05000000000000002,0.0,0.00025823300640296086,0.03560399195206525,-0.000258178251479847,-0.03437904670698836,0.014586933598610841,0.032403732480380816,-0.014378128306322138,-0.03138753777266952]
