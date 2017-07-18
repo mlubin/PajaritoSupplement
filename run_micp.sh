@@ -15,13 +15,13 @@ mkdir -p output
 # mkdir -p out_micp_soc
 # mv output/* out_micp_soc
 
-## SOC, PSD
-for SOLVER in PAJ_CPLEX_SCS PAJ_CPLEX_MOSEK PAJ_CPLEX_MOSEK_msd PAJ_CPLEX_noconic PAJ_CPLEX_noconic_msd PAJ_CPLEX_MOSEK_noscale PAJ_CPLEX_MOSEK_nopresolve PAJ_CPLEX_MOSEK_noscale_nopresolve
-do
-    $JULIA scripts/runmeta.jl $SOLVER 7200 50000000 instancedata/micptests/socpsd/ instancesets/micp_socpsd.txt
-done
-mkdir -p out_micp_socpsd
-mv output/* out_micp_socpsd
+# ## SOC, PSD
+# for SOLVER in PAJ_CPLEX_SCS PAJ_CPLEX_MOSEK PAJ_CPLEX_MOSEK_msd PAJ_CPLEX_noconic PAJ_CPLEX_noconic_msd PAJ_CPLEX_MOSEK_noscale PAJ_CPLEX_MOSEK_nopresolve PAJ_CPLEX_MOSEK_noscale_nopresolve
+# do
+#     $JULIA scripts/runmeta.jl $SOLVER 7200 50000000 instancedata/micptests/socpsd/ instancesets/micp_socpsd.txt
+# done
+# mkdir -p out_micp_socpsd
+# mv output/* out_micp_socpsd
 
 # ## SOC, EXP
 # for SOLVER in PAJ_CPLEX_SCS PAJ_CPLEX_ECOS PAJ_CPLEX_ECOS_msd PAJ_CPLEX_noconic PAJ_CPLEX_noconic_msd
@@ -32,7 +32,7 @@ mv output/* out_micp_socpsd
 # mv output/* out_micp_socexp
 
 ## SOC, EXP, PSD
-for SOLVER in PAJ_CPLEX_SCS PAJ_CPLEX_SCS_msd PAJ_CPLEX_noconic PAJ_CPLEX_noconic_msd
+for SOLVER in PAJ_CPLEX_noconic_noinit_msd    #PAJ_CPLEX_noconic_noinit PAJ_CPLEX_noconic_noinit_msd PAJ_CPLEX_SCS PAJ_CPLEX_SCS_msd PAJ_CPLEX_noconic PAJ_CPLEX_noconic_msd
 do
     $JULIA scripts/runmeta.jl $SOLVER 7200 50000000 instancedata/micptests/socexppsd/ instancesets/micp_socexppsd.txt
 done

@@ -146,10 +146,14 @@ solvermap = Dict(
     # CPLEX iter - no conic
     "PAJ_CPLEX_noconic" =>
     (["CPLEX"], quote PajaritoSolver(mip_solver=CplexSolver(CPX_PARAM_THREADS=1, CPX_PARAM_SCRIND=0, CPX_PARAM_EPINT=tol_int, CPX_PARAM_EPRHS=tol_feas, CPX_PARAM_EPGAP=tol_gap), log_level=logl, timeout=tlim, rel_gap=rgap, prim_cut_feas_tol=tol_conic, prim_cuts_only=true, solve_relax=false, solve_subp=false) end),
+    "PAJ_CPLEX_noconic_noinit" =>
+    (["CPLEX"], quote PajaritoSolver(mip_solver=CplexSolver(CPX_PARAM_THREADS=1, CPX_PARAM_SCRIND=0, CPX_PARAM_EPINT=tol_int, CPX_PARAM_EPRHS=tol_feas, CPX_PARAM_EPGAP=tol_gap), log_level=logl, timeout=tlim, rel_gap=rgap, prim_cut_feas_tol=tol_conic, prim_cuts_only=true, solve_relax=false, solve_subp=false, init_soc_one=false, init_soc_inf=false, init_exp=false, init_sdp_lin=false) end),
 
     # CPLEX MSD - no conic
     "PAJ_CPLEX_noconic_msd" =>
     (["CPLEX"], quote PajaritoSolver(mip_solver=CplexSolver(CPX_PARAM_THREADS=1, CPX_PARAM_SCRIND=1, CPX_PARAM_EPINT=tol_int, CPX_PARAM_EPRHS=tol_feas, CPX_PARAM_EPGAP=rgap), log_level=logl, timeout=tlim, rel_gap=rgap, prim_cut_feas_tol=tol_conic, prim_cuts_only=true, solve_relax=false, solve_subp=false, mip_solver_drives=true, use_mip_starts=false) end),
+    "PAJ_CPLEX_noconic_noinit_msd" =>
+    (["CPLEX"], quote PajaritoSolver(mip_solver=CplexSolver(CPX_PARAM_THREADS=1, CPX_PARAM_SCRIND=1, CPX_PARAM_EPINT=tol_int, CPX_PARAM_EPRHS=tol_feas, CPX_PARAM_EPGAP=rgap), log_level=logl, timeout=tlim, rel_gap=rgap, prim_cut_feas_tol=tol_conic, prim_cuts_only=true, solve_relax=false, solve_subp=false, mip_solver_drives=true, use_mip_starts=false, init_soc_one=false, init_soc_inf=false, init_exp=false, init_sdp_lin=false) end),
 
     # CPLEX iter - primal assist
     "PAJ_CPLEX_MOSEK" =>
