@@ -242,7 +242,7 @@ for (cnt,filename) in enumerate(resultfiles)
             conic_subproblem_time = split(line)[5]
         elseif startswith(line, " -- Solve relaxation    =")
             conic_relaxation_time = split(line)[5]
-        elseif startswith(line, " -- Solve MIP models    =")
+        elseif startswith(line, " -- Solve MIP models    =") || startswith(line, " -- MIP solver driving  =")
             mip_subproblem_time = split(line)[6]
         end
     end
