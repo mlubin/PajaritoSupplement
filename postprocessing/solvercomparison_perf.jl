@@ -18,10 +18,10 @@ instance_names = d["instance_names"]
 Plots.scalefontsizes(2.1)
 
 performance_profile(time_table[:,1:2], ["CPLEX","MSD CPLEX"],logscale=false, ymax=1.0, xmax=15, linewidth=3)
-Plots.savefig(joinpath(dirname(@__FILE__),"commercialtime.eps"))
+Plots.savefig(joinpath(dirname(@__FILE__),"commercialtime.tex"))
 
 performance_profile(time_table[:,5:7], ["BONMIN","iter. Cbc","iter. GLPK"],logscale=false, ymax=1.0, xmax=15, linewidth=3)
-Plots.savefig(joinpath(dirname(@__FILE__),"opensourcetime.eps"))
+Plots.savefig(joinpath(dirname(@__FILE__),"opensourcetime.tex"))
 
 performance_profile(time_table[:,[4,6]], ["iter. Cbc","SCIP_MISOCP"],logscale=false, ymax=1.0, xmax=15, linewidth=3)
-Plots.savefig(joinpath(dirname(@__FILE__),"itercbcsciptime.eps"))
+Plots.savefig(joinpath(dirname(@__FILE__),"itercbcsciptime.tex"))

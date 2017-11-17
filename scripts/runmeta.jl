@@ -55,20 +55,20 @@ for instancename in instancelist
                 open(filename, "a") do fd
                     println(fd, "#STATUS# KilledTime")
                 end
-            else
+            # else
                 # Try to kill if memory limit exceeded (some solvers use too much memory and fail)
                 # If this try fails, process has already stopped
-                try
-                    memuse = parse(Int, split(readstring(pipeline(`cat /proc/$pid/status`,`grep RSS`)))[2])
-                    if memuse > mlim
-                        kill(process)
-                        sleep(1.0)
-                        println(fdmeta, "killed by memory limit")
-                        open(filename, "a") do fd
-                            println(fd, "#STATUS# KilledMemory")
-                        end
-                    end
-                end
+                # try
+                #     memuse = parse(Int, split(readstring(pipeline(`cat /proc/$pid/status`,`grep RSS`)))[2])
+                #     if memuse > mlim
+                #         kill(process)
+                #         sleep(1.0)
+                #         println(fdmeta, "killed by memory limit")
+                #         open(filename, "a") do fd
+                #             println(fd, "#STATUS# KilledMemory")
+                #         end
+                #     end
+                # end
             end
             sleep(1.0)
         end

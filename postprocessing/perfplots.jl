@@ -1,3 +1,6 @@
+using Plots
+pgfplots()
+
 import BenchmarkProfiles
 
 # Customized performance_profile method, derived from BenchmarkProfiles.jl
@@ -35,4 +38,3 @@ function performance_profile(T :: Array{Float64,2}, labels :: Vector{String};
   Plots.title!(title)
   return profile
 end
-

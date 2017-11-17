@@ -19,4 +19,4 @@ instance_names = d["instance_names"]
 Plots.scalefontsizes(2.1)
 
 performance_profile(time_table, ["iter. subp","iter. sep","MSD subp","MSD sep"],logscale=false, ymax=1.0, xmax=15, linewidth=3)
-Plots.savefig(joinpath(dirname(@__FILE__),"septime.eps"))
+Plots.savefig(joinpath(dirname(@__FILE__),"septime.tex"))
