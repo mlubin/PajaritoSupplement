@@ -257,8 +257,8 @@ for (cnt,filename) in enumerate(resultfiles)
         objval_sol, linear_violation, soc_violation, socrot_violation, exp_violation, psd_violation, int_violation = compute_violations(dat,solution)
         if !NOCONIC
             validator_status, validator_objval = validate_with_conic_solver(dat,solution)
-            validator_relobjdiff = abs(objval_sol - validator_objval)/abs(objval_sol+1e-5)
-            rel_objval_error = abs(objval_sol - parse(Float64,objval))/abs(parse(Float64,objval))
+            validator_relobjdiff = abs(objval_sol - validator_objval)/(abs(objval_sol)+1e-5)
+            rel_objval_error = abs(objval_sol - parse(Float64,objval))/(abs(parse(Float64,objval))+1e-5)
         end
     end
 
