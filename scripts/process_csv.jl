@@ -19,7 +19,7 @@ Options:
 
 arguments = DocOpt.docopt(doc)
 
-# process the csv produced by process_awsoutput.jl
+# process the csv produced by process_output.jl
 results = readtable(arguments["<csvfile>"])
 
 # file listing manually excluded results
@@ -30,6 +30,7 @@ if isa(arguments["--exclude"], String)
 else
     excluded = []
 end
+
 function isexcluded(solver,inst)
     for k in 1:length(excluded)
         if excluded[k][1] == solver && excluded[k][2] == inst
@@ -81,7 +82,6 @@ for solverlist in arguments["--bestof"]
     end
 end
 
-
 optimal_runs = results[results[:status] .== "Optimal",:]
 
 function printdf(df)
@@ -94,8 +94,6 @@ function printdf(df)
 end
 
 if arguments["check"]
-
-
     # problematic violations
     viol = optimal_runs[(optimal_runs[:max_linear_violation] .> 1e-3) .| (optimal_runs[:max_soc_violation] .> 1e-3) .| (optimal_runs[:max_socrot_violation] .> 1e-3) .| (optimal_runs[:max_exp_violation] .> 1e-3) .| (optimal_runs[:max_psd_violation] .> 1e-3) .| (optimal_runs[:max_int_violation] .> 1e-3), :]
 
@@ -133,11 +131,8 @@ if arguments["check"]
         end
     end
 
-
 elseif arguments["statuscounts"]
-
     # status counts by solver
-
     statuses = sort(collect(unique(results[:status])))
     all_solvers = sort(collect(unique(results[:solver])))
     status_table = NamedArray(zeros(Int,length(all_solvers),length(statuses)+1))
@@ -153,9 +148,7 @@ elseif arguments["statuscounts"]
     df2[:solver] = names(status_table,1)
     writetable(arguments["<csvfileout>"],df2)
 
-
 elseif arguments["geomeans"]
-
     function shifted_geomean(table, field, shift, groupby)
         solvers = unique(table[groupby])
         sum_by = Dict(g => 0.0 for g in solvers)
@@ -176,7 +169,6 @@ elseif arguments["geomeans"]
         end
     end
 
-
     time_shift = 10.0
     subproblem_shift = 1.0
 
@@ -186,7 +178,6 @@ elseif arguments["geomeans"]
             results[i,:solvertime] = results[i,:timelimit]
         end
     end
-
 
     all_solvers = unique(results[:solver])
     all_optimal_instances = []
@@ -201,6 +192,7 @@ elseif arguments["geomeans"]
             push!(all_optimal_instances, g1[1,:instance])
         end
     end
+
     println("$(length(all_optimal_instances)) instances solved optimally by all solvers\n")
     # subset of instances where all solvers got optimal
     subset_of_all_optimal = optimal_runs[find(t-> t in all_optimal_instances, optimal_runs[:instance]),:]
@@ -233,7 +225,6 @@ elseif arguments["geomeans"]
     shifted_geomean(subset_of_all_optimal, :iteration_count, subproblem_shift, :solver)
     println()
 
-
 elseif arguments["perfprofile"]
     solvers = arguments["<solver>"]
     # need a table of [time] X [solver] where each row is a solver
@@ -265,7 +256,3 @@ elseif arguments["perfprofile"]
     #p = performance_profile(mat, solvers, title="TITLE")
     #Plots.savefig("perf.png")
 end
-
-    
-
-
