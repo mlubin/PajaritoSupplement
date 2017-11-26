@@ -163,19 +163,19 @@ def dispatch_and_run(job, tags, cmds, commands, verbose=True):
         # Make a shell script to run the command and then save the results
         runner_path = "runner_%s.sh" % tag
         with open(runner_path, "w") as f:
-            # f.write("cd ~/.julia/v0.5/CPLEX; git fetch; git checkout ml/profiling; git pull")
+            # f.write("cd ~/.julia/v0.6/CPLEX; git fetch; git checkout ml/profiling; git pull")
             # f.write("\n")
-            # f.write("cd ~/.julia/v0.5/JuMP; git fetch; git checkout ml/nolpsol; git pull")
+            # f.write("cd ~/.julia/v0.6/JuMP; git fetch; git checkout ml/nolpsol; git pull")
             # f.write("\n")
-            # f.write("cd ~/.julia/v0.5/GLPKMathProgInterface; git checkout master; git pull")
+            # f.write("cd ~/.julia/v0.6/GLPKMathProgInterface; git checkout master; git pull")
             # f.write("\n")
-            f.write("cd ~/.julia/v0.5/Pajarito; git checkout master; git pull")
-            f.write("\n")
-            f.write("cd ~/PajaritoSupplement; git pull; mkdir output")
+            # f.write("cd ~/.julia/v0.6/Pajarito; git checkout master; git pull")
+            # f.write("\n")
+            f.write("cd ~/PajaritoSupplement; git pull; mkdir -p output")
             f.write("\n")
             f.write("export TAG=%s" % tag)  # Inject tag as environment var
             f.write("\n")
-            f.write("~/julia-6445c82d00/bin/julia scripts/runmeta.jl %s" % command)
+            f.write("~/julia-903644385b/bin/julia scripts/runmeta.jl %s" % command)
             f.write("\n")
             f.write("cd ~/PajaritoSupplement/awsscripts; python2 save_results.py %s %s" % (job, tag))
             f.write("\n")

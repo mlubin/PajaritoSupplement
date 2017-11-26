@@ -114,7 +114,6 @@ When all jobs have completed:
 ```
 python get_s3_files.py nnnnxxxx ../output/xxxx
 cd ..
-julia results_scripts/process.jl output/xxxx results/xxxx.csv
 ```
 where `nnnn` is your name (you need a unique bucket name that will not conflict with any other bucket name on Amazon S3), and `xxxx` is one of the jobs.
 
