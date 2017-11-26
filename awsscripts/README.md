@@ -96,7 +96,7 @@ If there is no progress, then you can debug the run by logging onto one of the E
 
 # Setting up Julia
 
-Install [Julia v0.5.1](http://julialang.org/downloads/).
+Install [Julia v0.6.0](http://julialang.org/downloads/).
 
 
 # Specific commands to run for computational testing
@@ -113,7 +113,6 @@ python dispatcher.py nnnnxxxx jobinfo/xxxx.csv -c -d
 When all jobs have completed:
 ```
 python get_s3_files.py nnnnxxxx ../output/xxxx
-cd ..
 ```
 where `nnnn` is your name (you need a unique bucket name that will not conflict with any other bucket name on Amazon S3), and `xxxx` is one of the jobs.
 
