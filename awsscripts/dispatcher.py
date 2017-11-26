@@ -8,7 +8,7 @@ import time
 import cloud_setup
 
 # Change this AMI name to whatever AMI you have set up to run the computational tests
-DEFAULT_AMI_NAME = "ami-25484933"
+DEFAULT_AMI_NAME = "ami-04ea7b7e"
 
 
 def create_instances(job, tags, instance_types, verbose=True):
@@ -289,7 +289,7 @@ if __name__ == "__main__":
                     "Please see the README for usage instructions."
     )
     parser.add_argument("jobname", type=str,
-                        help="A descriptive name for this job.")
+                        help="A descriptive name for this job, using only lowercase letters.")
     parser.add_argument("jobfile", type=str,
                         help="Path to the CSV file containing job info.")
     parser.add_argument("-c", "--create", action="store_true",
