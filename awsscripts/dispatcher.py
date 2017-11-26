@@ -7,11 +7,8 @@ import time
 
 import cloud_setup
 
-# Change this AMI name to whatever AMI you have set up to run the computational tests
-DEFAULT_AMI_NAME = "ami-04ea7b7e"
 
-
-def create_instances(job, tags, instance_types, verbose=True):
+def create_instances(aminame, job, tags, instance_types, verbose=True):
     """
     Simply create an instance for each tag. Uses multiprocessing to create them
     in parallel.
@@ -33,7 +30,7 @@ def create_instances(job, tags, instance_types, verbose=True):
                 "key_name": job,
                 "group_name": job,
                 "inst_type": instance_type,
-                "ami_name": DEFAULT_AMI_NAME,
+                "ami_name": aminame,
                 "user_data": "",
                 "wait": True,
                 "returninfo": returninfo,
@@ -201,7 +198,7 @@ def dispatch_and_run(job, tags, cmds, commands, verbose=True):
         print "\n  Computation started on all machines"
 
 
-def run_dispatch(job, commands, instance_types, create,
+def run_dispatch(aminame, job, commands, instance_types, create,
                  dispatch, verbose, tag_offset):
     """
     Setup machines, run jobs, monitor, then tear them down again.
@@ -236,7 +233,7 @@ def run_dispatch(job, commands, instance_types, create,
 
     # Create instances if desired
     if create:
-        create_instances(job, tags, instance_types, verbose)
+        create_instances(aminame, job, tags, instance_types, verbose)
 
     # Connect to all the instances
     if create or dispatch:
@@ -288,6 +285,8 @@ if __name__ == "__main__":
         description="A helper script to dispatch computation to AWS. "
                     "Please see the README for usage instructions."
     )
+    parser.add_argument("aminame", type=str,
+                        help="The AWS AMI (machine image) name.")
     parser.add_argument("jobname", type=str,
                         help="A descriptive name for this job, using only lowercase letters.")
     parser.add_argument("jobfile", type=str,
@@ -307,6 +306,7 @@ if __name__ == "__main__":
                              "Defaults to 0.")
     args = parser.parse_args()
 
+    aminame = args.aminame
     jobname = args.jobname
     jobfile = args.jobfile
     create = args.create
@@ -315,10 +315,10 @@ if __name__ == "__main__":
     tag_offset = args.tag_offset
 
     print "AMI name:"
-    print DEFAULT_AMI_NAME
+    print aminame
     print ""
 
     commands, instance_types = extract_job_details(jobfile)
 
-    run_dispatch(jobname, commands, instance_types,
+    run_dispatch(aminame, jobname, commands, instance_types,
                  create, dispatch, verbose, tag_offset)
