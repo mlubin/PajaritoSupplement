@@ -103,17 +103,21 @@ Install [Julia v0.6.0](http://julialang.org/downloads/).
 
 Clone or download the PajaritoSupplement repository.
 
-Go to the [MOSEK academic license page](https://www.mosek.com/resources/academic-license) to request a license if you don't already have one. Place the license file `mosek.lic` into the folder `awsscripts`.
+Get the relevant Mosek 9 licence file.
+
+Get the AMI name from the authors.
 
 To run a set of tests from your unix command line:
 ```
 cd PajaritoSupplement/awsscripts
-python dispatcher.py nnnnxxxx jobinfo/xxxx.csv -c -d
+python dispatcher.py aminame nnnnxxxx jobinfo/xxxx.csv -c -d
 ```
+where `nnnn` is your name (you need a unique bucket name that will not conflict with any other bucket name on Amazon S3), and `xxxx` is one of the jobs.
+
 When all jobs have completed:
 ```
 python get_s3_files.py nnnnxxxx ../output/xxxx
 ```
-where `nnnn` is your name (you need a unique bucket name that will not conflict with any other bucket name on Amazon S3), and `xxxx` is one of the jobs.
+Results folders will be downloaded to the `output` folder.
 
-Results folders will be downloaded to the `output` folder. Processed results csv files will be saved in the `results` folder.
+See scripts readme for how to process.
