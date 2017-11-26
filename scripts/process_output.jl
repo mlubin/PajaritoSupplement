@@ -22,7 +22,7 @@ println(fd,"solver,instance,sense,timelimit,status,objval_reported,objbound,calc
 
 # From instance name to file name
 function find_instance(name)
-    instances = joinpath(dirname(@__FILE__),"..","instancedata")
+    instances = joinpath(dirname(@__FILE__),"..","cbfs")
     try
         match = "$name.*"
         f = readstring(`find $instances -name $match`)
@@ -176,8 +176,8 @@ for (cnt,filename) in enumerate(resultfiles)
     #sense = " "
     timelimit = " "
     status = " "
-    objval = " "
-    objbound = " "
+    objval = NaN
+    objbound = NaN
     solvertime = " "
     totaltime = " "
     nodecount = " "
@@ -215,9 +215,9 @@ for (cnt,filename) in enumerate(resultfiles)
         elseif startswith(line, "#STATUS#")
             status = split(line)[2]
         elseif startswith(line, "#OBJVAL#")
-            objval = split(line)[2]
+            objval = parse(Float64,split(line)[2])
         elseif startswith(line, "#OBJBOUND#")
-            objbound = split(line)[2]
+            objbound = parse(Float64,split(line)[2])
         elseif startswith(line, "#TIMESOLVER#")
             solvertime = split(line)[2]
         elseif startswith(line, "#TIMEALL#")
@@ -255,11 +255,10 @@ for (cnt,filename) in enumerate(resultfiles)
         objval_sol, linear_violation, soc_violation, socrot_violation, exp_violation, psd_violation, int_violation = compute_violations(dat,solution)
         if !NOCONIC
             validator_status, validator_objval = validate_with_conic_solver(dat,solution)
-            validator_relobjdiff = abs(objval_sol - validator_objval)/(abs(objval_sol)+1e-5)
-            rel_objval_error = abs(objval_sol - parse(Float64,objval))/(abs(parse(Float64,objval))+1e-5)
+            validator_relobjdiff = abs(objval_sol - validator_objval)/(abs(objval_sol) + 1e-5)
+            rel_objval_error = abs(objval_sol - objval)/(abs(objval) + 1e-5)
         end
     end
-
 
     if isfinite(objval) && isfinite(objbound)
         calc_objgap = (objval - objbound) / (abs(objval) + 1e-5)

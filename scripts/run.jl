@@ -327,8 +327,8 @@ println("#TIMELIMIT# $tlim")
 
 # Attempt to solve, print solve info
 timesolve = time()
-try
+# try
     solveprint(instance, solver)
-catch e
-    println("#ERROR# $e")
-end
+# catch e
+    # println("#ERROR# $e")
+# end
