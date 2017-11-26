@@ -78,31 +78,31 @@ solvermap = Dict(
     "BONMIN_OA" =>
     (["AmplNLWriter"], quote ConicNLPWrapper(
     nlp_solver=BonminNLSolver(["bonmin.algorithm=\"B-OA\"", "bonmin.time_limit=$tlim", "halt_on_ampl_error=yes", "bonmin.allowable_fraction_gap=$rgap", "bonmin.oa_log_level=1", "bonmin.bb_log_level=1"]),
-    disaggregate_soc=false
+    disaggregate_soc=false,
     ) end),
 
     "BONMIN_OADIS" =>
     (["AmplNLWriter"], quote ConicNLPWrapper(
     nlp_solver=BonminNLSolver(["bonmin.algorithm=\"B-OA\"", "bonmin.time_limit=$tlim", "halt_on_ampl_error=yes", "bonmin.allowable_fraction_gap=$rgap", "bonmin.oa_log_level=1", "bonmin.bb_log_level=1"]),
-    disaggregate_soc=true
+    disaggregate_soc=true,
     ) end),
 
     "BONMIN_BB" =>
     (["AmplNLWriter"], quote ConicNLPWrapper(
     nlp_solver=BonminNLSolver(["bonmin.algorithm=\"B-BB\"", "bonmin.time_limit=$tlim", "halt_on_ampl_error=yes", "bonmin.allowable_fraction_gap=$rgap", "bonmin.oa_log_level=1", "bonmin.bb_log_level=1"]),
-    disaggregate_soc=false
+    disaggregate_soc=false,
     ) end),
 
     # SCIP
     "SCIP_MISOCP" =>
     (["SCIP"], quote SCIPSolver(
-    "limits/gap", rgap, "numerics/feastol", tol_feas, "limits/time", tlim
+    "limits/gap", rgap, "numerics/feastol", tol_feas, "limits/time", tlim,
     ) end),
 
     # CPLEX
     "CPLEX_MISOCP" =>
     (["CPLEX"], quote CplexSolver(
-    CPX_PARAM_THREADS=1, CPX_PARAM_TILIM=tlim, CPX_PARAM_SCRIND=1, CPX_PARAM_EPINT=tol_int, CPX_PARAM_EPRHS=tol_feas, CPX_PARAM_EPGAP=rgap
+    CPX_PARAM_THREADS=1, CPX_PARAM_TILIM=tlim, CPX_PARAM_SCRIND=1, CPX_PARAM_EPINT=tol_int, CPX_PARAM_EPRHS=tol_feas, CPX_PARAM_EPGAP=rgap,
     ) end),
 
     # Paj CBC
@@ -110,7 +110,7 @@ solvermap = Dict(
     (["Cbc","ECOS"], quote PajaritoSolver(
     mip_solver=CbcSolver(logLevel=0, integerTolerance=tol_int, primalTolerance=tol_feas, ratioGap=tol_gap, check_warmstart=false),
     cont_solver=ECOSSolver(verbose=false),
-    log_level=logl, timeout=tlim, rel_gap=rgap, prim_cut_feas_tol=tol_feas
+    log_level=logl, timeout=tlim, rel_gap=rgap, prim_cut_feas_tol=tol_feas,
     ) end),
 
     # Paj GLPK
@@ -118,7 +118,7 @@ solvermap = Dict(
     (["GLPKMathProgInterface","ECOS"], quote PajaritoSolver(
     mip_solver=GLPKSolverMIP(msg_lev=GLPK.MSG_OFF, tol_int=tol_int, tol_bnd=tol_feas, mip_gap=tol_gap, presolve=true),
     cont_solver=ECOSSolver(verbose=false),
-    log_level=logl, timeout=tlim, rel_gap=rgap, prim_cut_feas_tol=tol_feas
+    log_level=logl, timeout=tlim, rel_gap=rgap, prim_cut_feas_tol=tol_feas,
     ) end),
 
     # Paj CPLEX MOSEK
@@ -128,30 +128,30 @@ solvermap = Dict(
     (["CPLEX","Mosek"], quote PajaritoSolver(
     mip_solver=CplexSolver(CPX_PARAM_THREADS=1, CPX_PARAM_SCRIND=0, CPX_PARAM_EPINT=tol_int, CPX_PARAM_EPRHS=tol_feas, CPX_PARAM_EPGAP=tol_gap),
     cont_solver=MosekSolver(LOG=0, NUM_THREADS=1),
-    log_level=logl, timeout=tlim, rel_gap=rgap, prim_cut_feas_tol=tol_feas
+    log_level=logl, timeout=tlim, rel_gap=rgap, prim_cut_feas_tol=tol_feas,
     ) end),
 
     "PAJ_CPLEX_MOSEK_noscale" =>
     (["CPLEX","Mosek"], quote PajaritoSolver(
     mip_solver=CplexSolver(CPX_PARAM_THREADS=1, CPX_PARAM_SCRIND=0, CPX_PARAM_EPINT=tol_int, CPX_PARAM_EPRHS=tol_feas, CPX_PARAM_EPGAP=tol_gap),
     cont_solver=MosekSolver(LOG=0, NUM_THREADS=1),
-    log_level=logl, timeout=tlim, rel_gap=rgap, prim_cut_feas_tol=tol_feas
-    scale_subp_cuts=false
+    log_level=logl, timeout=tlim, rel_gap=rgap, prim_cut_feas_tol=tol_feas,
+    scale_subp_cuts=false,
     ) end),
 
     "PAJ_CPLEX_MOSEK_nopreslv" =>
     (["CPLEX","Mosek"], quote PajaritoSolver(
     mip_solver=CplexSolver(CPX_PARAM_THREADS=1, CPX_PARAM_SCRIND=0, CPX_PARAM_EPINT=tol_int, CPX_PARAM_EPRHS=tol_feas, CPX_PARAM_EPGAP=tol_gap, CPX_PARAM_PREIND=0),
     cont_solver=MosekSolver(LOG=0, NUM_THREADS=1),
-    log_level=logl, timeout=tlim, rel_gap=rgap, prim_cut_feas_tol=tol_feas
+    log_level=logl, timeout=tlim, rel_gap=rgap, prim_cut_feas_tol=tol_feas,
     ) end),
 
     "PAJ_CPLEX_MOSEK_noscale_nopreslv" =>
     (["CPLEX","Mosek"], quote PajaritoSolver(
     mip_solver=CplexSolver(CPX_PARAM_THREADS=1, CPX_PARAM_SCRIND=0, CPX_PARAM_EPINT=tol_int, CPX_PARAM_EPRHS=tol_feas, CPX_PARAM_EPGAP=tol_gap, CPX_PARAM_PREIND=0),
     cont_solver=MosekSolver(LOG=0, NUM_THREADS=1),
-    log_level=logl, timeout=tlim, rel_gap=rgap, prim_cut_feas_tol=tol_feas
-    scale_subp_cuts=false
+    log_level=logl, timeout=tlim, rel_gap=rgap, prim_cut_feas_tol=tol_feas,
+    scale_subp_cuts=false,
     ) end),
 
 
@@ -161,7 +161,7 @@ solvermap = Dict(
     mip_solver=CplexSolver(CPX_PARAM_THREADS=1, CPX_PARAM_SCRIND=1, CPX_PARAM_EPINT=tol_int, CPX_PARAM_EPRHS=tol_feas, CPX_PARAM_EPGAP=rgap),
     cont_solver=MosekSolver(LOG=0, NUM_THREADS=1),
     log_level=logl, timeout=tlim, rel_gap=rgap, prim_cut_feas_tol=tol_feas,
-    mip_solver_drives=true
+    mip_solver_drives=true,
     ) end),
 
     "PAJ_CPLEX_MOSEK_msd_noscale" =>
@@ -170,7 +170,7 @@ solvermap = Dict(
     cont_solver=MosekSolver(LOG=0, NUM_THREADS=1),
     log_level=logl, timeout=tlim, rel_gap=rgap, prim_cut_feas_tol=tol_feas,
     mip_solver_drives=true,
-    scale_subp_cuts=false
+    scale_subp_cuts=false,
     ) end),
 
     "PAJ_CPLEX_MOSEK_msd_nopreslv" =>
@@ -179,7 +179,7 @@ solvermap = Dict(
     CPX_PARAM_PREIND=0),
     cont_solver=MosekSolver(LOG=0, NUM_THREADS=1),
     log_level=logl, timeout=tlim, rel_gap=rgap, prim_cut_feas_tol=tol_feas,
-    mip_solver_drives=true
+    mip_solver_drives=true,
     ) end),
 
     "PAJ_CPLEX_MOSEK_msd_noscale_nopreslv" =>
@@ -189,7 +189,7 @@ solvermap = Dict(
     cont_solver=MosekSolver(LOG=0, NUM_THREADS=1),
     log_level=logl, timeout=tlim, rel_gap=rgap, prim_cut_feas_tol=tol_feas,
     mip_solver_drives=true,
-    scale_subp_cuts=false
+    scale_subp_cuts=false,
     ) end),
 
 
