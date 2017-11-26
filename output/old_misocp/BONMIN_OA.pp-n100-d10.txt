@@ -1,0 +1,52 @@
+WARNING: Method definition require(Symbol) in module Base at loading.jl:345 overwritten in module ConicBenchmarkUtilities at /home/ubuntu/.julia/v0.5/Requires/src/require.jl:12.
+Bonmin 1.8.2 using Cbc 2.9.8 and Ipopt 3.12.1
+bonmin: bonmin.algorithm="B-OA"
+bonmin.time_limit=3600.0
+halt_on_ampl_error=yes
+bonmin.allowable_fraction_gap=1.0e-5
+bonmin.oa_log_level=1
+bonmin.bb_log_level=1
+
+
+******************************************************************************
+This program contains Ipopt, a library for large-scale nonlinear optimization.
+ Ipopt is released as open source code under the Eclipse Public License (EPL).
+         For more information visit http://projects.coin-or.org/Ipopt
+******************************************************************************
+
+NLP0012I 
+              Num      Status      Obj             It       time                 Location
+NLP0014I             1         OPT 775.75694       17 0.036     build initial OA
+NLP0014I             2      INFEAS 0.00028279779       54 0.104     OA decomposition
+NLP0014I             3         OPT 10453018       49 0.088     OA decomposition
+OA0003I New best feasible of 10453018 found after 2.468 sec and
+OA0012I After 150.348.1f seconds, 3 iterations upper bound 104529140g, lower bound 775.796480g
+NLP0014I             4         OPT 1045.7224       11 0.02     OA decomposition
+OA0003I New best feasible of 1045.7224 found after 150.368 sec and
+OA0012I After 3600.008.1f seconds, 4 iterations upper bound 1045.71190g, lower bound 776.270640g
+NLP0014I             5         OPT 832.89293       10 0.016     OA decomposition
+OA0003I New best feasible of 832.89293 found after 3600.024 sec and
+OA0009I OA  interupted after 3600.028 seconds found solution of value 832.89293 (lower bound 776.27064 ).
+OA0010I Performed 4 iterations, explored 1966977 branch-and-bound nodes in total
+Cbc0031I 234 added rows had average density of 3
+Cbc0013I At root node, 234 cuts changed objective from 775.75694 to 775.75694 in 1 passes
+Cbc0014I Cut generator 0 (Outer Approximation decomposition.) - 234 row cuts average 3.0 elements, 0 column cuts (0 active)
+Cbc0014I Cut generator 1 (Outer Approximation feasibility check.) - 0 row cuts average 0.0 elements, 0 column cuts (0 active)
+Cbc0014I Cut generator 2 (Outer Approximation strong branching solution check.) - 0 row cuts average 0.0 elements, 0 column cuts (0 active)
+Cbc0020I Exiting on maximum time
+Cbc0005I Partial search - best objective 1e+50 (best possible 775.75694), took 238 iterations and 0 nodes (3600.03 seconds)
+Cbc0035I Maximum depth 0, 0 variables fixed on reduced cost
+ Outer Approximation decomposition. was tried 1 times and created 234 cuts of which 0 were active after adding rounds of cuts
+
+ 	"Not finished"
+WARNING: Variable value not defined for component of x. Check that the model was properly solved.
+#SOLVERNAME# BONMIN_OA
+#SOLVER# ConicNonlinearBridge.ConicNLPWrapper(AmplNLWriter.AmplNLSolver("/home/ubuntu/.julia/v0.5/CoinOptServices/deps/usr/lib/../bin/bonmin",String["bonmin.algorithm=\"B-OA\"","bonmin.time_limit=3600.0","halt_on_ampl_error=yes","bonmin.allowable_fraction_gap=1.0e-5","bonmin.oa_log_level=1","bonmin.bb_log_level=1"],""),false,false,false)
+#INSTANCE# pp-n100-d10.cbf.gz
+#TIMELIMIT# 3600.0
+#STATUS# UserLimit
+#OBJVAL# NaN
+#OBJBOUND# NaN
+#TIMESOLVER# 3616.4101848602295
+#TIMEALL# 3623.154676914215
+#SOLUTION# [NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN]

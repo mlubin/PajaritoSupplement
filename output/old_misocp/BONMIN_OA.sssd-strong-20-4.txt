@@ -1,0 +1,55 @@
+WARNING: Method definition require(Symbol) in module Base at loading.jl:345 overwritten in module ConicBenchmarkUtilities at /home/ubuntu/.julia/v0.5/Requires/src/require.jl:12.
+Bonmin 1.8.2 using Cbc 2.9.8 and Ipopt 3.12.1
+bonmin: bonmin.algorithm="B-OA"
+bonmin.time_limit=3600.0
+halt_on_ampl_error=yes
+bonmin.allowable_fraction_gap=1.0e-5
+bonmin.oa_log_level=1
+bonmin.bb_log_level=1
+
+
+******************************************************************************
+This program contains Ipopt, a library for large-scale nonlinear optimization.
+ Ipopt is released as open source code under the Eclipse Public License (EPL).
+         For more information visit http://projects.coin-or.org/Ipopt
+******************************************************************************
+
+NLP0012I 
+              Num      Status      Obj             It       time                 Location
+NLP0014I             1         OPT 194750.07       50 0.08     build initial OA
+OA0012I After 196.228.1f seconds, 1 iterations upper bound 1e+500g, lower bound 279323.470g
+NLP0014I             2         OPT 330484.63       30 0.036     OA decomposition
+OA0003I New best feasible of 330484.63 found after 196.264 sec and
+OA0012I After 473.408.1f seconds, 2 iterations upper bound 330481.330g, lower bound 281232.120g
+NLP0014I             3         OPT 288819.29       28 0.036     OA decomposition
+OA0003I New best feasible of 288819.29 found after 473.444 sec and
+OA0012I After 1170.1f seconds, 3 iterations upper bound 288816.40g, lower bound 286823.290g
+NLP0014I             4         OPT 288779.06       28 0.032     OA decomposition
+OA0003I New best feasible of 288779.06 found after 1170.032 sec and
+OA0012I After 3601.024.1f seconds, 4 iterations upper bound 288776.180g, lower bound 286823.290g
+NLP0014I             5         OPT 287883.82       31 0.04     OA decomposition
+OA0003I New best feasible of 287883.82 found after 3601.064 sec and
+OA0009I OA  interupted after 3601.064 seconds found solution of value 287883.82 (lower bound 286823.29 ).
+OA0010I Performed 4 iterations, explored 3842677 branch-and-bound nodes in total
+Cbc0031I 7 added rows had average density of 3
+Cbc0013I At root node, 7 cuts changed objective from 194750.03 to 194750.03 in 1 passes
+Cbc0014I Cut generator 0 (Outer Approximation decomposition.) - 7 row cuts average 3.0 elements, 0 column cuts (0 active)
+Cbc0014I Cut generator 1 (Outer Approximation feasibility check.) - 0 row cuts average 0.0 elements, 0 column cuts (0 active)
+Cbc0014I Cut generator 2 (Outer Approximation strong branching solution check.) - 0 row cuts average 0.0 elements, 0 column cuts (0 active)
+Cbc0020I Exiting on maximum time
+Cbc0005I Partial search - best objective 1e+50 (best possible 194750.03), took 5 iterations and 0 nodes (3601.07 seconds)
+Cbc0035I Maximum depth 0, 0 variables fixed on reduced cost
+ Outer Approximation decomposition. was tried 1 times and created 7 cuts of which 0 were active after adding rounds of cuts
+
+ 	"Not finished"
+WARNING: Variable value not defined for component of x. Check that the model was properly solved.
+#SOLVERNAME# BONMIN_OA
+#SOLVER# ConicNonlinearBridge.ConicNLPWrapper(AmplNLWriter.AmplNLSolver("/home/ubuntu/.julia/v0.5/CoinOptServices/deps/usr/lib/../bin/bonmin",String["bonmin.algorithm=\"B-OA\"","bonmin.time_limit=3600.0","halt_on_ampl_error=yes","bonmin.allowable_fraction_gap=1.0e-5","bonmin.oa_log_level=1","bonmin.bb_log_level=1"],""),false,false,false)
+#INSTANCE# sssd-strong-20-4.cbf.gz
+#TIMELIMIT# 3600.0
+#STATUS# UserLimit
+#OBJVAL# NaN
+#OBJBOUND# NaN
+#TIMESOLVER# 3616.690402984619
+#TIMEALL# 3623.4667909145355
+#SOLUTION# [NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN]

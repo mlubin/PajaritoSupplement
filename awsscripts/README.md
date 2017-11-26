@@ -103,12 +103,12 @@ Install [Julia v0.5.1](http://julialang.org/downloads/).
 
 Clone or download the PajaritoSupplement repository.
 
-Go to the [MOSEK academic license page](https://www.mosek.com/resources/academic-license) to request a license if you don't already have one. Place the license file `mosek.lic` into the folder `ec2_scripts`.
+Go to the [MOSEK academic license page](https://www.mosek.com/resources/academic-license) to request a license if you don't already have one. Place the license file `mosek.lic` into the folder `awsscripts`.
 
 To run a set of tests from your unix command line:
 ```
-cd PajaritoSupplement/ec2_scripts
-python dispatcher.py nnnnxxxx jobinfo/xxxx.csv --create --dispatch
+cd PajaritoSupplement/awsscripts
+python dispatcher.py nnnnxxxx jobinfo/xxxx.csv -c -d
 ```
 When all jobs have completed:
 ```

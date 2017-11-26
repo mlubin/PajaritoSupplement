@@ -1,0 +1,62 @@
+WARNING: Method definition require(Symbol) in module Base at loading.jl:345 overwritten in module ConicBenchmarkUtilities at /home/ubuntu/.julia/v0.5/Requires/src/require.jl:12.
+Bonmin 1.8.2 using Cbc 2.9.8 and Ipopt 3.12.1
+bonmin: bonmin.algorithm="B-OA"
+bonmin.time_limit=3600.0
+halt_on_ampl_error=yes
+bonmin.allowable_fraction_gap=1.0e-5
+bonmin.oa_log_level=1
+bonmin.bb_log_level=1
+
+
+******************************************************************************
+This program contains Ipopt, a library for large-scale nonlinear optimization.
+ Ipopt is released as open source code under the Eclipse Public License (EPL).
+         For more information visit http://projects.coin-or.org/Ipopt
+******************************************************************************
+
+NLP0012I 
+              Num      Status      Obj             It       time                 Location
+NLP0014I             1         OPT -1.1036737       20 0.072     build initial OA
+NLP0014I             2         OPT -1.08656       10 0.036     OA decomposition
+OA0003I New best feasible of -1.08656 found after 4.764 sec and
+NLP0014I             3      INFEAS 0.058202703       42 0.184     OA decomposition
+NLP0014I             4      INFEAS 0.023634205       33 0.136     OA decomposition
+NLP0014I             5      INFEAS 0.017522462       35 0.176     OA decomposition
+OA0012I After 270.652.1f seconds, 5 iterations upper bound -1.08657090g, lower bound -1.09915020g
+NLP0014I             6         OPT -1.0868068       15 0.056     OA decomposition
+OA0003I New best feasible of -1.0868068 found after 270.708 sec and
+OA0012I After 442.896.1f seconds, 6 iterations upper bound -1.08681770g, lower bound -1.09861460g
+NLP0014I             7      INFEAS 0.023916894       43 0.18     OA decomposition
+OA0012I After 566.608.1f seconds, 7 iterations upper bound -1.08681770g, lower bound -1.09838120g
+NLP0014I             8         OPT -1.0954237       12 0.048     OA decomposition
+OA0003I New best feasible of -1.0954237 found after 566.656 sec and
+OA0012I After 931.744.1f seconds, 8 iterations upper bound -1.09543460g, lower bound -1.09788670g
+NLP0014I             9      INFEAS 0.056368134       33 0.14     OA decomposition
+OA0012I After 2307.152.1f seconds, 9 iterations upper bound -1.09543460g, lower bound -1.09709650g
+NLP0014I            10      INFEAS 0.014947831       41 0.18     OA decomposition
+OA0012I After 3377.628.1f seconds, 10 iterations upper bound -1.09543460g, lower bound -1.0963180g
+NLP0014I            11         OPT -1.0903347       15 0.06     OA decomposition
+OA0009I OA  interupted after 3600.12 seconds found solution of value -1.0954237 (lower bound -1.096318 ).
+OA0010I Performed 10 iterations, explored 137438 branch-and-bound nodes in total
+Cbc0031I 435 added rows had average density of 3
+Cbc0013I At root node, 435 cuts changed objective from -1.1036745 to -1.1036745 in 1 passes
+Cbc0014I Cut generator 0 (Outer Approximation decomposition.) - 435 row cuts average 3.0 elements, 0 column cuts (0 active)
+Cbc0014I Cut generator 1 (Outer Approximation feasibility check.) - 0 row cuts average 0.0 elements, 0 column cuts (0 active)
+Cbc0014I Cut generator 2 (Outer Approximation strong branching solution check.) - 0 row cuts average 0.0 elements, 0 column cuts (0 active)
+Cbc0020I Exiting on maximum time
+Cbc0005I Partial search - best objective 1e+50 (best possible -1.1036745), took 100 iterations and 0 nodes (3600.12 seconds)
+Cbc0035I Maximum depth 0, 0 variables fixed on reduced cost
+ Outer Approximation decomposition. was tried 1 times and created 435 cuts of which 0 were active after adding rounds of cuts
+
+ 	"Not finished"
+WARNING: Variable value not defined for component of x. Check that the model was properly solved.
+#SOLVERNAME# BONMIN_OADIS
+#SOLVER# ConicNonlinearBridge.ConicNLPWrapper(AmplNLWriter.AmplNLSolver("/home/ubuntu/.julia/v0.5/CoinOptServices/deps/usr/lib/../bin/bonmin",String["bonmin.algorithm=\"B-OA\"","bonmin.time_limit=3600.0","halt_on_ampl_error=yes","bonmin.allowable_fraction_gap=1.0e-5","bonmin.oa_log_level=1","bonmin.bb_log_level=1"],""),false,true,false)
+#INSTANCE# shortfall_50_0.cbf.gz
+#TIMELIMIT# 3600.0
+#STATUS# UserLimit
+#OBJVAL# NaN
+#OBJBOUND# NaN
+#TIMESOLVER# 3600.935028076172
+#TIMEALL# 3607.997277021408
+#SOLUTION# [NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN]
