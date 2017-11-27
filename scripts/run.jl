@@ -154,6 +154,13 @@ solvermap = Dict(
     scale_subp_cuts=false,
     ) end),
 
+    "PAJ_CPLEX_MOSEK_noinit" =>
+    (["CPLEX","Mosek"], quote PajaritoSolver(
+    mip_solver=CplexSolver(CPX_PARAM_THREADS=1, CPX_PARAM_SCRIND=0, CPX_PARAM_EPINT=tol_int, CPX_PARAM_EPRHS=tol_feas, CPX_PARAM_EPGAP=tol_gap),
+    cont_solver=MosekSolver(LOG=0, NUM_THREADS=1),
+    log_level=logl, timeout=tlim, rel_gap=rgap, prim_cut_feas_tol=tol_feas,
+    init_soc_one=false, init_soc_inf=false, init_exp=false, init_sdp_lin=false, init_sdp_soc=false,
+    ) end),
 
     # MSD
     "PAJ_CPLEX_MOSEK_msd" =>
@@ -192,6 +199,14 @@ solvermap = Dict(
     scale_subp_cuts=false,
     ) end),
 
+    "PAJ_CPLEX_MOSEK_msd_noinit" =>
+    (["CPLEX","Mosek"], quote PajaritoSolver(
+    mip_solver=CplexSolver(CPX_PARAM_THREADS=1, CPX_PARAM_SCRIND=1, CPX_PARAM_EPINT=tol_int, CPX_PARAM_EPRHS=tol_feas, CPX_PARAM_EPGAP=rgap),
+    cont_solver=MosekSolver(LOG=0, NUM_THREADS=1),
+    log_level=logl, timeout=tlim, rel_gap=rgap, prim_cut_feas_tol=tol_feas,
+    mip_solver_drives=true,
+    init_soc_one=false, init_soc_inf=false, init_exp=false, init_sdp_lin=false, init_sdp_soc=false,
+    ) end),
 
 
     # Iter
