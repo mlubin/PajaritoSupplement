@@ -121,7 +121,23 @@ solvermap = Dict(
     log_level=logl, timeout=tlim, rel_gap=rgap, prim_cut_feas_tol=tol_feas,
     ) end),
 
-    # Paj CPLEX
+    # Paj CPLEX MOSEK
+    "PAJ_CPLEX_MOSEK" =>
+    (["CPLEX","Mosek"], quote PajaritoSolver(
+    mip_solver=CplexSolver(CPX_PARAM_THREADS=1, CPX_PARAM_SCRIND=0, CPX_PARAM_EPINT=tol_int, CPX_PARAM_EPRHS=tol_feas, CPX_PARAM_EPGAP=tol_gap),
+    cont_solver=MosekSolver(LOG=0, NUM_THREADS=1),
+    log_level=logl, timeout=tlim, rel_gap=rgap, prim_cut_feas_tol=tol_feas,
+    ) end),
+
+    "PAJ_CPLEX_MOSEK_msd" =>
+    (["CPLEX","Mosek"], quote PajaritoSolver(
+    mip_solver=CplexSolver(CPX_PARAM_THREADS=1, CPX_PARAM_SCRIND=1, CPX_PARAM_EPINT=tol_int, CPX_PARAM_EPRHS=tol_feas, CPX_PARAM_EPGAP=rgap),
+    cont_solver=MosekSolver(LOG=0, NUM_THREADS=1),
+    log_level=logl, timeout=tlim, rel_gap=rgap, prim_cut_feas_tol=tol_feas,
+    mip_solver_drives=true,
+    ) end),
+
+    # Paj CPLEX sep only
     "PAJ_CPLEX_sep" =>
     (["CPLEX"], quote PajaritoSolver(
     mip_solver=CplexSolver(CPX_PARAM_THREADS=1, CPX_PARAM_SCRIND=0, CPX_PARAM_EPINT=tol_int, CPX_PARAM_EPRHS=tol_feas, CPX_PARAM_EPGAP=tol_gap),
@@ -137,62 +153,13 @@ solvermap = Dict(
     prim_cuts_only=true, solve_relax=false, solve_subp=false,
     ) end),
 
-    # Paj CPLEX MOSEK
-
-    # Iter
-    "PAJ_CPLEX_MOSEK" =>
-    (["CPLEX","Mosek"], quote PajaritoSolver(
-    mip_solver=CplexSolver(CPX_PARAM_THREADS=1, CPX_PARAM_SCRIND=0, CPX_PARAM_EPINT=tol_int, CPX_PARAM_EPRHS=tol_feas, CPX_PARAM_EPGAP=tol_gap),
-    cont_solver=MosekSolver(LOG=0, NUM_THREADS=1),
-    log_level=logl, timeout=tlim, rel_gap=rgap, prim_cut_feas_tol=tol_feas,
-    ) end),
-
+    # Paj CPLEX MOSEK subp only
     "PAJ_CPLEX_MOSEK_subponly" =>
     (["CPLEX","Mosek"], quote PajaritoSolver(
     mip_solver=CplexSolver(CPX_PARAM_THREADS=1, CPX_PARAM_SCRIND=0, CPX_PARAM_EPINT=tol_int, CPX_PARAM_EPRHS=tol_feas, CPX_PARAM_EPGAP=tol_gap),
     cont_solver=MosekSolver(LOG=0, NUM_THREADS=1),
     log_level=logl, timeout=tlim, rel_gap=rgap, prim_cut_feas_tol=tol_feas,
     prim_cuts_assist=false,
-    ) end),
-
-    "PAJ_CPLEX_MOSEK_noscale" =>
-    (["CPLEX","Mosek"], quote PajaritoSolver(
-    mip_solver=CplexSolver(CPX_PARAM_THREADS=1, CPX_PARAM_SCRIND=0, CPX_PARAM_EPINT=tol_int, CPX_PARAM_EPRHS=tol_feas, CPX_PARAM_EPGAP=tol_gap),
-    cont_solver=MosekSolver(LOG=0, NUM_THREADS=1),
-    log_level=logl, timeout=tlim, rel_gap=rgap, prim_cut_feas_tol=tol_feas,
-    scale_subp_cuts=false,
-    ) end),
-
-    "PAJ_CPLEX_MOSEK_nopreslv" =>
-    (["CPLEX","Mosek"], quote PajaritoSolver(
-    mip_solver=CplexSolver(CPX_PARAM_THREADS=1, CPX_PARAM_SCRIND=0, CPX_PARAM_EPINT=tol_int, CPX_PARAM_EPRHS=tol_feas, CPX_PARAM_EPGAP=tol_gap, CPX_PARAM_PREIND=0),
-    cont_solver=MosekSolver(LOG=0, NUM_THREADS=1),
-    log_level=logl, timeout=tlim, rel_gap=rgap, prim_cut_feas_tol=tol_feas,
-    ) end),
-
-    "PAJ_CPLEX_MOSEK_noscale_nopreslv" =>
-    (["CPLEX","Mosek"], quote PajaritoSolver(
-    mip_solver=CplexSolver(CPX_PARAM_THREADS=1, CPX_PARAM_SCRIND=0, CPX_PARAM_EPINT=tol_int, CPX_PARAM_EPRHS=tol_feas, CPX_PARAM_EPGAP=tol_gap, CPX_PARAM_PREIND=0),
-    cont_solver=MosekSolver(LOG=0, NUM_THREADS=1),
-    log_level=logl, timeout=tlim, rel_gap=rgap, prim_cut_feas_tol=tol_feas,
-    scale_subp_cuts=false,
-    ) end),
-
-    "PAJ_CPLEX_MOSEK_noinit" =>
-    (["CPLEX","Mosek"], quote PajaritoSolver(
-    mip_solver=CplexSolver(CPX_PARAM_THREADS=1, CPX_PARAM_SCRIND=0, CPX_PARAM_EPINT=tol_int, CPX_PARAM_EPRHS=tol_feas, CPX_PARAM_EPGAP=tol_gap),
-    cont_solver=MosekSolver(LOG=0, NUM_THREADS=1),
-    log_level=logl, timeout=tlim, rel_gap=rgap, prim_cut_feas_tol=tol_feas,
-    init_soc_one=false, init_soc_inf=false, init_exp=false, init_sdp_lin=false, init_sdp_soc=false,
-    ) end),
-
-    # MSD
-    "PAJ_CPLEX_MOSEK_msd" =>
-    (["CPLEX","Mosek"], quote PajaritoSolver(
-    mip_solver=CplexSolver(CPX_PARAM_THREADS=1, CPX_PARAM_SCRIND=1, CPX_PARAM_EPINT=tol_int, CPX_PARAM_EPRHS=tol_feas, CPX_PARAM_EPGAP=rgap),
-    cont_solver=MosekSolver(LOG=0, NUM_THREADS=1),
-    log_level=logl, timeout=tlim, rel_gap=rgap, prim_cut_feas_tol=tol_feas,
-    mip_solver_drives=true,
     ) end),
 
     "PAJ_CPLEX_MOSEK_msd_subponly" =>
@@ -204,6 +171,53 @@ solvermap = Dict(
     prim_cuts_assist=false,
     ) end),
 
+    # Paj CPLEX MOSEK subp only, no init
+    "PAJ_CPLEX_MOSEK_subponly_noinit" =>
+    (["CPLEX","Mosek"], quote PajaritoSolver(
+    mip_solver=CplexSolver(CPX_PARAM_THREADS=1, CPX_PARAM_SCRIND=0, CPX_PARAM_EPINT=tol_int, CPX_PARAM_EPRHS=tol_feas, CPX_PARAM_EPGAP=tol_gap),
+    cont_solver=MosekSolver(LOG=0, NUM_THREADS=1),
+    log_level=logl, timeout=tlim, rel_gap=rgap, prim_cut_feas_tol=tol_feas,
+    prim_cuts_assist=false, init_soc_one=false, init_soc_inf=false, init_exp=false, init_sdp_lin=false, init_sdp_soc=false,
+    ) end),
+
+    "PAJ_CPLEX_MOSEK_msd_subponly_noinit" =>
+    (["CPLEX","Mosek"], quote PajaritoSolver(
+    mip_solver=CplexSolver(CPX_PARAM_THREADS=1, CPX_PARAM_SCRIND=1, CPX_PARAM_EPINT=tol_int, CPX_PARAM_EPRHS=tol_feas, CPX_PARAM_EPGAP=rgap),
+    cont_solver=MosekSolver(LOG=0, NUM_THREADS=1),
+    log_level=logl, timeout=tlim, rel_gap=rgap, prim_cut_feas_tol=tol_feas,
+    mip_solver_drives=true,
+    prim_cuts_assist=false, init_soc_one=false, init_soc_inf=false, init_exp=false, init_sdp_lin=false, init_sdp_soc=false,
+    ) end),
+
+    # Paj CPLEX MOSEK subp only, no init, no scale
+    "PAJ_CPLEX_MOSEK_subponly_noinit_noscale" =>
+    (["CPLEX","Mosek"], quote PajaritoSolver(
+    mip_solver=CplexSolver(CPX_PARAM_THREADS=1, CPX_PARAM_SCRIND=0, CPX_PARAM_EPINT=tol_int, CPX_PARAM_EPRHS=tol_feas, CPX_PARAM_EPGAP=tol_gap),
+    cont_solver=MosekSolver(LOG=0, NUM_THREADS=1),
+    log_level=logl, timeout=tlim, rel_gap=rgap, prim_cut_feas_tol=tol_feas,
+    prim_cuts_assist=false, init_soc_one=false, init_soc_inf=false, init_exp=false, init_sdp_lin=false, init_sdp_soc=false,
+    scale_subp_cuts=false,
+    ) end),
+
+    "PAJ_CPLEX_MOSEK_msd_subponly_noinit_noscale" =>
+    (["CPLEX","Mosek"], quote PajaritoSolver(
+    mip_solver=CplexSolver(CPX_PARAM_THREADS=1, CPX_PARAM_SCRIND=1, CPX_PARAM_EPINT=tol_int, CPX_PARAM_EPRHS=tol_feas, CPX_PARAM_EPGAP=rgap),
+    cont_solver=MosekSolver(LOG=0, NUM_THREADS=1),
+    log_level=logl, timeout=tlim, rel_gap=rgap, prim_cut_feas_tol=tol_feas,
+    mip_solver_drives=true,
+    prim_cuts_assist=false, init_soc_one=false, init_soc_inf=false, init_exp=false, init_sdp_lin=false, init_sdp_soc=false,
+    scale_subp_cuts=false,
+    ) end),
+
+    # Paj CPLEX MOSEK no scale
+    "PAJ_CPLEX_MOSEK_noscale" =>
+    (["CPLEX","Mosek"], quote PajaritoSolver(
+    mip_solver=CplexSolver(CPX_PARAM_THREADS=1, CPX_PARAM_SCRIND=0, CPX_PARAM_EPINT=tol_int, CPX_PARAM_EPRHS=tol_feas, CPX_PARAM_EPGAP=tol_gap),
+    cont_solver=MosekSolver(LOG=0, NUM_THREADS=1),
+    log_level=logl, timeout=tlim, rel_gap=rgap, prim_cut_feas_tol=tol_feas,
+    scale_subp_cuts=false,
+    ) end),
+
     "PAJ_CPLEX_MOSEK_msd_noscale" =>
     (["CPLEX","Mosek"], quote PajaritoSolver(
     mip_solver=CplexSolver(CPX_PARAM_THREADS=1, CPX_PARAM_SCRIND=1, CPX_PARAM_EPINT=tol_int, CPX_PARAM_EPRHS=tol_feas, CPX_PARAM_EPGAP=rgap),
@@ -213,6 +227,32 @@ solvermap = Dict(
     scale_subp_cuts=false,
     ) end),
 
+    # Paj CPLEX MOSEK no init
+    "PAJ_CPLEX_MOSEK_noinit" =>
+    (["CPLEX","Mosek"], quote PajaritoSolver(
+    mip_solver=CplexSolver(CPX_PARAM_THREADS=1, CPX_PARAM_SCRIND=0, CPX_PARAM_EPINT=tol_int, CPX_PARAM_EPRHS=tol_feas, CPX_PARAM_EPGAP=tol_gap),
+    cont_solver=MosekSolver(LOG=0, NUM_THREADS=1),
+    log_level=logl, timeout=tlim, rel_gap=rgap, prim_cut_feas_tol=tol_feas,
+    init_soc_one=false, init_soc_inf=false, init_exp=false, init_sdp_lin=false, init_sdp_soc=false,
+    ) end),
+
+    "PAJ_CPLEX_MOSEK_msd_noinit" =>
+    (["CPLEX","Mosek"], quote PajaritoSolver(
+    mip_solver=CplexSolver(CPX_PARAM_THREADS=1, CPX_PARAM_SCRIND=1, CPX_PARAM_EPINT=tol_int, CPX_PARAM_EPRHS=tol_feas, CPX_PARAM_EPGAP=rgap),
+    cont_solver=MosekSolver(LOG=0, NUM_THREADS=1),
+    log_level=logl, timeout=tlim, rel_gap=rgap, prim_cut_feas_tol=tol_feas,
+    mip_solver_drives=true,
+    init_soc_one=false, init_soc_inf=false, init_exp=false, init_sdp_lin=false, init_sdp_soc=false,
+    ) end),
+
+    # Paj CPLEX MOSEK no presolve
+    "PAJ_CPLEX_MOSEK_nopreslv" =>
+    (["CPLEX","Mosek"], quote PajaritoSolver(
+    mip_solver=CplexSolver(CPX_PARAM_THREADS=1, CPX_PARAM_SCRIND=0, CPX_PARAM_EPINT=tol_int, CPX_PARAM_EPRHS=tol_feas, CPX_PARAM_EPGAP=tol_gap, CPX_PARAM_PREIND=0),
+    cont_solver=MosekSolver(LOG=0, NUM_THREADS=1),
+    log_level=logl, timeout=tlim, rel_gap=rgap, prim_cut_feas_tol=tol_feas,
+    ) end),
+
     "PAJ_CPLEX_MOSEK_msd_nopreslv" =>
     (["CPLEX","Mosek"], quote PajaritoSolver(
     mip_solver=CplexSolver(CPX_PARAM_THREADS=1, CPX_PARAM_SCRIND=1, CPX_PARAM_EPINT=tol_int, CPX_PARAM_EPRHS=tol_feas, CPX_PARAM_EPGAP=rgap,
@@ -220,6 +260,15 @@ solvermap = Dict(
     cont_solver=MosekSolver(LOG=0, NUM_THREADS=1),
     log_level=logl, timeout=tlim, rel_gap=rgap, prim_cut_feas_tol=tol_feas,
     mip_solver_drives=true,
+    ) end),
+
+    # Paj CPLEX MOSEK no scale, no presolve
+    "PAJ_CPLEX_MOSEK_noscale_nopreslv" =>
+    (["CPLEX","Mosek"], quote PajaritoSolver(
+    mip_solver=CplexSolver(CPX_PARAM_THREADS=1, CPX_PARAM_SCRIND=0, CPX_PARAM_EPINT=tol_int, CPX_PARAM_EPRHS=tol_feas, CPX_PARAM_EPGAP=tol_gap, CPX_PARAM_PREIND=0),
+    cont_solver=MosekSolver(LOG=0, NUM_THREADS=1),
+    log_level=logl, timeout=tlim, rel_gap=rgap, prim_cut_feas_tol=tol_feas,
+    scale_subp_cuts=false,
     ) end),
 
     "PAJ_CPLEX_MOSEK_msd_noscale_nopreslv" =>
@@ -232,14 +281,6 @@ solvermap = Dict(
     scale_subp_cuts=false,
     ) end),
 
-    "PAJ_CPLEX_MOSEK_msd_noinit" =>
-    (["CPLEX","Mosek"], quote PajaritoSolver(
-    mip_solver=CplexSolver(CPX_PARAM_THREADS=1, CPX_PARAM_SCRIND=1, CPX_PARAM_EPINT=tol_int, CPX_PARAM_EPRHS=tol_feas, CPX_PARAM_EPGAP=rgap),
-    cont_solver=MosekSolver(LOG=0, NUM_THREADS=1),
-    log_level=logl, timeout=tlim, rel_gap=rgap, prim_cut_feas_tol=tol_feas,
-    mip_solver_drives=true,
-    init_soc_one=false, init_soc_inf=false, init_exp=false, init_sdp_lin=false, init_sdp_soc=false,
-    ) end),
 
 
 
