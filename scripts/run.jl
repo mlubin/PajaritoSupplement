@@ -137,6 +137,51 @@ solvermap = Dict(
     prim_cuts_only=true, solve_relax=false, solve_subp=false,
     ) end),
 
+
+
+    # Paj Gurobi MOSEK
+    "PAJ_Gurobi_MOSEK" =>
+    (["Gurobi","Mosek"], quote PajaritoSolver(
+    mip_solver=Gurobi.GurobiSolver(OutputFlag=0, Threads=8, IntFeasTol=tol_int, FeasibilityTol=tol_feas, MIPGap=tol_gap),
+    cont_solver=MosekSolver(LOG=0, NUM_THREADS=8),
+    log_level=logl, timeout=tlim, rel_gap=rgap, prim_cut_feas_tol=tol_feas,
+    ) end),
+
+    "PAJ_Gurobi_MOSEK_msd" =>
+    (["Gurobi","Mosek"], quote PajaritoSolver(
+    mip_solver=Gurobi.GurobiSolver(OutputFlag=1, Threads=8, IntFeasTol=tol_int, FeasibilityTol=tol_feas,
+    MIPGap=tol_gap),
+    cont_solver=MosekSolver(LOG=0, NUM_THREADS=8),
+    log_level=logl, timeout=tlim, rel_gap=rgap, prim_cut_feas_tol=tol_feas,
+    mip_solver_drives=true,
+    ) end),
+
+
+
+
+    # Paj Gurobi MOSEK subp only, no init
+    "PAJ_Gurobi_MOSEK_msd_subponly_noinit" =>
+    (["Gurobi","Mosek"], quote PajaritoSolver(
+    mip_solver=Gurobi.GurobiSolver(OutputFlag=1, Threads=8, IntFeasTol=tol_int, FeasibilityTol=tol_feas, MIPGap=rgap),
+    cont_solver=MosekSolver(LOG=0, NUM_THREADS=8),
+    log_level=logl, timeout=tlim, rel_gap=rgap, prim_cut_feas_tol=tol_feas,
+    prim_cuts_assist=false, init_soc_one=false, init_soc_inf=false, init_exp=false, init_sdp_lin=false, init_sdp_soc=false,
+    mip_solver_drives=true,
+    ) end),
+
+    # Paj Gurobi MOSEK subp only, no init, no scale
+    "PAJ_Gurobi_MOSEK_msd_subponly_noinit_noscale" =>
+    (["Gurobi","Mosek"], quote PajaritoSolver(
+    mip_solver=Gurobi.GurobiSolver(OutputFlag=1, Threads=8, IntFeasTol=tol_int, FeasibilityTol=tol_feas, MIPGap=rgap),
+    cont_solver=MosekSolver(LOG=0, NUM_THREADS=8),
+    log_level=logl, timeout=tlim, rel_gap=rgap, prim_cut_feas_tol=tol_feas,
+    prim_cuts_assist=false, init_soc_one=false, init_soc_inf=false, init_exp=false, init_sdp_lin=false, init_sdp_soc=false,
+    scale_subp_cuts=false,
+    mip_solver_drives=true,
+    ) end),
+
+
+
     # Paj CPLEX MOSEK
     "PAJ_CPLEX_MOSEK" =>
     (["CPLEX","Mosek"], quote PajaritoSolver(
@@ -152,6 +197,11 @@ solvermap = Dict(
     log_level=logl, timeout=tlim, rel_gap=rgap, prim_cut_feas_tol=tol_feas,
     mip_solver_drives=true,
     ) end),
+
+
+
+
+
 
     # Paj CPLEX MOSEK subp only
     "PAJ_CPLEX_MOSEK_subponly" =>
@@ -250,8 +300,8 @@ logl = 3
 rgap = 1e-5
 
 # Pajarito MIP solver options
-tol_int = 1e-8
-tol_feas = 1e-7
+tol_int = 1e-9
+tol_feas = 1e-6
 tol_gap = 0.
 
 solvername = ARGS[1]

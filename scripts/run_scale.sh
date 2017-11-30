@@ -8,7 +8,7 @@ mkdir -p output
 
 N=12
 (
-for SOLVER in PAJ_CPLEX_MOSEK_msd PAJ_CPLEX_MOSEK_msd_noscale PAJ_CPLEX_MOSEK_msd_nopreslv PAJ_CPLEX_MOSEK_msd_noscale_nopreslv
+for SOLVER in PAJ_Gurobi_MOSEK_msd PAJ_Gurobi_MOSEK_msd_noscale 
 do
     for ISET in A B C D E
     do
