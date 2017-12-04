@@ -116,7 +116,7 @@ solvermap = Dict(
     # Paj GLPK
     "PAJ_GLPK_ECOS" =>
     (["GLPKMathProgInterface","ECOS"], quote PajaritoSolver(
-    mip_solver=GLPKSolverMIP(msg_lev=GLPK.MSG_OFF, tol_int=tol_int, tol_bnd=tol_feas, mip_gap=tol_gap, presolve=true),
+    mip_solver=GLPKSolverMIP(msg_lev=GLPK.MSG_OFF, tol_int=tol_int, tol_bnd=tol_feas, mip_gap=tol_gap),
     cont_solver=ECOSSolver(verbose=false, reltol=1e-10, reltol_inacc=1e-3),
     log_level=logl, timeout=tlim, rel_gap=rgap, prim_cut_feas_tol=tol_feas,
     ) end),

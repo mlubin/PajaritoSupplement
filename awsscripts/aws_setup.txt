@@ -25,7 +25,7 @@ chmod +x cplex_studio127.linux-x86-64.bin
 ./cplex_studio127.linux-x86-64.bin
 echo "export LD_LIBRARY_PATH=/home/ubuntu/CPLEX_Studio127/cplex/bin/x86-64_linux" >> ~/.bashrc
 
-# get julia packages
+# get Mosek.jl
 cd
 source .bashrc
 julia
@@ -33,11 +33,27 @@ Pkg.update()
 ENV["MOSEKBINDIR"] = "/home/ubuntu/mosek/9/tools/platform/linux64x86/bin/"
 Pkg.clone("https://github.com/chriscoey/Mosek.jl","Mosek")
 Pkg.build("Mosek")
+exit()
+
+# get on chriscoey's special branch of Mosek.jl with status fixes
+cd
+cd .julia/v0.6/Mosek
+git remote remove origin
+git remote add origin https://github.com/chriscoey/Mosek.jl.git
+git fetch
+git branch --set-upstream-to=origin/master master
+git checkout master
+git pull
+cd
+
+# get more julia packages
+julia
 Pkg.add("CPLEX")
 Pkg.add("JuMP")
 Pkg.add("ECOS")
 Pkg.add("Cbc")
 Pkg.add("Ipopt")
+exit()
 
 # compile scip for scip.jl, after Pkg.add("Ipopt"), before Pkg.add("SCIP")
 echo "export SCIPOPTDIR=/home/ubuntu/scipoptsuite-4.0.0" >> ~/.bashrc
@@ -49,6 +65,7 @@ make SHARED=true GMP=false READLINE=false ZLIB=false OPT=opt IPOPT=true scipoptl
 
 # get more julia packages
 cd
+julia
 Pkg.add("SCIP")
 Pkg.add("CoinOptServices")
 Pkg.add("AmplNLWriter")
@@ -59,6 +76,7 @@ Pkg.add("Pajarito")
 
 # some tests may fail on Cbc, this is expected
 Pkg.test("Pajarito")
+exit()
 
 # tidy up to reduce size of AMI
 rm -rf .julia/v0.6/CoinOptServices/deps/src
