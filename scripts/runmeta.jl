@@ -1,7 +1,13 @@
 
-# Usage: runmeta.jl SOLVERNAME TIMELIMIT MEMORYLIMIT DATAFOLDER INSTANCESET
+# Usage: runmeta.jl [--nochecktimemem] SOLVERNAME TIMELIMIT MEMORYLIMIT DATAFOLDER INSTANCESET
 
 # Output goes into directory "output". You must create this directory before running the script.
+
+checktimemem = true
+if ARGS[1] == "--nochecktimemem"
+    checktimemem = false
+    shift!(ARGS)
+end
 
 solvername = ARGS[1]
 tlim = parse(Float64, ARGS[2])
@@ -42,35 +48,40 @@ for instancename in instancelist
         process = spawn(pipeline(`$(Base.JULIA_HOME)/julia scripts/run.jl $solvername $tlim $datafolder $(instancename).cbf.gz`, stdout=filename, stderr=filename, append=true))
 
         t = time()
-        sleep(30.0)
 
-        pid = parse(Int, chomp(readline(open("mypid", "r"))))
+        if checktimemem
+            sleep(30.0)
 
-        while process_running(process)
-            if (time() - t) > (tlim + 60*5.0)
-                # Kill if time limit exceeded (some solvers don't respect time limits)
-                kill(process)
-                sleep(1.0)
-                println(fdmeta, "killed by time limit")
-                open(filename, "a") do fd
-                    println(fd, "#STATUS# KilledTime")
-                end
-            else
-                # Try to kill if memory limit exceeded (some solvers use too much memory and fail)
-                # If this try fails, process has already stopped
-                try
-                    memuse = parse(Int, split(readstring(pipeline(`cat /proc/$pid/status`,`grep RSS`)))[2])
-                    if memuse > mlim
-                        kill(process)
-                        sleep(1.0)
-                        println(fdmeta, "killed by memory limit")
-                        open(filename, "a") do fd
-                            println(fd, "#STATUS# KilledMemory")
+            pid = parse(Int, chomp(readline(open("mypid", "r"))))
+
+            while process_running(process)
+                if (time() - t) > (tlim + 60*5.0)
+                    # Kill if time limit exceeded (some solvers don't respect time limits)
+                    kill(process)
+                    sleep(1.0)
+                    println(fdmeta, "killed by time limit")
+                    open(filename, "a") do fd
+                        println(fd, "#STATUS# KilledTime")
+                    end
+                else
+                    # Try to kill if memory limit exceeded (some solvers use too much memory and fail)
+                    # If this try fails, process has already stopped
+                    try
+                        memuse = parse(Int, split(readstring(pipeline(`cat /proc/$pid/status`,`grep RSS`)))[2])
+                        if memuse > mlim
+                            kill(process)
+                            sleep(1.0)
+                            println(fdmeta, "killed by memory limit")
+                            open(filename, "a") do fd
+                                println(fd, "#STATUS# KilledMemory")
+                            end
                         end
                     end
                 end
+                sleep(1.0)
             end
-            sleep(1.0)
+        else
+            wait(process)
         end
 
         println(fdmeta, "...took $(time() - t) seconds")

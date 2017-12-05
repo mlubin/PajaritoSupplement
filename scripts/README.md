@@ -4,7 +4,7 @@ Run the following commands from top directory of PajaritoSupplement. If Julia in
 # MISOCP solver comparisons
 ```
 # Processing raw solver outputs
-julia scripts/process_output.jl output/misocp results/misocp.csv
+julia scripts/process_output.jl oldoutput/misocp results/misocp.csv
 
 # Processing CSV file
 julia scripts/process_csv.jl check results/misocp.csv
@@ -25,7 +25,7 @@ julia analysis/misocp_perf.jl
 # MICP algorithmic comparisons
 ```
 # Processing raw solver outputs
-julia scripts/process_output.jl output/micp results/micp.csv
+julia scripts/process_output.jl oldoutput/micp results/micp.csv
 
 # Processing CSV file
 julia scripts/process_csv.jl check results/micp.csv

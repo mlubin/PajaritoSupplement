@@ -18,7 +18,7 @@ end
 fd = open(joinpath(pwd(), ARGS[end]), "w")
 
 # Process into a CSV file with columns:
-println(fd,"solver,instance,sense,timelimit,status,objval_reported,objbound,calc_objgap,bad_status,solvertime,totaltime,nodecount,filename,rel_objval_error,max_linear_violation,max_soc_violation,max_socrot_violation,max_exp_violation,max_psd_violation,max_int_violation,validator_status,validator_relobjdiff,conic_subproblem_count,conic_optimal_count,conic_infeasible_count,conic_relaxation_status,conic_subproblem_time,conic_relaxation_time,mip_subproblem_time,iteration_count")
+println(fd,"solver,instance,sense,timelimit,status,objval_reported,objbound,calc_objgap,calc_status,solvertime,totaltime,nodecount,filename,rel_objval_error,max_linear_violation,max_soc_violation,max_socrot_violation,max_exp_violation,max_psd_violation,max_int_violation,validator_status,validator_relobjdiff,conic_subproblem_count,conic_optimal_count,conic_infeasible_count,conic_relaxation_status,conic_subproblem_time,conic_relaxation_time,mip_subproblem_time,iteration_count")
 
 # From instance name to file name
 function find_instance(name)
@@ -251,6 +251,9 @@ for (cnt,filename) in enumerate(resultfiles)
     instancefile = find_instance(instance)
     dat = readcbfdata(instancefile)
     sense = string(dat.sense)
+    calc_objgap = NaN
+    calc_status = "other"
+
     if length(solution) > 0 && all(isfinite,solution)
         objval_sol, linear_violation, soc_violation, socrot_violation, exp_violation, psd_violation, int_violation = compute_violations(dat,solution)
         if !NOCONIC
@@ -258,22 +261,33 @@ for (cnt,filename) in enumerate(resultfiles)
             validator_relobjdiff = abs(objval_sol - validator_objval)/(abs(objval_sol) + 1e-5)
             rel_objval_error = abs(objval_sol - objval)/(abs(objval) + 1e-5)
         end
+
+        if isfinite(objbound)
+            calc_objgap = (objval_sol - objbound) / (abs(objval_sol) + 1e-5)
+            if calc_objgap <= 1.25e-5
+                calc_status = "conv"
+            else
+                calc_status = "not conv"
+            end
+        end
     end
 
-    if isfinite(objval) && isfinite(objbound)
-        calc_objgap = (objval - objbound) / (abs(objval) + 1e-5)
-    else
-        calc_objgap = NaN
+    if startswith(solver, "BONMIN")
+        # Trust what bonmin says (give it benefit of the doubt because we can't get bounds)
+        if status == "Optimal"
+            calc_status = "conv"
+        elseif status == "Suboptimal"
+            calc_status = "not conv"
+        end
     end
 
-    if (status == :Optimal) && (isnan(calc_objgap) || (calc_objgap > 1e-5))
-        bad_status = "*"
-    else
-        bad_status = ""
+    if status == "UserLimit" && (!startswith(solver, "SCIP") || calc_status == "not conv")
+        # SCIP seems not to be stopping with our rel gap tolerance, so if it satisfies at end, accept
+        calc_status = "limit"
     end
 
     println(fd,
-"$solver,$instance,$sense,$timelimit,$status,$objval,$objbound,$calc_objgap,$bad_status,$solvertime,$totaltime,$nodecount,$(basename(filename)),$rel_objval_error,$linear_violation,$soc_violation,$socrot_violation,$exp_violation,$psd_violation,$int_violation,$validator_status,$validator_relobjdiff,$conic_subproblem_count,$conic_optimal_count,$conic_infeasible_count,$conic_relaxation_status,$conic_subproblem_time,$conic_relaxation_time,$mip_subproblem_time,$iteration_count")
+"$solver,$instance,$sense,$timelimit,$status,$objval,$objbound,$calc_objgap,$calc_status,$solvertime,$totaltime,$nodecount,$(basename(filename)),$rel_objval_error,$linear_violation,$soc_violation,$socrot_violation,$exp_violation,$psd_violation,$int_violation,$validator_status,$validator_relobjdiff,$conic_subproblem_count,$conic_optimal_count,$conic_infeasible_count,$conic_relaxation_status,$conic_subproblem_time,$conic_relaxation_time,$mip_subproblem_time,$iteration_count")
 end
 
 close(fd)

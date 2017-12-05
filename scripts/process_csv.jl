@@ -42,10 +42,10 @@ end
 
 for i in 1:size(results,1)
     if isexcluded(results[i,:solver],results[i,:instance])
-        results[i,:status] = "Excluded"
+        results[i,:calc_status] = "excl"
     end
-    if isna(results[i,:status])
-        results[i,:status] = "Blank"
+    if isna(results[i,:calc_status])
+        results[i,:calc_status] = "blank"
     end
 end
 
@@ -55,17 +55,17 @@ for solverlist in arguments["--bestof"]
     newrows = []
     for rowlist in groupby(results,:instance)
         besttime = Inf
-        beststatus = "Blank"
+        beststatus = "blank"
         inst = rowlist[1,:instance]
         for i in 1:size(rowlist,1)
             if rowlist[i,:solver] in best_of_solvers
-                if rowlist[i,:status] == "Optimal"
-                    besttime = min(besttime,rowlist[i,:solvertime])
-                    beststatus = "Optimal"
-                elseif rowlist[i,:status] in ["UserLimit","KilledTime","KilledMemory"]
-                    if beststatus != "Optimal"
+                if rowlist[i,:calc_status] == "conv"
+                    besttime = min(besttime,rowlist[i,:totaltime])
+                    beststatus = "conv"
+                elseif rowlist[i,:calc_status] in ["other","limit"]
+                    if beststatus != "conv"
                         besttime = min(besttime,rowlist[i,:solvertime])
-                        beststatus = "UserLimit"
+                        beststatus = "limit"
                     end
                 end
             end
@@ -73,7 +73,7 @@ for solverlist in arguments["--bestof"]
         newrow = Dict{Symbol,Any}(n => NA for n in names(results))
         newrow[:instance] = inst
         newrow[:solver] = newsolver
-        newrow[:status] = beststatus
+        newrow[:calc_status] = beststatus
         newrow[:solvertime] = besttime
         push!(newrows,newrow)
     end
@@ -82,7 +82,7 @@ for solverlist in arguments["--bestof"]
     end
 end
 
-optimal_runs = results[results[:status] .== "Optimal",:]
+optimal_runs = results[results[:calc_status] .== "conv",:]
 
 function printdf(df)
     # lifted from DataFrames.show()
@@ -95,7 +95,7 @@ end
 
 if arguments["check"]
     # problematic violations
-    viol = optimal_runs[(optimal_runs[:max_linear_violation] .> 1e-3) .| (optimal_runs[:max_soc_violation] .> 1e-3) .| (optimal_runs[:max_socrot_violation] .> 1e-3) .| (optimal_runs[:max_exp_violation] .> 1e-3) .| (optimal_runs[:max_psd_violation] .> 1e-3) .| (optimal_runs[:max_int_violation] .> 1e-3), :]
+    viol = optimal_runs[(optimal_runs[:max_linear_violation] .> 1e-6) .| (optimal_runs[:max_soc_violation] .> 1e-5) .| (optimal_runs[:max_socrot_violation] .> 1e-5) .| (optimal_runs[:max_exp_violation] .> 1e-5) .| (optimal_runs[:max_psd_violation] .> 1e-4) .| (optimal_runs[:max_int_violation] .> 1e-6), :]
 
     if size(viol,1) == 0
         println("No problematic violations")
@@ -112,7 +112,7 @@ if arguments["check"]
         for i in 2:size(optval_by_instance,1)
             solver = optval_by_instance[i,:solver]
             optval = optval_by_instance[i,:objval_reported]
-            if abs(optval-first_optval)/abs(first_optval+1e-5) > 1e-4
+            if abs(optval-first_optval)/(abs(first_optval)+1e-5) > 1e-4
                 println("Objective disagreement on instance $inst (sense = $sense)")
                 printdf(optval_by_instance[:,[:solver,:objval_reported,:objbound]])
                 break
@@ -133,13 +133,13 @@ if arguments["check"]
 
 elseif arguments["statuscounts"]
     # status counts by solver
-    statuses = sort(collect(unique(results[:status])))
+    statuses = sort(collect(unique(results[:calc_status])))
     all_solvers = sort(collect(unique(results[:solver])))
     status_table = NamedArray(zeros(Int,length(all_solvers),length(statuses)+1))
     setnames!(status_table, all_solvers, 1)
     setnames!(status_table, [statuses;"Total"], 2)
     for i in 1:size(results,1)
-        status_table[results[i,:solver],results[i,:status]] += 1
+        status_table[results[i,:solver],results[i,:calc_status]] += 1
         status_table[results[i,:solver],"Total"] += 1
     end
 
@@ -236,7 +236,7 @@ elseif arguments["perfprofile"]
         itercount_row = fill(Inf,length(solvers))
         for i in 1:size(by_instance,1)
             push!(instance_names,by_instance[1,:instance])
-            if by_instance[i,:status] == "Optimal"
+            if by_instance[i,:calc_status] == "conv"
                 whichsolver = indexin([by_instance[i,:solver]],solvers)[1]
                 if whichsolver != 0
                     time_row[whichsolver] = by_instance[i,:solvertime]
