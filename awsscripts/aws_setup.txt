@@ -69,12 +69,20 @@ julia
 Pkg.add("SCIP")
 Pkg.add("CoinOptServices")
 Pkg.add("AmplNLWriter")
+exit()
+
+# get v0.3.0 of AmplNLWriter.jl
+cd .julia/v0.6/AmplNLWriter
+git fetch
+git checkout v0.3.0
+cd
+julia
+
+# get more julia packages
 Pkg.add("SCS")
 Pkg.add("GLPKMathProgInterface")
 Pkg.add("ConicBenchmarkUtilities")
 Pkg.add("Pajarito")
-
-# some tests may fail on Cbc, this is expected
 Pkg.test("Pajarito")
 exit()
 
