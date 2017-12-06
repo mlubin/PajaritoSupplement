@@ -108,25 +108,17 @@ solvermap = Dict(
     # Paj CBC
     "PAJ_CBC_ECOS" =>
     (["Cbc","ECOS"], quote PajaritoSolver(
-    mip_solver=CbcSolver(logLevel=0, integerTolerance=tol_int, primalTolerance=tol_feas, ratioGap=tol_gap),
-    cont_solver=ECOSSolver(verbose=false),
+    mip_solver=CbcSolver(logLevel=0, integerTolerance=tol_int, primalTolerance=tol_feas, ratioGap=tol_gap, check_warmstart=false),
+    cont_solver=ECOSSolver(verbose=false, reltol=1e-9, feastol=1e-9, reltol_inacc=1e-3, feastol_inacc=1e-8),
     log_level=logl, timeout=tlim, rel_gap=rgap, prim_cut_feas_tol=tol_feas,
     ) end),
 
     # Paj GLPK
     "PAJ_GLPK_ECOS" =>
     (["GLPKMathProgInterface","ECOS"], quote PajaritoSolver(
-    mip_solver=GLPKSolverMIP(msg_lev=GLPK.MSG_OFF, tol_int=tol_int, tol_bnd=tol_feas, mip_gap=tol_gap),
-    cont_solver=ECOSSolver(verbose=false),
+    mip_solver=GLPKSolverMIP(msg_lev=GLPK.MSG_OFF, tol_int=tol_int, tol_bnd=tol_feas, mip_gap=tol_gap, presolve=true),
+    cont_solver=ECOSSolver(verbose=false, reltol=1e-9, feastol=1e-9, reltol_inacc=1e-3, feastol_inacc=1e-8),
     log_level=logl, timeout=tlim, rel_gap=rgap, prim_cut_feas_tol=tol_feas,
-    ) end),
-
-    "PAJ_GLPK_ECOS_msd" =>
-    (["GLPKMathProgInterface","ECOS"], quote PajaritoSolver(
-    mip_solver=GLPKSolverMIP(msg_lev=GLPK.MSG_ON, tol_int=tol_int, tol_bnd=tol_feas, mip_gap=rgap),
-    cont_solver=ECOSSolver(verbose=false),
-    log_level=logl, timeout=tlim, rel_gap=rgap, prim_cut_feas_tol=tol_feas,
-    mip_solver_drives=true,
     ) end),
 
 
@@ -147,6 +139,16 @@ solvermap = Dict(
     cont_solver=MosekSolver(LOG=0, NUM_THREADS=8, MSK_DPAR_INTPNT_CO_TOL_REL_GAP=1e-10, MSK_DPAR_INTPNT_CO_TOL_NEAR_REL=1e7),
     log_level=logl, timeout=tlim, rel_gap=rgap, prim_cut_feas_tol=tol_feas,
     mip_solver_drives=true,
+    ) end),
+
+    "PAJ_Gurobi_MOSEK_msd_dump" =>
+    (["Gurobi","Mosek"], quote PajaritoSolver(
+    mip_solver=Gurobi.GurobiSolver(OutputFlag=1, Threads=8, IntFeasTol=tol_int, FeasibilityTol=tol_feas,
+    MIPGap=rgap),
+    cont_solver=MosekSolver(LOG=0, NUM_THREADS=8, MSK_DPAR_INTPNT_CO_TOL_REL_GAP=1e-10, MSK_DPAR_INTPNT_CO_TOL_NEAR_REL=1e7),
+    log_level=logl, timeout=tlim, rel_gap=rgap, prim_cut_feas_tol=tol_feas,
+    mip_solver_drives=true,
+    dump_subproblems=true, dump_basename="/home/coey/mosekerror/error"
     ) end),
 
     # Paj Gurobi MOSEK noscale
