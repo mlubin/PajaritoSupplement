@@ -64,7 +64,7 @@ for solverlist in arguments["--bestof"]
                     beststatus = "conv"
                 elseif rowlist[i,:calc_status] in ["other","limit"]
                     if beststatus != "conv"
-                        besttime = min(besttime,rowlist[i,:solvertime])
+                        besttime = min(besttime,rowlist[i,:totaltime])
                         beststatus = "limit"
                     end
                 end
@@ -74,7 +74,7 @@ for solverlist in arguments["--bestof"]
         newrow[:instance] = inst
         newrow[:solver] = newsolver
         newrow[:calc_status] = beststatus
-        newrow[:solvertime] = besttime
+        newrow[:totaltime] = besttime
         push!(newrows,newrow)
     end
     for r in newrows
@@ -174,8 +174,8 @@ elseif arguments["geomeans"]
 
     # tidy data (needed for KilledX cases)
     for i in 1:size(results,1)
-        if isna(results[i,:solvertime])
-            results[i,:solvertime] = results[i,:timelimit]
+        if isna(results[i,:totaltime])
+            results[i,:totaltime] = results[i,:timelimit]
         end
     end
 
@@ -198,15 +198,15 @@ elseif arguments["geomeans"]
     subset_of_all_optimal = optimal_runs[find(t-> t in all_optimal_instances, optimal_runs[:instance]),:]
 
     println("Shifted geomean of solve time on all instances")
-    shifted_geomean(results, :solvertime, time_shift, :solver)
+    shifted_geomean(results, :totaltime, time_shift, :solver)
     println()
 
     println("Shifted geomean of solve time on instances solved by this solver")
-    shifted_geomean(optimal_runs, :solvertime, time_shift, :solver)
+    shifted_geomean(optimal_runs, :totaltime, time_shift, :solver)
     println()
 
     println("Shifted geomean of solve time on instances solved by all solvers")
-    shifted_geomean(subset_of_all_optimal, :solvertime, time_shift, :solver)
+    shifted_geomean(subset_of_all_optimal, :totaltime, time_shift, :solver)
     println()
 
     println("Shifted geomean of conic subproblem count on all instances")
@@ -239,7 +239,7 @@ elseif arguments["perfprofile"]
             if by_instance[i,:calc_status] == "conv"
                 whichsolver = indexin([by_instance[i,:solver]],solvers)[1]
                 if whichsolver != 0
-                    time_row[whichsolver] = by_instance[i,:solvertime]
+                    time_row[whichsolver] = by_instance[i,:totaltime]
                     if !isna(by_instance[i,:conic_subproblem_count])
                         itercount_row[whichsolver] = by_instance[i,:conic_subproblem_count]
                     end
