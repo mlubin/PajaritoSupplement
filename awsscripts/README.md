@@ -60,7 +60,7 @@ Arguments:
 
 A call to `dispatcher.py` might look like:
 ```
-python dispatcher.py jobname jobinfo/jobdetails.csv --create --dispatch
+python dispatcher.py jobname awsjobs/jobdetails.csv --create --dispatch
 ```
 
 ## Downloading results
@@ -110,7 +110,7 @@ Get the AMI name from the authors.
 To run a set of tests from your unix command line:
 ```
 cd PajaritoSupplement/awsscripts
-python dispatcher.py aminame nnnnxxxx jobinfo/xxxx.csv -c -d
+python dispatcher.py aminame nnnnxxxx awsjobs/xxxx.csv -c -d
 ```
 where `nnnn` is your name (you need a unique bucket name that will not conflict with any other bucket name on Amazon S3), and `xxxx` is one of the jobs.
 
