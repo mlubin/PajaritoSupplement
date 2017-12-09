@@ -39,12 +39,11 @@ julia scripts/process_csv.jl statuscounts results/micp.csv analysis/micp_statusc
 julia scripts/process_csv.jl geomeans results/micp.csv --exclude=analysis/micp_exclude.txt > analysis/micp_geomeans.txt
 
 # Generating performance profiles
-julia scripts/process_csv.jl perfprofile results/micp.csv analysis/scale_perf.jld PAJ_CPLEX_MOSEK_dualonly PAJ_CPLEX_MOSEK_dualonlynoscale --exclude=analysis/micp_exclude.txt
+julia scripts/process_csv.jl perfprofile results/micp.csv analysis/sepcuts_perf.jld PAJ_Gurobi_MOSEK PAJ_Gurobi_MOSEK_msd PAJ_Gurobi_sep PAJ_Gurobi_msd_sep --exclude=analysis/micp_exclude.txt
+julia analysis/sepcuts_perf.jl
 
 
-
+??
 julia scripts/process_csv.jl perfprofile results/micp.csv analysis/scale_perf.jld PAJ_CPLEX_MOSEK_dualonly PAJ_CPLEX_MOSEK_dualonlynoscale --exclude=analysis/micp_exclude.txt
 julia analysis/scale_perf.jl
-julia scripts/process_csv.jl perfprofile results/micp.csv analysis/sepcuts_perf.jld PAJ_CPLEX_MOSEK PAJ_CPLEX_MOSEK_dualonly PAJ_CPLEX_MOSEK_primonlynorelax --exclude=analysis/micp_exclude.txt
-julia analysis/sepcuts_perf.jl
 ```

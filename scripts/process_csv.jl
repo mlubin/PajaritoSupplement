@@ -238,30 +238,33 @@ elseif arguments["perfprofile"]
     solvers = arguments["<solver>"]
     # need a table of [time] X [solver] where each row is a solver
     time_rows = []
-    itercount_rows = []
+    itndcount_rows = []
     instance_names = String[]
     for by_instance in groupby(optimal_runs, :instance)
         time_row = fill(Inf,length(solvers))
-        itercount_row = fill(Inf,length(solvers))
+        itndcount_row = fill(Inf,length(solvers))
         for i in 1:size(by_instance,1)
             push!(instance_names,by_instance[1,:instance])
             if by_instance[i,:calc_status] == "conv"
                 whichsolver = indexin([by_instance[i,:solver]],solvers)[1]
                 if whichsolver != 0
                     time_row[whichsolver] = by_instance[i,:totaltime]
-                    if !isna(by_instance[i,:conic_subproblem_count])
-                        itercount_row[whichsolver] = by_instance[i,:conic_subproblem_count]
+                    if !isna(by_instance[i,:iteration_count])
+                        itndcount_row[whichsolver] = by_instance[i,:iteration_count]
+                    else
+                        @assert !isna(by_instance[i,:nodecount])
+                        itndcount_row[whichsolver] = by_instance[i,:nodecount]
                     end
                 end # else not plotting this solver
             end # else not solved, Inf by default
         end
         push!(time_rows,time_row')
-        push!(itercount_rows,itercount_row')
+        push!(itndcount_rows,itndcount_row')
     end
     time_mat = vcat(time_rows...)
-    itercount_mat = vcat(itercount_rows...)
+    itndcount_mat = vcat(itndcount_rows...)
     @assert endswith(arguments["<output_jld>"],".jld")
-    save(arguments["<output_jld>"], "time_table", time_mat, "itercount_table", itercount_mat, "solvers", solvers, "instance_names", instance_names)
+    save(arguments["<output_jld>"], "time_table", time_mat, "itndcount_table", itndcount_mat, "solvers", solvers, "instance_names", instance_names)
     #p = performance_profile(mat, solvers, title="TITLE")
     #Plots.savefig("perf.png")
 end
