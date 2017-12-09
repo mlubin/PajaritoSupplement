@@ -1,0 +1,126 @@
+#SOLVERNAME# PAJ_CPLEX_sep
+#SOLVER# Pajarito.PajaritoSolver(3, 3600.0, 1.0e-5, false, CPLEX.CplexSolver(Any[(:CPX_PARAM_THREADS, 1), (:CPX_PARAM_SCRIND, 0), (:CPX_PARAM_EPINT, 1.0e-9), (:CPX_PARAM_EPRHS, 1.0e-8), (:CPX_PARAM_EPGAP, 0.0)]), Pajarito.UnsetSolver(), 0, false, true, Pajarito.UnsetSolver(), false, false, false, false, true, false, false, true, false, true, true, true, true, false, true, 10.0, false, true, false, true, 1.0e-12, 1.0e-8, false, "")
+#INSTANCE# estein4_A.cbf.gz
+#TIMELIMIT# 3600.0
+
+Problem dimensions:
+       variables |      67
+     constraints |     108
+   nonzeros in A |     128
+
+Cones summary:
+Cone             | Count   | Min dim.  | Max dim. 
+    Second order |       9 |         3 |         3
+
+Variable types:
+      continuous |      58
+         integer |       9
+
+Transforming data...               0.00s
+
+Building MIP model...              0.00s
+
+Starting iterative algorithm
+
+Iter. | Best feasible  | Best bound     | Rel. gap    | Time (s)   
+    1 |           +Inf |  +7.776704e-01 |         Inf |   1.596e-02
+
+Iter. | Best feasible  | Best bound     | Rel. gap    | Time (s)   
+    2 |           +Inf |  +7.776704e-01 |         Inf |   3.025e-02
+
+Iter. | Best feasible  | Best bound     | Rel. gap    | Time (s)   
+    3 |           +Inf |  +7.913557e-01 |         Inf |   4.468e-02
+
+Iter. | Best feasible  | Best bound     | Rel. gap    | Time (s)   
+    4 |           +Inf |  +7.914355e-01 |         Inf |   5.996e-02
+
+Iter. | Best feasible  | Best bound     | Rel. gap    | Time (s)   
+    5 |           +Inf |  +7.995353e-01 |         Inf |   7.699e-02
+
+Iter. | Best feasible  | Best bound     | Rel. gap    | Time (s)   
+    6 |           +Inf |  +7.995712e-01 |         Inf |   9.853e-02
+
+Iter. | Best feasible  | Best bound     | Rel. gap    | Time (s)   
+    7 |           +Inf |  +8.011414e-01 |         Inf |   1.175e-01
+
+Iter. | Best feasible  | Best bound     | Rel. gap    | Time (s)   
+    8 |           +Inf |  +8.011503e-01 |         Inf |   1.409e-01
+
+Iter. | Best feasible  | Best bound     | Rel. gap    | Time (s)   
+    9 |           +Inf |  +8.012395e-01 |         Inf |   1.625e-01
+
+Iter. | Best feasible  | Best bound     | Rel. gap    | Time (s)   
+   10 |           +Inf |  +8.012405e-01 |         Inf |   1.880e-01
+
+Iter. | Best feasible  | Best bound     | Rel. gap    | Time (s)   
+   11 |           +Inf |  +8.012811e-01 |         Inf |   2.096e-01
+
+Iter. | Best feasible  | Best bound     | Rel. gap    | Time (s)   
+   12 |           +Inf |  +8.013158e-01 |         Inf |   2.391e-01
+
+Iter. | Best feasible  | Best bound     | Rel. gap    | Time (s)   
+   13 |           +Inf |  +8.013376e-01 |         Inf |   2.667e-01
+
+Iter. | Best feasible  | Best bound     | Rel. gap    | Time (s)   
+   14 |           +Inf |  +8.013509e-01 |         Inf |   2.990e-01
+
+Iter. | Best feasible  | Best bound     | Rel. gap    | Time (s)   
+   15 |           +Inf |  +8.013606e-01 |         Inf |   3.305e-01
+
+Iter. | Best feasible  | Best bound     | Rel. gap    | Time (s)   
+   16 |           +Inf |  +8.013635e-01 |         Inf |   3.637e-01
+
+Iter. | Best feasible  | Best bound     | Rel. gap    | Time (s)   
+   17 |  +8.013647e-01 |  +8.013647e-01 |   0.000e+00 |   4.126e-01
+
+Iterative algorithm summary:
+ - Status               =        Optimal
+ - Best feasible        =  +8.013647e-01
+ - Best bound           =  +8.013647e-01
+ - Relative opt. gap    =      0.000e+00
+ - Total time (s)       =       4.13e-01
+
+Timers (s):
+ - Setup                =   3.36e-04
+ -- Transform data      =   7.46e-05
+ -- Create conic data   =   0.00e+00
+ -- Create MIP data     =   2.61e-04
+ - Algorithm            =   4.12e-01
+ -- Solve relaxation    =   0.00e+00
+ -- Get relaxation cuts =   0.00e+00
+ -- Solve MIP models    =   4.10e-01
+ -- Solve subproblems   =   0.00e+00
+ -- Get subproblem cuts =   0.00e+00
+ -- Get separation cuts =   1.65e-03
+
+Counters:
+ - Iterations           =    17
+ -- Integer repeats     =     0
+ -- Conic subproblems   =     0
+ -- Feasible solutions  =     1
+ --- From subproblems   =     0
+ --- From MIP solve     =     1
+
+Solution returned by MIP solver
+
+Rounds of full separation/subproblem cuts, and count of cuts added:
+Cone             | Subp.  | Sep.   | Total  | Relax. | Viol. 
+    Second order |      0 |     84 |    168 |      0 |    147
+
+0 numerically unstable disaggregated SOC cuts
+
+Distance to feasibility (negative indicates strict feasibility):
+Cone             | Variable  | Constraint
+          Linear |  0.00e+00 |  1.11e-16
+    Second order |  4.98e-07 |        NA
+
+Distance to integrality of integer/binary variables:
+         integer |  0.00e+00
+
+#STATUS# Optimal
+#OBJVAL# 0.8013646691032255
+#OBJBOUND# 0.8013646691032255
+#NODECOUNT# NaN
+#TIMESOLVER# 0.41265296936035156
+#TIMEALL# 0.41295599937438965
+#SOLUTION# [0.4183300479727386,0.49778780787597676,0.6603471990749572,0.38331483200770516,0.493351,0.40005895202726144,-0.004810807875976756,0.19236149868945024,0.15804180092504277,0.10966216799229482,0.14912469913857104,-0.012330047972738567,0.14861419212402327,0.493351,-0.25434719907495723,0.26308716799229487,0.493351,0.24898195202726142,-0.19698980787597675,0.0828100424441517,0.006964800925042758,-0.08251683200770517,0.10934418787715013,-0.08994404797273858,-0.06217980787597676,0.493351,-0.33196119907495725,0.05229316799229482,0.2677242409539023,-0.24201715110221866,0.11447297586827157,0.0,0.19236149868945024,0.14912469913857104,0.0,0.0,0.0828100424441517,0.10934418787715013,0.0,0.2677242409539023,0.0,1.0,1.0,-0.0,0.0,1.0,1.0,-0.0,1.0,1.0,0.0,0.0,1.0,1.0,0.0,0.0,1.0,0.0,0.0,0.30098950131054975,0.3442263008614289,-0.0,0.0,0.4105409575558483,0.38400681212284987,-0.0,0.2256267590460977]

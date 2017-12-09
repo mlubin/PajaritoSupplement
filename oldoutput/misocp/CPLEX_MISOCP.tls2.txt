@@ -1,0 +1,80 @@
+Tried aggregator 2 times.
+MIQCP Presolve eliminated 91 rows and 11 columns.
+MIQCP Presolve modified 94 coefficients.
+Aggregator did 10 substitutions.
+Reduced MIQCP has 14 rows, 33 columns, and 96 nonzeros.
+Reduced MIQCP has 19 binaries, 2 generals, 0 SOSs, and 0 indicators.
+Reduced MIQCP has 4 quadratic constraints.
+Presolve time = 0.00 sec. (0.26 ticks)
+Probing time = 0.00 sec. (0.04 ticks)
+Clique table members: 2.
+MIP emphasis: balance optimality and feasibility.
+MIP search method: dynamic search.
+Parallel mode: none, using 1 thread.
+Root relaxation solution time = 0.00 sec. (0.03 ticks)
+
+        Nodes                                         Cuts/
+   Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
+
+      0     0        0.0000     0                      0.0000        1         
+      0     0        0.0000     0                     Cone: 4        5         
+      0     0        0.3265     7                     Cone: 7        9         
+      0     0        0.5673    15                    Cone: 10       13         
+      0     0        0.7003    16                    Cone: 14       17         
+      0     0        0.7261    16                    Cone: 18       21         
+      0     0        0.7440    16                    Cone: 22       24         
+      0     0        0.7495    16                    Cone: 30       34         
+      0     0        0.7495    16                    Cone: 34       36         
+      0     0        0.7495    16                    Cone: 37       38         
+      0     0        0.7495    16                    Cone: 40       40         
+      0     0        0.7495    16                    Cone: 42       42         
+      0     0        0.7495    16                    Cone: 44       43         
+      0     0        0.7495    16                    Cone: 46       44         
+      0     0        0.7495    16                      0.7495       44         
+      0     0        1.3981    14                     Cuts: 7       54         
+      0     0        2.2001     7                     Cuts: 5       58         
+      0     0        2.2199    14                    Cuts: 11       67         
+      0     0        2.3161    17                    Cuts: 10       72         
+      0     0        2.4051    17                     Cuts: 5       79         
+      0     0        2.4623    16                     Cuts: 9       81         
+      0     0        2.4693    17                     Cuts: 7       86         
+      0     0        2.4697    17                 LiftProj: 4       88         
+      0     0        2.5125    18                 LiftProj: 6       93         
+      0     0        2.5229    17                 LiftProj: 6       97         
+      0     0        2.5258    18                     Cuts: 4       98         
+      0     0        2.5276    17                     Cuts: 5      100         
+      0     0        2.5390    18                     Cuts: 9      101         
+      0     0        2.5393    19                     Cone: 1      103         
+      0     0        2.5495    18                LiftProj: 11      106         
+      0     0        2.5905    19                LiftProj: 10      109         
+      0     0        2.6300    18                 LiftProj: 5      113         
+      0     0        2.6645    18                 LiftProj: 5      115         
+      0     0        2.6646    18                     Cuts: 6      117         
+*     0+    0                           12.3000        2.6646            78.34%
+      0     2        2.6646    18       12.3000        2.6646      117   78.34%
+Elapsed time = 0.27 sec. (114.16 ticks, tree = 0.01 MB, solutions = 1)
+*    18     8      integral     0        6.3000        2.6853      192   57.38%
+*    20+    6                            5.3000        2.6853            49.33%
+#SOLVERNAME# CPLEX_MISOCP
+#SOLVER# CPLEX.CplexSolver(Any[(:CPX_PARAM_THREADS, 1), (:CPX_PARAM_TILIM, 3600.0), (:CPX_PARAM_SCRIND, 1), (:CPX_PARAM_EPINT, 1.0e-8), (:CPX_PARAM_EPRHS, 1.0e-7), (:CPX_PARAM_EPGAP, 1.0e-5)])
+#INSTANCE# tls2.cbf.gz
+#TIMELIMIT# 3600.0
+#STATUS# Optimal
+#OBJVAL# 5.3
+#OBJBOUND# 5.300000000000001
+#NODECOUNT# 32
+#TIMESOLVER# 0.27175092697143555
+#TIMEALL# 2.2297420501708984
+#SOLUTION# [1.0,1.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,5.3,-0.0,0.0,0.0,1.0,0.0,0.0,0.0,-0.0,0.0,0.0,0.0,0.0,0.0,1.0,9.0,16.0,25.0,1.0,1.0,16.0,15.0,4.0,3.0,16.0]
+
+Mixed integer rounding cuts applied:  1
+Lift and project cuts applied:  5
+Gomory fractional cuts applied:  1
+Cone linearizations applied:  29
+
+Root node processing (before b&c):
+  Real time             =    0.27 sec. (114.16 ticks)
+Sequential b&c:
+  Real time             =    0.01 sec. (3.10 ticks)
+                          ------------
+Total (root+branch&cut) =    0.27 sec. (117.26 ticks)

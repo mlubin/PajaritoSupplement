@@ -1,0 +1,128 @@
+#SOLVERNAME# PAJ_Gurobi_MOSEK_msd_noscale
+#SOLVER# Pajarito.PajaritoSolver(3, 600.0, 1.0e-5, true, Gurobi.GurobiSolver(nothing, Any[(:OutputFlag, 1), (:Threads, 8), (:IntFeasTol, 1.0e-9), (:FeasibilityTol, 1.0e-8), (:MIPGap, 1.0e-5)]), Pajarito.UnsetSolver(), 0, false, true, Mosek.MosekSolver(Any[(:LOG, 0), (:NUM_THREADS, 8), (:MSK_DPAR_INTPNT_CO_TOL_REL_GAP, 1.0e-10), (:MSK_DPAR_INTPNT_CO_TOL_PFEAS, 1.0e-10), (:MSK_DPAR_INTPNT_CO_TOL_DFEAS, 1.0e-10), (:MSK_DPAR_INTPNT_CO_TOL_NEAR_REL, 1000.0)]), true, true, false, false, true, false, false, true, false, true, true, true, true, false, false, 10.0, true, false, false, true, 1.0e-12, 1.0e-8, false, "")
+#INSTANCE# shortfall_50_1.cbf.gz
+#TIMELIMIT# 600.0
+
+Problem dimensions:
+       variables |     205
+     constraints |     361
+   nonzeros in A |    5612
+
+Cones summary:
+Cone             | Count   | Min dim.  | Max dim. 
+    Second order |       2 |        51 |        51
+
+Variable types:
+      continuous |     154
+         integer |      51
+
+Transforming data...               0.00s
+
+Creating conic subproblem...       0.02s
+
+Building MIP model...              0.00s
+
+Solving conic relaxation...        0.02s
+ - Relaxation status    =        Optimal
+ - Relaxation bound     =      -1.104595
+Academic license - for non-commercial use only
+Optimize a model with 713 rows, 304 columns and 6964 nonzeros
+Variable types: 253 continuous, 51 integer (0 binary)
+Coefficient statistics:
+  Matrix range     [6e-05, 1e+02]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [7e-01, 1e+01]
+Found heuristic solution: objective -1.0000000
+Presolve removed 304 rows and 51 columns
+Presolve time: 0.04s
+Presolved: 409 rows, 253 columns, 3819 nonzeros
+Variable types: 202 continuous, 51 integer (51 binary)
+
+Root relaxation: objective -1.104595e+00, 213 iterations, 0.01 seconds
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0   -1.10459    0    5   -1.00000   -1.10459  10.5%     -    0s
+     0     0   -1.10459    0    9   -1.00000   -1.10459  10.5%     -    0s
+     0     0   -1.10459    0    9   -1.00000   -1.10459  10.5%     -    0s
+     0     2   -1.10459    0    8   -1.00000   -1.10459  10.5%     -    0s
+*  952   314              32      -1.0940875   -1.10458  0.96%  35.8    1s
+  3075  1305   -1.09883   14   10   -1.09409   -1.10456  0.96%  41.0    5s
+* 3443  1230              20      -1.0969282   -1.10456  0.70%  42.4    5s
+* 3448  1114              22      -1.1003014   -1.10456  0.39%  42.4    5s
+* 3639   995              33      -1.1018228   -1.10456  0.25%  42.8    5s
+
+Cutting planes:
+  Lazy constraints: 633
+
+Explored 4741 nodes (187225 simplex iterations) in 7.13 seconds
+Thread count was 8 (of 16 available processors)
+
+Solution count 5: -1.10182 -1.1003 -1.09693 ... -1
+
+Optimal solution found (tolerance 1.00e-05)
+Best objective -1.101822766174e+00, best bound -1.101822766174e+00, gap 0.0000%
+
+Starting MIP-solver-driven algorithm
+
+MIP-solver-driven algorithm summary:
+ - Status               =        Optimal
+ - Best feasible        =  -1.101823e+00
+ - Best bound           =  -1.101823e+00
+ - Relative opt. gap    =     -4.119e-09
+ - Total time (s)       =       7.19e+00
+
+Timers (s):
+ - Setup                =   2.24e-02
+ -- Transform data      =   7.60e-04
+ -- Create conic data   =   1.86e-02
+ -- Create MIP data     =   3.06e-03
+ - Algorithm            =   7.17e+00
+ -- Solve relaxation    =   2.30e-02
+ -- Get relaxation cuts =   1.33e-04
+ -- MIP solver driving  =   7.14e+00
+ -- Solve subproblems   =   2.80e-01
+ -- Get subproblem cuts =   2.26e-02
+ -- Get separation cuts =   4.88e-03
+
+Counters:
+ - Lazy callbacks       =   134
+ -- Integer repeats     =    82
+ -- Conic subproblems   =    53
+ --- Infeasible         =     0
+ --- Optimal            =    53
+ --- Suboptimal         =     0
+ --- UserLimit          =     0
+ --- ConicFailure       =     0
+ --- Other status       =     0
+ -- Feasible solutions  =    90
+ --- From subproblems   =    53
+ --- In lazy callback   =    37
+ - Heuristic callbacks  =  3533
+ -- Solutions passed    =     7
+
+Solution returned by MIP solver
+
+Rounds of full separation/subproblem cuts, and count of cuts added:
+Cone             | Subp.  | Sep.   | Total  | Relax. | Viol. 
+    Second order |    206 |     40 |   2377 |     50 |   2377
+
+0 numerically unstable disaggregated SOC cuts
+
+Distance to feasibility (negative indicates strict feasibility):
+Cone             | Variable  | Constraint
+          Linear |  0.00e+00 |  4.44e-16
+    Second order |        NA |  4.72e-07
+
+Distance to integrality of integer/binary variables:
+         integer |  0.00e+00
+
+#STATUS# Optimal
+#OBJVAL# -1.1018227707123571
+#OBJBOUND# -1.101822766174425
+#NODECOUNT# 4741
+#TIMESOLVER# 7.188663959503174
+#TIMEALL# 7.1893470287323
+#SOLUTION# [0.09871706732076208,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0945893518881265,0.0,0.0,0.0,0.0,0.0,0.0,0.18267999998478987,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.1116384333855214,0.09669375465304268,0.0,0.0,0.0,0.0,0.14364638078474357,0.0,0.104250174212845,0.0,0.0,0.09700960934775225,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.038100016004901684,0.0,0.0,0.03267521241751499,0.0,0.0,0.0,1.0,-0.0,-0.0,-0.0,-0.0,-0.0,-0.0,-0.0,-0.0,1.0,-0.0,-0.0,-0.0,-0.0,-0.0,-0.0,1.0,-0.0,-0.0,-0.0,-0.0,-0.0,-0.0,-0.0,-0.0,-0.0,1.0,1.0,-0.0,-0.0,-0.0,-0.0,1.0,-0.0,1.0,-0.0,-0.0,1.0,-0.0,0.0,-0.0,-0.0,-0.0,-0.0,-0.0,1.0,-0.0,-0.0,1.0,-0.0,-0.0,0.03498745900725672,0.007425563378984534,0.005757563817366835,0.0034697349427967967,0.011475762996115657,0.03816279540649535,0.009393886404554233,0.01075998123775376,0.010974021607161618,0.05078648144479799,0.010294740781845486,0.01877246298619922,0.005607384773547931,0.008502739132635337,0.0105608114886498,0.022581479128003987,0.048197116591289293,0.013751603593360633,0.018052849653058017,0.01766311025279974,0.02109714459752514,0.023206800194005915,0.010603720164336387,0.005390959953358588,0.006813608415633543,0.01009068645144285,0.050997893193170496,0.06917965235307305,0.006560686785017535,0.009147741415169764,0.006561089356068929,0.02686909024407264,0.052218521197605255,0.00943460377256037,0.061995553742403696,0.009685959807929797,0.004208924286847572,0.040679688598549126,0.009239368602314318,0.006208786823227338,0.013276529072680269,0.019442185577542688,0.01032105170297718,0.006801463445744407,0.012382798740201685,0.03787031248469265,0.006960981133961429,0.012100428544386322,0.03883938454946485,0.009071983753382553,0.2018227707123575,0.07818728742065396,0.016594078982772903,0.012866561613915747,0.007753897280441903,0.025645154155450496,0.085283285436773,0.020992736173196098,0.024045580032051057,0.024523901017837555,0.113493729881457,0.023005896377451603,0.04195125912948181,0.012530953015955179,0.01900126866281767,0.0236004907669101,0.050463355987028356,0.10770721609100901,0.03073102800709215,0.040343122496913596,0.03947216280530458,0.047146279129892436,0.051860775499761175,0.023696379781258145,0.012047303442615292,0.015226529010135692,0.02254989142501104,0.11396617662675124,0.15459737619324634,0.014661319166695134,0.020442670247340627,0.014662218801575574,0.060044980151575805,0.11669394238409465,0.02108372822136551,0.13854290413758155,0.021645439392738827,0.009405780879350727,0.09090784512181266,0.020647431651000584,0.013874920147260711,0.029669367939495643,0.043447903762366256,0.023064694004121124,0.01519938836379041,0.02767212800367855,0.08462966705688779,0.015555866247328997,0.027041108767481323,0.08679527491209013,0.020273372840654395,0.40182277071235756]

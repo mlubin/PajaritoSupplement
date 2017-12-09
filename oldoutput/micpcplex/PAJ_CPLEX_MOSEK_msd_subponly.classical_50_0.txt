@@ -1,0 +1,177 @@
+WARNING: Lazy callback solution is infeasible but no cuts could be added
+WARNING: Lazy callback solution is infeasible but no cuts could be added
+#SOLVERNAME# PAJ_CPLEX_MOSEK_msd_subponly
+#SOLVER# Pajarito.PajaritoSolver(3, 3600.0, 1.0e-5, true, CPLEX.CplexSolver(Any[(:CPX_PARAM_THREADS, 1), (:CPX_PARAM_SCRIND, 1), (:CPX_PARAM_EPINT, 1.0e-9), (:CPX_PARAM_EPRHS, 1.0e-8), (:CPX_PARAM_EPGAP, 1.0e-5)]), Pajarito.UnsetSolver(), 0, false, true, Mosek.MosekSolver(Any[(:LOG, 0), (:NUM_THREADS, 1), (:MSK_DPAR_INTPNT_CO_TOL_REL_GAP, 1.0e-10), (:MSK_DPAR_INTPNT_CO_TOL_PFEAS, 1.0e-10), (:MSK_DPAR_INTPNT_CO_TOL_DFEAS, 1.0e-10), (:MSK_DPAR_INTPNT_CO_TOL_NEAR_REL, 1000.0)]), true, true, false, false, true, false, false, true, false, true, true, true, true, false, true, 10.0, true, false, false, false, 1.0e-12, 1.0e-8, false, "")
+#INSTANCE# classical_50_0.cbf.gz
+#TIMELIMIT# 3600.0
+
+Problem dimensions:
+       variables |     152
+     constraints |     255
+   nonzeros in A |    2902
+
+Cones summary:
+Cone             | Count   | Min dim.  | Max dim. 
+    Second order |       1 |        51 |        51
+
+Variable types:
+      continuous |     102
+         integer |      50
+
+Transforming data...               0.00s
+
+Creating conic subproblem...       0.02s
+
+Building MIP model...              0.00s
+
+Solving conic relaxation...        0.01s
+ - Relaxation status    =        Optimal
+ - Relaxation bound     =      -0.096688
+
+Mixed integer rounding cuts applied:  3
+Gomory fractional cuts applied:  3
+User cuts applied:  30
+
+Root node processing (before b&c):
+  Real time             =    0.78 sec. (8.68 ticks)
+Sequential b&c:
+  Real time             =    0.01 sec. (4.00 ticks)
+                          ------------
+Total (root+branch&cut) =    0.78 sec. (12.68 ticks)
+Warning: Control callbacks may disable some MIP features.
+Tried aggregator 1 time.
+MIP Presolve eliminated 174 rows and 1 columns.
+MIP Presolve modified 2610 coefficients.
+Reduced MIP has 282 rows, 200 columns, and 3108 nonzeros.
+Reduced MIP has 50 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.00 sec. (2.51 ticks)
+Probing time = 0.00 sec. (1.81 ticks)
+Cover probing fixed 0 vars, tightened 61 bounds.
+MIP emphasis: balance optimality and feasibility.
+MIP search method: traditional branch-and-cut.
+Parallel mode: none, using 1 thread.
+Root relaxation solution time = 0.00 sec. (5.20 ticks)
+
+        Nodes                                         Cuts/
+   Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
+
+      0     0       -0.0967    13                     -0.0967      197         
+*     0+    0                           -0.0653       -0.0967            48.15%
+      0     0       -0.0967    15       -0.0653       Cuts: 7      242   48.15%
+*     0+    0                           -0.0653       -0.0967            48.15%
+*     0+    0                           -0.0714       -0.0967            35.35%
+      0     0       -0.0967    16       -0.0714       Cuts: 3      283   35.35%
+*     0+    0                           -0.0714       -0.0967            35.35%
+*     0+    0                           -0.0727       -0.0967            33.08%
+*     0+    0                           -0.0782       -0.0967            23.66%
+*     0+    0                           -0.0791       -0.0967            22.27%
+*     0+    0                           -0.0875       -0.0967            10.55%
+      0     2       -0.0967    17       -0.0875       -0.0967      283   10.55%
+Elapsed time = 0.29 sec. (228.71 ticks, tree = 0.01 MB, solutions = 6)
+*    47    28      integral     0       -0.0885       -0.0967     2383    9.29%
+     95    56       -0.0967    15       -0.0885       -0.0967     4076    9.29%
+*   100    39      integral     0       -0.0905       -0.0967     4633    6.80%
+*   200+   88                           -0.0905       -0.0961             6.17%
+    200    90       -0.0960    18       -0.0905       -0.0961     8115    6.17%
+    362   195       -0.0930    18       -0.0905       -0.0960    12344    6.09%
+    527   289       -0.0942    16       -0.0905       -0.0954    16807    5.40%
+*   697   359      integral     0       -0.0907       -0.0952    20917    4.94%
+    697   359       -0.0907     0       -0.0907       -0.0952    20917    4.88%
+*   797+  411                           -0.0907       -0.0951             4.85%
+    848   432       -0.0926    10       -0.0907       -0.0951    24675    4.80%
+   1008   512       -0.0928    14       -0.0907       -0.0948    29117    4.50%
+   1170   578       -0.0924    14       -0.0907       -0.0945    33955    4.18%
+   1360   668       -0.0927    16       -0.0907       -0.0944    38292    4.04%
+   2140   953       -0.0928    14       -0.0907       -0.0940    55348    3.54%
+Elapsed time = 3.22 sec. (3370.21 ticks, tree = 0.31 MB, solutions = 9)
+   2932  1190       -0.0914    12       -0.0907       -0.0935    73032    3.07%
+   3787  1441       -0.0910    17       -0.0907       -0.0932    89619    2.71%
+   4701  1630        cutoff             -0.0907       -0.0929   107289    2.41%
+   5683  1684        cutoff             -0.0907       -0.0926   125630    2.06%
+   6719  1625       -0.0922    14       -0.0907       -0.0923   143380    1.69%
+   7782  1589       -0.0910    17       -0.0907       -0.0920   160278    1.41%
+   8939  1403       -0.0917    12       -0.0907       -0.0917   175580    1.10%
+  10215   927       -0.0912    15       -0.0907       -0.0913   189226    0.67%
+  11671   235        cutoff             -0.0907       -0.0909   199823    0.21%
+
+Starting MIP-solver-driven algorithm
+WARNING: Lazy callback solution is infeasible but no cuts could be added
+WARNING: Lazy callback solution is infeasible but no cuts could be added
+WARNING: Lazy callback solution is infeasible but no cuts could be added
+WARNING: Lazy callback solution is infeasible but no cuts could be added
+WARNING: Lazy callback solution is infeasible but no cuts could be added
+WARNING: Lazy callback solution is infeasible but no cuts could be added
+WARNING: Lazy callback solution is infeasible but no cuts could be added
+WARNING: Pajarito failed to converge to the desired relative gap; try turning off the MIP solver's presolve functionality
+
+MIP-solver-driven algorithm summary:
+ - Status               =     Suboptimal
+ - Best feasible        =  -9.074142e-02
+ - Best bound           =  -9.074239e-02
+ - Relative opt. gap    =      1.079e-05
+ - Total time (s)       =       1.15e+01
+
+Timers (s):
+ - Setup                =   2.49e-02
+ -- Transform data      =   3.41e-04
+ -- Create conic data   =   2.36e-02
+ -- Create MIP data     =   1.01e-03
+ - Algorithm            =   1.15e+01
+ -- Solve relaxation    =   6.49e-03
+ -- Get relaxation cuts =   9.48e-05
+ -- MIP solver driving  =   1.15e+01
+ -- Solve subproblems   =   7.33e-02
+ -- Get subproblem cuts =   1.54e-02
+ -- Get separation cuts =   2.12e-04
+
+Counters:
+ - Lazy callbacks       =    49
+ -- Integer repeats     =    37
+ -- Conic subproblems   =    13
+ --- Infeasible         =     0
+ --- Optimal            =    13
+ --- Suboptimal         =     0
+ --- UserLimit          =     0
+ --- ConicFailure       =     0
+ --- Other status       =     0
+ -- Feasible solutions  =    13
+ --- From subproblems   =    13
+ --- In lazy callback   =     0
+ - Heuristic callbacks  =  6203
+ -- Solutions passed    =     6
+
+Solution returned by conic solver
+
+Rounds of full separation/subproblem cuts, and count of cuts added:
+Cone             | Subp.  | Sep.   | Total  | Relax. | Viol. 
+    Second order |     50 |      0 |    494 |     50 |    494
+
+0 numerically unstable disaggregated SOC cuts
+
+Distance to feasibility (negative indicates strict feasibility):
+Cone             | Variable  | Constraint
+          Linear |  0.00e+00 |  8.64e-11
+    Second order |        NA |  2.89e-11
+
+Distance to integrality of integer/binary variables:
+         integer |  0.00e+00
+
+
+Implied bound cuts applied:  3
+Flow cuts applied:  3
+Mixed integer rounding cuts applied:  2
+User cuts applied:  477
+
+Root node processing (before b&c):
+  Real time             =    0.29 sec. (228.70 ticks)
+Sequential b&c:
+  Real time             =   11.18 sec. (11929.97 ticks)
+                          ------------
+Total (root+branch&cut) =   11.47 sec. (12158.67 ticks)
+#STATUS# Suboptimal
+#OBJVAL# -0.0907414158298378
+#OBJBOUND# -0.09074239483684216
+#NODECOUNT# 12008
+#TIMESOLVER# 11.501744031906128
+#TIMEALL# 11.502169132232666
+#SOLUTION# [0.0,0.035848675875491544,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.12496445296580018,0.0,0.29114467163362084,0.0,0.0,0.0,0.0,0.0,0.0,0.08339486525632471,0.0,0.0,0.0,0.04439800130996783,0.0,0.04156253412516335,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.12102576884145533,0.11095488488857772,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.08543533247698448,0.06127081254023954,0.0,0.0,-0.0,1.0,-0.0,-0.0,-0.0,-0.0,-0.0,-0.0,-0.0,-0.0,-0.0,0.0,-0.0,1.0,-0.0,1.0,0.0,-0.0,-0.0,-0.0,-0.0,-0.0,1.0,-0.0,-0.0,-0.0,1.0,0.0,1.0,-0.0,-0.0,-0.0,0.0,-0.0,0.0,-0.0,1.0,1.0,-0.0,-0.0,-0.0,-0.0,0.0,-0.0,-0.0,0.0,0.0,1.0,1.0,-0.0,0.005613660109377134,0.04693687699987529,0.010996077130888605,0.011826324296337745,0.007408668322976261,0.012774129917829884,0.020628588240244133,0.016928729547273962,0.012654296126250186,0.013228818690383354,0.007342915166250916,0.006775584241715005,0.00968047766525108,0.04661291730104698,0.012832369449092447,0.03965240723262236,0.0025462873828602495,0.02008889106158226,0.003915444137882856,0.007013661544265185,0.006276590306819472,0.013549805436048811,0.08363423979750101,0.005776882866877254,0.015004842223661751,0.013587943073634352,0.04288113202467337,0.019865296296802563,0.046894728424870975,0.010696568367265331,0.017244242909824223,0.016254191598769754,0.012983882439464176,0.009948525506984178,0.01751810205583406,0.0131849578598573,0.050166896773721464,0.07717301942406936,0.01573714190862851,0.009307912107768023,-0.0023015241666507515,0.012349633035154343,0.019420150627780654,0.011385486346555802,0.008990747938774506,0.010661399746386035,0.0052022408767026344,0.060248313637127626,0.0596330857905212,0.03556744772865097,0.2]

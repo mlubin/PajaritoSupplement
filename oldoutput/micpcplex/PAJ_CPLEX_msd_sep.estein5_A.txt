@@ -1,0 +1,134 @@
+
+Flow cuts applied:  3
+Mixed integer rounding cuts applied:  1
+Gomory fractional cuts applied:  2
+User cuts applied:  241
+
+Root node processing (before b&c):
+  Real time             =    0.25 sec. (21.09 ticks)
+Sequential b&c:
+  Real time             =    0.01 sec. (10.57 ticks)
+                          ------------
+Total (root+branch&cut) =    0.26 sec. (31.66 ticks)
+#SOLVERNAME# PAJ_CPLEX_msd_sep
+#SOLVER# Pajarito.PajaritoSolver(3, 3600.0, 1.0e-5, true, CPLEX.CplexSolver(Any[(:CPX_PARAM_THREADS, 1), (:CPX_PARAM_SCRIND, 1), (:CPX_PARAM_EPINT, 1.0e-9), (:CPX_PARAM_EPRHS, 1.0e-8), (:CPX_PARAM_EPGAP, 1.0e-5)]), Pajarito.UnsetSolver(), 0, false, true, Pajarito.UnsetSolver(), false, false, false, false, true, false, false, true, false, true, true, true, true, false, true, 10.0, true, true, false, true, 1.0e-12, 1.0e-8, false, "")
+#INSTANCE# estein5_A.cbf.gz
+#TIMELIMIT# 3600.0
+
+Problem dimensions:
+       variables |     132
+     constraints |     211
+   nonzeros in A |     258
+
+Cones summary:
+Cone             | Count   | Min dim.  | Max dim. 
+    Second order |      18 |         3 |         3
+
+Variable types:
+      continuous |     114
+         integer |      18
+
+Transforming data...               0.00s
+
+Building MIP model...              0.00s
+Warning: Control callbacks may disable some MIP features.
+Tried aggregator 2 times.
+MIP Presolve eliminated 153 rows and 21 columns.
+Aggregator did 36 substitutions.
+Reduced MIP has 202 rows, 111 columns, and 616 nonzeros.
+Reduced MIP has 11 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.00 sec. (0.60 ticks)
+Probing fixed 0 vars, tightened 12 bounds.
+Probing time = 0.00 sec. (0.05 ticks)
+Clique table members: 5.
+MIP emphasis: balance optimality and feasibility.
+MIP search method: traditional branch-and-cut.
+Parallel mode: none, using 1 thread.
+Root relaxation solution time = 0.00 sec. (0.61 ticks)
+
+        Nodes                                         Cuts/
+   Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
+
+      0     0        0.0000    10                      0.0000       72         
+*     0+    0                            1.2183        0.0000           100.00%
+      0     0        0.0000     8        1.2183      Cuts: 24      109  100.00%
+*     0+    0                            1.1817        0.0000           100.00%
+      0     0        0.0000     7        1.1817      Cuts: 20      150  100.00%
+      0     0        0.0000     9        1.1817      Cuts: 14      173  100.00%
+*     0+    0                            1.0948        0.0000           100.00%
+*     0+    0                            1.0948        0.0000           100.00%
+      0     2        0.0000     9        1.0948        0.0000      173  100.00%
+Elapsed time = 0.07 sec. (65.36 ticks, tree = 0.01 MB, solutions = 4)
+*    58    41      integral     0        1.0454        0.1293     2203   87.63%
+*   158+   85                            1.0454        0.4488            57.07%
+    200   111        0.9440     3        1.0454        0.4507     6951   56.89%
+    457   139        cutoff              1.0454        0.7395    14374   29.26%
+    775    87        cutoff              1.0454        0.9220    21603   11.80%
+
+Starting MIP-solver-driven algorithm
+
+MIP-solver-driven algorithm summary:
+ - Status               =        Optimal
+ - Best feasible        =  +1.045372e+00
+ - Best bound           =  +1.045372e+00
+ - Relative opt. gap    =     -9.029e-07
+ - Total time (s)       =       7.78e-01
+
+Timers (s):
+ - Setup                =   6.95e-04
+ -- Transform data      =   1.26e-04
+ -- Create conic data   =   0.00e+00
+ -- Create MIP data     =   5.69e-04
+ - Algorithm            =   7.77e-01
+ -- Solve relaxation    =   0.00e+00
+ -- Get relaxation cuts =   0.00e+00
+ -- MIP solver driving  =   7.77e-01
+ -- Solve subproblems   =   0.00e+00
+ -- Get subproblem cuts =   0.00e+00
+ -- Get separation cuts =   6.75e-03
+
+Counters:
+ - Lazy callbacks       =   117
+ -- Integer repeats     =     0
+ -- Conic subproblems   =     0
+ -- Feasible solutions  =    43
+ --- From subproblems   =     0
+ --- In lazy callback   =    43
+ - Heuristic callbacks  =     0
+ -- Solutions passed    =     0
+
+Solution returned by MIP solver
+
+Rounds of full separation/subproblem cuts, and count of cuts added:
+Cone             | Subp.  | Sep.   | Total  | Relax. | Viol. 
+    Second order |      0 |    606 |    984 |      0 |    984
+
+0 numerically unstable disaggregated SOC cuts
+
+Distance to feasibility (negative indicates strict feasibility):
+Cone             | Variable  | Constraint
+          Linear |  0.00e+00 |  3.89e-16
+    Second order |  7.91e-07 |        NA
+
+Distance to integrality of integer/binary variables:
+         integer |  0.00e+00
+
+#STATUS# Optimal
+#OBJVAL# 1.0453715064028046
+#OBJBOUND# 1.045372450306674
+#NODECOUNT# 880
+#TIMESOLVER# 0.7778339385986328
+#TIMEALL# 0.778270959854126
+#SOLUTION# [0.420544437748593,0.6249803540384806,0.6553245480360685,0.6415078452858912,0.7586029058817273,0.4889901648499748,0.493351,0.397844562251407,-0.13200335403848062,0.493351,0.1630644519639315,-0.14853084528589122,0.05991808648601533,0.05978609411827274,0.003986835150025181,0.025892512034793105,-0.014544437748592987,0.02142164596151941,0.493351,-0.24932454803606852,0.0048941547141088115,0.493351,-0.35260290588172727,0.15741183515002521,0.493351,0.246767562251407,-0.3241823540384806,0.493351,0.011987451963931472,-0.3407098452858912,0.20916554264400175,-0.09129090588172728,-0.1881921648499748,0.21060634276128337,-0.092158437748593,-0.18937235403848063,0.493351,-0.32693854803606853,-0.20589984528589123,0.493351,-0.4302169058817273,-0.05338216484997482,0.493351,0.287376562251407,0.12464564596151939,0.12023277490072867,0.05259645196393148,0.1081181547141088,0.4933510000000004,-0.050681905881727274,0.2606358351500252,0.2353605504030677,-0.23478011028747553,-0.016527491247410594,0.493351,-0.3380584681331343,0.1359901891885058,0.18419569717291456,-0.10327835784565875,0.1525176804359164,0.0,0.0,0.05991808648601533,0.025892512034793105,0.0,0.0,0.0,0.0,0.20916554264400175,0.21060634276128337,0.0,0.0,0.0,0.12023277490072867,0.0,0.2353605504030677,0.0,0.18419569717291456,0.0,-0.0,1.0,1.0,-0.0,-0.0,0.0,-0.0,1.0,1.0,0.0,0.0,0.0,1.0,0.0,1.0,0.0,1.0,1.0,1.0,0.0,0.0,1.0,1.0,1.0,1.0,0.0,0.0,1.0,1.0,1.0,0.0,1.0,0.0,1.0,0.0,0.0,-0.0,0.43343291351398466,0.4674584879652069,-0.0,-0.0,0.0,-0.0,0.2841854573559982,0.2827446572387166,-0.0,-0.0,0.0,0.3731182250992713,-0.0,0.2579904495969323,0.0,0.3091553028270854]
+
+Flow cuts applied:  2
+Mixed integer rounding cuts applied:  7
+Gomory fractional cuts applied:  1
+User cuts applied:  941
+
+Root node processing (before b&c):
+  Real time             =    0.07 sec. (65.36 ticks)
+Sequential b&c:
+  Real time             =    0.71 sec. (787.28 ticks)
+                          ------------
+Total (root+branch&cut) =    0.78 sec. (852.64 ticks)

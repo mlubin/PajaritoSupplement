@@ -1,0 +1,69 @@
+numerics/lpfeastol = 1e-07
+presolving:
+(round 1, fast)       147 del vars, 249 del conss, 0 add conss, 240 chg bounds, 0 chg sides, 0 chg coeffs, 48 upgd conss, 0 impls, 0 clqs
+(round 2, fast)       148 del vars, 250 del conss, 0 add conss, 289 chg bounds, 0 chg sides, 0 chg coeffs, 48 upgd conss, 0 impls, 3 clqs
+(round 3, fast)       148 del vars, 250 del conss, 0 add conss, 295 chg bounds, 0 chg sides, 0 chg coeffs, 48 upgd conss, 0 impls, 3 clqs
+(round 4, exhaustive) 148 del vars, 250 del conss, 0 add conss, 295 chg bounds, 0 chg sides, 0 chg coeffs, 51 upgd conss, 0 impls, 3 clqs
+   (0.0s) probing cycle finished: starting next cycle
+presolving (5 rounds: 5 fast, 2 medium, 2 exhaustive):
+ 148 deleted vars, 250 deleted constraints, 0 added constraints, 295 tightened bounds, 0 added holes, 0 changed sides, 0 changed coefficients
+ 82 implications, 3 cliques
+presolved problem has 75 variables (15 bin, 0 int, 0 impl, 60 cont) and 99 constraints
+     48 constraints of type <soc>
+      3 constraints of type <setppc>
+     48 constraints of type <linear>
+Presolving Time: 0.00
+numerics/lpfeastol = 1e-07
+
+  node  | left  |LP iter|LP it/n| mem |  dualbound   | primalbound  |  gap   
+      1 |     0 |    28 |     - |1908k| 0.000000e+00 |      --      |    Inf 
+      1 |     0 |    48 |     - |2029k| 0.000000e+00 |      --      |    Inf 
+      1 |     0 |    61 |     - |2029k| 0.000000e+00 |      --      |    Inf 
+      1 |     0 |    77 |     - |2030k| 0.000000e+00 |      --      |    Inf 
+      1 |     0 |    84 |     - |2034k| 0.000000e+00 |      --      |    Inf 
+      1 |     0 |    98 |     - |2034k| 0.000000e+00 |      --      |    Inf 
+      1 |     0 |   109 |     - |2034k| 0.000000e+00 |      --      |    Inf 
+      1 |     0 |   600 |     - |2047k| 0.000000e+00 |      --      |    Inf 
+      1 |     0 |   621 |     - |2047k| 0.000000e+00 |      --      |    Inf 
+      1 |     0 |   637 |     - |2080k| 6.111111e+01 |      --      |    Inf 
+      1 |     0 |   645 |     - |2138k| 6.111111e+01 |      --      |    Inf 
+      1 |     0 |   654 |     - |2139k| 8.250000e+02 |      --      |    Inf 
+      1 |     0 |   660 |     - |2139k| 8.250000e+02 |      --      |    Inf 
+      1 |     0 |   667 |     - |2139k| 8.250000e+02 |      --      |    Inf 
+      1 |     0 |   675 |     - |2139k| 8.250000e+02 |      --      |    Inf 
+  node  | left  |LP iter|LP it/n| mem |  dualbound   | primalbound  |  gap   
+      1 |     0 |   681 |     - |2139k| 8.250000e+02 |      --      |    Inf 
+      1 |     0 |   687 |     - |2139k| 8.250000e+02 |      --      |    Inf 
+      1 |     2 |   703 |     - |2141k| 9.000000e+02 |      --      |    Inf 
+
+******************************************************************************
+This program contains Ipopt, a library for large-scale nonlinear optimization.
+ Ipopt is released as open source code under the Eclipse Public License (EPL).
+         For more information visit http://projects.coin-or.org/Ipopt
+******************************************************************************
+
+*    23 |    20 |  2448 | 103.1 |3168k| 2.200000e+03 | 5.542305e+04 |2419.23%
+*    44 |    26 |  4913 | 110.1 |3612k| 3.900000e+03 | 4.173746e+04 | 970.19%
+*    53 |    23 |  6161 | 115.0 |3636k| 3.242509e+04 | 4.157326e+04 |  28.21%
+*    74 |    22 |  7800 | 104.4 |3643k| 3.453348e+04 | 4.157326e+04 |  20.39%
+
+SCIP Status        : solving was interrupted [gap limit reached]
+Solving Time (sec) : 0.62
+Solving Nodes      : 100
+Primal Bound       : +4.15732624636749e+04 (4 solutions)
+Dual Bound         : +4.15730753932523e+04
+Gap                : 0.00 %
+  [quadratic] <quadcons>:  -<_var82_>[C]^2 +<_var83_>[C]^2 +<_var84_>[C]^2 <= 0;
+violation: right hand side is violated by 5.98959530861976e-07 (scaled: 5.98959530861976e-07)
+best solution is not feasible in original problem
+#SOLVERNAME# SCIP_MISOCP
+#SOLVER# SCIP.SCIPSolver(("limits/gap", 1.0e-5, "numerics/feastol", 1.0e-7, "limits/time", 3600.0))
+#INSTANCE# clay0203m.cbf.gz
+#TIMELIMIT# 3600.0
+#STATUS# UserLimit
+#OBJVAL# 41573.26246367486
+#OBJBOUND# 41573.07539325232
+#NODECOUNT# NaN
+#TIMESOLVER# 0.62
+#TIMEALL# 2.0050721168518066
+#SOLUTION# [35.65208064051127,4.0,31.652080640511276,66.88107551867587,0.0,66.88107551867587,41573.26246367486,14.312490950334112,49.96457159084539,18.312490950334112,12.083284981981434,78.9643605006573,12.083284981981434,0.0,1.0,0.0,0.0,0.0,1.0,1.0,0.0,0.0,0.0,0.0,0.0,10.160213941701883,25.839786058298102,1.0,990.0192622201839,5723.980737779816,0.0,3.285123275647962,32.71487672435204,1.0,1458.2858473374868,4214.17988845116,0.0,22.85564832411473,2.1443516758852708,1.0,1101.4107567982558,4411.180033471189,0.0,10.160213941701883,0.8403664242601536,990.0192622201498,4417.511203877459,3.2851232880889683,0.3402213702043255,1458.2858473270878,5029.180468670259,12.49925368438835,12.50074631561165,1101.4107567980245,4818.680323578651,3.2851234450429985,32.714876554957,2117.845239090877,5107.154760909123,23.160069135374044,12.839930864626027,1101.4107567984174,4214.17988845217,12.003255954596568,2.1443516758852708,911.2857024967252,4411.180033470622,35.15963357573986,0.8403664242601394,1479.5232644898165,4417.511155941472,35.659778629795674,0.3402213702043255,1101.410756798027,5029.180468664499,12.003255954596568,12.996744045403432,911.2857024954938,4818.6803236030555]

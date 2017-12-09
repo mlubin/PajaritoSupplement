@@ -1,0 +1,149 @@
+#SOLVERNAME# PAJ_Gurobi_msd_sep
+#SOLVER# Pajarito.PajaritoSolver(3, 600.0, 1.0e-5, true, Gurobi.GurobiSolver(nothing, Any[(:OutputFlag, 1), (:Threads, 8), (:IntFeasTol, 1.0e-9), (:FeasibilityTol, 1.0e-8), (:MIPGap, 1.0e-5)]), Pajarito.UnsetSolver(), 0, false, true, Pajarito.UnsetSolver(), false, false, false, false, true, false, false, true, false, true, true, true, true, false, true, 10.0, true, true, false, true, 1.0e-12, 1.0e-8, false, "")
+#INSTANCE# port_20_15_5_b_1.cbf.gz
+#TIMELIMIT# 600.0
+
+Problem dimensions:
+       variables |     150
+     constraints |     299
+   nonzeros in A |    1025
+
+Cones summary:
+Cone             | Count   | Min dim.  | Max dim. 
+    Second order |       1 |        21 |        21
+   Primal expon. |      30 |         3 |         3
+   Pos. semidef. |       1 |      11^2 |      11^2
+
+Variable types:
+      continuous |     111
+         integer |      39
+
+Transforming data...               0.00s
+
+Building MIP model...              0.00s
+Academic license - for non-commercial use only
+Optimize a model with 475 rows, 170 columns and 1445 nonzeros
+Variable types: 131 continuous, 39 integer (0 binary)
+Coefficient statistics:
+  Matrix range     [4e-06, 4e+01]
+  Objective range  [1e-02, 5e-01]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [2e-03, 2e+01]
+Found heuristic solution: objective 0.0000000
+Presolve removed 314 rows and 4 columns
+Presolve time: 0.00s
+Presolved: 161 rows, 166 columns, 1068 nonzeros
+Variable types: 127 continuous, 39 integer (39 binary)
+
+Root relaxation: objective -2.012697e-01, 37 iterations, 0.00 seconds
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0   -0.14216    0    5    0.00000   -0.14216      -     -    0s
+     0     0   -0.05926    0   21    0.00000   -0.05926      -     -    0s
+     0     0   -0.05677    0   22    0.00000   -0.05677      -     -    0s
+     0     0   -0.05677    0   21    0.00000   -0.05677      -     -    0s
+     0     2   -0.05677    0   20    0.00000   -0.05677      -     -    0s
+* 2275  1156              52      -0.0323632   -0.05246  62.1%  23.5    2s
+* 2623  1083              52      -0.0349724   -0.05166  47.7%  23.0    2s
+* 3122  1017              49      -0.0405917   -0.05067  24.8%  23.6    2s
+* 3140   869              37      -0.0445152   -0.05054  13.5%  23.7    2s
+* 4303  1034              28      -0.0447493   -0.05000  11.7%  28.0    3s
+  5195  1439   -0.04786   27   15   -0.04475   -0.04981  11.3%  30.2    5s
+H 7328  2304                      -0.0448667   -0.04945  10.2%  33.1    8s
+H 7333  2308                      -0.0448668   -0.04945  10.2%  33.2    8s
+  9911  3236   -0.04543   36   13   -0.04487   -0.04912  9.49%  34.9   10s
+ 17010  5351   -0.04542   32   12   -0.04487   -0.04850  8.10%  37.7   15s
+H20783  6214                      -0.0448668   -0.04830  7.64%  38.7   19s
+ 21570  6308     cutoff   29        -0.04487   -0.04830  7.64%  38.8   20s
+ 28569  7563   -0.04503   31   17   -0.04487   -0.04792  6.80%  39.8   25s
+ 35587  8483   -0.04596   29   15   -0.04487   -0.04765  6.20%  40.4   30s
+ 42940  9245     cutoff   31        -0.04487   -0.04738  5.61%  40.7   35s
+ 50331  9869     cutoff   28        -0.04487   -0.04718  5.15%  40.7   40s
+ 57958 10248   -0.04515   37   11   -0.04487   -0.04699  4.74%  40.5   48s
+ 59713 10199     cutoff   33        -0.04487   -0.04699  4.74%  40.4   50s
+*65264 10114              38      -0.0449785   -0.04680  4.06%  40.2   53s
+ 67112  9890     cutoff   31        -0.04498   -0.04675  3.93%  40.2   55s
+ 75638  9424     cutoff   30        -0.04498   -0.04656  3.51%  39.7   60s
+ 84283  8463   -0.04572   28   20   -0.04498   -0.04634  3.04%  39.1   65s
+ 92340  7180   -0.04532   32   16   -0.04498   -0.04615  2.60%  38.4   70s
+ 100252  5467   -0.04592   25   22   -0.04498   -0.04592  2.10%  37.6   75s
+ 108428  2936   -0.04561   31   17   -0.04498   -0.04561  1.40%  36.7   80s
+*113866     0              44      -0.0451555   -0.04527  0.26%  35.9   82s
+*114112     0              35      -0.0452563   -0.04527  0.04%  35.8   82s
+*114113     0              33      -0.0452727   -0.04527  0.00%  35.8   82s
+
+Cutting planes:
+  Gomory: 1
+  Implied bound: 6
+  Flow cover: 4
+  Lazy constraints: 2340
+
+Explored 114114 nodes (4089632 simplex iterations) in 82.93 seconds
+Thread count was 8 (of 16 available processors)
+
+Solution count 10: -0.0452727 -0.0452563 -0.0451555 ... -0.0405917
+
+Solve interrupted
+Best objective -4.527265844691e-02, best bound -4.527265844691e-02, gap 0.0000%
+
+Starting MIP-solver-driven algorithm
+
+MIP-solver-driven algorithm summary:
+ - Status               =        Optimal
+ - Best feasible        =  -4.527266e-02
+ - Best bound           =  -4.527266e-02
+ - Relative opt. gap    =      0.000e+00
+ - Total time (s)       =       8.29e+01
+
+Timers (s):
+ - Setup                =   9.30e-04
+ -- Transform data      =   1.79e-04
+ -- Create conic data   =   0.00e+00
+ -- Create MIP data     =   7.51e-04
+ - Algorithm            =   8.29e+01
+ -- Solve relaxation    =   0.00e+00
+ -- Get relaxation cuts =   0.00e+00
+ -- MIP solver driving  =   8.29e+01
+ -- Solve subproblems   =   0.00e+00
+ -- Get subproblem cuts =   0.00e+00
+ -- Get separation cuts =   5.88e-02
+
+Counters:
+ - Lazy callbacks       =   295
+ -- Integer repeats     =     0
+ -- Conic subproblems   =     0
+ -- Feasible solutions  =    61
+ --- From subproblems   =     0
+ --- In lazy callback   =    61
+ - Heuristic callbacks  =     0
+ -- Solutions passed    =     0
+
+Solution returned by MIP solver
+
+Rounds of full separation/subproblem cuts, and count of cuts added:
+Cone             | Subp.  | Sep.   | Total  | Relax. | Viol. 
+    Second order |      0 |    203 |   2696 |      0 |   2696
+   Primal expon. |      0 |   1781 |   1781 |      0 |   1781
+   Pos. semidef. |      0 |    259 |    259 |      0 |    259
+
+0 numerically unstable disaggregated SOC cuts
+
+Distance to feasibility (negative indicates strict feasibility):
+Cone             | Variable  | Constraint
+          Linear |  0.00e+00 |  6.11e-17
+    Second order |        NA |  8.97e-09
+   Primal expon. |        NA |  1.17e-08
+   Pos. semidef. |        NA |  6.18e-09
+
+Distance to integrality of integer/binary variables:
+         integer |  0.00e+00
+
+#STATUS# Optimal
+#OBJVAL# -0.04527265844691436
+#OBJBOUND# -0.04527265844691436
+#NODECOUNT# 114114
+#TIMESOLVER# 82.93891286849976
+#TIMEALL# 82.93979692459106
+#SOLUTION# [0.0,0.0,0.0,0.0,0.0,0.08763767203114962,0.0,0.01107733256156349,0.0,0.0,0.02941621093206394,0.0,0.0,0.0,0.0,0.0,0.0,0.06922416105574114,0.0,0.05459913658521035,0.07911930044982617,0.0,0.0,0.0,0.0,0.0,0.0,0.027892548937807373,0.03932863730243436,0.039851304751449095,0.0,0.0,0.0,0.0,0.0,0.019341154909933995,0.0,0.0410470542776371,0.0,0.0,-0.0,-0.0,1.0,1.0,1.0,-0.0,-0.0,-0.0,-0.0,1.0,-0.0,-0.0,1.0,1.0,-0.0,-0.0,-0.0,-0.0,-0.0,-0.0,-0.0,-0.0,-0.0,-0.0,-0.0,-0.0,1.0,-0.0,-0.0,1.0,0.0,-0.0,-0.0,1.0,-0.0,-0.0,1.0,-0.0,-0.0,2.0517312206035214,-0.0009242405161511327,0.005141622682643471,0.0033330041090000625,0.0015777135311523856,0.001655624350518106,0.015616874513022662,0.0025047236664273104,0.011654855986388091,0.003058011122359999,0.0023002851483050857,0.01565005984223549,-0.00137710345959051,0.004184768704088703,0.0038681770551580895,0.0017119704182933513,0.0023024485626411597,0.0022959074117133715,0.019515795551444552,0.0020112906577477506,0.021863701979987882,0.016185666645351315,0.002399150828946128,0.0013196918398412354,0.0024558950455867944,0.0015381653440944317,0.0029248096509548478,0.0019965819483458835,0.019277863045706264,0.014779230101065315,0.02562103967753014,0.0026645313420156896,0.0017585861142290593,0.005770259145088526,0.0020092275339471137,0.003942909335063444,0.019287653950588412,0.0009246501960078952,0.021652628719442072,0.0011497918669940556,0.00048378514842203,0.016315947519701907,0.0024020263754321366,0.0013205588124783518,0.002458902773896805,0.0015393405135981579,0.0029290827382025177,0.0019985735507243724,0.019462496182637033,0.01488790876310736,0.025946478818961918,0.002668076232872056,0.0017601312134370615,0.005786874210626258,0.002011241997319142,0.003950671019102271,-0.01605397241631199,-0.0023962759101311794,-0.0013188241140103356,-0.002452882414318768,-0.0015369892048910875,-0.002920528296351487,-0.0019945877248526123,-0.019090841609456302,-0.014669485925176463,-0.025289981337928223,-0.0026609848626979087,-0.0017570391838674442,-0.0057535801161940955,-0.0020072103795845163,-0.003935127226324925]

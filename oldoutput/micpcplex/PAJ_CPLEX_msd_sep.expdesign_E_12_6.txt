@@ -1,0 +1,121 @@
+
+User cuts applied:  129
+
+Root node processing (before b&c):
+  Real time             =    0.52 sec. (4.00 ticks)
+Sequential b&c:
+  Real time             =    0.00 sec. (0.00 ticks)
+                          ------------
+Total (root+branch&cut) =    0.52 sec. (4.00 ticks)
+#SOLVERNAME# PAJ_CPLEX_msd_sep
+#SOLVER# Pajarito.PajaritoSolver(3, 3600.0, 1.0e-5, true, CPLEX.CplexSolver(Any[(:CPX_PARAM_THREADS, 1), (:CPX_PARAM_SCRIND, 1), (:CPX_PARAM_EPINT, 1.0e-9), (:CPX_PARAM_EPRHS, 1.0e-8), (:CPX_PARAM_EPGAP, 1.0e-5)]), Pajarito.UnsetSolver(), 0, false, true, Pajarito.UnsetSolver(), false, false, false, false, true, false, false, true, false, true, true, true, true, false, true, 10.0, true, true, false, true, 1.0e-12, 1.0e-8, false, "")
+#INSTANCE# expdesign_E_12_6.cbf.gz
+#TIMELIMIT# 3600.0
+
+Problem dimensions:
+       variables |      50
+     constraints |      98
+   nonzeros in A |     563
+
+Cones summary:
+Cone             | Count   | Min dim.  | Max dim. 
+   Pos. semidef. |       1 |       6^2 |       6^2
+
+Variable types:
+      continuous |      38
+         integer |      12
+
+Transforming data...               0.00s
+
+Building MIP model...              0.00s
+Warning: Control callbacks may disable some MIP features.
+Tried aggregator 3 times.
+MIP Presolve eliminated 40 rows and 1 columns.
+MIP Presolve modified 390 coefficients.
+Aggregator did 30 substitutions.
+Reduced MIP has 43 rows, 19 columns, and 522 nonzeros.
+Reduced MIP has 0 binaries, 12 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.00 sec. (0.48 ticks)
+MIP emphasis: balance optimality and feasibility.
+MIP search method: traditional branch-and-cut.
+Parallel mode: none, using 1 thread.
+Root relaxation solution time = 0.00 sec. (0.15 ticks)
+
+        Nodes                                         Cuts/
+   Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
+
+      0     0       -0.7785     7                     -0.7785       12         
+*     0+    0                           -0.1771       -0.7785           339.66%
+      0     0       -0.6690     7       -0.1771      Fract: 6       17  277.85%
+*     0+    0                           -0.2241       -0.6690           198.60%
+      0     0       -0.6164     8       -0.2241      Fract: 4       21  175.10%
+*     0+    0                           -0.4072       -0.6164            51.39%
+*     0+    0                           -0.4329       -0.5885            35.95%
+*     0+    0                           -0.4350       -0.5885            35.30%
+      0     2       -0.5242     8       -0.4350       -0.5181       21   19.12%
+Elapsed time = 0.01 sec. (5.68 ticks, tree = 0.01 MB, solutions = 5)
+*    23    15      integral     0       -0.4623       -0.5062       74    9.50%
+*   134     1      integral     0       -0.4624       -0.4626      355    0.04%
+
+Starting MIP-solver-driven algorithm
+
+MIP-solver-driven algorithm summary:
+ - Status               =        Optimal
+ - Best feasible        =  -4.624473e-01
+ - Best bound           =  -4.624473e-01
+ - Relative opt. gap    =      0.000e+00
+ - Total time (s)       =       3.73e-02
+
+Timers (s):
+ - Setup                =   4.01e-04
+ -- Transform data      =   1.00e-04
+ -- Create conic data   =   0.00e+00
+ -- Create MIP data     =   3.01e-04
+ - Algorithm            =   3.69e-02
+ -- Solve relaxation    =   0.00e+00
+ -- Get relaxation cuts =   0.00e+00
+ -- MIP solver driving  =   3.67e-02
+ -- Solve subproblems   =   0.00e+00
+ -- Get subproblem cuts =   0.00e+00
+ -- Get separation cuts =   1.75e-03
+
+Counters:
+ - Lazy callbacks       =    30
+ -- Integer repeats     =     0
+ -- Conic subproblems   =     0
+ -- Feasible solutions  =     8
+ --- From subproblems   =     0
+ --- In lazy callback   =     8
+ - Heuristic callbacks  =     0
+ -- Solutions passed    =     0
+
+Solution returned by MIP solver
+
+Rounds of full separation/subproblem cuts, and count of cuts added:
+Cone             | Subp.  | Sep.   | Total  | Relax. | Viol. 
+   Pos. semidef. |      0 |     23 |     31 |      0 |     31
+
+Distance to feasibility (negative indicates strict feasibility):
+Cone             | Variable  | Constraint
+          Linear |        NA |  2.35e-16
+   Pos. semidef. |        NA | -1.73e-16
+
+Distance to integrality of integer/binary variables:
+         integer |  0.00e+00
+
+#STATUS# Optimal
+#OBJVAL# -0.4624473412327834
+#OBJBOUND# -0.4624473412327834
+#NODECOUNT# 136
+#TIMESOLVER# 0.03729104995727539
+#TIMEALL# 0.037602901458740234
+#SOLUTION# [0.4624473412327834,0.4624473412327834,1.379305364649762,0.23176831273480047,0.10840294558134733,0.02547097601425168,-0.2630934236773541,0.7801881639770956,0.23176831273480047,1.6400477409217837,-0.7232581604398866,-0.23379747754521735,0.7190728434089663,0.5660505588011556,0.10840294558134733,-0.7232581604398866,1.3054328993087296,0.2962067400794511,-0.8043491768239506,-0.20522139874074394,0.02547097601425168,-0.23379747754521735,0.2962067400794511,0.705754464957437,-0.11925476616549724,-0.031294828911440975,-0.2630934236773541,0.7190728434089663,-0.8043491768239506,-0.11925476616549724,1.452575880810956,0.1284259857377805,0.7801881639770956,0.5660505588011556,-0.20522139874074394,-0.031294828911440975,0.1284259857377805,1.410331393578001,4.0,1.0,1.0,1.0,2.0,4.0,-0.0,-0.0,2.0,3.0,-0.0,-0.0]
+
+User cuts applied:  31
+
+Root node processing (before b&c):
+  Real time             =    0.01 sec. (5.68 ticks)
+Sequential b&c:
+  Real time             =    0.02 sec. (11.94 ticks)
+                          ------------
+Total (root+branch&cut) =    0.04 sec. (17.62 ticks)

@@ -1,0 +1,57 @@
+Tried aggregator 2 times.
+MIQCP Presolve eliminated 78 rows and 20 columns.
+Aggregator did 8 substitutions.
+Reduced MIQCP has 22 rows, 39 columns, and 54 nonzeros.
+Reduced MIQCP has 4 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Reduced MIQCP has 9 quadratic constraints.
+Presolve time = 0.00 sec. (0.11 ticks)
+Probing time = 0.00 sec. (0.00 ticks)
+MIP emphasis: balance optimality and feasibility.
+MIP search method: dynamic search.
+Parallel mode: none, using 1 thread.
+Root relaxation solution time = 0.00 sec. (0.02 ticks)
+
+        Nodes                                         Cuts/
+   Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
+
+      0     0        0.0000     0                      0.0000        0         
+      0     0        0.0000     2                     Cone: 6        5         
+      0     0        0.0000     4                    Cone: 13       11         
+      0     0        0.0000     3                    Cone: 21       17         
+      0     0        0.0000     4                    Cone: 26       21         
+      0     0        0.0000     4                    Cone: 33       25         
+      0     0        0.0000     4                    Cone: 39       30         
+      0     0        0.0000     4                    Cone: 53       40         
+      0     0        0.0000     4                    Cone: 59       42         
+      0     0        0.0000     4                    Cone: 65       44         
+      0     0        0.0000     4                    Cone: 70       46         
+      0     0        0.0000     4                      0.0000       46         
+*     0+    0                            1.1616        0.0000           100.00%
+      0     0        0.0347     2        1.1616      Fract: 2       59   97.01%
+      0     0        0.3438     4        1.1616      Fract: 1       71   70.41%
+*     0+    0                            1.0727        0.3438            67.95%
+      0     2        0.3438     4        1.0727        0.3562       71   66.79%
+Elapsed time = 0.02 sec. (10.41 ticks, tree = 0.01 MB, solutions = 4)
+*    13     4      integral     0        1.0727        0.7880      169   26.54%
+*    20+    2                            1.0727        0.8285            22.76%
+#SOLVERNAME# CPLEX_MISOCP
+#SOLVER# CPLEX.CplexSolver(Any[(:CPX_PARAM_THREADS, 1), (:CPX_PARAM_TILIM, 3600.0), (:CPX_PARAM_SCRIND, 1), (:CPX_PARAM_EPINT, 1.0e-8), (:CPX_PARAM_EPRHS, 1.0e-7), (:CPX_PARAM_EPGAP, 1.0e-5)])
+#INSTANCE# estein4_C.cbf.gz
+#TIMELIMIT# 3600.0
+#STATUS# Optimal
+#OBJVAL# 1.0726936885232519
+#OBJBOUND# 1.0726936885232519
+#NODECOUNT# 29
+#TIMESOLVER# 0.028789043426513672
+#TIMEALL# 1.4773218631744385
+#SOLUTION# [0.7895650000095434,0.6555440001755717,0.6255304645678884,0.5279166555685333,0.330922737875848,0.19238399999045652,0.2692549998244284,0.829975,0.35641853543211155,0.3968823444314668,2.402281689302966e-10,4.8827584385928827e-11,-9.515505486850564e-11,0.829975,0.1640345354993568,0.12762734452089472,0.829975,-0.11206499991548487,-0.5028649999367117,0.3788193904221978,0.051969535515749836,-0.3752376552463972,0.829975,-0.3077389998564158,-0.0692350000718348,0.15511492196405446,-0.1437044644153189,0.05839234454265916,0.20783663802092336,0.1640345354582838,0.1276273446213714,0.330922737875848,0.0,2.402281689302966e-10,0.0,0.0,0.3788193904221978,0.0,0.15511492196405446,0.20783663802092336,1.0,0.0,1.0,0.0,0.0,1.0,0.0,1.0,1.0,0.0,1.0,0.0,1.0,1.0,0.0,1.0,0.0,0.0,0.499052262124152,0.0,0.8299749997597718,0.0,0.0,0.4511556095778022,0.0,0.6748600780359455,0.6221383619790767]
+
+Gomory fractional cuts applied:  2
+Cone linearizations applied:  117
+
+Root node processing (before b&c):
+  Real time             =    0.02 sec. (10.41 ticks)
+Sequential b&c:
+  Real time             =    0.01 sec. (7.74 ticks)
+                          ------------
+Total (root+branch&cut) =    0.03 sec. (18.14 ticks)

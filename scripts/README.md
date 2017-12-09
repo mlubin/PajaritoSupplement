@@ -30,7 +30,7 @@ julia scripts/process_output.jl oldoutput/micp results/micp.csv
 # Processing CSV file
 julia scripts/process_csv.jl check results/micp.csv
 
-# If there are runs to exclude, list them in an "exclude" file (analysis/micp_exclude.txt)
+# Violations are probably very minimal, so ignore (if there are MAJOR violations to exclude, list them in an "exclude" file (analysis/micp_exclude.txt))
 
 # Generating table with status counts
 julia scripts/process_csv.jl statuscounts results/micp.csv analysis/micp_statuscounts.csv --exclude=analysis/micp_exclude.txt
@@ -39,6 +39,10 @@ julia scripts/process_csv.jl statuscounts results/micp.csv analysis/micp_statusc
 julia scripts/process_csv.jl geomeans results/micp.csv --exclude=analysis/micp_exclude.txt > analysis/micp_geomeans.txt
 
 # Generating performance profiles
+julia scripts/process_csv.jl perfprofile results/micp.csv analysis/scale_perf.jld PAJ_CPLEX_MOSEK_dualonly PAJ_CPLEX_MOSEK_dualonlynoscale --exclude=analysis/micp_exclude.txt
+
+
+
 julia scripts/process_csv.jl perfprofile results/micp.csv analysis/scale_perf.jld PAJ_CPLEX_MOSEK_dualonly PAJ_CPLEX_MOSEK_dualonlynoscale --exclude=analysis/micp_exclude.txt
 julia analysis/scale_perf.jl
 julia scripts/process_csv.jl perfprofile results/micp.csv analysis/sepcuts_perf.jld PAJ_CPLEX_MOSEK PAJ_CPLEX_MOSEK_dualonly PAJ_CPLEX_MOSEK_primonlynorelax --exclude=analysis/micp_exclude.txt

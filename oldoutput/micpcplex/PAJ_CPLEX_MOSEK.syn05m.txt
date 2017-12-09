@@ -1,0 +1,91 @@
+#SOLVERNAME# PAJ_CPLEX_MOSEK
+#SOLVER# Pajarito.PajaritoSolver(3, 3600.0, 1.0e-5, false, CPLEX.CplexSolver(Any[(:CPX_PARAM_THREADS, 1), (:CPX_PARAM_SCRIND, 0), (:CPX_PARAM_EPINT, 1.0e-9), (:CPX_PARAM_EPRHS, 1.0e-8), (:CPX_PARAM_EPGAP, 0.0)]), Pajarito.UnsetSolver(), 0, false, true, Mosek.MosekSolver(Any[(:LOG, 0), (:NUM_THREADS, 1), (:MSK_DPAR_INTPNT_CO_TOL_REL_GAP, 1.0e-10), (:MSK_DPAR_INTPNT_CO_TOL_PFEAS, 1.0e-10), (:MSK_DPAR_INTPNT_CO_TOL_DFEAS, 1.0e-10), (:MSK_DPAR_INTPNT_CO_TOL_NEAR_REL, 1000.0)]), true, true, false, false, true, false, false, true, false, true, true, true, true, false, true, 10.0, false, false, false, true, 1.0e-12, 1.0e-8, false, "")
+#INSTANCE# syn05m.cbf.gz
+#TIMELIMIT# 3600.0
+
+Problem dimensions:
+       variables |      24
+     constraints |      65
+   nonzeros in A |     117
+
+Cones summary:
+Cone             | Count   | Min dim.  | Max dim. 
+   Primal expon. |       3 |         3 |         3
+
+Variable types:
+      continuous |      19
+         integer |       5
+
+Transforming data...               0.00s
+
+Creating conic subproblem...       0.13s
+
+Building MIP model...              0.00s
+
+Solving conic relaxation...        0.00s
+ - Relaxation status    =        Optimal
+ - Relaxation bound     =   -1144.524264
+
+Starting iterative algorithm
+
+Iter. | Best feasible  | Best bound     | Rel. gap    | Time (s)   
+    1 |  -8.374449e+02 |  -8.395283e+02 |   2.488e-03 |   1.512e-01
+
+Iter. | Best feasible  | Best bound     | Rel. gap    | Time (s)   
+    2 |  -8.377324e+02 |  -8.377324e+02 |   0.000e+00 |   1.689e-01
+
+Iterative algorithm summary:
+ - Status               =        Optimal
+ - Best feasible        =  -8.377324e+02
+ - Best bound           =  -8.377324e+02
+ - Relative opt. gap    =      0.000e+00
+ - Total time (s)       =       1.69e-01
+
+Timers (s):
+ - Setup                =   1.32e-01
+ -- Transform data      =   9.72e-05
+ -- Create conic data   =   1.32e-01
+ -- Create MIP data     =   2.12e-04
+ - Algorithm            =   3.67e-02
+ -- Solve relaxation    =   2.27e-03
+ -- Get relaxation cuts =   1.33e-02
+ -- Solve MIP models    =   1.84e-02
+ -- Solve subproblems   =   2.12e-03
+ -- Get subproblem cuts =   9.18e-05
+ -- Get separation cuts =   5.23e-06
+
+Counters:
+ - Iterations           =     2
+ -- Integer repeats     =     0
+ -- Conic subproblems   =     2
+ --- Infeasible         =     0
+ --- Optimal            =     2
+ --- Suboptimal         =     0
+ --- UserLimit          =     0
+ --- ConicFailure       =     0
+ --- Other status       =     0
+ -- Feasible solutions  =     3
+ --- From subproblems   =     2
+ --- From MIP solve     =     1
+
+Solution returned by MIP solver
+
+Rounds of full separation/subproblem cuts, and count of cuts added:
+Cone             | Subp.  | Sep.   | Total  | Relax. | Viol. 
+   Primal expon. |      5 |      0 |      3 |      2 |      1
+
+Distance to feasibility (negative indicates strict feasibility):
+Cone             | Variable  | Constraint
+          Linear |        NA |  1.89e-10
+   Primal expon. |        NA |  5.48e-11
+
+Distance to integrality of integer/binary variables:
+         integer |  5.79e-10
+
+#STATUS# Optimal
+#OBJVAL# -837.7324009465243
+#OBJBOUND# -837.7324009465243
+#NODECOUNT# NaN
+#TIMESOLVER# 0.16891789436340332
+#TIMEALL# 0.16930294036865234
+#SOLUTION# [-0.0,5.754948654716083,-0.0,2.1655804906128646e-10,2.8774743273580414,6.585609835241257e-11,0.9999999999341439,-0.0,5.793038428728421e-10,1.0,837.7324009465243,10.0,6.585615088575442e-10,9.999999999341439,1.6389542004871788e-10,2.8774743273580405,2.877474327521936,2.877474327521936,-0.0,1.6389542004871788e-10,2.8774743273580414,-0.9999999997702484,2.397895272743487,-0.666666666136092]
