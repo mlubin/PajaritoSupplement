@@ -197,6 +197,18 @@ solvermap = Dict(
     init_soc_one=false, init_soc_inf=false, init_exp=false, init_sdp_lin=false, init_sdp_soc=false,
     ) end),
 
+    # Paj Gurobi MOSEK SOC in MIP
+    "PAJ_Gurobi_MOSEK_msd_socinmip" =>
+    (["Gurobi","Mosek"], quote PajaritoSolver(
+    mip_solver=Gurobi.GurobiSolver(OutputFlag=1, Threads=8, IntFeasTol=tol_int, FeasibilityTol=tol_feas, MIPGap=rgap),
+    cont_solver=MosekSolver(LOG=0, NUM_THREADS=8, MSK_DPAR_INTPNT_CO_TOL_REL_GAP=1e-10, MSK_DPAR_INTPNT_CO_TOL_PFEAS=1e-10, MSK_DPAR_INTPNT_CO_TOL_DFEAS=1e-10, MSK_DPAR_INTPNT_CO_TOL_NEAR_REL=1e3),
+    log_level=logl, timeout=tlim, rel_gap=rgap, prim_cut_feas_tol=tol_feas,
+    mip_solver_drives=true,
+    soc_in_mip=true,
+    ) end),
+
+
+
 
 
     # Paj CPLEX sep only
@@ -230,7 +242,7 @@ solvermap = Dict(
     log_level=logl, timeout=tlim, rel_gap=rgap, prim_cut_feas_tol=tol_feas,
     mip_solver_drives=true,
     ) end),
-    
+
     # # Paj CPLEX MOSEK subp only
     # "PAJ_CPLEX_MOSEK_subponly" =>
     # (["CPLEX","Mosek"], quote PajaritoSolver(
@@ -336,17 +348,15 @@ solvername = ARGS[1]
 tlim = parse(Float64, ARGS[2])
 datafolder = ARGS[3]
 
-# Force Pajarito to compile on a small instance for the solver to avoid measuring compilation time, keep quiet
-if startswith(solvername, "PAJ")
-    TT = STDOUT
-    solver = getsolver(solvername, 60., 3, rgap)
-    open("/dev/null", "w") do fd
-        redirect_stdout(fd)
-        instance = readcbfdata(joinpath(datafolder, "compile.cbf.gz"))
-        solveprint(instance, solver)
-    end
-    redirect_stdout(TT)
+# Force solver to compile on a small instance for the solver to avoid measuring compilation time, keep quiet
+TT = STDOUT
+solver = getsolver(solvername, 60., 3, rgap)
+open("/dev/null", "w") do fd
+    redirect_stdout(fd)
+    instance = readcbfdata(joinpath(datafolder, "compile.cbf.gz"))
+    solveprint(instance, solver)
 end
+redirect_stdout(TT)
 
 instancename = ARGS[4]
 
