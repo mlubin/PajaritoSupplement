@@ -23,5 +23,5 @@ Plots.savefig(joinpath(dirname(@__FILE__),"sepcuts_iter_iters.tex"))
 performance_profile(time_table[:,[2,4]], ["subp+","sep"], logscale=false, ymax=1.0, xmax=6, linewidth=3)
 Plots.savefig(joinpath(dirname(@__FILE__),"sepcuts_msd_time.tex"))
 
-performance_profile(itndcount_table[:,[2,4]], ["subp+","sep"], logscale=false, ymax=1.0, xmax=25, linewidth=3)
+performance_profile(itndcount_table[:,[2,4]], ["subp+","sep"], logscale=false, ymax=1.0, xmax=15, linewidth=3)
 Plots.savefig(joinpath(dirname(@__FILE__),"sepcuts_msd_nodes.tex"))
