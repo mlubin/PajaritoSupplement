@@ -10,7 +10,7 @@ mkdir -p output
 
 for SOLVER in PAJ_Gurobi_MOSEK_msd PAJ_Gurobi_MOSEK_msd_socinmip PAJ_Gurobi_msd_sep
 do
-    $JULIA scripts/runmeta.jl --nochecktimemem $SOLVER 86400 40000000 cbfs/ sets/gams01.txt
+    $JULIA scripts/runmeta.jl --nochecktimemem $SOLVER 86400 40000000 cbfs/micp/ sets/gams01.txt
 done
 
 mkdir -p output/gams01
