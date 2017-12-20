@@ -341,7 +341,7 @@ rgap = 1e-5
 
 # Pajarito MIP solver options
 tol_int = 1e-9
-tol_feas = 1e-7
+tol_feas = 1e-8
 tol_gap = 0.
 
 solvername = ARGS[1]
