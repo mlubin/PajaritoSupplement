@@ -193,12 +193,34 @@ solvermap = Dict(
     init_soc_one=false, init_soc_inf=false, init_exp=false, init_sdp_lin=false, init_sdp_soc=false,
     ) end),
 
+    # Paj Gurobi MOSEK scale, subp only, no init
+    # NOTE feas tol is 1e-6
+    "PAJ_Gurobi_MOSEK_scale_subponly_noinit" =>
+    (["Gurobi","Mosek"], quote PajaritoSolver(
+    mip_solver=Gurobi.GurobiSolver(OutputFlag=0, Threads=8, IntFeasTol=tol_int, FeasibilityTol=1e-6, MIPGap=tol_gap),
+    cont_solver=MosekSolver(LOG=0, NUM_THREADS=8, MSK_DPAR_INTPNT_CO_TOL_REL_GAP=1e-10, MSK_DPAR_INTPNT_CO_TOL_PFEAS=1e-10, MSK_DPAR_INTPNT_CO_TOL_DFEAS=1e-10, MSK_DPAR_INTPNT_CO_TOL_NEAR_REL=1e3),
+    log_level=logl, timeout=tlim, rel_gap=rgap, prim_cut_feas_tol=1e-6,
+    prim_cuts_assist=false,
+    init_soc_one=false, init_soc_inf=false, init_exp=false, init_sdp_lin=false, init_sdp_soc=false,
+    ) end),
+
+    "PAJ_Gurobi_MOSEK_msd_scale_subponly_noinit" =>
+    (["Gurobi","Mosek"], quote PajaritoSolver(
+    mip_solver=Gurobi.GurobiSolver(OutputFlag=1, Threads=8, IntFeasTol=tol_int, FeasibilityTol=1e-6, MIPGap=rgap),
+    cont_solver=MosekSolver(LOG=0, NUM_THREADS=8, MSK_DPAR_INTPNT_CO_TOL_REL_GAP=1e-10, MSK_DPAR_INTPNT_CO_TOL_PFEAS=1e-10, MSK_DPAR_INTPNT_CO_TOL_DFEAS=1e-10, MSK_DPAR_INTPNT_CO_TOL_NEAR_REL=1e3),
+    log_level=logl, timeout=tlim, rel_gap=rgap, prim_cut_feas_tol=1e-6,
+    mip_solver_drives=true,
+    prim_cuts_assist=false,
+    init_soc_one=false, init_soc_inf=false, init_exp=false, init_sdp_lin=false, init_sdp_soc=false,
+    ) end),
+
     # Paj Gurobi MOSEK noscale, subp only, no init
+    # NOTE feas tol is 1e-6
     "PAJ_Gurobi_MOSEK_noscale_subponly_noinit" =>
     (["Gurobi","Mosek"], quote PajaritoSolver(
-    mip_solver=Gurobi.GurobiSolver(OutputFlag=0, Threads=8, IntFeasTol=tol_int, FeasibilityTol=tol_feas, MIPGap=tol_gap),
+    mip_solver=Gurobi.GurobiSolver(OutputFlag=0, Threads=8, IntFeasTol=tol_int, FeasibilityTol=1e-6, MIPGap=tol_gap),
     cont_solver=MosekSolver(LOG=0, NUM_THREADS=8, MSK_DPAR_INTPNT_CO_TOL_REL_GAP=1e-10, MSK_DPAR_INTPNT_CO_TOL_PFEAS=1e-10, MSK_DPAR_INTPNT_CO_TOL_DFEAS=1e-10, MSK_DPAR_INTPNT_CO_TOL_NEAR_REL=1e3),
-    log_level=logl, timeout=tlim, rel_gap=rgap, prim_cut_feas_tol=tol_feas,
+    log_level=logl, timeout=tlim, rel_gap=rgap, prim_cut_feas_tol=1e-6,
     scale_subp_cuts=false,
     prim_cuts_assist=false,
     init_soc_one=false, init_soc_inf=false, init_exp=false, init_sdp_lin=false, init_sdp_soc=false,
@@ -206,9 +228,9 @@ solvermap = Dict(
 
     "PAJ_Gurobi_MOSEK_msd_noscale_subponly_noinit" =>
     (["Gurobi","Mosek"], quote PajaritoSolver(
-    mip_solver=Gurobi.GurobiSolver(OutputFlag=1, Threads=8, IntFeasTol=tol_int, FeasibilityTol=tol_feas, MIPGap=rgap),
+    mip_solver=Gurobi.GurobiSolver(OutputFlag=1, Threads=8, IntFeasTol=tol_int, FeasibilityTol=1e-6, MIPGap=rgap),
     cont_solver=MosekSolver(LOG=0, NUM_THREADS=8, MSK_DPAR_INTPNT_CO_TOL_REL_GAP=1e-10, MSK_DPAR_INTPNT_CO_TOL_PFEAS=1e-10, MSK_DPAR_INTPNT_CO_TOL_DFEAS=1e-10, MSK_DPAR_INTPNT_CO_TOL_NEAR_REL=1e3),
-    log_level=logl, timeout=tlim, rel_gap=rgap, prim_cut_feas_tol=tol_feas,
+    log_level=logl, timeout=tlim, rel_gap=rgap, prim_cut_feas_tol=1e-6,
     mip_solver_drives=true,
     scale_subp_cuts=false,
     prim_cuts_assist=false,
