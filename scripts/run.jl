@@ -208,9 +208,6 @@ solvermap = Dict(
     ) end),
 
 
-
-
-
     # Paj CPLEX sep only
     "PAJ_CPLEX_sep" =>
     (["CPLEX"], quote PajaritoSolver(
