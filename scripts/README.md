@@ -30,7 +30,7 @@ julia scripts/process_output.jl oldoutput/micp results/micp.csv
 # Processing CSV file
 julia scripts/process_csv.jl check results/micp.csv
 
-# Violations are probably very minimal, so ignore (if there are MAJOR violations to exclude, list them in an "exclude" file (analysis/micp_exclude.txt))
+# If there are runs to exclude, list them in an "exclude" file (analysis/micp_exclude.txt)
 
 # Generating table with status counts
 julia scripts/process_csv.jl statuscounts results/micp.csv analysis/micp_statuscounts.csv --exclude=analysis/micp_exclude.txt
@@ -42,8 +42,6 @@ julia scripts/process_csv.jl geomeans results/micp.csv --exclude=analysis/micp_e
 julia scripts/process_csv.jl perfprofile results/micp.csv analysis/sepcuts_perf.jld PAJ_Gurobi_MOSEK PAJ_Gurobi_MOSEK_msd PAJ_Gurobi_sep PAJ_Gurobi_msd_sep --exclude=analysis/micp_exclude.txt
 julia analysis/sepcuts_perf.jl
 
-
-??
-julia scripts/process_csv.jl perfprofile results/micp.csv analysis/scale_perf.jld PAJ_CPLEX_MOSEK_dualonly PAJ_CPLEX_MOSEK_dualonlynoscale --exclude=analysis/micp_exclude.txt
+julia scripts/process_csv.jl perfprofile results/micp.csv analysis/scale_perf.jld PAJ_Gurobi_MOSEK_noscale_subponly_noinit PAJ_Gurobi_MOSEK_msd_noscale_subponly_noinit PAJ_Gurobi_MOSEK_scale_subponly_noinit PAJ_Gurobi_MOSEK_msd_scale_subponly_noinit --exclude=analysis/micp_exclude.txt
 julia analysis/scale_perf.jl
 ```

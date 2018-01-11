@@ -153,7 +153,7 @@ elseif arguments["geomeans"]
         for g in solvers
             r = exp(sum_by[g]/counter_by[g]) - shift
             if !isnan(r)
-                @printf("%20s %f\n", g, r)
+                @printf("%50s %f\n", g, r)
                 # println("$g $r")
             end
         end

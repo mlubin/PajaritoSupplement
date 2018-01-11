@@ -303,7 +303,7 @@ for (cnt, filename) in enumerate(resultfiles)
         newstatus = "excl"
     elseif status == "KilledTime" || status == "KilledMemory"
         newstatus = "lim"
-    elseif status == "" || status == "Error" || status == "FailedMIP"
+    elseif status == "" || status == "Error" || status == "FailedMIP" || status == "UnboundedOA" || status == "FailedOA"
         newstatus = "err"
     end
 
