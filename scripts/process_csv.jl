@@ -21,6 +21,8 @@ arguments = DocOpt.docopt(doc)
 
 # process the csv produced by process_output.jl
 results = readtable(arguments["<csvfile>"])
+println()
+
 
 # file listing manually excluded results
 # format by line: solver instance ignored comment
@@ -31,7 +33,7 @@ else
     excluded = []
 end
 
-function isexcluded(solver,inst)
+function isexcluded(solver, inst)
     for k in 1:length(excluded)
         if excluded[k][1] == solver && excluded[k][2] == inst
             return true
@@ -40,81 +42,64 @@ function isexcluded(solver,inst)
     return false
 end
 
+# exclude any in the exclude file
 for i in 1:size(results,1)
-    if isexcluded(results[i,:solver],results[i,:instance])
-        results[i,:calc_status] = "excl"
-    end
-    if isna(results[i,:calc_status])
-        results[i,:calc_status] = "blank"
+    if isexcluded(results[i, :solver], results[i, :instance])
+        results[i, :newstatus] = "excl"
     end
 end
+
 
 for solverlist in arguments["--bestof"]
     newsolver = split(solverlist)[1]
     best_of_solvers = split(solverlist)[2:end]
     newrows = []
-    for rowlist in groupby(results,:instance)
+    for rowlist in groupby(results, :instance)
         besttime = Inf
         beststatus = "blank"
-        inst = rowlist[1,:instance]
-        for i in 1:size(rowlist,1)
-            if rowlist[i,:solver] in best_of_solvers
-                if rowlist[i,:calc_status] == "conv"
-                    besttime = min(besttime,rowlist[i,:totaltime])
+        inst = rowlist[1, :instance]
+        for i in 1:size(rowlist, 1)
+            if rowlist[i, :solver] in best_of_solvers
+                if rowlist[i, :newstatus] == "conv"
+                    besttime = min(besttime, rowlist[i, :total_time])
                     beststatus = "conv"
-                elseif rowlist[i,:calc_status] in ["other","limit"]
+                elseif rowlist[i, :newstatus] in ["near", "lim"]
                     if beststatus != "conv"
-                        besttime = min(besttime,rowlist[i,:totaltime])
-                        beststatus = "limit"
+                        besttime = min(besttime, rowlist[i, :total_time])
+                        beststatus = "lim"
                     end
                 end
             end
         end
-        newrow = Dict{Symbol,Any}(n => NA for n in names(results))
+        newrow = Dict{Symbol,Any}(n => rowlist[1, n] for n in names(results))
         newrow[:instance] = inst
         newrow[:solver] = newsolver
-        newrow[:calc_status] = beststatus
-        newrow[:totaltime] = besttime
-        push!(newrows,newrow)
+        newrow[:newstatus] = beststatus
+        newrow[:total_time] = besttime
+        push!(newrows, newrow)
     end
     for r in newrows
         push!(results, r)
     end
 end
 
-optimal_runs = results[results[:calc_status] .== "conv",:]
 
-function printdf(df)
-    # lifted from DataFrames.show()
-    rowindices1 = 1:size(df,1)
-    rowindices2 = 1:0
-    maxwidths = DataFrames.getmaxwidths(df, rowindices1, rowindices2, :Rows)
-    DataFrames.showrows(STDOUT, df, 1:size(df,1), 1:0, maxwidths, false, :Row, true)
-    println()
-end
+conv_runs = results[results[:newstatus] .== "conv", :]
 
 if arguments["check"]
-    # problematic violations
-    viol = optimal_runs[(optimal_runs[:max_linear_violation] .> 1e-6) .| (optimal_runs[:max_soc_violation] .> 1e-5) .| (optimal_runs[:max_socrot_violation] .> 1e-5) .| (optimal_runs[:max_exp_violation] .> 1e-5) .| (optimal_runs[:max_psd_violation] .> 1e-4) .| (optimal_runs[:max_int_violation] .> 1e-6), :]
-
-    if size(viol,1) == 0
-        println("No problematic violations")
-    else
-        println("Problematic violations")
-        println(viol)
-    end
-
     # check for disagreements in objective value
-    for optval_by_instance in groupby(optimal_runs, :instance)
-        first_optval = optval_by_instance[1,:objval_reported]
-        sense = optval_by_instance[1,:sense]
-        inst = optval_by_instance[1,:instance]
-        for i in 2:size(optval_by_instance,1)
-            solver = optval_by_instance[i,:solver]
-            optval = optval_by_instance[i,:objval_reported]
-            if abs(optval-first_optval)/(abs(first_optval)+1e-5) > 1e-4
+    for optval_by_instance in groupby(conv_runs, :instance)
+        first_optval = optval_by_instance[1, :objval]
+        sense = optval_by_instance[1, :sense]
+        inst = optval_by_instance[1, :instance]
+        for i in 2:size(optval_by_instance, 1)
+            solver = optval_by_instance[i, :solver]
+            optval = optval_by_instance[i, :objval]
+            if abs(optval - first_optval)/(abs(first_optval) + 1e-5) > 1e-4
+                println()
                 println("Objective disagreement on instance $inst (sense = $sense)")
-                printdf(optval_by_instance[:,[:solver,:objval_reported,:objbound]])
+                show(optval_by_instance[:,[:solver, :objval, :objbound]])
+                println()
                 break
             end
         end
@@ -122,31 +107,33 @@ if arguments["check"]
 
     # check for duplicated runs
     for g1 in groupby(results, :instance)
-        for g2 in groupby(g1,:solver)
+        for g2 in groupby(g1, :solver)
             if size(g2,1) > 1
-                s = g2[1,:solver]
-                inst = g2[1,:instance]
+                s = g2[1, :solver]
+                inst = g2[1, :instance]
                 println("Multiple results for solver $s instance $inst")
             end
         end
     end
 
+
 elseif arguments["statuscounts"]
     # status counts by solver
-    statuses = sort(collect(unique(results[:calc_status])))
+    statuses = sort(collect(unique(results[:newstatus])))
     all_solvers = sort(collect(unique(results[:solver])))
-    status_table = NamedArray(zeros(Int,length(all_solvers),length(statuses)+1))
+    status_table = NamedArray(zeros(Int, length(all_solvers), length(statuses)+1))
     setnames!(status_table, all_solvers, 1)
-    setnames!(status_table, [statuses;"Total"], 2)
+    setnames!(status_table, [statuses; "Total"], 2)
     for i in 1:size(results,1)
-        status_table[results[i,:solver],results[i,:calc_status]] += 1
-        status_table[results[i,:solver],"Total"] += 1
+        status_table[results[i, :solver], results[i, :newstatus]] += 1
+        status_table[results[i, :solver], "Total"] += 1
     end
 
-    df2 = DataFrame(convert(Array,status_table))
-    names!(df2, convert(Vector{Symbol},names(status_table,2)))
-    df2[:solver] = names(status_table,1)
-    writetable(arguments["<csvfileout>"],df2)
+    df2 = DataFrame(convert(Array, status_table))
+    names!(df2, convert(Vector{Symbol}, names(status_table,2)))
+    df2[:solver] = names(status_table, 1)
+    writetable(arguments["<csvfileout>"], df2)
+
 
 elseif arguments["geomeans"]
     function shifted_geomean(table, field, shift, groupby)
@@ -156,115 +143,119 @@ elseif arguments["geomeans"]
         # prod(x_i + s)^(1/n) - s
         # compute prod(x_i+s)^(1/n) as
         # exp(sum(log(x_i+s))/n)
-        for i in 1:size(table,1)
-            if isna(table[i,field])
+        for i in 1:size(table, 1)
+            if ismissing(table[i, field])
                 continue
             end
-            sum_by[table[i,groupby]] += log(table[i,field] + shift)
-            counter_by[table[i,groupby]] += 1
+            sum_by[table[i, groupby]] += log(table[i, field] + shift)
+            counter_by[table[i, groupby]] += 1
         end
         for g in solvers
             r = exp(sum_by[g]/counter_by[g]) - shift
-            println("$g: $r")
+            if !isnan(r)
+                @printf("%20s %f\n", g, r)
+                # println("$g $r")
+            end
         end
     end
 
     time_shift = 10.0
     subproblem_shift = 1.0
-    nodecount_shift = 10.0
+    node_count_shift = 10.0
 
     # tidy data (needed for KilledX cases)
-    for i in 1:size(results,1)
-        if isna(results[i,:totaltime])
-            results[i,:totaltime] = results[i,:timelimit]
+    for i in 1:size(results, 1)
+        if ismissing(results[i, :total_time])
+            results[i, :total_time] = results[i, :timelimit]
         end
     end
 
     all_solvers = unique(results[:solver])
     all_optimal_instances = []
-    for g1 in groupby(optimal_runs, :instance)
+    for g1 in groupby(conv_runs, :instance)
         hassolver = falses(length(all_solvers))
-        for i in 1:size(g1,1)
-            solver = g1[i,:solver]
+        for i in 1:size(g1, 1)
+            solver = g1[i, :solver]
             idx = findnext(all_solvers, solver, 1)
             hassolver[idx] = true
         end
         if sum(hassolver) == length(all_solvers)
-            push!(all_optimal_instances, g1[1,:instance])
+            push!(all_optimal_instances, g1[1, :instance])
         end
     end
 
     println("$(length(all_optimal_instances)) instances solved optimally by all solvers\n")
     # subset of instances where all solvers got optimal
-    subset_of_all_optimal = optimal_runs[find(t-> t in all_optimal_instances, optimal_runs[:instance]),:]
+    subset_of_all_optimal = conv_runs[find(t-> t in all_optimal_instances, conv_runs[:instance]), :]
 
     println("\nShifted ($time_shift) geomean of solve time...")
     println("\n...on all")
-    shifted_geomean(results, :totaltime, time_shift, :solver)
+    shifted_geomean(results, :total_time, time_shift, :solver)
     println("\n...on solved by this solver")
-    shifted_geomean(optimal_runs, :totaltime, time_shift, :solver)
+    shifted_geomean(conv_runs, :total_time, time_shift, :solver)
     println("\n...on solved by all solvers")
-    shifted_geomean(subset_of_all_optimal, :totaltime, time_shift, :solver)
+    shifted_geomean(subset_of_all_optimal, :total_time, time_shift, :solver)
     println()
 
     println("\nShifted ($subproblem_shift) geomean of conic subproblem count...")
     println("\n...on all")
-    shifted_geomean(results, :conic_subproblem_count, subproblem_shift, :solver)
+    shifted_geomean(results, :conic_count, subproblem_shift, :solver)
     println("\n...on solved by this solver")
-    shifted_geomean(optimal_runs, :conic_subproblem_count, subproblem_shift, :solver)
+    shifted_geomean(conv_runs, :conic_count, subproblem_shift, :solver)
     println("\n...on solved by all solvers")
-    shifted_geomean(subset_of_all_optimal, :conic_subproblem_count, subproblem_shift, :solver)
+    shifted_geomean(subset_of_all_optimal, :conic_count, subproblem_shift, :solver)
     println()
 
     println("\nShifted ($subproblem_shift) geomean of iteration count...")
     println("\n...on all")
-    shifted_geomean(results, :iteration_count, subproblem_shift, :solver)
+    shifted_geomean(results, :iter_count, subproblem_shift, :solver)
     println("\n...on solved by this solver")
-    shifted_geomean(optimal_runs, :iteration_count, subproblem_shift, :solver)
+    shifted_geomean(conv_runs, :iter_count, subproblem_shift, :solver)
     println("\n...on solved by all solvers")
-    shifted_geomean(subset_of_all_optimal, :iteration_count, subproblem_shift, :solver)
+    shifted_geomean(subset_of_all_optimal, :iter_count, subproblem_shift, :solver)
     println()
 
-    println("\nShifted ($nodecount_shift) geomean of node count...")
+    println("\nShifted ($node_count_shift) geomean of node count...")
     println("\n...on all")
-    shifted_geomean(results, :nodecount, nodecount_shift, :solver)
+    shifted_geomean(results, :node_count, node_count_shift, :solver)
     println("\n...on solved by this solver")
-    shifted_geomean(optimal_runs, :nodecount, nodecount_shift, :solver)
+    shifted_geomean(conv_runs, :node_count, node_count_shift, :solver)
     println("\n...on solved by all solvers")
-    shifted_geomean(subset_of_all_optimal, :nodecount, nodecount_shift, :solver)
+    shifted_geomean(subset_of_all_optimal, :node_count, node_count_shift, :solver)
     println()
 
 elseif arguments["perfprofile"]
     solvers = arguments["<solver>"]
+
     # need a table of [time] X [solver] where each row is a solver
     time_rows = []
     itndcount_rows = []
     instance_names = String[]
-    for by_instance in groupby(optimal_runs, :instance)
-        time_row = fill(Inf,length(solvers))
-        itndcount_row = fill(Inf,length(solvers))
-        for i in 1:size(by_instance,1)
-            push!(instance_names,by_instance[1,:instance])
-            if by_instance[i,:calc_status] == "conv"
-                whichsolver = indexin([by_instance[i,:solver]],solvers)[1]
+    for by_instance in groupby(conv_runs, :instance)
+        time_row = fill(Inf, length(solvers))
+        itndcount_row = fill(Inf, length(solvers))
+        for i in 1:size(by_instance, 1)
+            push!(instance_names, by_instance[1, :instance])
+            if by_instance[i, :newstatus] == "conv"
+                whichsolver = indexin([by_instance[i, :solver]], solvers)[1]
                 if whichsolver != 0
-                    time_row[whichsolver] = by_instance[i,:totaltime]
-                    if !isna(by_instance[i,:iteration_count])
-                        itndcount_row[whichsolver] = by_instance[i,:iteration_count]
+                    time_row[whichsolver] = by_instance[i, :total_time]
+                    if !ismissing(by_instance[i, :iter_count])
+                        itndcount_row[whichsolver] = by_instance[i, :iter_count]
                     else
-                        @assert !isna(by_instance[i,:nodecount])
-                        itndcount_row[whichsolver] = by_instance[i,:nodecount]
+                        @assert !ismissing(by_instance[i, :node_count])
+                        itndcount_row[whichsolver] = by_instance[i, :node_count]
                     end
                 end # else not plotting this solver
             end # else not solved, Inf by default
         end
-        push!(time_rows,time_row')
-        push!(itndcount_rows,itndcount_row')
+        push!(time_rows, time_row')
+        push!(itndcount_rows, itndcount_row')
     end
     time_mat = vcat(time_rows...)
     itndcount_mat = vcat(itndcount_rows...)
+
     @assert endswith(arguments["<output_jld>"],".jld")
     save(arguments["<output_jld>"], "time_table", time_mat, "itndcount_table", itndcount_mat, "solvers", solvers, "instance_names", instance_names)
-    #p = performance_profile(mat, solvers, title="TITLE")
-    #Plots.savefig("perf.png")
 end
+println()

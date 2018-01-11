@@ -1,5 +1,5 @@
 
-Run the following commands from top directory of PajaritoSupplement. If Julia indicates that any packages need to be installed, do this.
+Run the following commands from top directory of PajaritoSupplement. If Julia indicates that any packages need to be installed, do this. Ignore deprecation warnings.
 
 # MISOCP solver comparisons
 ```

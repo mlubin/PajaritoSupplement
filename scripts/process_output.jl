@@ -18,7 +18,7 @@ end
 fd = open(joinpath(pwd(), ARGS[end]), "w")
 
 # Process into a CSV file with columns:
-println(fd,"solver,instance,sense,timelimit,status,objval_reported,objbound,calc_objgap,calc_status,solvertime,totaltime,nodecount,filename,rel_objval_error,max_linear_violation,max_soc_violation,max_socrot_violation,max_exp_violation,max_psd_violation,max_int_violation,validator_status,validator_relobjdiff,conic_subproblem_count,conic_optimal_count,conic_infeasible_count,conic_relaxation_status,conic_subproblem_time,conic_relaxation_time,mip_subproblem_time,iteration_count")
+println(fd,"solver,instance,filename,sense,timelimit,solver_time,total_time,status,newstatus,objval,objbound,calc_objgap,objval_error,validator_status,validator_relobjdiff,iter_count,node_count,conic_count,conic_opt_count,conic_inf_count,relax_status,relax_time,conic_time,mip_time,int_viol,lin_viol,soc_viol,socrot_viol,exp_viol,psd_viol")
 
 # From instance name to file name
 function find_instance(name)
@@ -52,7 +52,7 @@ end
 
 function violation_cone(subvec,cone)
     if cone == :Zero
-        return :Linear, maximum(abs,subvec)
+        return :Linear, maximum(abs, subvec)
     elseif cone == :NonNeg
         return :Linear, -minimum(min.(subvec, 0.))
     elseif cone == :NonPos
@@ -63,19 +63,19 @@ function violation_cone(subvec,cone)
         # (y,z,x) in RSOC <=> (sqrt2inv*(y+z),sqrt2inv*(-y+z),x) in SOC
         return :SOCRotated, max(0., sqrt(1/2*(subvec[1] - subvec[2])^2 + sum(abs2, subvec[3:end])) - 1/sqrt(2)*(subvec[1] + subvec[2]))
     elseif cone == :ExpPrimal
-        return :Exp, max(subvec[2]*exp(subvec[1]/subvec[2]) - subvec[3],0)
+        return :Exp, max(subvec[2]*exp(subvec[1]/subvec[2]) - subvec[3], 0)
     elseif cone == :Free
         return :Linear, 0.0
     elseif cone == :SDP
         smat = make_smat(subvec)
-        return :PSD, -min(eigmin(Symmetric(smat)),0.0)
+        return :PSD, -min(eigmin(Symmetric(smat)), 0.0)
     else
         error("Unrecognized cone $cone")
     end
 end
 
 
-function compute_violations(dat, solution)
+function compute_viols(dat, solution)
     c, A, b, con_cones, var_cones, vartypes, sense, objoffset = cbftompb(dat)
 
     if length(solution) > length(c)
@@ -86,36 +86,36 @@ function compute_violations(dat, solution)
     objval = dot(c,solution)
 
     y = b - A*solution
-    linear_violation = -Inf
-    soc_violation = -Inf
-    socrot_violation = -Inf
-    exp_violation = -Inf
-    psd_violation = -Inf
+    lin_viol = -Inf
+    soc_viol = -Inf
+    socrot_viol = -Inf
+    exp_viol = -Inf
+    psd_viol = -Inf
     for (cones,x) in [(var_cones,solution),(con_cones,y)]
         for (cone, idx) in cones
             t, viol = violation_cone(x[idx],cone)
             if t == :Linear
-                linear_violation = max(linear_violation,viol)
+                lin_viol = max(lin_viol,viol)
             elseif t == :SOC
-                soc_violation = max(soc_violation,viol)
+                soc_viol = max(soc_viol,viol)
             elseif t == :SOCRotated
-                socrot_violation = max(socrot_violation,viol)
+                socrot_viol = max(socrot_viol,viol)
             elseif t == :Exp
-                exp_violation = max(exp_violation,viol)
+                exp_viol = max(exp_viol,viol)
             elseif t == :PSD
-                psd_violation = max(psd_violation,viol)
+                psd_viol = max(psd_viol,viol)
             end
         end
     end
 
-    int_violation = 0.0
+    int_viol = 0.0
     for i in 1:length(vartypes)
         if vartypes[i] == :Int || vartypes[i] == :Bin
-            int_violation = max(int_violation, abs(solution[i]-round(solution[i])))
+            int_viol = max(int_viol, abs(solution[i] - round(solution[i])))
         end
     end
 
-    return objval, linear_violation, soc_violation, socrot_violation, exp_violation, psd_violation, int_violation
+    return objval, lin_viol, soc_viol, socrot_viol, exp_viol, psd_viol, int_viol
 end
 
 function validate_with_conic_solver(dat, solution)
@@ -160,7 +160,7 @@ function validate_with_conic_solver(dat, solution)
     return status, objval
 end
 
-for (cnt,filename) in enumerate(resultfiles)
+for (cnt, filename) in enumerate(resultfiles)
     if startswith(basename(filename), ".") || contains(filename,"META")
         continue
     end
@@ -171,33 +171,27 @@ for (cnt,filename) in enumerate(resultfiles)
     instance = join(split(basename(filename),".")[2:end-1],".")
     instance = string(instance,".cbf")
 
-    #solver = " "
-    #instance = " "
-    #sense = " "
-    timelimit = " "
-    status = " "
-    objval = NaN
-    objbound = NaN
-    solvertime = " "
-    totaltime = " "
-    nodecount = " "
-    rel_objval_error = " "
-    linear_violation = " "
-    soc_violation = " "
-    socrot_violation = " "
-    exp_violation = " "
-    psd_violation = " "
-    int_violation = " "
-    validator_status = " "
-    validator_relobjdiff = " "
-    conic_subproblem_count = " "
-    conic_optimal_count = " "
-    conic_infeasible_count = " "
-    conic_relaxation_status = " "
-    conic_subproblem_time = " "
-    conic_relaxation_time = " "
-    mip_subproblem_time = " "
-    iteration_count = " "
+    timelimit = ""
+    status = ""
+    objval = Inf
+    objbound = -Inf
+    solver_time = ""
+    total_time = ""
+    node_count = ""
+    lin_viol = ""
+    soc_viol = ""
+    socrot_viol = ""
+    exp_viol = ""
+    psd_viol = ""
+    int_viol = ""
+    conic_count = ""
+    conic_opt_count = ""
+    conic_inf_count = ""
+    relax_status = ""
+    conic_time = ""
+    relax_time = ""
+    mip_time = ""
+    iter_count = ""
     solution = []
 
     for line in eachline(filename)
@@ -219,75 +213,105 @@ for (cnt,filename) in enumerate(resultfiles)
         elseif startswith(line, "#OBJBOUND#")
             objbound = parse(Float64,split(line)[2])
         elseif startswith(line, "#TIMESOLVER#")
-            solvertime = split(line)[2]
+            solver_time = split(line)[2]
         elseif startswith(line, "#TIMEALL#")
-            totaltime = split(line)[2]
+            total_time = split(line)[2]
         elseif startswith(line, "#NODECOUNT#")
-            nodecount = split(line)[2]
+            node_count = split(line)[2]
         elseif startswith(line, "#SOLUTION#")
             solutionvec = split(line)[2]
             if startswith(solutionvec,'[') && endswith(solutionvec,']') && !startswith(solutionvec, "[]")
                 solution = [parse(Float64,x) for x in split(solutionvec[2:end-1],',')]
             end
         elseif startswith(line, " - Iterations           =")
-            iteration_count = split(line)[4]
+            iter_count = split(line)[4]
         elseif startswith(line, " -- Conic subproblems   =")
-            conic_subproblem_count = split(line)[5]
+            conic_count = split(line)[5]
         elseif startswith(line, " --- Optimal            =")
-            conic_optimal_count = split(line)[4]
+            conic_opt_count = split(line)[4]
         elseif startswith(line, " --- Infeasible         =")
-            conic_infeasible_count = split(line)[4]
+            conic_inf_count = split(line)[4]
         elseif startswith(line, " - Relaxation status    =")
-            conic_relaxation_status = split(line)[5]
+            relax_status = split(line)[5]
         elseif startswith(line, " -- Solve subproblems   =")
-            conic_subproblem_time = split(line)[5]
+            conic_time = split(line)[5]
         elseif startswith(line, " -- Solve relaxation    =")
-            conic_relaxation_time = split(line)[5]
+            relax_time = split(line)[5]
         elseif startswith(line, " -- Solve MIP models    =") || startswith(line, " -- MIP solver driving  =")
-            mip_subproblem_time = split(line)[6]
+            mip_time = split(line)[6]
         end
     end
 
     instancefile = find_instance(instance)
     dat = readcbfdata(instancefile)
     sense = string(dat.sense)
-    calc_objgap = NaN
-    calc_status = "other"
+    validator_status = ""
+    validator_objval = ""
+    validator_relobjdiff = ""
+    objval_error = ""
+    calc_objgap = ""
+
+    # Decide status classification (more can later be excluded if objvals disagree)
+    newstatus = ""
 
     if length(solution) > 0 && all(isfinite,solution)
-        objval_sol, linear_violation, soc_violation, socrot_violation, exp_violation, psd_violation, int_violation = compute_violations(dat,solution)
-        if !NOCONIC
-            validator_status, validator_objval = validate_with_conic_solver(dat,solution)
-            validator_relobjdiff = abs(objval_sol - validator_objval)/(abs(objval_sol) + 1e-5)
-            rel_objval_error = abs(objval_sol - objval)/(abs(objval) + 1e-5)
+        objval_sol, lin_viol, soc_viol, socrot_viol, exp_viol, psd_viol, int_viol = compute_viols(dat,solution)
+
+        objval_error = abs(objval_sol - objval)/(abs(objval) + 1e-5)
+
+        if startswith(solver, "BONMIN")
+            if status == "Optimal"
+                # Have to trust bonmin
+                calc_objgap = 1e-5
+            else
+                calc_objgap = Inf
+            end
+        else
+            calc_objgap = (objval_sol - objbound) / (abs(objval_sol) + 1e-5)
         end
 
-        if isfinite(objbound)
-            calc_objgap = (objval_sol - objbound) / (abs(objval_sol) + 1e-5)
-            if calc_objgap <= 1.25e-5
-                calc_status = "conv"
+        if !NOCONIC
+            # use conic solver to calculate objval
+            validator_status, validator_objval = validate_with_conic_solver(dat, solution)
+            validator_relobjdiff = abs(objval_sol - validator_objval)/(abs(objval_sol) + 1e-5)
+        end
+
+        if lin_viol > 1e-6 || soc_viol > 1e-5 || socrot_viol > 1e-5 || exp_viol > 1e-5 || psd_viol > 1e-4 || int_viol > 1e-6
+            newstatus = "excl"
+        elseif objval_error > 1e-8
+            newstatus = "excl"
+        elseif !NOCONIC && (validator_status == "Infeasible" || (isfinite(validator_relobjdiff) && validator_relobjdiff > 1e-5))
+            newstatus = "excl"
+        elseif status == "Optimal"
+            if -1e-3 < calc_objgap < 1.05e-5
+                newstatus = "conv"
             else
-                calc_status = "not conv"
+                newstatus = "excl"
+            end
+        elseif status == "UserLimit" || status == "Suboptimal"
+            if isfinite(calc_objgap) && calc_objgap < 1e-3
+                newstatus = "near"
+            else
+                newstatus = "lim"
             end
         end
+    elseif status == "UserLimit" || status == "Suboptimal"
+        newstatus = "lim"
     end
 
-    if startswith(solver, "BONMIN")
-        # Trust what bonmin says (give it benefit of the doubt because we can't get bounds)
-        if status == "Optimal"
-            calc_status = "conv"
-        elseif status == "Suboptimal"
-            calc_status = "not conv"
-        end
+    if status == "Infeasible"
+        newstatus = "excl"
+    elseif status == "KilledTime" || status == "KilledMemory"
+        newstatus = "lim"
+    elseif status == "" || status == "Error" || status == "FailedMIP"
+        newstatus = "err"
     end
 
-    if status == "UserLimit" && (!startswith(solver, "SCIP") || calc_status == "not conv")
-        # SCIP seems not to be stopping with our rel gap tolerance, so if it satisfies at end, accept
-        calc_status = "limit"
+    if newstatus == ""
+        error("new status not handled for $solver $instance with solver status $status")
     end
 
-    println(fd,
-"$solver,$instance,$sense,$timelimit,$status,$objval,$objbound,$calc_objgap,$calc_status,$solvertime,$totaltime,$nodecount,$(basename(filename)),$rel_objval_error,$linear_violation,$soc_violation,$socrot_violation,$exp_violation,$psd_violation,$int_violation,$validator_status,$validator_relobjdiff,$conic_subproblem_count,$conic_optimal_count,$conic_infeasible_count,$conic_relaxation_status,$conic_subproblem_time,$conic_relaxation_time,$mip_subproblem_time,$iteration_count")
+    println(fd,"$solver,$instance,$(basename(filename)),$sense,$timelimit,$solver_time,$total_time,$status,$newstatus,$objval,$objbound,$calc_objgap,$objval_error,$validator_status,$validator_relobjdiff,$iter_count,$node_count,$conic_count,$conic_opt_count,$conic_inf_count,$relax_status,$relax_time,$conic_time,$mip_time,$int_viol,$lin_viol,$soc_viol,$socrot_viol,$exp_viol,$psd_viol")
 end
 
 close(fd)
