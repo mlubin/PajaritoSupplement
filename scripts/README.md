@@ -22,26 +22,44 @@ julia scripts/process_csv.jl perfprofile results/misocp.csv analysis/misocp_perf
 julia analysis/misocp_perf.jl
 ```
 
-# MICP algorithmic comparisons
+# MICP exclude
 ```
 # Processing raw solver outputs
-julia scripts/process_output.jl oldoutput/micp results/micp.csv
+julia scripts/process_output.jl oldoutput/scale oldoutput/subpsep results/micp.csv
 
 # Processing CSV file
 julia scripts/process_csv.jl check results/micp.csv
 
-# If there are runs to exclude, list them in an "exclude" file (analysis/micp_exclude.txt)
+# If there are runs to exclude, list them in "exclude" files (analysis/scale_exclude.txt for noscale/scale solvers, or analysis/subpsep_exclude.txt for other solvers)
+
+# MICP scaling cuts algorithmic comparisons
+```
+# Processing raw solver outputs
+julia scripts/process_output.jl oldoutput/scale results/scale.csv
 
 # Generating table with status counts
-julia scripts/process_csv.jl statuscounts results/micp.csv analysis/micp_statuscounts.csv --exclude=analysis/micp_exclude.txt
+julia scripts/process_csv.jl statuscounts results/scale.csv analysis/scale_statuscounts.csv --exclude=analysis/scale_exclude.txt
 
 # Printing geomeans
-julia scripts/process_csv.jl geomeans results/micp.csv --exclude=analysis/micp_exclude.txt > analysis/micp_geomeans.txt
+julia scripts/process_csv.jl geomeans results/scale.csv --exclude=analysis/scale_exclude.txt > analysis/scale_geomeans.txt
 
 # Generating performance profiles
-julia scripts/process_csv.jl perfprofile results/micp.csv analysis/sepcuts_perf.jld PAJ_Gurobi_MOSEK PAJ_Gurobi_MOSEK_msd PAJ_Gurobi_sep PAJ_Gurobi_msd_sep --exclude=analysis/micp_exclude.txt
-julia analysis/sepcuts_perf.jl
-
-julia scripts/process_csv.jl perfprofile results/micp.csv analysis/scale_perf.jld PAJ_Gurobi_MOSEK_noscale_subponly_noinit PAJ_Gurobi_MOSEK_msd_noscale_subponly_noinit PAJ_Gurobi_MOSEK_scale_subponly_noinit PAJ_Gurobi_MOSEK_msd_scale_subponly_noinit --exclude=analysis/micp_exclude.txt
+julia scripts/process_csv.jl perfprofile results/scale.csv analysis/scale_perf.jld PAJ_Gurobi_MOSEK_noscale_subponly_noinit PAJ_Gurobi_MOSEK_msd_noscale_subponly_noinit PAJ_Gurobi_MOSEK_scale_subponly_noinit PAJ_Gurobi_MOSEK_msd_scale_subponly_noinit --exclude=analysis/scale_exclude.txt
 julia analysis/scale_perf.jl
+```
+
+# MICP subp vs sep cuts algorithmic comparisons
+```
+# Processing raw solver outputs
+julia scripts/process_output.jl oldoutput/subpsep results/subpsep.csv
+
+# Generating table with status counts
+julia scripts/process_csv.jl statuscounts results/subpsep.csv analysis/subpsep_statuscounts.csv --exclude=analysis/subpsep_exclude.txt
+
+# Printing geomeans
+julia scripts/process_csv.jl geomeans results/subpsep.csv --exclude=analysis/subpsep_exclude.txt > analysis/subpsep_geomeans.txt
+
+# Generating performance profiles
+julia scripts/process_csv.jl perfprofile results/subpsep.csv analysis/subpsep_perf.jld PAJ_Gurobi_MOSEK PAJ_Gurobi_MOSEK_msd PAJ_Gurobi_sep PAJ_Gurobi_msd_sep --exclude=analysis/subpsep_exclude.txt
+julia analysis/subpsep_perf.jl
 ```
