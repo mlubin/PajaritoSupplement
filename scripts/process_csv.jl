@@ -159,19 +159,21 @@ elseif arguments["geomeans"]
         end
     end
 
-    time_shift = 10.0
-    subproblem_shift = 1.0
-    node_count_shift = 10.0
+    timeshift = 10.0
+    itershift = 1
+    nodeshift = 10
 
-    # tidy data (needed for KilledX cases)
+    # set any missing times to time limit
     for i in 1:size(results, 1)
         if ismissing(results[i, :total_time])
             results[i, :total_time] = results[i, :timelimit]
+        else
+            @assert !isnan(results[i, :total_time]) && results[i, :total_time] > 0
         end
     end
 
     all_solvers = unique(results[:solver])
-    all_optimal_instances = []
+    all_conv = []
     for g1 in groupby(conv_runs, :instance)
         hassolver = falses(length(all_solvers))
         for i in 1:size(g1, 1)
@@ -180,48 +182,51 @@ elseif arguments["geomeans"]
             hassolver[idx] = true
         end
         if sum(hassolver) == length(all_solvers)
-            push!(all_optimal_instances, g1[1, :instance])
+            push!(all_conv, g1[1, :instance])
         end
     end
 
-    println("$(length(all_optimal_instances)) instances solved optimally by all solvers\n")
-    # subset of instances where all solvers got optimal
-    subset_of_all_optimal = conv_runs[find(t-> t in all_optimal_instances, conv_runs[:instance]), :]
+    # subset of runs where all solvers converged
+    runs_all_conv = conv_runs[find(t-> t in all_conv, conv_runs[:instance]), :]
 
-    println("\nShifted ($time_shift) geomean of solve time...")
-    println("\n...on all")
-    shifted_geomean(results, :total_time, time_shift, :solver)
-    println("\n...on solved by this solver")
-    shifted_geomean(conv_runs, :total_time, time_shift, :solver)
-    println("\n...on solved by all solvers")
-    shifted_geomean(subset_of_all_optimal, :total_time, time_shift, :solver)
+    println("$(length(all_conv)) instances solved optimally by all solvers:\n")
+    println(all_conv)
     println()
 
-    println("\nShifted ($subproblem_shift) geomean of conic subproblem count...")
-    println("\n...on all")
-    shifted_geomean(results, :conic_count, subproblem_shift, :solver)
-    println("\n...on solved by this solver")
-    shifted_geomean(conv_runs, :conic_count, subproblem_shift, :solver)
-    println("\n...on solved by all solvers")
-    shifted_geomean(subset_of_all_optimal, :conic_count, subproblem_shift, :solver)
+    println("\nShifted ($timeshift) geomean of solve time...")
+    println("\n...on all (before termination)")
+    shifted_geomean(results, :total_time, timeshift, :solver)
+    println("\n...on conv by this solver")
+    shifted_geomean(conv_runs, :total_time, timeshift, :solver)
+    println("\n...on conv by all solvers")
+    shifted_geomean(runs_all_conv, :total_time, timeshift, :solver)
     println()
 
-    println("\nShifted ($subproblem_shift) geomean of iteration count...")
-    println("\n...on all")
-    shifted_geomean(results, :iter_count, subproblem_shift, :solver)
-    println("\n...on solved by this solver")
-    shifted_geomean(conv_runs, :iter_count, subproblem_shift, :solver)
-    println("\n...on solved by all solvers")
-    shifted_geomean(subset_of_all_optimal, :iter_count, subproblem_shift, :solver)
+    println("\nShifted ($itershift) geomean of conic subproblem count...")
+    println("\n...on all (before termination)")
+    shifted_geomean(results, :conic_count, itershift, :solver)
+    println("\n...on conv by this solver")
+    shifted_geomean(conv_runs, :conic_count, itershift, :solver)
+    println("\n...on conv by all solvers")
+    shifted_geomean(runs_all_conv, :conic_count, itershift, :solver)
     println()
 
-    println("\nShifted ($node_count_shift) geomean of node count...")
-    println("\n...on all")
-    shifted_geomean(results, :node_count, node_count_shift, :solver)
-    println("\n...on solved by this solver")
-    shifted_geomean(conv_runs, :node_count, node_count_shift, :solver)
-    println("\n...on solved by all solvers")
-    shifted_geomean(subset_of_all_optimal, :node_count, node_count_shift, :solver)
+    println("\nShifted ($itershift) geomean of iteration count...")
+    println("\n...on all (before termination)")
+    shifted_geomean(results, :iter_count, itershift, :solver)
+    println("\n...on conv by this solver")
+    shifted_geomean(conv_runs, :iter_count, itershift, :solver)
+    println("\n...on conv by all solvers")
+    shifted_geomean(runs_all_conv, :iter_count, itershift, :solver)
+    println()
+
+    println("\nShifted ($nodeshift) geomean of node count...")
+    println("\n...on all (before termination)")
+    shifted_geomean(results, :node_count, nodeshift, :solver)
+    println("\n...on conv by this solver")
+    shifted_geomean(conv_runs, :node_count, nodeshift, :solver)
+    println("\n...on conv by all solvers")
+    shifted_geomean(runs_all_conv, :node_count, nodeshift, :solver)
     println()
 
 elseif arguments["perfprofile"]
