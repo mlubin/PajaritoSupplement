@@ -1,7 +1,8 @@
 using Plots
 pgfplots()
 
-import BenchmarkProfiles
+import NaNMath
+# import BenchmarkProfiles
 
 # Customized performance_profile method, derived from BenchmarkProfiles.jl
 # Copyright (c) 2016: Dominique Orban.
@@ -11,10 +12,29 @@ import BenchmarkProfiles
 # The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 function performance_profile(T::Array{Float64,2}, labels::Vector{String}; logscale::Bool=true, title::String="", ymax = 1.1, xmax = NaN, linewidth=1, kwargs...)
-    (ratios, max_ratio) = BenchmarkProfiles.performance_ratios(T, logscale=logscale)
-    (np, ns) = size(ratios)
+    (np, ns) = size(T);       # Number of problems and number of solvers.
 
-    ratios = [ratios; 2.0 * max_ratio * ones(1, ns)]
+    T[isinf.(T)] = NaN;
+    T[T .< 0] = NaN;
+    minperf = mapslices(NaNMath.minimum, T, 2) # Minimal (i.e., best) performance per solver
+
+    # Compute ratios and divide by smallest element in each row.
+    r = zeros(np, ns);
+    for p = 1 : np
+        r[p, :] = T[p, :] / minperf[p];
+    end
+
+    logscale && (r = log2.(r));
+    max_ratio = NaNMath.maximum(r)
+
+    # Replace failures with twice the max_ratio and sort each column of r.
+    failures = isnan.(r);
+    r[failures] = 2 * max_ratio;
+    r = sort(r, 1);
+
+    (np, ns) = size(r)
+
+    ratios = [r; 2.0 * max_ratio * ones(1, ns)]
     xs = collect(1:np+1)/np
     if length(labels) == 0
         labels = [@sprintf("column %d", col) for col = 1 : ns]
