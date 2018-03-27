@@ -105,16 +105,16 @@ if arguments["check"]
         end
     end
 
-    # check for duplicated runs
-    for g1 in groupby(results, :instance)
-        for g2 in groupby(g1, :solver)
-            if size(g2,1) > 1
-                s = g2[1, :solver]
-                inst = g2[1, :instance]
-                println("Multiple results for solver $s instance $inst")
-            end
-        end
-    end
+    # # check for duplicated runs
+    # for g1 in groupby(results, :instance)
+    #     for g2 in groupby(g1, :solver)
+    #         if size(g2,1) > 1
+    #             s = g2[1, :solver]
+    #             inst = g2[1, :instance]
+    #             println("Multiple results for solver $s instance $inst")
+    #         end
+    #     end
+    # end
 
 
 elseif arguments["statuscounts"]

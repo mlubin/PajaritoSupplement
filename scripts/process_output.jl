@@ -291,11 +291,13 @@ for (cnt, filename) in enumerate(resultfiles)
         elseif status == "UserLimit" || status == "Suboptimal"
             if isfinite(calc_objgap) && calc_objgap < 1e-3
                 newstatus = "near"
-            else
+            elseif status == "UserLimit"
                 newstatus = "lim"
+            else 
+                newstatus = "err"
             end
         end
-    elseif status == "UserLimit" || status == "Suboptimal"
+    elseif status == "UserLimit"
         newstatus = "lim"
     end
 
