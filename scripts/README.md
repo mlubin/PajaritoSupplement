@@ -32,7 +32,7 @@ julia scripts/process_csv.jl check results/micp.csv
 
 # If there are runs to exclude, list them in "exclude" files (analysis/scale_exclude.txt for noscale/scale/scaleup solvers, or analysis/disagg_exclude.txt for disagg/nodisagg solvers, or analysis/subpsep_exclude.txt for other solvers)
 
-# MICP scaling cuts algorithmic comparisons
+# MICP cut scaling algorithmic comparisons
 ```
 # Processing raw solver outputs
 julia scripts/process_output.jl oldoutput/scale results/scale.csv
@@ -48,7 +48,7 @@ julia scripts/process_csv.jl perfprofile results/scale.csv analysis/scale_perf.j
 julia analysis/scale_perf.jl
 ```
 
-# MICP disagg cuts algorithmic comparisons
+# MICP cut disagg algorithmic comparisons
 ```
 # Processing raw solver outputs
 julia scripts/process_output.jl oldoutput/disagg results/disagg.csv
@@ -64,7 +64,7 @@ julia scripts/process_csv.jl perfprofile results/disagg.csv analysis/disagg_perf
 julia analysis/disagg_perf.jl
 ```
 
-# MICP subp vs sep cuts algorithmic comparisons
+# MICP cut types algorithmic comparisons
 ```
 # Processing raw solver outputs
 julia scripts/process_output.jl oldoutput/subpsep results/subpsep.csv

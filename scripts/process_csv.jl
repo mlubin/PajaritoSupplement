@@ -63,7 +63,7 @@ for solverlist in arguments["--bestof"]
                 if rowlist[i, :newstatus] == "conv"
                     besttime = min(besttime, rowlist[i, :total_time])
                     beststatus = "conv"
-                elseif rowlist[i, :newstatus] in ["near", "lim"]
+                elseif rowlist[i, :newstatus] == "lim"
                     if beststatus != "conv"
                         besttime = min(besttime, rowlist[i, :total_time])
                         beststatus = "lim"
@@ -88,6 +88,7 @@ conv_runs = results[results[:newstatus] .== "conv", :]
 
 if arguments["check"]
     # check for disagreements in objective value
+    println("Objective disagreements")
     for optval_by_instance in groupby(conv_runs, :instance)
         first_optval = optval_by_instance[1, :objval]
         sense = optval_by_instance[1, :sense]
@@ -97,7 +98,7 @@ if arguments["check"]
             optval = optval_by_instance[i, :objval]
             if abs(optval - first_optval)/(abs(first_optval) + 1e-5) > 1e-4
                 println()
-                println("Objective disagreement on instance $inst (sense = $sense)")
+                println("$inst (sense = $sense)")
                 show(optval_by_instance[:,[:solver, :objval, :objbound]])
                 println()
                 break

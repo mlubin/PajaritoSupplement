@@ -261,7 +261,7 @@ for (cnt, filename) in enumerate(resultfiles)
 
         if startswith(solver, "BONMIN")
             if status == "Optimal"
-                # Have to trust bonmin
+                # Have to trust bonmin because cannot query objectivebound
                 calc_objgap = 1e-5
             else
                 calc_objgap = Inf
@@ -289,11 +289,9 @@ for (cnt, filename) in enumerate(resultfiles)
                 newstatus = "excl"
             end
         elseif status == "UserLimit" || status == "Suboptimal"
-            if isfinite(calc_objgap) && calc_objgap < 1e-3
-                newstatus = "near"
-            elseif status == "UserLimit"
+            if parse(Float64, solver_time) > 0.9*parse(Float64, timelimit)
                 newstatus = "lim"
-            else 
+            else
                 newstatus = "err"
             end
         end
