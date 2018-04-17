@@ -11,26 +11,33 @@ import NaNMath
 #
 # The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
-function performance_profile(T::Array{Float64,2}, labels::Vector{String}; logscale::Bool=true, title::String="", ymax = 1.1, xmax = NaN, linewidth=1, kwargs...)
-    (np, ns) = size(T);       # Number of problems and number of solvers.
+function performance_profile(T0::Array{Float64,2}, labels::Vector{String}; logscale::Bool=true, title::String="", ymax = 1.1, xmax = NaN, linewidth=1, kwargs...)
 
-    T[isinf.(T)] = NaN;
-    T[T .< 0] = NaN;
-    minperf = mapslices(NaNMath.minimum, T, 2) # Minimal (i.e., best) performance per solver
+    T0[isinf.(T0)] = NaN
+    T0[T0 .< 0] = NaN
 
-    # Compute ratios and divide by smallest element in each row.
-    r = zeros(np, ns);
+    # Remove instances for which all solvers have NaN
+    T = T0[.!(isnan.(T0[:,1]) .& isnan.(T0[:,2])), :]
+
+    # Number of instances and number of solvers
+    (np, ns) = size(T)
+
+    # Minimal (i.e., best) performance per solver
+    minperf = mapslices(NaNMath.minimum, T, 2)
+
+    # Compute ratios and divide by smallest element in each row
+    r = zeros(np, ns)
     for p = 1 : np
-        r[p, :] = T[p, :] / minperf[p];
+        r[p, :] = T[p, :] / minperf[p]
     end
 
-    logscale && (r = log2.(r));
+    logscale && (r = log2.(r))
     max_ratio = NaNMath.maximum(r)
 
-    # Replace failures with twice the max_ratio and sort each column of r.
-    failures = isnan.(r);
-    r[failures] = 2 * max_ratio;
-    r = sort(r, 1);
+    # Replace failures with twice the max_ratio and sort each column of r
+    failures = isnan.(r)
+    r[failures] = 2 * max_ratio
+    r = sort(r, 1)
 
     (np, ns) = size(r)
 
@@ -40,7 +47,7 @@ function performance_profile(T::Array{Float64,2}, labels::Vector{String}; logsca
         labels = [@sprintf("column %d", col) for col = 1 : ns]
     end
 
-    profile = Plots.plot(; kwargs...)  # initial empty plot
+    profile = Plots.plot(; kwargs...)
     for s = 1:ns
         Plots.plot!(ratios[:, s], xs, t=:steppost, label=labels[s], linewidth=linewidth)
     end

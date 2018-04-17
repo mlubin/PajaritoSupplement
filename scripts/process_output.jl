@@ -276,7 +276,13 @@ for (cnt, filename) in enumerate(resultfiles)
             validator_relobjdiff = abs(objval_sol - validator_objval)/(abs(objval_sol) + 1e-5)
         end
 
-        if lin_viol > 1e-6 || soc_viol > 1e-5 || socrot_viol > 1e-5 || exp_viol > 1e-5 || psd_viol > 1e-4 || int_viol > 1e-6
+        if status == "UserLimit" || status == "Suboptimal"
+            if parse(Float64, solver_time) > 0.9*parse(Float64, timelimit)
+                newstatus = "lim"
+            else
+                newstatus = "err"
+            end
+        elseif lin_viol > 1e-6 || soc_viol > 1e-5 || socrot_viol > 1e-5 || exp_viol > 1e-5 || psd_viol > 1e-4 || int_viol > 1e-6
             newstatus = "excl"
         elseif objval_error > 1e-8
             newstatus = "excl"
@@ -287,12 +293,6 @@ for (cnt, filename) in enumerate(resultfiles)
                 newstatus = "conv"
             else
                 newstatus = "excl"
-            end
-        elseif status == "UserLimit" || status == "Suboptimal"
-            if parse(Float64, solver_time) > 0.9*parse(Float64, timelimit)
-                newstatus = "lim"
-            else
-                newstatus = "err"
             end
         end
     elseif status == "UserLimit"
