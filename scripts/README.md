@@ -1,7 +1,7 @@
 
 Run the following commands from top directory of PajaritoSupplement. If Julia indicates that any packages need to be installed, do this. Ignore deprecation warnings.
 
-# MISOCP solver comparisons
+## MISOCP solver comparisons
 ```
 # Processing raw solver outputs
 julia scripts/process_output.jl oldoutput/misocp results/misocp.csv
@@ -22,7 +22,8 @@ julia scripts/process_csv.jl perfprofile results/misocp.csv analysis/misocp_perf
 julia analysis/misocp_perf.jl
 ```
 
-# MICP exclude
+## MICP algorithmic comparisons
+### exclude
 ```
 # Processing raw solver outputs
 julia scripts/process_output.jl oldoutput/scale oldoutput/subpsep oldoutput/disagg results/micp.csv
@@ -31,8 +32,8 @@ julia scripts/process_output.jl oldoutput/scale oldoutput/subpsep oldoutput/disa
 julia scripts/process_csv.jl check results/micp.csv
 
 # If there are runs to exclude, list them in "exclude" files (analysis/scale_exclude.txt for noscale/scale/scaleup solvers, or analysis/disagg_exclude.txt for disagg/nodisagg solvers, or analysis/subpsep_exclude.txt for other solvers)
-
-# MICP cut scaling algorithmic comparisons
+```
+### cut scaling
 ```
 # Processing raw solver outputs
 julia scripts/process_output.jl oldoutput/scale results/scale.csv
@@ -47,8 +48,7 @@ julia scripts/process_csv.jl geomeans results/scale.csv --exclude=analysis/scale
 julia scripts/process_csv.jl perfprofile results/scale.csv analysis/scale_perf.jld PAJ_Gurobi_MOSEK_noscale_subponly_noinit PAJ_Gurobi_MOSEK_msd_noscale_subponly_noinit PAJ_Gurobi_MOSEK_scale_subponly_noinit PAJ_Gurobi_MOSEK_msd_scale_subponly_noinit  --exclude=analysis/scale_exclude.txt
 julia analysis/scale_perf.jl
 ```
-
-# MICP cut disagg algorithmic comparisons
+### cut disaggregation
 ```
 # Processing raw solver outputs
 julia scripts/process_output.jl oldoutput/disagg results/disagg.csv
@@ -63,8 +63,7 @@ julia scripts/process_csv.jl geomeans results/disagg.csv --exclude=analysis/disa
 julia scripts/process_csv.jl perfprofile results/disagg.csv analysis/disagg_perf.jld PAJ_Gurobi_MOSEK_nodisagg_subponly_noinit PAJ_Gurobi_MOSEK_msd_nodisagg_subponly_noinit PAJ_Gurobi_MOSEK_subponly_noinit PAJ_Gurobi_MOSEK_msd_subponly_noinit --exclude=analysis/disagg_exclude.txt
 julia analysis/disagg_perf.jl
 ```
-
-# MICP cut types algorithmic comparisons
+### cut types
 ```
 # Processing raw solver outputs
 julia scripts/process_output.jl oldoutput/subpsep results/subpsep.csv
