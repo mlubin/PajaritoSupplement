@@ -38,38 +38,21 @@ By default an account is limited to 20 simultaneous EC2 nodes of a given type, t
 
 ## Configuring your job details
 
-Prepare the `jobdetails.csv` file. This file is a two-column CSV file, where the first line must contain the headers `instance_type` and `command`. Each subsequent line contains the details for a single job. The value in the first column is the instance type you require for this job, and the value in the second column is the corresponding command-line string to run.
+Prepare the job file. This file is a two-column CSV file, where the first line must contain the headers `instance_type` and `command`. Each subsequent line contains the details for a single job. The value in the first column is the instance type you require for this job, and the value in the second column is the corresponding command-line string to run.
 
 ## Launching Computation on EC2
 
-The file `dispatcher.py` is used to start the computation job. This script should be run with the following arguments:
-```
-$ python dispatcher.py -h
-usage: dispatcher.py [-h] [-c] [-d] [-v] [-i EXTRA_INPUT_CODE_PATH]
-                     [-o EXTRA_OUTPUT_FILE] [--tag_offset TAG_OFFSET]
-                     jobname jobfile install_script code_folder results_file
-```
+Get the AMI name `aminame` from the authors.
 
-Arguments:
-1. `jobname` is the name given to this job for identification purposes (all lowercase letters only).
-2. `jobfile` should be the path to the `jobdetails.csv` file you created earlier with the instance types and commands for each job.
-3. `-c, --create` is an optional argument which will create the machines and run the installation script. It should only be omitted if the machines are already created and set up.
-4. `-d, --dispatch` is an optional argument which will start the computation on the machines once they are setup.
-5. `-v, --verbose` is an optional argument which will make the script display information as it runs.
-6. `--tag_offset` allows you to specify the starting point for numbering machines. The script uses these numbers to refer to the machines uniquely, and defaults to starting at zero. If you already have machines running, you should set this to a number that is greater than the tag number of all currently running machines.
-
-A call to `dispatcher.py` might look like:
+The file `dispatcher.py` is used to start the computation job. To run a set of tests from your local terminal:
 ```
-python dispatcher.py jobname awsjobs/jobdetails.csv --create --dispatch
+cd PajaritoSupplement/awsscripts
+python dispatcher.py aminame nnnnxxxx awsjobs/xxxx.csv -c -d
 ```
-
-## Downloading results
-
-Once the run is completed, the output files are saved in S3 on Amazon Web Services (which has the job name as the S3 bucket name). To download these results run the following:
-```
-python get_s3_files.py jobname output_folder
-```
-where `jobname` is the job name that you specified earlier and `output_folder` is the place to put the files.
+where `nnnn` is your name (you need a unique bucket name that will not conflict with any other bucket name on Amazon S3), and `xxxx` is one of the jobs.
+1. `-c, --create` is an optional argument which will create the machines and run the installation script. It should only be omitted if the machines are already created and set up.
+2. `-d, --dispatch` is an optional argument which will start the computation on the machines once they are setup.
+3. `-v, --verbose` is an optional argument which will make the script display information as it runs and prompt the user to continue.
 
 ## Monitoring and Debugging Cloud Runs
 
@@ -93,31 +76,12 @@ After the `dispatcher.py` script has finished executing, you can check the numbe
 
 If there is no progress, then you can debug the run by logging onto one of the EC2 nodes as described in the previous section of this document. Debug output will be available in files `screen_output.txt`. Once you are finished debugging, you can terminate all running instances from the AWS console by navigating to "EC2" and "Running Instances", selecting all the instances, right clicking, and selecting "Instance State -> Terminate".
 
+## Downloading results
 
-# Setting up Julia
-
-Install [Julia v0.6.0](http://julialang.org/downloads/).
-
-
-# Specific commands to run for computational testing
-
-Clone or download the PajaritoSupplement repository.
-
-Get the relevant Mosek 9 licence file.
-
-Get the AMI name from the authors.
-
-To run a set of tests from your unix command line:
-```
-cd PajaritoSupplement/awsscripts
-python dispatcher.py aminame nnnnxxxx awsjobs/xxxx.csv -c -d
-```
-where `nnnn` is your name (you need a unique bucket name that will not conflict with any other bucket name on Amazon S3), and `xxxx` is one of the jobs.
-
-When all jobs have completed:
+Once the run is completed, the output files are saved in S3 on Amazon Web Services (which has the job name as the S3 bucket name). To download these results run the following:
 ```
 python get_s3_files.py nnnnxxxx ../output/xxxx
 ```
-Results folders will be downloaded to the `output` folder.
+which will downloaded results to the `output/xxxx` folder.
 
 See scripts readme for how to process.

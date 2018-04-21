@@ -93,17 +93,20 @@ solvermap = Dict(
     disaggregate_soc=false,
     ) end),
 
+
     # SCIP
     "SCIP_MISOCP" =>
     (["SCIP"], quote SCIPSolver(
     "limits/gap", rgap, "numerics/feastol", tol_feas, "limits/time", tlim,
     ) end),
 
+
     # CPLEX
     "CPLEX_MISOCP" =>
     (["CPLEX"], quote CplexSolver(
     CPX_PARAM_THREADS=1, CPX_PARAM_TILIM=tlim, CPX_PARAM_SCRIND=1, CPX_PARAM_EPINT=tol_int, CPX_PARAM_EPRHS=tol_feas, CPX_PARAM_EPGAP=rgap,
     ) end),
+
 
     # Paj CBC
     "PAJ_CBC_ECOS" =>
@@ -120,6 +123,7 @@ solvermap = Dict(
     cont_solver=ECOSSolver(verbose=false, reltol=1e-10, feastol=1e-10, reltol_inacc=1e-5, feastol_inacc=1e-8),
     log_level=logl, timeout=tlim, rel_gap=rgap, prim_cut_feas_tol=tol_feas,
     ) end),
+
 
     # Paj CPLEX MOSEK
     "PAJ_CPLEX_MOSEK" =>
@@ -250,29 +254,6 @@ solvermap = Dict(
     prim_cuts_assist=false,
     init_soc_one=false, init_soc_inf=false, init_exp=false, init_sdp_lin=false, init_sdp_soc=false,
     ) end),
-
-    # # Paj Gurobi MOSEK scale up (to sep cut), subp only, no init
-    # # NOTE feas tol is 1e-6
-    # "PAJ_Gurobi_MOSEK_scaleup_subponly_noinit" =>
-    # (["Gurobi","Mosek"], quote PajaritoSolver(
-    # mip_solver=Gurobi.GurobiSolver(OutputFlag=0, Threads=8, IntFeasTol=tol_int, FeasibilityTol=1e-6, MIPGap=tol_gap),
-    # cont_solver=MosekSolver(LOG=0, NUM_THREADS=8, MSK_DPAR_INTPNT_CO_TOL_REL_GAP=1e-10, MSK_DPAR_INTPNT_CO_TOL_PFEAS=1e-10, MSK_DPAR_INTPNT_CO_TOL_DFEAS=1e-10, MSK_DPAR_INTPNT_CO_TOL_NEAR_REL=1e3),
-    # log_level=logl, timeout=tlim, rel_gap=rgap, prim_cut_feas_tol=1e-6,
-    # scale_subp_up=true,
-    # prim_cuts_assist=false,
-    # init_soc_one=false, init_soc_inf=false, init_exp=false, init_sdp_lin=false, init_sdp_soc=false,
-    # ) end),
-    #
-    # "PAJ_Gurobi_MOSEK_msd_scaleup_subponly_noinit" =>
-    # (["Gurobi","Mosek"], quote PajaritoSolver(
-    # mip_solver=Gurobi.GurobiSolver(OutputFlag=1, Threads=8, IntFeasTol=tol_int, FeasibilityTol=1e-6, MIPGap=rgap),
-    # cont_solver=MosekSolver(LOG=0, NUM_THREADS=8, MSK_DPAR_INTPNT_CO_TOL_REL_GAP=1e-10, MSK_DPAR_INTPNT_CO_TOL_PFEAS=1e-10, MSK_DPAR_INTPNT_CO_TOL_DFEAS=1e-10, MSK_DPAR_INTPNT_CO_TOL_NEAR_REL=1e3),
-    # log_level=logl, timeout=tlim, rel_gap=rgap, prim_cut_feas_tol=1e-6,
-    # scale_subp_up=true,
-    # mip_solver_drives=true,
-    # prim_cuts_assist=false,
-    # init_soc_one=false, init_soc_inf=false, init_exp=false, init_sdp_lin=false, init_sdp_soc=false,
-    # ) end),
 
     # Paj Gurobi MOSEK noscale, subp only, no init
     # NOTE feas tol is 1e-6
