@@ -23,4 +23,3 @@ The folders in this supplement are organized as follows.
 
 ## MICP tests
 
-TODO modify the analysis performance profile scripts to use the same x axis bounds as the paper and rerun
