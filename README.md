@@ -11,15 +11,21 @@ The folders in this supplement are organized as follows.
 * `scripts/` contains the bash (`.sh`) and Julia (`.jl`) scripts for running the MISOCP and MICP tests on a local machine and later processing the output into `.csv` files ready for further analysis.
 * `awsscripts/` contains files for running the (time-consuming) MISOCP tests specifically on AWS EC2 cloud compute infrastructure in parallel, rather than on the local machine. This folder is irrelevant if the MISOCP tests are to be run on the local machine.
 * `output/` initially contains a text file outputted by the `scripts/run.jl` script for each solver-instance run that we performed. Each text file contains solver logs, errors, warnings, and a printout of the summary information such as objective, solution, status, and execution time. The current set of files should be deleted or moved before running the scripts again.
-* `results/` initially contains `.csv` files that are outputted by the `scripts/process_output.jl` script
-* `analysis/`
+* `results/` initially contains `.csv` files that are outputted by the `scripts/process_output.jl` script. Each line in each file corresponds to a solver-instance run, and summarizes the important performance metrics and solution checks. The current set of files should be deleted or moved before running the scripts again. 
+* `analysis/` 
+
+TODO change "subpsep" to "types" for clarity. 
+TODO maybe move any outputs of the analysis scripts, or move the analysis scripts to scripts folder
 
 
-## Software required
+## Software installation
+
+TODO copy code from awsscripts readme and modify
 
 
 ## MISOCP tests
 
 
 ## MICP tests
+
 
