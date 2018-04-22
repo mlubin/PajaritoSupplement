@@ -23,14 +23,14 @@ msd_time_table = d["time_table"][:,[2,4]] + timeshift
 msd_node_table = d["itndcount_table"][:,[2,4]] + nodeshift
 
 
-performance_profile(iter_time_table, iter_solvers, logscale=false, ymax=1.0, xmax=10, linewidth=3)
+performance_profile(iter_time_table, iter_solvers, logscale=false, ymax=1.0, xmax=3, linewidth=3)
 Plots.savefig(joinpath(dirname(@__FILE__),"disagg_iter_time.tex"))
 
-performance_profile(iter_iter_table, iter_solvers, logscale=false, ymax=1.0, xmax=10, linewidth=3)
+performance_profile(iter_iter_table, iter_solvers, logscale=false, ymax=1.0, xmax=12, linewidth=3)
 Plots.savefig(joinpath(dirname(@__FILE__),"disagg_iter_iters.tex"))
 
-performance_profile(msd_time_table, msd_solvers, logscale=false, ymax=1.0, xmax=10, linewidth=3)
+performance_profile(msd_time_table, msd_solvers, logscale=false, ymax=1.0, xmax=8, linewidth=3)
 Plots.savefig(joinpath(dirname(@__FILE__),"disagg_msd_time.tex"))
 
-performance_profile(msd_node_table, msd_solvers, logscale=false, ymax=1.0, xmax=10, linewidth=3)
+performance_profile(msd_node_table, msd_solvers, logscale=false, ymax=1.0, xmax=80, linewidth=3)
 Plots.savefig(joinpath(dirname(@__FILE__),"disagg_msd_nodes.tex"))
