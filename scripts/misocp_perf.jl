@@ -5,7 +5,7 @@ include("perfplots.jl")
 timeshift = 10.0
 
 # produced by process_csv.jl in perfprofile mode
-jldsource = joinpath(dirname(@__FILE__),"misocp_perf.jld")
+jldsource = joinpath(dirname(@__FILE__),"..",ARGS[1],"misocp_perf.jld")
 
 d = load(jldsource)
 solvers = d["solvers"]
@@ -20,7 +20,7 @@ open_time_table = d["time_table"][:,[1,2]] + timeshift
 
 
 performance_profile(comm_time_table, comm_solvers, logscale=false, ymax=1.0, xmax=8, linewidth=3)
-Plots.savefig(joinpath(dirname(@__FILE__),"misocp_comm_time.tex"))
+Plots.savefig(joinpath(dirname(@__FILE__),"..",ARGS[1],"misocp_comm_time.tex"))
 
 performance_profile(open_time_table, open_solvers, logscale=false, ymax=1.0, xmax=8, linewidth=3)
-Plots.savefig(joinpath(dirname(@__FILE__),"misocp_open_time.tex"))
+Plots.savefig(joinpath(dirname(@__FILE__),"..",ARGS[1],"misocp_open_time.tex"))

@@ -7,7 +7,7 @@ itershift = 1
 nodeshift = 10
 
 # produced by process_csv.jl in perfprofile mode
-jldsource = joinpath(dirname(@__FILE__),"subpsep_perf.jld")
+jldsource = joinpath(dirname(@__FILE__),"..",ARGS[1],"cuttypes_perf.jld")
 
 d = load(jldsource)
 solvers = d["solvers"]
@@ -24,13 +24,13 @@ msd_node_table = d["itndcount_table"][:,[2,4]] + nodeshift
 
 
 performance_profile(iter_time_table, iter_solvers, logscale=false, ymax=1.0, xmax=6, linewidth=3)
-Plots.savefig(joinpath(dirname(@__FILE__),"subpsep_iter_time.tex"))
+Plots.savefig(joinpath(dirname(@__FILE__),"..",ARGS[1],"cuttypes_iter_time.tex"))
 
 performance_profile(iter_iter_table, iter_solvers, logscale=false, ymax=1.0, xmax=6, linewidth=3)
-Plots.savefig(joinpath(dirname(@__FILE__),"subpsep_iter_iters.tex"))
+Plots.savefig(joinpath(dirname(@__FILE__),"..",ARGS[1],"cuttypes_iter_iters.tex"))
 
 performance_profile(msd_time_table, msd_solvers, logscale=false, ymax=1.0, xmax=4, linewidth=3)
-Plots.savefig(joinpath(dirname(@__FILE__),"subpsep_msd_time.tex"))
+Plots.savefig(joinpath(dirname(@__FILE__),"..",ARGS[1],"cuttypes_msd_time.tex"))
 
 performance_profile(msd_node_table, msd_solvers, logscale=false, ymax=1.0, xmax=12, linewidth=3)
-Plots.savefig(joinpath(dirname(@__FILE__),"subpsep_msd_nodes.tex"))
+Plots.savefig(joinpath(dirname(@__FILE__),"..",ARGS[1],"cuttypes_msd_nodes.tex"))
