@@ -30,7 +30,7 @@ wget https://julialang.s3.amazonaws.com/bin/linux/x64/0.6/julia-0.6.0-linux-x86_
 tar -xvzf julia-0.6.0-linux-x86_64.tar.gz
 echo "export PATH=\$PATH:$HOME/julia-903644385b/bin" >> ~/.bashrc
 ```
-Install Mosek.
+Obtain a Mosek licence file `mosek.lic` from Mosek's website. Install Mosek. The wget link may need to be obtained from Mosek directly.
 ```
 wget https://d2i6rjz61faulo.cloudfront.net/alpha/9/mosektoolslinux64x86.tar.bz2
 tar -xvjf mosektoolslinux64x86.tar.bz2
@@ -53,7 +53,7 @@ Pkg.clone("https://github.com/chriscoey/Mosek.jl","Mosek")
 Pkg.build("Mosek")
 exit()
 ```
-Get on chriscoey's special branch of Mosek.jl with status fixes.
+Get on chriscoey's special branch of Mosek.jl (with MathProgBase status fixes).
 ```
 cd
 cd .julia/v0.6/Mosek
@@ -82,7 +82,7 @@ tar xvzf scipoptsuite-4.0.0.tgz
 cd scipoptsuite-4.0.0
 make SHARED=true GMP=false READLINE=false ZLIB=false OPT=opt IPOPT=true scipoptlib
 ```
-Upon "> Enter soft-link target file or directory for "lib/shared/ipopt.linux.x86_64.gnu.opt" (return if not needed):" input the following.
+Upon `> Enter soft-link target file or directory for "lib/shared/ipopt.linux.x86_64.gnu.opt" (return if not needed):` input the following.
 ```
 /home/ubuntu/.julia/v0.6/Ipopt/deps/usr
 ```
@@ -95,7 +95,7 @@ Pkg.add("CoinOptServices")
 Pkg.add("AmplNLWriter")
 exit()
 ```
-Get v0.3.0 of AmplNLWriter.
+Get v0.3.0 of AmplNLWriter.jl.
 ```
 cd .julia/v0.6/AmplNLWriter
 git fetch
@@ -103,7 +103,7 @@ git checkout v0.3.0
 cd
 julia
 ```
-Get more julia packages.
+Get more Julia packages.
 ```
 Pkg.add("SCS")
 Pkg.add("GLPKMathProgInterface")
@@ -122,16 +122,39 @@ rm cplex_studio127.linux-x86-64.bin
 rm scipoptsuite-4.0.0.tgz
 rm mosektoolslinux64x86.tar.bz2
 ```
+Ensure packages are on correct versions.
+```
+ - AmplNLWriter                  0.3.0
+ - CPLEX                         0.2.8
+ - Cbc                           0.3.2
+ - CoinOptServices               0.2.0
+ - ConicBenchmarkUtilities       0.2.3
+ - ECOS                          0.7.2+             master
+ - GLPKMathProgInterface         0.3.4
+ - Ipopt                         0.2.6
+ - JuMP                          0.18.0
+ - Mosek                         0.8.2+             master
+ - Pajarito                      0.5.0+             master
+ - SCIP                          0.4.0
+ - Clp                           0.3.1
+ - ConicNonlinearBridge          0.1.3
+ - GLPK                          0.4.2
+ - MathProgBase                  0.6.4
+```
+
 Clone supplement repo with data instances and scripts.
 ```
 git clone https://github.com/mlubin/PajaritoSupplement.git
 ```
+Make the bash scripts executable.
+```
+sudo chmod 777 scripts/run_misocp.sh scripts/run_micp.sh
+```
 
-### Run the computations
+### Run the MISOCP computations
 
 Run the remaining commands from top directory of PajaritoSupplement. If Julia indicates that any packages need to be installed, do so with `Pkg.add("xxxx.jl")`. Ignore any deprecation warnings.
 
-TODO make executable
 TODO where define JULIA home
 
 Run the bash script.
@@ -140,6 +163,7 @@ Run the bash script.
 ```
 
 ### Process outputs and analyse results
+
 Process raw solver outputs into `.csv' file, then check for inconsistencies.
 ```
 julia scripts/process_output.jl output/misocp results/misocp.csv
@@ -162,13 +186,34 @@ julia scripts/misocp_perf.jl analysis
 
 ### Install software
 
+This must be performed after the software installation steps for the MISOCP tests above.
 TODO have to get julia v0.6.2 now, update some packages
 
-### Run the computations
+Install Julia v0.6.2.
+```
+wget https://julialang.s3.amazonaws.com/bin/linux/x64/0.6/julia-0.6.2-linux-x86_64.tar.gz
+tar -xvzf julia-0.6.2-linux-x86_64.tar.gz
+echo "export PATH=\$PATH:$HOME/julia-d386e40c17/bin" >> ~/.bashrc
+```
+Install Gurobi 7.5.2. Install Gurobi.jl following instructions at https://github.com/JuliaOpt/Gurobi.jl.
+```
+julia
+Pkg.add("Gurobi")
+exit()
+```
+Update packages to correct versions.
+- ConicBenchmarkUtilities       0.2.3+             master
+- Gurobi                        0.3.3
+- JuMP                          0.18.0
+- Mosek                         0.8.2+             master
+- Pajarito                      0.5.0+             master
+- MathProgBase                  0.7.0
+
+
+### Run the MICP computations
 
 Run the remaining commands from top directory of PajaritoSupplement. If Julia indicates that any packages need to be installed, do so with `Pkg.add("xxxx.jl")`. Ignore any deprecation warnings.
 
-TODO make executable
 TODO where define JULIA home
 
 Run the bash script.
